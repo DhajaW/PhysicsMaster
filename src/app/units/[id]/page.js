@@ -31,9 +31,26 @@ const physicsUnits = [
   { id: '11', name: 'පදාර්ථ හා විකිරණ (Radiation)', icon: '⚛️', topics: 'ප්රකාශ විද්යුත් ආචරණය, X-කිරණ, විකිරණශීලිතාව', color: 'from-fuchsia-600 to-purple-600' }
 ];
 
+export async function generateStaticParams() {
+  return [
+    { id: '01' },
+    { id: '02' },
+    { id: '03' },
+    { id: '04' },
+    { id: '05' },
+    { id: '06' },
+    { id: '07' },
+    { id: '08' },
+    { id: '09' },
+    { id: '10' },
+    { id: '11' }
+  ];
+}
+
 export default async function UnitPage({ params }) {
   const { id } = await params;
   const unit = physicsUnits.find((u) => u.id === id);
+
 
   if (!unit) {
     return (
