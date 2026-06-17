@@ -31,7 +31,7 @@ export default function PhysicsDashboard() {
               </span>
             </div>
             <div className="flex items-center space-x-6">
-              <Link href="/" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
+              <Link href="/lessons" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
                 <BookOpen className="w-5 h-5 mr-1" /> පාඩම් මාලා
               </Link>
               <Link href="/exam-secrets" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
