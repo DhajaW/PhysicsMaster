@@ -1,5 +1,6 @@
 import { Inter, Noto_Sans_Sinhala } from "next/font/google";
 import "./globals.css";
+import Footer from '@/components/Footer';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,8 +14,8 @@ const notoSansSinhala = Noto_Sans_Sinhala({
 });
 
 export const metadata = {
-  title: "PhysicsMaster A/L - උසස් පෙළ භෞතික විද්‍යාව",
-  description: "ශ්‍රී ලංකා උසස් පෙළ භෞතික විද්‍යාව විෂය නිර්දේශයේ සියලුම ඒකක, ප්‍රායෝගික පරීක්ෂණ, පසුගිය විභාග ප්‍රශ්න හා ලකුණු දීමේ ක්‍රමවේදයන් (Marking Schemes) ඇතුළත් සජීවී ඉගෙනුම් මෙවලම.",
+  title: 'Physics Master | Flagship Studios',
+  description: 'A/L Physics App developed by Flagship Studios',
 };
 
 export default function RootLayout({ children }) {
@@ -23,7 +24,12 @@ export default function RootLayout({ children }) {
       lang="si"
       className={`${inter.variable} ${notoSansSinhala.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-gray-50">
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
