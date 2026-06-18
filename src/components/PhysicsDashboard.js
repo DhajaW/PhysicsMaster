@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { BookOpen, Target } from 'lucide-react';
+import { BookOpen, Target, Atom } from 'lucide-react';
 
 // NotebookLM Blueprint එක මත පදනම් වූ පාඩම් දත්ත
 const physicsUnits = [
@@ -24,11 +24,22 @@ export default function PhysicsDashboard() {
       <nav className="bg-white border-b border-gray-200 fixed top-0 w-full z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center space-x-3">
-              <span className="text-2xl">🚀</span>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                PhysicsMaster A/L
-              </span>
+            {/* Logo Section */}
+            <div className="flex items-center gap-3">
+              {/* අලුත් Atom Logo එක */}
+              <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-2 rounded-xl shadow-lg shadow-blue-500/30 flex items-center justify-center">
+                <Atom className="w-7 h-7 text-white animate-[spin_10s_linear_infinite]" />
+              </div>
+              
+              {/* App එකේ නම */}
+              <h1 className="text-2xl font-extrabold tracking-tight">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-800">
+                  PhysicsMaster
+                </span>
+                <span className="ml-2 text-blue-500 font-bold">
+                  A/L
+                </span>
+              </h1>
             </div>
             <div className="flex items-center space-x-6">
               <Link href="/lessons" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
