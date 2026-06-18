@@ -129,8 +129,8 @@ export default function QuantumPhysicsPage() {
                 <ul className="list-disc pl-5 space-y-1">
                   <li><strong>ප්‍රකාශ විද්‍යුත් ආචරණය (Photoelectric Effect):</strong> ලෝහ පෘෂ්ඨයක් මත ආලෝකය (විද්‍යුත් චුම්භක විකිරණ) පතිත වූ විට ඉලෙක්ට්‍රෝන විමෝචනය වීමේ සංසිද්ධියයි.</li>
                   <li><strong>කාර්ය ශ්‍රිතය (Work Function - ϕ):</strong> ලෝහ පෘෂ්ඨයෙන් ඉලෙක්ට්‍රෝනයක් නිදහස් කිරීම සඳහා ලබා දිය යුතු අවම ශක්තියයි.</li>
-                  <li><strong>දේහලි සංඛ්‍යාතය (Threshold Frequency - f₀):</strong> ඉලෙක්ට්‍රෝන විමෝචනය කළ හැකි අවම ආලෝක සංඛ්‍යාතයයි.</li>
-                  <li><strong>නැවතුම් විභවය (Stopping Potential - V_s):</strong> විමෝචනය වන උපරිම චාලක ශක්තියක් ඇති ඉලෙක්ට්‍රෝන නවතාලීම සඳහා යෙදිය යුතු අවම ප්‍රතිවිරුද්ධ විභව අන්තරයයි.</li>
+                  <li><strong>දේහලී සංඛ්‍යාතය (Threshold Frequency - f₀):</strong> ඉලෙක්ට්‍රෝන විමෝචනය කළ හැකි අවම ආලෝක සංඛ්‍යාතයයි.</li>
+                  <li><strong>නිවාරක විභවය (Stopping Potential - V_s):</strong> විමෝචනය වන උපරිම චාලක ශක්තියක් ඇති ඉලෙක්ට්‍රෝන නවතාලීම සඳහා යෙදිය යුතු අවම ප්‍රතිවිරුද්ධ විභව අන්තරයයි.</li>
                 </ul>
               </div>
               <div>
@@ -150,7 +150,7 @@ export default function QuantumPhysicsPage() {
               </div>
               <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                 <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
-                <p className="text-sm mt-1 text-amber-900">පතිත ආලෝකයේ තීව්‍රතාව (Intensity) වැඩි කළ විට ප්‍රකාශ විද්‍යුත් ධාරාව වැඩි වුවද නැවතුම් විභවය (V_s) වෙනස් නොවේ. එය රඳා පවතින්නේ ආලෝකයේ සංඛ්‍යාතය මත පමණි.</p>
+                <p className="text-sm mt-1 text-amber-900">පතිත ආලෝකයේ තීව්‍රතාව (Intensity) වැඩි කළ විට ප්‍රකාශ විද්‍යුත් ධාරාව වැඩි වුවද නිවාරක විභවය (V_s) වෙනස් නොවේ. එය රඳා පවතින්නේ ආලෝකයේ සංඛ්‍යාතය මත පමණි.</p>
               </div>
             </div>
           </Accordion>

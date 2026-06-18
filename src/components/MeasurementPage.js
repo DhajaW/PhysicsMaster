@@ -177,7 +177,7 @@ export default function MeasurementPage() {
               </div>
               <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                 <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
-                <p className="text-sm mt-1 text-amber-900">ගුණිතයක් ලෙස ඒකක ලිවීමේදී මූල ඒකක අතර එක් පරතරයක් (Space) අනිවාර්යයෙන් තැබිය යුතුය (උදා: 10 m s⁻¹ නිවැරදිය, 10 ms⁻¹ යනු මිලි තත්පර වේ).</p>
+                <p className="text-sm mt-1 text-amber-900">ගුණිතයක් ලෙස ඒකක ලිවීමේදී මූල ඒකක අතර එක් පරතරයක් (Space) අනිවාර්යයෙන් තැබිය යුතුය (උදා: 10 m s⁻¹ නිවැරදිය, 10 ms⁻¹ යනු තත්පරයට මිලිමීටර නොව ප්‍රතිලෝම මිලි තත්පර වේ).</p>
               </div>
 
               {/* SI Table */}
@@ -196,7 +196,7 @@ export default function MeasurementPage() {
                     <tr className="border-b"><td className="p-2">කාලය (Time)</td><td className="p-2">තත්පරය</td><td className="p-2 font-mono">s</td></tr>
                     <tr className="border-b"><td className="p-2">උෂ්ණත්වය (Temperature)</td><td className="p-2">කෙල්විනය</td><td className="p-2 font-mono">K</td></tr>
                     <tr className="border-b"><td className="p-2">විද්යුත් ධාරාව (Electric Current)</td><td className="p-2">ඇම්පියරය</td><td className="p-2 font-mono">A</td></tr>
-                    <tr className="border-b"><td className="p-2">ද්රව්ය ප්රමාණය (Amount of Substance)</td><td className="p-2">මවුලය</td><td className="p-2 font-mono">mol</td></tr>
+                    <tr className="border-b"><td className="p-2">පදාර්ථ ප්‍රමාණය (Amount of Substance)</td><td className="p-2">මවුලය</td><td className="p-2 font-mono">mol</td></tr>
                     <tr className="border-b"><td className="p-2">දීප්ත තීව්රතාව (Luminous Intensity)</td><td className="p-2">කැන්ඩෙලාව</td><td className="p-2 font-mono">cd</td></tr>
                   </tbody>
                 </table>

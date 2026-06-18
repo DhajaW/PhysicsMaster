@@ -63,7 +63,7 @@ export default function MechanicsPage() {
   const checkMotionEquation = () => {
     const u = parseFloat(uInput);
     const t = parseFloat(tInput);
-    const g = 9.8; // m/s^2 (Resource Book Value)
+    const g = 10; // m/s^2 (Resource Book Value)
 
     if (isNaN(u) || isNaN(t)) {
       setMotionFeedback({ status: 'error', msg: '❌ කරුණාකර නිවැරදි සංඛ්‍යාත්මක අගයන් ඇතුළත් කරන්න.' });
@@ -146,7 +146,7 @@ export default function MechanicsPage() {
               <div>
                 <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
                 <ul className="list-disc pl-5 space-y-1">
-                  <li><strong>ප්රවේගය (Velocity):</strong> යම් ඔස්සේ වස්තුවක විස්ථාපනය වෙනස් වීමේ සීඝ්රතාවයි.</li>
+                  <li><strong>ප්රවේගය (Velocity):</strong> යම් නිශ්චිත දිශාවක් ඔස්සේ වස්තුවක විස්ථාපනය වෙනස් වීමේ සීඝ්රතාවයි.</li>
                   <li><strong>සාපේක්ෂ ප්රවේගය (Relative Velocity):</strong> යම් සමුද්දේශ රාමුවකට (Frame of reference) සාපේක්ෂව වස්තුවක් ගමන් කරන ප්රවේගයයි.</li>
                   <li><strong>ත්වරණය (Acceleration):</strong> කාලය සමග ප්රවේගය වෙනස් වීමේ සීඝ්රතාවයි.</li>
                 </ul>
@@ -261,7 +261,7 @@ export default function MechanicsPage() {
           </Accordion>
 
           {/* 05. ද්රවස්ථිති හා තරල ගති විද්යාව */}
-          <Accordion title="05. ද්රවස්ථිති හා තරල ගති විද්යාව (Hydrostatics)">
+          <Accordion title="05. ද්රවස්ථිති හා තරල ගති විද්යාව (Hydrostatics and Fluid Dynamics)">
             <div className="space-y-4 text-slate-700">
               <div>
                 <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>

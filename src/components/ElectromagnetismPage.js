@@ -219,7 +219,7 @@ export default function ElectromagnetismPage() {
               <div>
                 <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>ලෙන්ස් නියමය යනු <strong>ශක්ති සංස්ථිති මූලධර්මයේම</strong> තවත් මුහුණුවරක් බව විභාග ප්රශ්නවල නිතර අසනු ලැබේ. ප්රේරිත දිශාව සෙවීමට ෆ්ලෙමින්ගේ දකුණත් නියමය (Fleming&apos;s Right Hand Rule) භාවිත කරන්න.</li>
+                  <li>ලෙන්ස් නියමය යනු <strong>ශක්ති සංරක්ෂණ මූලධර්මයේම</strong> තවත් මුහුණුවරක් බව විභාග ප්රශ්නවල නිතර අසනු ලැබේ. ප්රේරිත දිශාව සෙවීමට ෆ්ලෙමින්ගේ දකුණත් නියමය (Fleming&apos;s Right Hand Rule) භාවිත කරන්න.</li>
                 </ul>
               </div>
             </div>

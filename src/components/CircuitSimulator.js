@@ -33,7 +33,7 @@ export default function CircuitSimulator() {
         <div>
           <span className="bg-amber-500 text-slate-950 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Unit 07: Interactive Widget</span>
           <h2 className="text-2xl font-bold mt-2 flex items-center gap-2 text-white">
-            <Zap className="w-6 h-6 text-yellow-400 fill-yellow-400" /> ධාරා විද්යුත් ඕම්ගේ නියම Simulator එක
+            <Zap className="w-6 h-6 text-yellow-400 fill-yellow-400" /> ධාරා විද්‍යුත් ඕම්ගේ නියම Simulator එක
           </h2>
           <p className="text-slate-400 text-sm mt-1">පරිපථයේ වෝල්ටීයතාව සහ ප්රතිරෝධය වෙනස් කරමින් සජීවීව වෙනස්කම් නිරීක්ෂණය කරන්න.</p>
         </div>

@@ -347,7 +347,7 @@ export default function ThermalPhysicsPage() {
                 </thead>
                 <tbody>
                   <tr className="border-b">
-                    <td className="p-3 font-medium">ජලයේ ත්රික ලක්ෂ්යය (Triple Point of Water)</td>
+                    <td className="p-3 font-medium">ජලයේ ත්‍රිත්ව ලක්ෂ්‍යය (Triple Point of Water)</td>
                     <td className="p-3 font-mono">273.16 K</td>
                   </tr>
                   <tr className="border-b">

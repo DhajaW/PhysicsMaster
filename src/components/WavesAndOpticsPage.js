@@ -103,7 +103,7 @@ export default function WavesAndOpticsPage() {
             </h2>
             <ul className="space-y-3 text-sm text-slate-600">
               <li>• <strong className="text-slate-800">සරල අනුවර්තී චලිතය (ස.අ.ච.):</strong> වස්තුවක ත්වරණය සමතුලිත පිහිටුමේ සිට විස්ථාපනයට අනුලෝමව සමානුපාතික වන අතර, දිශාව සෑම විටම සමතුලිත පිහිටුම දෙසට යොමු වේ (a = -ω²x).</li>
-              <li>• <strong className="text-slate-800">ධ්වනි ප්‍රවේගය (නළයක අනුනාදය):</strong> සංවෘත නළයක මූලික ප්‍රස්පන්දය (AN) සහ නිෂ්පන්දය (N) පිහිටීම අනුව v = 2f(l₁ - l₀) සූත්‍රයෙන් වාතයේ ධ්වනි ප්‍රවේගය සෙවිය හැක.</li>
+              <li>• <strong className="text-slate-800">ධ්වනි ප්‍රවේගය (නළයක අනුනාදය):</strong> සංවෘත නළයක මූලික ප්‍රස්පන්දය (A) සහ නිෂ්පන්දය (N) පිහිටීම අනුව v = 2f(l₂ - l₁) සූත්‍රයෙන් වාතයේ ධ්වනි ප්‍රවේගය සෙවිය හැක.</li>
             </ul>
           </div>
 
@@ -118,8 +118,8 @@ export default function WavesAndOpticsPage() {
                 කාච හෝ ප්‍රිස්ම හරහා ආලෝකය ඇඳීමේදී කිරණ මත ඊතල (Arrows) ලකුණු නොකළහොත්, මුළු ලකුණු ප්‍රමාණයම (Zero Marks) අහිමි වේ!
               </div>
               <div className="p-2.5 bg-emerald-50 border border-emerald-200 rounded-lg">
-                <span className="font-bold text-emerald-800 block">⚠️ නිෂ්පන්ද (N) සහ ප්‍රස්පන්ද (AN):</span>
-                අනුනාද නළ පාඩමේ ව්‍යුහගත ප්‍රශ්න වලදී නළය ඇතුළේ තරංග හැඩය අඳින විට විවෘත කෙළවර ප්‍රස්පන්දයක් (AN) ලෙසත්, වැසුණු කෙළවර නිෂ්පන්දයක් (N) ලෙසත් පැහැදිලිව ලකුණු කළ යුතුය.
+                <span className="font-bold text-emerald-800 block">⚠️ නිෂ්පන්ද (N) සහ ප්‍රස්පන්ද (A):</span>
+                අනුනාද නළ පාඩමේ ව්‍යුහගත ප්‍රශ්න වලදී නළය ඇතුළේ තරංග හැඩය අඳින විට විවෘත කෙළවර ප්‍රස්පන්දයක් (A) ලෙසත්, වැසුණු කෙළවර නිෂ්පන්දයක් (N) ලෙසත් පැහැදිලිව ලකුණු කළ යුතුය.
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function WavesAndOpticsPage() {
         {/* සම්පත් පොත් සාරාංශය: දෝලන හා තරංග */}
         <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-150 mb-8">
           <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-            <span>📘</span> සම්පත් පොත් සාරාංශය: දෝලන හා තරංග
+            <span>📘</span> සම්පත් පොත් සාරාංශය: දෝලන, තරංග සහ ආලෝකය
           </h2>
 
           {/* 01. සරල අනුවර්තී චලිතය සහ දෝලන */}

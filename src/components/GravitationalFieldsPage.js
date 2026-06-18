@@ -228,7 +228,7 @@ export default function GravitationalFieldsPage() {
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                   <li>කක්ෂීය ප්රවේගය: v = √(GM / r)</li>
                   <li>ආවර්ත කාලය: T = 2π√(r³ / GM)</li>
-                  <li>වියෝග ප්රවේගය (Escape Velocity): v = √(2gR)</li>
+                  <li>පලායන ප්‍රවේගය (Escape Velocity): v = √(2gR)</li>
                 </ul>
               </div>
               <div>

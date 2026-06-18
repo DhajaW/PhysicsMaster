@@ -127,7 +127,7 @@ export default function ElectronicsPage() {
           </h2>
 
           {/* 1. අර්ධ සන්නායක සහ ඩයෝඩ */}
-          <Accordion title="01. අර්ධ සන්නායක සහ ඩයෝඩ (Semiconductors and Diodes)">
+          <Accordion title="01. අර්ධ සන්නායක සහ දියෝඩ (Semiconductors and Diodes)">
             <div className="space-y-4 text-slate-300">
               <div>
                 <h4 className="font-bold text-slate-150">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
@@ -165,7 +165,7 @@ export default function ElectronicsPage() {
               <div>
                 <h4 className="font-bold text-slate-150">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                 <ul className="list-disc pl-5 space-y-1">
-                  <li><strong>ද්විධ්‍රැවීය ට්‍රාන්සිස්ටර (Bipolar Junction Translators - BJT):</strong> ඉලෙක්ට්‍රෝන සහ කුහර යන වාහක වර්ග දෙකම සන්නායකතාව සඳහා දායක වන ට්‍රාන්සිස්ටර වර්ගයකි (npn සහ pnp).</li>
+                  <li><strong>ද්විධ්‍රැවීය ට්‍රාන්සිස්ටර (Bipolar Junction Transistors - BJT):</strong> ඉලෙක්ට්‍රෝන සහ කුහර යන වාහක වර්ග දෙකම සන්නායකතාව සඳහා දායක වන ට්‍රාන්සිස්ටර වර්ගයකි (npn සහ pnp).</li>
                   <li><strong>ක්ෂේත්‍ර ආචරණ ට්‍රාන්සිස්ටර (Field Effect Transistors - FET):</strong> එක් ආරෝපණ වාහක වර්ගයක් (ඉලෙක්ට්‍රෝන හෝ කුහර) පමණක් ධාරාව ගෙන යන ඒකධ්‍රැවීය (Unipolar) ට්‍රාන්සිස්ටරයකි.</li>
                 </ul>
               </div>
@@ -226,13 +226,13 @@ export default function ElectronicsPage() {
             </div>
           </Accordion>
 
-          {/* 3. කාර්යයතාත්මක වර්ධක */}
-          <Accordion title="03. කාර්යයතාත්මක වර්ධක (Operational Amplifiers - Op-Amps)">
+          {/* 3. කාරක වර්ධක */}
+          <Accordion title="03. කාරක වර්ධක (Operational Amplifiers - Op-Amps)">
             <div className="space-y-4 text-slate-300">
               <div>
                 <h4 className="font-bold text-slate-150">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                 <ul className="list-disc pl-5 space-y-1">
-                  <li><strong>කාර්යයතාත්මක වර්ධකය:</strong> ඉතා ඉහළ වෝල්ටීයතා ලාභයක් (Open-loop gain) සහිත, සෘජු ධාරා (DC) මෙන්ම ප්‍රත්‍යාවර්ත ධාරා (AC) සංඥා වර්ධනය කළ හැකි මූලික ඉලෙක්ට්‍රොනික උපාංගයකි.</li>
+                  <li><strong>කාරක වර්ධකය:</strong> ඉතා ඉහළ වෝල්ටීයතා ලාභයක් (Open-loop gain) සහිත, සෘජු ධාරා (DC) මෙන්ම ප්‍රත්‍යාවර්ත ධාරා (AC) සංඥා වර්ධනය කළ හැකි මූලික ඉලෙක්ට්‍රොනික උපාංගයකි.</li>
                   <li><strong>අතාත්වික භූගතය (Virtual Earth):</strong> වර්ධකයේ එක් ප්‍රදානයක් (උදා: අනපවර්තන ප්‍රදානය) භූගත කර ඇති විට, අනෙක් ප්‍රදානය ද භූගත විභවයට (0 V) ආසන්නව පවතින බව සැලකීමේ සංකල්පයයි.</li>
                 </ul>
               </div>
