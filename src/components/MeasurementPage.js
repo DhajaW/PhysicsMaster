@@ -4,6 +4,36 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ShieldAlert, HelpCircle, RotateCw, CheckCircle, Award, ArrowRight, ArrowLeft } from 'lucide-react';
 
+function Accordion({ title, children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-slate-100 last:border-none py-3">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-left font-bold text-slate-800 hover:text-indigo-600 transition-colors py-2 focus:outline-none"
+      >
+        <span className="text-base md:text-lg">{title}</span>
+        <svg
+          className={`w-5 h-5 text-slate-500 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-[1000px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function MeasurementPage() {
   // Simulator States
   const [thicknessMode, setThicknessMode] = useState('wire'); // wire or coin
@@ -120,6 +150,151 @@ export default function MeasurementPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* සම්පත් පොත් සාරාංශය: මිනුම */}
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-150 mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <span>📘</span> සම්පත් පොත් සාරාංශය: මිනුම
+          </h2>
+
+          {/* 01. භෞතික රාශි සහ ඒකක */}
+          <Accordion title="01. භෞතික රාශි සහ ඒකක (Physical Quantities and Units)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>මූලික රාශි (Base Quantities):</strong> වෙනත් කිසිදු භෞතික රාශියක් ඇසුරෙන් ප්රකාශ කළ නොහැකි, ස්වාධීන රාශීන් ය.</li>
+                  <li><strong>ව්යුත්පන්න රාශි (Derived Quantities):</strong> මූලික රාශි දෙකක් හෝ කිහිපයක් ගුණ කිරීමෙන් හෝ බෙදීමෙන් ලබා ගන්නා රාශීන් ය.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>SI ඒකක පද්ධතියේ මූලික රාශි 7ක් සහ පරිපූරක රාශි 2ක් ඇත (තල කෝණය සහ ඝන කෝණය).</li>
+                  <li>ඒකක ලිවීමේදී බහු වචන භාවිත නොකෙරේ (උදා: 5 kg මිස 5 kgs නොවේ).</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">ගුණිතයක් ලෙස ඒකක ලිවීමේදී මූල ඒකක අතර එක් පරතරයක් (Space) අනිවාර්යයෙන් තැබිය යුතුය (උදා: 10 m s⁻¹ නිවැරදිය, 10 ms⁻¹ යනු මිලි තත්පර වේ).</p>
+              </div>
+
+              {/* SI Table */}
+              <div className="overflow-x-auto mt-4">
+                <table className="w-full text-left border-collapse text-sm">
+                  <thead>
+                    <tr className="bg-blue-50 border-b-2 border-blue-100">
+                      <th className="p-2 font-semibold text-blue-900">භෞතික රාශිය</th>
+                      <th className="p-2 font-semibold text-blue-900">SI ඒකකය</th>
+                      <th className="p-2 font-semibold text-blue-900">සංකේතය</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b"><td className="p-2">දිග (Length)</td><td className="p-2">මීටරය</td><td className="p-2 font-mono">m</td></tr>
+                    <tr className="border-b"><td className="p-2">ස්කන්ධය (Mass)</td><td className="p-2">කිලෝග්රෑමය</td><td className="p-2 font-mono">kg</td></tr>
+                    <tr className="border-b"><td className="p-2">කාලය (Time)</td><td className="p-2">තත්පරය</td><td className="p-2 font-mono">s</td></tr>
+                    <tr className="border-b"><td className="p-2">උෂ්ණත්වය (Temperature)</td><td className="p-2">කෙල්විනය</td><td className="p-2 font-mono">K</td></tr>
+                    <tr className="border-b"><td className="p-2">විද්යුත් ධාරාව (Electric Current)</td><td className="p-2">ඇම්පියරය</td><td className="p-2 font-mono">A</td></tr>
+                    <tr className="border-b"><td className="p-2">ද්රව්ය ප්රමාණය (Amount of Substance)</td><td className="p-2">මවුලය</td><td className="p-2 font-mono">mol</td></tr>
+                    <tr className="border-b"><td className="p-2">දීප්ත තීව්රතාව (Luminous Intensity)</td><td className="p-2">කැන්ඩෙලාව</td><td className="p-2 font-mono">cd</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 02. මාන සහ මාන විශ්ලේෂණය */}
+          <Accordion title="02. මාන සහ මාන විශ්ලේෂණය (Dimensions)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <p><strong>මාන (Dimensions):</strong> භෞතික රාශියක් මූලික රාශිවලට බැඳී ඇති ආකාරය දක්වන සංකේතාත්මක ප්රකාශනයකි.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
+                <p className="bg-gray-50 p-2 rounded font-mono text-sm border">මාන සමජාතීයතාව: a = bc + d/e සමීකරණයක් නම්, [a] = [bc] = [d/e] විය යුතුමය.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>ප්රධාන මාන සංකේත: ස්කන්ධය M, දිග L, කාලය T.</li>
+                  <li>ඉලක්කම්, වර්තනාංකය, ඝර්ෂණ සංගුණකය වැනි ඒකක රහිත රාශිවලට මාන නොමැත.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">මාන විශ්ලේෂණය භාවිතයෙන් සමීකරණයක ඇති නියතවල (Constants) අගය සෙවිය නොහැක.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 03. දෝෂ සහ මිනුම් උපකරණ */}
+          <Accordion title="03. දෝෂ සහ මිනුම් උපකරණ (Errors and Instruments)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>ඒකාංග දෝෂ (Systematic Errors):</strong> උපකරණයේ දෝෂ හෝ වැරදි පරිහරණය නිසා එක් දිශාවකට පමණක් සිදුවන දෝෂ.</li>
+                  <li><strong>අහඹු දෝෂ (Random Errors):</strong> පරීක්ෂණයේ නිරීක්ෂණ ගන්නා විට අහඹු ලෙස සිදුවන දෝෂ. මධ්යන්යය ගැනීමෙන් මෙය අවම කළ හැක.</li>
+                  <li><strong>කුඩා ම මිනුම (Least Count):</strong> මිනුම් උපකරණයකින් ලබා ගත හැකි කුඩා ම මිනුමයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
+                <p className="bg-gray-50 p-2 rounded font-mono text-sm border">ප්රතිශත දෝෂය = (නිරපේක්ෂ දෝෂය / මැනිය යුතු මිනුම) × 100%</p>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">සාමාන්ය මීටර රූලක කුඩා ම මිනුම 1 mm වේ. ප්රතිශත දෝෂය 1% කට වඩා අඩුවෙන් තබා ගැනීමට නම් මීටර රූලෙන් මනින අවම දිග 100 mm (10 cm) විය යුතුය.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 04. වර්නියර් සහ මයික්රොමීටර */}
+          <Accordion title="04. වර්නියර් සහ මයික්රොමීටර උපකරණ">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>අන්තරාලය (Pitch):</strong> මයික්රොමීටර ඉස්කුරුප්පුවේ දීදාලය (Thimble) එක් සම්පූර්ණ වටයක් කරකැවීමේ දී ඉස්කුරුප්පුව ගමන් කරන රේඛීය දුරයි.</li>
+                  <li><strong>මූලාංක දෝෂය (Zero Error):</strong> උපකරණයේ හනු ස්පර්ශ වන විට ප්රධාන පරිමාණයේ ශුන්යය සහ අනෙක් පරිමාණයේ ශුන්යය සමපාත නොවීමයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
+                <ul className="list-disc pl-5 space-y-1 font-mono text-sm">
+                  <li>මයික්රොමීටර කුඩා ම මිනුම = අන්තරාලය / වෘත්තාකාර පරිමාණයේ කොටස් ගණන</li>
+                  <li>ගෝලමානය: වක්රතා අරය R = a² / 6h + h / 2</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <ul className="list-disc pl-5 text-sm mt-1 text-amber-900 space-y-1">
+                  <li><strong>මයික්රොමීටර රැචට්ටුව (Ratchet):</strong> වස්තුව සිර කිරීමේදී අනිවාර්යයෙන්ම රැචට්ටුව පමණක් කරකැවිය යුතුය.</li>
+                  <li><strong>ගෝලමානය:</strong> පරීක්ෂණයට පෙර අනිවාර්යයෙන්ම තල වීදුරු පෘෂ්ඨයක් මත තබා එහි මූලාංක දෝෂය ලබා ගත යුතුය.</li>
+                </ul>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 05. අදිශ සහ දෛශික */}
+          <Accordion title="05. අදිශ සහ දෛශික (Scalars and Vectors)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>අදිශ (Scalars):</strong> විශාලත්වයක් පමණක් ඇති, දිශාවක් නොමැති භෞතික රාශීන් (උදා: දුර, කාලය, ස්කන්ධය).</li>
+                  <li><strong>දෛශික (Vectors):</strong> විශාලත්වයක් මෙන්ම දිශාවක් ද ඇති, විශේෂයෙන් &quot;දෛශික ආකලන නියම&quot; පිළිපදින භෞතික රාශීන් (උදා: විස්ථාපනය, ප්රවේගය).</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">යම් රාශියකට විශාලත්වයක් සහ දිශාවක් තිබූ පමණින් එය දෛශිකයක් නොවේ; එය අනිවාර්යයෙන්ම &quot;දෛශික ආකලන නියම&quot; (Vector laws of addition) පිළිපැදිය යුතුය.</p>
+              </div>
+            </div>
+          </Accordion>
+
         </div>
 
         {/* 2. Interactive Simulator Component */}
