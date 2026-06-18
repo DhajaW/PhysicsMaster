@@ -26,26 +26,30 @@ export default function PhysicsDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             {/* Logo Section */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               {/* අපේ අලුත් කැරකෙන ග්රහලෝක Logo එක */}
-              <AnimatedLogo />
+              <div className="scale-75 sm:scale-100 origin-center flex-shrink-0">
+                <AnimatedLogo />
+              </div>
               
               {/* App එකේ නම */}
-              <h1 className="text-2xl font-extrabold tracking-tight">
+              <h1 className="text-lg sm:text-2xl font-extrabold tracking-tight flex items-center">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-800">
                   PhysicsMaster
                 </span>
-                <span className="ml-2 text-blue-500 font-bold">
+                <span className="ml-1 sm:ml-2 text-blue-500 font-bold">
                   A/L
                 </span>
               </h1>
             </div>
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-base">
               <Link href="/lessons" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
-                <BookOpen className="w-5 h-5 mr-1" /> පාඩම් මාලා
+                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
+                <span className="hidden sm:inline">පාඩම් මාලා</span>
               </Link>
               <Link href="/exam-secrets" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
-                <Target className="w-5 h-5 mr-1" /> විභාග රහස්
+                <Target className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
+                <span className="hidden sm:inline">විභාග රහස්</span>
               </Link>
             </div>
           </div>

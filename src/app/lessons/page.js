@@ -25,15 +25,15 @@ export default function LessonsPage() {
       <div className="max-w-5xl mx-auto">
         
         {/* Header Section */}
-        <div className="flex justify-between items-center mb-10 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+        <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center mb-10 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-              <BookOpen className="text-blue-600 w-8 h-8" />
-              A/L Physics පාඩම් මාලාව (Lessons List)
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 flex items-center gap-3">
+              <BookOpen className="text-blue-600 w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" />
+              <span>A/L Physics පාඩම් මාලාව</span>
             </h1>
-            <p className="text-gray-500 mt-2">භෞතික විද්‍යාව විෂය නිර්දේශයේ සියලුම ඒකක මෙතැනින් එකවර අධ්‍යයනය කරන්න.</p>
+            <p className="text-sm text-gray-500 mt-2">භෞතික විද්‍යාව විෂය නිර්දේශයේ සියලුම ඒකක මෙතැනින් එකවර අධ්‍යයනය කරන්න.</p>
           </div>
-          <Link href="/" className="flex items-center gap-2 px-4 py-2 bg-slate-100 border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors">
+          <Link href="/" className="flex items-center gap-2 px-4 py-2 bg-slate-100 border border-slate-200 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors self-stretch sm:self-auto justify-center text-center">
             <ArrowLeft className="w-4 h-4" />
             <span>Dashboard</span>
           </Link>

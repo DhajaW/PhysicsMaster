@@ -137,15 +137,15 @@ export default function ExamSecretsPage() {
       <div className="max-w-4xl mx-auto">
         
         {/* Header Section */}
-        <div className="flex justify-between items-center mb-10">
+        <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center mb-10 bg-white p-6 rounded-2xl border border-gray-200 shadow-sm sm:bg-transparent sm:border-none sm:p-0 sm:shadow-none">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-              <ShieldAlert className="text-emerald-500 w-8 h-8" />
-              Paper Marking රහස් (Exam Traps)
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 flex items-center gap-3">
+              <ShieldAlert className="text-emerald-500 w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" />
+              <span>Paper Marking රහස් (Exam Traps)</span>
             </h1>
-            <p className="text-gray-500 mt-2">A/L Physics Marking Scheme එකේ හැංගිලා තියෙන ලකුණු කැපෙන තැන්!</p>
+            <p className="text-sm text-gray-500 mt-2">A/L Physics Marking Scheme එකේ හැංගිලා තියෙන ලකුණු කැපෙන තැන්!</p>
           </div>
-          <Link href="/" className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors">
+          <Link href="/" className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors self-stretch sm:self-auto justify-center text-center">
             <ArrowLeft className="w-4 h-4" />
             <span>ආපසු</span>
           </Link>

@@ -310,7 +310,7 @@ export default function MeasurementPage() {
             <div className="lg:col-span-5 bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
               <div>
                 <label className="text-sm font-bold text-slate-700 block mb-2">1. මැනිය යුතු වස්තුව තෝරන්න:</label>
-                <div className="grid grid-cols-2 gap-2 mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
                   <button 
                     onClick={() => { setThicknessMode('wire'); resetSim(); }}
                     className={`p-2.5 rounded-lg font-medium text-sm transition ${thicknessMode === 'wire' ? 'bg-indigo-600 text-white' : 'bg-white border border-slate-200 text-slate-700'}`}
@@ -398,16 +398,16 @@ export default function MeasurementPage() {
               {/* User Answer Submission */}
               <div className="mt-4 p-4 bg-slate-50 border border-slate-200 rounded-xl">
                 <label className="text-xs font-bold text-slate-700 block mb-1">ඔබට ලැබුණු අවසාන පාඨාංකය (Observed Reading) ඇතුළත් කරන්න (mm වලින්):</label>
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input 
                     type="number" 
                     step="0.01"
                     value={userReading}
                     onChange={(e) => setUserReading(e.target.value)}
                     placeholder="0.00" 
-                    className="flex-1 bg-white border border-slate-300 rounded-lg p-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full sm:flex-1 bg-white border border-slate-300 rounded-lg p-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
-                  <button onClick={checkAnswer} className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition shadow-sm cursor-pointer">
+                  <button onClick={checkAnswer} className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition shadow-sm cursor-pointer text-center">
                     පිළිතුර පරීක්ෂා කරන්න
                   </button>
                 </div>
