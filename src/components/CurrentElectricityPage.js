@@ -4,6 +4,36 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ShieldAlert, HelpCircle, Award, Zap, RefreshCw, Sliders, AlertTriangle, ArrowLeft } from 'lucide-react';
 
+function Accordion({ title, children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-slate-100 last:border-none py-3">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-left font-bold text-slate-800 hover:text-indigo-650 transition-colors py-2 focus:outline-none"
+      >
+        <span className="text-base md:text-lg">{title}</span>
+        <svg
+          className={`w-5 h-5 text-slate-500 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-[1200px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function CurrentElectricityPage() {
   // --- Simulator 1: Ohm's Law States ---
   const [voltage, setVoltage] = useState(12);
@@ -78,6 +108,134 @@ export default function CurrentElectricityPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* සම්පත් පොත් සාරාංශය: ධාරා විද්‍යුතය */}
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-150 mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <span>📘</span> සම්පත් පොත් සාරාංශය: ධාරා විද්‍යුතය
+          </h2>
+
+          {/* 1. විද්‍යුත් ධාරාව සහ ඕම්ගේ නියමය */}
+          <Accordion title="01. විද්‍යුත් ධාරාව සහ ඕම්ගේ නියමය (Current and Ohm's Law)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>විද්‍යුත් ධාරාව (I):</strong> සන්නායකයක හරස්කඩක් හරහා ආරෝපණ ගලා යාමේ සීඝ්‍රතාවයි.</li>
+                  <li><strong>ප්ලාවිත ප්‍රවේගය (Drift Velocity - v):</strong> සන්නායකයක් තුළින් ධාරාව ගමන් කිරීමේදී නිදහස් ඉලෙක්ට්‍රෝන චලනය වන මධ්‍යන්‍ය වේගයයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>I = Q / t</li>
+                  <li>I = nAev (n = ඒකක පරිමාවක නිදහස් ඉලෙක්ට්‍රෝන ගණන, A = හරස්කඩ වර්ගඵලය, e = ඉලෙක්ට්‍රෝනයක ආරෝපණය, v = ප්ලාවිත ප්‍රවේගය)</li>
+                  <li>ඕම්ගේ නියමය: V = IR</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>ඕම්ගේ නියමය වලංගු වන්නේ සන්නායකයේ උෂ්ණත්වය සහ අනෙකුත් භෞතික තත්ත්ව නියතව පවතින තාක් කල් පමණි.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">I = nAev සමීකරණයට අනුව, වයරයක හරස්කඩ වර්ගඵලය (A) අඩු වන විට ප්ලාවිත ප්‍රවේගය (v) වැඩි වේ.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 2. ප්‍රතිරෝධය සහ ප්‍රතිරෝධකතාව */}
+          <Accordion title="02. ප්‍රතිරෝධය සහ ප්‍රතිරෝධකතාව (Resistance and Resistivity)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>ප්‍රතිරෝධකතාව (ρ):</strong> ද්‍රව්‍යයක ඒකක දිගකින් සහ ඒකක හරස්කඩ වර්ගඵලයකින් යුත් කොටසක ප්‍රතිරෝධයයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>R = ρ * l / A</li>
+                  <li>ප්‍රතිරෝධ ශ්‍රේණිගතව: R = R₁ + R₂ + R₃</li>
+                  <li>ප්‍රතිරෝධ සමාන්තරගතව: 1/R = 1/R₁ + 1/R₂ + 1/R₃</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>ලෝහවල උෂ්ණත්වය වැඩි වන විට එහි ප්‍රතිරෝධය වැඩි වේ [R_θ = R_0(1 + αθ)]. අර්ධ සන්නායකවල උෂ්ණත්වය වැඩි වන විට ප්‍රතිරෝධය අඩු වේ.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">ලෝහ කම්බියක් ඇද එහි දිග මුල් දිග මෙන් දෙගුණයක් (2l) කළහොත්, එහි පරිමාව නියත බැවින් වර්ගඵලය අඩක් වේ (A/2). මේ නිසා නව ප්‍රතිරෝධය 4 ගුණයකින් වැඩි වේ.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 3. විද්‍යුත් ගාමක බලය සහ කර්චොෆ් නියම */}
+          <Accordion title="03. විද්‍යුත් ගාමක බලය සහ කර්චොෆ් නියම (EMF and Kirchhoff&apos;s Laws)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>විද්‍යුත් ගාමක බලය (EMF - E):</strong> කෝෂයක් තුළින් ඒකක ධන ආරෝපණයක් ගෙන යාමේදී කෝෂය මගින් ලබා දෙන ශක්තියයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>විභව අන්තරය: V = E - Ir (කෝෂය විසර්ජනය වන විට)</li>
+                  <li>කර්චොෆ්ගේ පළමු නියමය: ΣI = 0 (සන්ධියකට එන සහ පිටවන ධාරාවල වීජීය ඓක්‍යය ශුන්‍ය වේ)</li>
+                  <li>කර්චොෆ්ගේ දෙවන නියමය: ΣE = ΣIR (සංවෘත පුඩුවක)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>කර්චොෆ්ගේ පළමු නියමය මගින් ආරෝපණ සංස්ථිතිය ද, දෙවන නියමය මගින් ශක්ති සංස්ථිතිය ද නියෝජනය වේ.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">කර්චොෆ් දෙවන නියමය සංවෘත පුඩුවකට යෙදීමේදී එකම අතට ගමන් කරමින් (දක්ෂිණාවර්තව හෝ වාමාවර්තව) කෝෂවල (+) හෝ (-) දිශාවන් නිවැරදිව ආදේශ කළ යුතුමය.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 4. මිනුම් උපකරණ: මීටර් සේතුව සහ විභවමානය */}
+          <Accordion title="04. මිනුම් උපකරණ: මීටර් සේතුව සහ විභවමානය (Measuring Instruments)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>විභවමානය (Potentiometer):</strong> පරිපථයකින් කිසිදු ධාරාවක් ලබා නොගෙන (ශුන්‍ය උත්ක්‍රමණ ක්‍රමයට) විභව අන්තරයක් හෝ වි.ගා.බ. ඉතා නිවැරදිව මැනිය හැකි උපකරණයකි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>මීටර් සේතුව (වීට්ස්ටන් සේතු මූලධර්මය): P / Q = l₁ / l₂</li>
+                  <li>විභවමානය: සමතුලිත දිග මනින විභවයට සමානුපාතික වේ (V ∝ l)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>විභවමානයේ සමතුලිත ලක්ෂ්‍යය කම්බියේ මැදට වන්නට ලබා ගැනීමෙන් කියවීමේ ප්‍රතිශත දෝෂය අවම කරගත හැක.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">විභවමාන පරීක්ෂණයක් සාර්ථක වීමට නම්, ප්‍රධාන පරිපථයේ ඇති කෝෂයේ වි.ගා.බ. අනිවාර්යයෙන්ම මනිනු ලබන කෝෂයේ වි.ගා.බ. ට වඩා විශාල විය යුතුය (E &gt; E_x). එසේ නොමැති නම් කම්බිය මත සමතුලිත ලක්ෂ්‍යයක් නොලැබේ.</p>
+              </div>
+            </div>
+          </Accordion>
+
         </div>
 
         {/* Simulator 1: Ohm's Law Interactive Widget */}

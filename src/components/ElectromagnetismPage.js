@@ -4,6 +4,36 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ShieldAlert, Award, Zap, ArrowLeft } from 'lucide-react';
 
+function Accordion({ title, children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-slate-100 last:border-none py-3">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-left font-bold text-slate-800 hover:text-indigo-650 transition-colors py-2 focus:outline-none"
+      >
+        <span className="text-base md:text-lg">{title}</span>
+        <svg
+          className={`w-5 h-5 text-slate-500 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-[1200px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function ElectromagnetismPage() {
   // Simulator States
   const [magnetPosition, setMagnetPosition] = useState(0); // 0 (Far) to 100 (Inside Coil)
@@ -78,6 +108,123 @@ export default function ElectromagnetismPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* සම්පත් පොත් සාරාංශය: චුම්භක ක්ෂේත්‍ර */}
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-150 mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <span>📘</span> සම්පත් පොත් සාරාංශය: චුම්භක ක්ෂේත්‍ර (විද්‍යුත් චුම්භකත්වය)
+          </h2>
+
+          {/* 1. චුම්භක ක්ෂේත්රයක් තුළ ආරෝපණ සහ ධාරා මත බලය */}
+          <Accordion title="01. චුම්භක ක්ෂේත්රයක් තුළ ආරෝපණ සහ ධාරා මත බලය">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p>ගමන් කරන විද්යුත් ආරෝපණයක් හෝ ධාරාවක් ගෙනයන සන්නායකයක් චුම්භක ක්ෂේත්රයක් තුළ තැබූ විට ඒ මත චුම්භක බලයක් ක්රියා කරයි.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>ආරෝපණයක් මත බලය: F = Bqv sin θ</li>
+                  <li>ධාරා සන්නායකයක් මත බලය: F = BIl sin θ</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>චුම්භක බලයේ දිශාව <strong>ෆ්ලෙමින්ගේ වමත් නියමය (Fleming&apos;s Left Hand Rule)</strong> මගින් සොයාගත හැක.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">ආරෝපණයක් චුම්භක ක්ෂේත්රයට <strong>සමාන්තරව</strong> ගමන් කරන විට හෝ <strong>නිශ්චලව</strong> පවතින විට ඒ මත චුම්භක බලයක් ක්රියා නොකරයි (v = 0 හෝ θ = 0 බැවින් බලය ශුන්ය වේ).</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 2. චුම්භක ස්රාව ඝනත්වය සහ බයෝ-සවා නියමය */}
+          <Accordion title="02. චුම්භක ස්රාව ඝනත්වය සහ බයෝ-සවා නියමය (Biot-Savart Law)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p><strong>බයෝ-සවා නියමය (Biot-Savart Law):</strong> ධාරා අංශුවක් මගින් යම් ලක්ෂ්යයක ඇති කරන චුම්භක ස්රාව ඝනත්වය සෙවීම සඳහා භාවිතා වේ.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>අනන්ත දිග සෘජු කම්බියකට: B = μ₀ I / (2π r)</li>
+                  <li>වෘත්තාකාර දඟරයක කේන්ද්රයේ: B = μ₀ NI / (2r)</li>
+                  <li>පරිනාලිකාවක (Solenoid) අක්ෂය මත: B = μ₀ nI</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>චුම්භක ක්ෂේත්රයේ දිශාව <strong>දකුණත් ග්රහණ නියමය (Right Hand Grip Rule)</strong> භාවිතයෙන් සෙවිය හැක.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">ධාරා ගෙනයන සමාන්තර සන්නායක දෙකක ධාරාව <strong>එකම දිශාවට</strong> ගමන් කරන විට ඒවා එකිනෙක <strong>ආකර්ෂණය</strong> වේ. විරුද්ධ දිශාවන්ට ගමන් කරන විට විකර්ෂණය වේ.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 3. හෝල් ආචරණය */}
+          <Accordion title="03. හෝල් ආචරණය (Hall Effect)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p><strong>හෝල් ආචරණය (Hall Effect):</strong> ධාරාවක් ගමන් කරන සන්නායකයක් හරහා ලම්බකව චුම්භක ක්ෂේත්රයක් යෙදූ විට, සන්නායකයේ හරස්කඩ දෙපසින් විභව අන්තරයක් හටගැනීමේ සංසිද්ධියයි.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>හෝල් වෝල්ටීයතාවය: V_H = Bvd (v = ප්ලාවිත ප්රවේගය, d = පළල)</li>
+                  <li>හෝල් විද්යුත් ක්ෂේත්රය: E = Bv</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>මෙය යම් ද්රව්යයක ආරෝපණ වාහක වර්ගය (ඉලෙක්ට්රෝන ද එසේත් නැත්නම් කුහර ද යන්න) හඳුනා ගැනීමට ප්රායෝගිකව යොදා ගැනේ.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">ගණනය කිරීම් වලදී ලෝහ පටියක් තුළ ඉලෙක්ට්රෝන චලනය වන දිශාව, <strong>සම්මත ධාරාව ගමන් කරන දිශාවට ප්රතිවිරුද්ධ</strong> බව මතක තබා ගන්න.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 4. විද්යුත් චුම්භක ප්රේරණය */}
+          <Accordion title="04. විද්යුත් චුම්භක ප්රේරණය (Electromagnetic Induction)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>ෆැරඩේ නියමය (Faraday&apos;s Law):</strong> පරිපථයක් හා සම්බන්ධ චුම්භක ස්රාවය වෙනස් වීමේදී එහි ප්රේරිත විද්යුත් ගාමක බලයක් හටගන්නා අතර, එය ස්රාවය වෙනස් වීමේ සීඝ්රතාවට අනුලෝමව සමානුපාතික වේ.</li>
+                  <li><strong>ලෙන්ස් නියමය (Lenz&apos;s Law):</strong> ප්රේරිත විද්යුත් ධාරාවේ දිශාව සැමවිටම එය ඇතිවීමට හේතු වූ වෙනසට විරුද්ධ වන අයුරින් ක්රියා කරයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>E = -dΦ / dt (සෘණ ලකුණින් ලෙන්ස් නියමය දැක්වේ)</li>
+                  <li>චලනය වන සෘජු සන්නායකයක් සඳහා: E = Blv</li>
+                  <li>භ්රමණය වන දඟරයක (ජනක යන්ත්රයක) උපරිම ප්රේරිත වි.ගා.බ.: E = NABω</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>ලෙන්ස් නියමය යනු <strong>ශක්ති සංස්ථිති මූලධර්මයේම</strong> තවත් මුහුණුවරක් බව විභාග ප්රශ්නවල නිතර අසනු ලැබේ. ප්රේරිත දිශාව සෙවීමට ෆ්ලෙමින්ගේ දකුණත් නියමය (Fleming&apos;s Right Hand Rule) භාවිත කරන්න.</li>
+                </ul>
+              </div>
+            </div>
+          </Accordion>
+
         </div>
 
         {/* Interactive Induction Simulator Widget */}

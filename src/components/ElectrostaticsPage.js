@@ -4,6 +4,36 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ShieldAlert, HelpCircle, Award, Zap, RefreshCw, ArrowLeft } from 'lucide-react';
 
+function Accordion({ title, children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-slate-100 last:border-none py-3">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-left font-bold text-slate-800 hover:text-indigo-650 transition-colors py-2 focus:outline-none"
+      >
+        <span className="text-base md:text-lg">{title}</span>
+        <svg
+          className={`w-5 h-5 text-slate-500 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-[1200px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function ElectrostaticsPage() {
   // Simulator State
   const [chargeSetup, setChargeSetup] = useState('unlike'); // unlike, like_positive, like_negative
@@ -67,6 +97,128 @@ export default function ElectrostaticsPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* සම්පත් පොත් සාරාංශය: ස්ථිති විද්‍යුත් ක්ෂේත්‍ර */}
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-150 mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <span>📘</span> සම්පත් පොත් සාරාංශය: ස්ථිති විද්‍යුත් ක්ෂේත්‍ර
+          </h2>
+
+          {/* 1. කූලෝම් නියම */}
+          <Accordion title="01. කූලෝම් නියමය (Coulomb&apos;s Law)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p><strong>කූලෝම් නියමය:</strong> ලක්ෂීය ආරෝපණ දෙකක් අතර ක්රියා කරන අන්යෝන්ය විද්යුත් බලය, ආරෝපණවල ගුණිතයට අනුලෝමව ද දුරෙහි වර්ගයට ප්රතිලෝමව ද සමානුපාතික වේ.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <p className="bg-slate-50 p-2.5 rounded font-mono text-sm border text-slate-800">
+                  F = (1 / 4πε₀) * (Q₁Q₂ / r²) (ε₀ = රික්තයේ පාරවේද්යතාව)
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>සජාතීය ආරෝපණ (+, + හෝ -, -) විකර්ෂණය වන අතර විජාතීය ආරෝපණ (+, -) ආකර්ෂණය වේ.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">මෙම නියමය අදාළ වන්නේ <strong>ලක්ෂීය (Point)</strong> ආරෝපණ සඳහා පමණි. විශාල ආරෝපිත වස්තු සඳහා සෘජුවම යෙදිය නොහැක.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 2. විද්යුත් ක්ෂේත්ර තීව්රතාව සහ ගවුස් ප්රමේයය */}
+          <Accordion title="02. විද්යුත් ක්ෂේත්ර තීව්රතාව සහ ගවුස් ප්රමේයය (Electric Field Intensity & Gauss&apos;s Law)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>විද්යුත් ක්ෂේත්ර තීව්රතාව (E):</strong> ක්ෂේත්රයක යම් ලක්ෂ්යයක තැබූ ඒකක ධන ආරෝපණයක් මත ක්රියා කරන බලයයි.</li>
+                  <li><strong>ගවුස් ප්රමේයය (Gauss&apos;s Theorem):</strong> ඕනෑම සංවෘත පෘෂ්ඨයක් හරහා ඇති මුළු විද්යුත් ස්රාවය, එම පෘෂ්ඨයෙන් වටකර ඇති ශුද්ධ ආරෝපණය ε₀ න් බෙදූ විට ලැබෙන අගයට සමාන වේ.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>තීව්රතාව: E = F / q = (1 / 4πε₀) * (Q / r²)</li>
+                  <li>ස්්රාවය: φ = EA = Q / ε₀</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>සන්නායක ගෝලයක අභ්යන්තරයේ ඕනෑම ලක්ෂ්යයක විද්යුත් ක්ෂේත්ර තීව්රතාව ශුන්ය වේ (E = 0).</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">විද්යුත් බල රේඛා අඳින විට ඒවා <strong>කිසිවිටෙකත් එකිනෙක කැපී නොයන</strong> සේත්, සන්නායක පෘෂ්ඨයට ලම්බකවත් (+ සිට - දක්වා ඊතල සහිතව) ඇඳීම අනිවාර්ය වේ.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 3. විද්යුත් විභවය */}
+          <Accordion title="03. විද්යුත් විභවය (Electric Potential)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p><strong>විද්යුත් විභවය (V):</strong> අනන්තයේ සිට ඒකක ධන ආරෝපණයක් විද්යුත් ක්ෂේත්රයේ යම් ලක්ෂ්යයකට ගෙන ඒමට කළ යුතු කාර්යයයි.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>විභවය: V = (1 / 4πε₀) * (Q / r)</li>
+                  <li>කළ කාර්යය: W = V * q</li>
+                  <li>තීව්රතාව සහ විභවය අතර සම්බන්ධය: E = V / d (සමාන්තර තහඩු සඳහා)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>විභවය අදිශ රාශියකි. ධන ආරෝපණයක් මගින් ධන විභවයක් ද, සෘණ ආරෝපණයක් මගින් සෘණ විභවයක් ද ඇති කරයි.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">සන්නායක ගෝලයක අභ්යන්තරයේ ඇති විභවය නියත අගයකි. එය ගෝලයේ මතුපිට පෘෂ්ඨයේ ඇති විභවයට හරියටම සමාන වේ (V_inside = V_surface).</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 4. ධාරිත්රක */}
+          <Accordion title="04. ධාරිත්රක (Capacitors)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p><strong>ධාරිතාව (Capacitance - C):</strong> සන්නායකයක විභවය ඒකකයකින් වැඩි කිරීමට ඊට ලබා දිය යුතු ආරෝපණ ප්රමාණයයි.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>ධාරිතාව: C = Q / V</li>
+                  <li>සමාන්තර තහඩු ධාරිත්රකයක් සඳහා: C = ε₀ A / d</li>
+                  <li>ගබඩා වන ශක්තිය: W = 1/2 * QV = 1/2 * CV²</li>
+                  <li>ධාරිත්රක ශ්රේණිගතව: 1/C_total = 1/C₁ + 1/C₂</li>
+                  <li>ධාරිත්රක සමාන්තරගතව: C_total = C₁ + C₂</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>තහඩු අතර පාරවිද්යුත් ද්රව්යයක් (Dielectric) තැබූ විට ධාරිතාව k ගුණයකින් වැඩි වේ (C = kε₀ A / d). පාරවිද්යුත් නියතය k සෑමවිටම 1ට වඩා විශාල අගයකි.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">ධාරිත්රකයක් විද්යුත් ප්රභවයකින් (කෝෂයකින්) විසන්ධි කර පාරවිද්යුත් ද්රව්යය ඇතුළු කළහොත් ආරෝපණය (Q) නියතව පවතින අතර, කෝෂයට සම්බන්ධ කර තිබියදීම ඇතුළු කළහොත් විභව අන්තරය (V) නියතව පවතී.</p>
+              </div>
+            </div>
+          </Accordion>
+
         </div>
 
         {/* 3D Field Lines Simulator */}

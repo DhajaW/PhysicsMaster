@@ -4,6 +4,36 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ShieldAlert, HelpCircle, Award, RefreshCw, Zap, Play, ArrowLeft } from 'lucide-react';
 
+function Accordion({ title, children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-slate-100 last:border-none py-3">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-left font-bold text-slate-800 hover:text-indigo-650 transition-colors py-2 focus:outline-none"
+      >
+        <span className="text-base md:text-lg">{title}</span>
+        <svg
+          className={`w-5 h-5 text-slate-500 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-[1200px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function GravitationalFieldsPage() {
   // Orbit Simulator States
   const [velocitySlider, setVelocitySlider] = useState(7.9); // km/s (Standard orbital speed)
@@ -98,6 +128,122 @@ export default function GravitationalFieldsPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* සම්පත් පොත් සාරාංශය: ගුරුත්වාකර්ෂණ ක්ෂේත්‍ර */}
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-150 mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <span>📘</span> සම්පත් පොත් සාරාංශය: ගුරුත්වාකර්ෂණ ක්ෂේත්‍ර
+          </h2>
+
+          {/* 1. ගුරුත්වාකර්ෂණ බලය සහ නියම */}
+          <Accordion title="01. ගුරුත්වාකර්ෂණ බලය සහ නියම (Gravitational Force and Laws)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p><strong>නිව්ටන්ගේ ගුරුත්වාකර්ෂණ නියමය (Newton&apos;s Law of Gravitation):</strong> විශ්වයේ ඕනෑම ලක්ෂීය ස්කන්ධ දෙකක් අතර අන්යෝන්ය ආකර්ෂණ බලය, ස්කන්ධවල ගුණිතයට අනුලෝමව ද, දුරෙහි වර්ගයට ප්රතිලෝමව ද සමානුපාතික වේ.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <p className="bg-slate-50 p-2.5 rounded font-mono text-sm border text-slate-800">
+                  F = G * M * m / r² (G = සර්වත්ර ගුරුත්වාකර්ෂණ නියතය, M, m = ස්කන්ධ, r = දුර)
+                </p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>ගුරුත්වාකර්ෂණ බලය සැමවිටම ආකර්ෂණ බලයකි. එය ස්කන්ධ කේන්ද්ර යා කරන සරල රේඛාව ඔස්සේ ක්රියා කරයි.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">මෙම සමීකරණයේ r යනු වස්තුවල පෘෂ්ඨ අතර දුර නොව, <strong>ස්කන්ධ කේන්ද්ර දෙක අතර දුරයි</strong>. පෘථිවිය වැනි විශාල ග්රහලෝක සඳහා ගණනය කිරීම්වලදී ග්රහලෝකයේ අරය ද (R) r සඳහා එකතු කළ යුතුමය (r = R + h).</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 2. ගුරුත්වාකර්ෂණ ක්ෂේත්ර තීව්රතාව */}
+          <Accordion title="02. ගුරුත්වාකර්ෂණ ක්ෂේත්ර තීව්රතාව (Gravitational Field Intensity)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p><strong>ක්ෂේත්ර තීව්රතාව (g):</strong> ගුරුත්වාකර්ෂණ ක්ෂේත්රයක යම් ලක්ෂ්යයක තැබූ ඒකක ස්කන්ධයක් මත ක්රියා කරන ගුරුත්වාකර්ෂණ බලයයි.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>g = F / m</li>
+                  <li>ලක්ෂීය ස්කන්ධයකට දුර r හිදී: g = GM / r²</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>මෙය දෛශික රාශියකි (Vector Quantity). දිශාව ස්කන්ධ කේන්ද්රය දෙසට වේ.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">ඝන ගෝලයක (පෘථිවිය වැනි) <strong>අභ්යන්තරයේදී</strong> තීව්රතාව දුරට අනුලෝමව සමානුපාතික වේ (g ∝ r). එහෙත් පෘෂ්ඨයෙන් <strong>පිටතදී</strong> එය දුරෙහි වර්ගයට ප්රතිලෝමව සමානුපාතික වේ (g ∝ 1/r²). ප්රස්ථාර ඇඳීමේදී මේ වෙනස අනිවාර්යයෙන් පෙන්විය යුතුය.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 3. ගුරුත්වාකර්ෂණ විභවය */}
+          <Accordion title="03. ගුරුත්වාකර්ෂණ විභවය (Gravitational Potential)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p><strong>ගුරුත්වාකර්ෂණ විභවය (V):</strong> අනන්තයේ සිට ඒකක ස්කන්ධයක් ගුරුත්වාකර්ෂණ ක්ෂේත්රයේ යම් ලක්ෂ්යයකට ගෙන ඒමේදී ගුරුත්වාකර්ෂණ බලය මගින් කරන ලද කාර්යයයි.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>විභවය: V = -GM / r</li>
+                  <li>ගුරුත්වාකර්ෂණ විභව ශක්තිය (Potential Energy): E = -GMm / r</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>විභවය අදිශ රාශියකි (Scalar Quantity). අනන්තයේදී විභවය ශුන්ය වේ.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">ගුරුත්වාකර්ෂණ විභවය <strong>සෑම විටම සෘණ අගයකි (-)</strong>. ගණනය කිරීම්වලදී සෘණ ලකුණ අමතක කිරීමෙන් මුළු ලකුණුම අහිමි විය හැක.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 4. චන්ද්රිකා චලිතය */}
+          <Accordion title="04. චන්ද්රිකා චලිතය (Satellite Motion)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <p><strong>භූ ස්ථාවර චන්ද්රිකා (Geostationary Satellites):</strong> පෘථිවිය මත සිටින නිරීක්ෂකයෙකුට නිශ්චලව පවතින සේ පෙනෙන චන්ද්රිකා වේ.</p>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
+                  <li>කක්ෂීය ප්රවේගය: v = √(GM / r)</li>
+                  <li>ආවර්ත කාලය: T = 2π√(r³ / GM)</li>
+                  <li>වියෝග ප්රවේගය (Escape Velocity): v = √(2gR)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>භූ ස්ථාවර චන්ද්රිකාවක ආවර්ත කාලය පැය 24 කි. එය ගමන් කළ යුත්තේ සමකය (Equator) තලයේමය.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">කක්ෂයක ගමන් කරන චන්ද්රිකාවක මුළු ශක්තිය සෘණ වේ (E = -GMm / 2r). මුළු ශක්තිය ශුන්ය (0) හෝ ධන (+) වූ විට චන්ද්රිකාව කක්ෂයෙන් ඉවතට පලා යයි.</p>
+              </div>
+            </div>
+          </Accordion>
+
         </div>
 
         {/* Satellite Orbit Simulator Widget */}
