@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { BookOpen, Target, Atom } from 'lucide-react';
+import { BookOpen, Target } from 'lucide-react';
+import AnimatedLogo from '@/components/AnimatedLogo';
 
 // NotebookLM Blueprint එක මත පදනම් වූ පාඩම් දත්ත
 const physicsUnits = [
@@ -26,10 +27,8 @@ export default function PhysicsDashboard() {
           <div className="flex justify-between h-16 items-center">
             {/* Logo Section */}
             <div className="flex items-center gap-3">
-              {/* අලුත් Atom Logo එක */}
-              <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-2 rounded-xl shadow-lg shadow-blue-500/30 flex items-center justify-center">
-                <Atom className="w-7 h-7 text-white animate-[spin_10s_linear_infinite]" />
-              </div>
+              {/* අපේ අලුත් කැරකෙන ග්රහලෝක Logo එක */}
+              <AnimatedLogo />
               
               {/* App එකේ නම */}
               <h1 className="text-2xl font-extrabold tracking-tight">
