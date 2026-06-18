@@ -4,6 +4,36 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ShieldAlert, HelpCircle, RefreshCw, CheckCircle, Award, Play, Pause, ArrowLeft } from 'lucide-react';
 
+function Accordion({ title, children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-slate-100 last:border-none py-3">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-left font-bold text-slate-800 hover:text-indigo-650 transition-colors py-2 focus:outline-none"
+      >
+        <span className="text-base md:text-lg">{title}</span>
+        <svg
+          className={`w-5 h-5 text-slate-500 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-[1000px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function MechanicsPage() {
   // Simulator 1: Ice Skater Angular Momentum States
   const [armsExtended, setArmsExtended] = useState(true);
@@ -102,6 +132,177 @@ export default function MechanicsPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* සම්පත් පොත් සාරාංශය: යාන්ත්ර විද්යාව */}
+        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-150 mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <span>📘</span> සම්පත් පොත් සාරාංශය: යාන්ත්ර විද්යාව
+          </h2>
+
+          {/* 01. ප්රගති විද්යාව */}
+          <Accordion title="01. ප්රගති විද්යාව (Kinematics)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>ප්රවේගය (Velocity):</strong> යම් ඔස්සේ වස්තුවක විස්ථාපනය වෙනස් වීමේ සීඝ්රතාවයි.</li>
+                  <li><strong>සාපේක්ෂ ප්රවේගය (Relative Velocity):</strong> යම් සමුද්දේශ රාමුවකට (Frame of reference) සාපේක්ෂව වස්තුවක් ගමන් කරන ප්රවේගයයි.</li>
+                  <li><strong>ත්වරණය (Acceleration):</strong> කාලය සමග ප්රවේගය වෙනස් වීමේ සීඝ්රතාවයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border">
+                  <li>v = u + at</li>
+                  <li>s = ((u + v) / 2)t</li>
+                  <li>s = ut + ½at²</li>
+                  <li>v² = u² + 2as (u: ආරම්භක ප්රවේගය, v: අවසාන ප්රවේගය, a: ත්වරණය, s: විස්ථාපනය, t: කාලය)</li>
+                  <li>සාපේක්ෂ ප්රවේගය: v_A,B = v_A,E + v_E,B (E යනු පොළොව වේ)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>විස්ථාපන - කාල ප්රස්ථාරය:</strong> අනුක්රමණය මගින් ප්රවේගය ලබා දේ.</li>
+                  <li><strong>ප්රවේග - කාල ප්රස්ථාරය:</strong> අනුක්රමණය මගින් ත්වරණය ලබා දෙන අතර, ප්රස්ථාරය සහ කාල අක්ෂය අතර වර්ගඵලය මගින් විස්ථාපනය ලබා දේ.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">v = u + at ඇතුළු චලිත සමීකරණ යෙදිය හැක්කේ නියත ත්වරණයකින් (Constant Acceleration) චලිත වන වස්තු සඳහා පමණි. ත්වරණය විචල්ය නම් ප්රස්ථාර භාවිත කළ යුතුය.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 02. බලය හා චලිතය */}
+          <Accordion title="02. බලය හා චලිතය (Force and Motion)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>ගම්යතාව (Momentum):</strong> වස්තුවක ස්කන්ධයෙහිත් ප්රවේගයෙහිත් ගුණිතයයි (p = mv).</li>
+                  <li><strong>ආවේගය (Impulse):</strong> බලය සහ බලය ක්රියා කළ කාලයෙහි ගුණිතයයි. මෙය ගම්යතා වෙනසට සමාන වේ.</li>
+                  <li><strong>ඝර්ෂණය (Friction):</strong> එකිනෙක ස්පර්ශව පවතින පෘෂ්ඨ දෙකක් අතර ලිස්සා යාම හෝ ලිස්සා යාමට දරන උත්සාහය වළක්වන බලයයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border">
+                  <li>නිව්ටන්ගේ දෙවන නියමය: F = ma</li>
+                  <li>ආවේගය: I = F × t = mv - mu</li>
+                  <li>ඝර්ෂණ නියමය: F = μR (F: සීමාකාරී/ගතික ඝර්ෂණය, μ: ඝර්ෂණ සංගුණකය, R: අභිලම්බ ප්රතික්රියාව)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">වැදගත් කරුණු:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>රේඛීය ගම්යතාව සංස්ථිති මූලධර්මය:</strong> බාහිර අසමතුලිත බලයක් ක්රියා නොකරයි නම්, පද්ධතියක මුළු ගම්යතාව නියතව පවතී.</li>
+                  <li><strong>සීමාකාරී ඝර්ෂණය:</strong> වස්තුවක් චලිත වීම ඇරඹෙන මොහොතේ පවතින උපරිම ස්ථිතික ඝර්ෂණ බලයයි.</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">F = ma යෙදීමේ දී, F යනු වස්තුව මත ක්රියාකරන සම්ප්රයුක්ත බලය (Resultant Force) විය යුතුමය. හුදෙක් එක් බලයක් පමණක් යෙදීමෙන් පිළිතුරු වැරදේ.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 03. කාර්යය, ශක්තිය සහ ජවය */}
+          <Accordion title="03. කාර්යය, ශක්තිය සහ ජවය (Work, Energy & Power)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>කාර්යය (Work):</strong> වස්තුවක් මත බලයක් යෙදූ විට බලයේ දිශාවට සිදුවන විස්ථාපනය හා බලයේ ගුණිතයයි.</li>
+                  <li><strong>ජවය (Power):</strong> කාර්යය කිරීමේ සීඝ්රතාව හෙවත් ශක්තිය මාරු වීමේ සීඝ්රතාවයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border">
+                  <li>කාර්යය: W = Fs cos(θ)</li>
+                  <li>චාලක ශක්තිය: K.E = ½mv²</li>
+                  <li>විභව ශක්තිය: P.E = mgh</li>
+                  <li>ප්රත්යාස්ථ විභව ශක්තිය: W = ½kx²</li>
+                  <li>ජවය: P = W/t හෝ P = Fv</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">W = Fs සමීකරණය භාවිත කළ හැක්කේ නියත බලයක් ඇති විට පමණි. දුන්නක් ඇදීම වැනි විචල්ය බලයක් ඇති අවස්ථාවල ප්රස්ථාරයේ වර්ගඵලය මගින් (උදා: ½Fx) කාර්යය සෙවිය යුතුය.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 04. භ්රමණ හා වෘත්තාකාර චලිතය */}
+          <Accordion title="04. භ්රමණ හා වෘත්තාකාර චලිතය (Rotational Motion)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>කෝණික ප්රවේගය (ω):</strong> කෝණික විස්ථාපනය වෙනස් වීමේ සීඝ්රතාවයි (ω = Δθ / Δt).</li>
+                  <li><strong>අවස්ථිති ඝූර්ණය (I):</strong> භ්රමණ චලිතයේ දී වස්තුවක් සිය අවස්ථිති තත්ත්වය වෙනස් කිරීමට දක්වන විරෝධයයි (I = Σmr²).</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border">
+                  <li>රේඛීය හා කෝණික සම්බන්ධතා: v = rω, a = rα</li>
+                  <li>කේන්ද්රාභිසාරී ත්වරණය: a = v²/r = rω²</li>
+                  <li>කෝණික ගම්යතාව (L): L = Iω</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">බාහිර ව්යාවර්තයක් (External Torque) නොමැති නම් Iω = නියතයකි. දෑත් දිගු කර භ්රමණය වන අයෙකු දෑත් හැකිලූ විට I අඩුවන බැවින් කෝණික ප්රවේගය (ω) වැඩි වේ.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 05. ද්රවස්ථිති හා තරල ගති විද්යාව */}
+          <Accordion title="05. ද්රවස්ථිති හා තරල ගති විද්යාව (Hydrostatics)">
+            <div className="space-y-4 text-slate-700">
+              <div>
+                <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>ඝනත්වය (Density):</strong> ඒකක පරිමාවක ස්කන්ධයයි (ρ = m/V).</li>
+                  <li><strong>උත්ප්ලාවකතාව (Upthrust):</strong> තරලයක ගිලී ඇති වස්තුවක් මත තරලය මගින් ඉහළට ඇති කරන සම්ප්රයුක්ත බලයයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border">
+                  <li>ද්රවස්ථිති පීඩනය: P = hρg</li>
+                  <li>සාන්තත්ය සමීකරණය: A₁v₁ = A₂v₂</li>
+                  <li>බර්නූලි සමීකරණය: P + ½ρv² + hρg = නියතයකි</li>
+                </ul>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
+                <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
+                <p className="text-sm mt-1 text-amber-900">බර්නූලි මූලධර්මය යෙදිය හැක්කේ දුස්ස්රාවී නොවන, අසම්පීඩ්ය, අනාකූල තරල ප්රවාහ සඳහා පමණි.</p>
+              </div>
+
+              {/* Density Table */}
+              <div className="overflow-x-auto mt-4">
+                <table className="w-full text-left border-collapse text-sm">
+                  <thead>
+                    <tr className="bg-blue-50 border-b-2 border-blue-100">
+                      <th className="p-2 font-semibold text-blue-900">ද්රව්යය</th>
+                      <th className="p-2 font-semibold text-blue-900">ඝනත්වය (kg m⁻³)</th>
+                      <th className="p-2 font-semibold text-blue-900">සාපේක්ෂ ඝනත්වය</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b"><td className="p-2">ජලය</td><td className="p-2">1.0 × 10³ (1000)</td><td className="p-2">1.00</td></tr>
+                    <tr className="border-b"><td className="p-2">රසදිය</td><td className="p-2">13.6 × 10³ (13600)</td><td className="p-2">13.6</td></tr>
+                    <tr className="border-b"><td className="p-2">මුහුදු ජලය</td><td className="p-2">1.03 × 10³ (1030)</td><td className="p-2">1.03</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Accordion>
+
         </div>
 
         {/* Simulator 1: Ice Skater Widget */}
