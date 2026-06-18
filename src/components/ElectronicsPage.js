@@ -4,6 +4,36 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ShieldAlert, Award, Zap, Cpu, Activity, ArrowLeft } from 'lucide-react';
 
+function Accordion({ title, children }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-slate-800 last:border-none py-3">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center text-left font-bold text-slate-100 hover:text-cyan-400 transition-colors py-2 focus:outline-none"
+      >
+        <span className="text-base md:text-lg">{title}</span>
+        <svg
+          className={`w-5 h-5 text-slate-400 transform transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-[1400px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function ElectronicsPage() {
   // Logic Gate Simulator States
   const [gateType, setGateType] = useState('AND');
@@ -88,6 +118,181 @@ export default function ElectronicsPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* සම්පත් පොත් සාරාංශය: ඉලෙක්ට්‍රොනික විද්‍යාව */}
+        <div className="bg-slate-850 p-6 md:p-8 rounded-2xl shadow-xl border border-slate-800 mb-8 bg-slate-800/40">
+          <h2 className="text-xl md:text-2xl font-bold text-cyan-400 mb-6 flex items-center gap-2">
+            <span>📘</span> සම්පත් පොත් සාරාංශය: ඉලෙක්ට්‍රොනික විද්‍යාව
+          </h2>
+
+          {/* 1. අර්ධ සන්නායක සහ ඩයෝඩ */}
+          <Accordion title="01. අර්ධ සන්නායක සහ ඩයෝඩ (Semiconductors and Diodes)">
+            <div className="space-y-4 text-slate-300">
+              <div>
+                <h4 className="font-bold text-slate-150">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>සහජ අර්ධ සන්නායක (Intrinsic Semiconductors):</strong> කිසිදු අපද්‍රව්‍යයක් අඩංගු නොවන, අතිශය පිරිසිදු අර්ධ සන්නායක වේ (උදා: පිරිසිදු Si, Ge).</li>
+                  <li><strong>මාත්‍රණය (Doping):</strong> සහජ අර්ධ සන්නායකවල සන්නායකතාව වැඩි කිරීම සඳහා සුදුසු අපද්‍රව්‍ය පරමාණු (Impurity atoms) ඉතා කුඩා ප්‍රමාණයක් එකතු කිරීමේ ක්‍රියාවලියයි.</li>
+                  <li><strong>වියුක්ති කලාපය (Depletion Region):</strong> p-n සන්ධියක් ආසන්නයේ නිදහස් ආරෝපණ වාහක නොමැති, නිශ්චල අයන පමණක් පවතින කලාපයයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-150">සූත්‍ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-950/50 p-3 rounded border border-slate-800 text-cyan-300">
+                  <li>සන්ධි ධාරාව: I_E = I_B + I_C (ට්‍රාන්සිස්ටර සඳහා ද මූලික වේ)</li>
+                  <li>සෙනර් ඩයෝඩයේ උපරිම ජවය: P_ZM = V_Z * I_ZM (V_Z = සෙනර් වෝල්ටීයතාව, I_ZM = උපරිම ධාරාව)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-150">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>n-වර්ගයේ බහුතර වාහක ඉලෙක්ට්‍රෝන වන අතර p-වර්ගයේ බහුතර වාහක කුහර (Holes) වේ.</li>
+                  <li>p-n සන්ධියක් පෙර නැඹුරු (Forward bias) කළ විට වියුක්ති කලාපයේ පළල අඩු වේ. පසු නැඹුරු (Reverse bias) කළ විට පළල වැඩි වේ.</li>
+                  <li>සිලිකන් (Si) ඩයෝඩයක කැපුම් වෝල්ටීයතාව (Knee voltage) ≈0.7 V ද, ජර්මේනියම් (Ge) සඳහා ≈0.3 V ද වේ.</li>
+                </ul>
+              </div>
+              <div className="bg-rose-500/10 p-3 rounded-lg border border-rose-500/20">
+                <h4 className="font-bold text-rose-350 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-rose-200"><strong>සෙනර් ඩයෝඩය (Zener Diode):</strong> වෝල්ටීයතා නියාමනය (Voltage regulation) සඳහා මෙය සැමවිටම පරිපථයට සම්බන්ධ කළ යුත්තේ පසු නැඹුරු (Reverse biased) තත්ත්වයෙනි. එසේම ඒ හරහා ගලන ධාරාව සීමා කිරීමට ශ්‍රේණිගත ප්‍රතිරෝධකයක් (R) අනිවාර්යයෙන් තිබිය යුතුය.</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 2. ද්විධ්‍රැවීය ට්‍රාන්සිස්ටර සහ ක්ෂේත්‍ර ආචරණ ට්‍රාන්සිස්ටර */}
+          <Accordion title="02. ද්විධ්‍රැවීය ට්‍රාන්සිස්ටර සහ ක්ෂේත්‍ර ආචරණ ට්‍රාන්සිස්ටර (BJT and FET)">
+            <div className="space-y-4 text-slate-300">
+              <div>
+                <h4 className="font-bold text-slate-150">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>ද්විධ්‍රැවීය ට්‍රාන්සිස්ටර (Bipolar Junction Translators - BJT):</strong> ඉලෙක්ට්‍රෝන සහ කුහර යන වාහක වර්ග දෙකම සන්නායකතාව සඳහා දායක වන ට්‍රාන්සිස්ටර වර්ගයකි (npn සහ pnp).</li>
+                  <li><strong>ක්ෂේත්‍ර ආචරණ ට්‍රාන්සිස්ටර (Field Effect Transistors - FET):</strong> එක් ආරෝපණ වාහක වර්ගයක් (ඉලෙක්ට්‍රෝන හෝ කුහර) පමණක් ධාරාව ගෙන යන ඒකධ්‍රැවීය (Unipolar) ට්‍රාන්සිස්ටරයකි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-150">සූත්‍ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-950/50 p-3 rounded border border-slate-800 text-cyan-300">
+                  <li>BJT ධාරා ලාභය: β = I_C / I_B (පොදු විමෝචක විලාසය සඳහා)</li>
+                  <li>BJT ධාරා සම්බන්ධය: I_E = I_B + I_C</li>
+                  <li>වෝල්ටීයතා සමීකරණය (ප්‍රතිදාන පුඩුව): V_CE = V_CC - I_C * R_C</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-150">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>ට්‍රාන්සිස්ටරයක් වර්ධකයක් (Amplifier) ලෙස ක්‍රියා කිරීමට නම් එය සක්‍රිය ප්‍රදේශයේ (Active Region) පැවතිය යුතුය. මෙහිදී E-B සන්ධිය පෙර නැඹුරු ද, B-C සන්ධිය පසු නැඹුරු ද විය යුතුය.</li>
+                  <li>ට්‍රාන්සිස්ටරයක් ස්විචයක් (Switch) ලෙස භාවිත කිරීමේදී එය ක්‍රියා කරන්නේ කපාහැරීමේ ප්‍රදේශය (Cut-off - OFF තත්ත්වය) සහ සංතෘප්ත ප්‍රදේශය (Saturation - ON තත්ත්වය) තුළ පමණි.</li>
+                </ul>
+              </div>
+              <div className="bg-rose-500/10 p-3 rounded-lg border border-rose-500/20">
+                <h4 className="font-bold text-rose-350 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-rose-200">BJT යනු ධාරා පාලිත (Current controlled) උපාංගයකි (I_B මගින් I_C පාලනය කරයි). නමුත් FET යනු වෝල්ටීයතා පාලිත (Voltage controlled) උපාංගයකි (V_GS මගින් I_D පාලනය කරයි).</p>
+              </div>
+
+              {/* BJT and JFET Comparison Table */}
+              <div className="overflow-x-auto mt-4 rounded-xl border border-slate-800">
+                <table className="w-full text-left border-collapse text-xs md:text-sm">
+                  <thead>
+                    <tr className="bg-slate-900 border-b border-slate-800">
+                      <th className="p-3 font-bold text-slate-200">ලක්ෂණය (Characteristic)</th>
+                      <th className="p-3 font-bold text-slate-200">BJT ට්‍රාන්සිස්ටරය</th>
+                      <th className="p-3 font-bold text-slate-200">JFET ට්‍රාන්සිස්ටරය</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-850">
+                    <tr className="hover:bg-slate-900/40">
+                      <td className="p-3 font-semibold text-slate-300">පාලනය (Control)</td>
+                      <td className="p-3 text-slate-400">ධාරා පාලිත (I_B මගින් පාලනය වේ)</td>
+                      <td className="p-3 text-slate-400">වෝල්ටීයතා පාලිත (V_GS මගින් පාලනය වේ)</td>
+                    </tr>
+                    <tr className="hover:bg-slate-900/40">
+                      <td className="p-3 font-semibold text-slate-300">ප්‍රදාන ප්‍රතිරෝධය (Input Resistance)</td>
+                      <td className="p-3 text-slate-400">අඩුය (කිලෝ ඕම් / kΩ ගණනකි)</td>
+                      <td className="p-3 text-slate-400">ඉතා ඉහළය (මෙගා ඕම් / MΩ ගණනකි)</td>
+                    </tr>
+                    <tr className="hover:bg-slate-900/40">
+                      <td className="p-3 font-semibold text-slate-300">ධාරා වර්ගය (Carrier Type)</td>
+                      <td className="p-3 text-slate-400">ද්විධ්‍රැවීය (කුහර සහ ඉලෙක්ට්‍රෝන)</td>
+                      <td className="p-3 text-slate-400">ඒකධ්‍රැවීය (කුහර හෝ ඉලෙක්ට්‍රෝන පමණි)</td>
+                    </tr>
+                    <tr className="hover:bg-slate-900/40">
+                      <td className="p-3 font-semibold text-slate-300">ඝෝෂාව (Noise level)</td>
+                      <td className="p-3 text-slate-400">වැඩිය</td>
+                      <td className="p-3 text-slate-400">ඉතා අඩුය</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 3. කාර්යයතාත්මක වර්ධක */}
+          <Accordion title="03. කාර්යයතාත්මක වර්ධක (Operational Amplifiers - Op-Amps)">
+            <div className="space-y-4 text-slate-300">
+              <div>
+                <h4 className="font-bold text-slate-150">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>කාර්යයතාත්මක වර්ධකය:</strong> ඉතා ඉහළ වෝල්ටීයතා ලාභයක් (Open-loop gain) සහිත, සෘජු ධාරා (DC) මෙන්ම ප්‍රත්‍යාවර්ත ධාරා (AC) සංඥා වර්ධනය කළ හැකි මූලික ඉලෙක්ට්‍රොනික උපාංගයකි.</li>
+                  <li><strong>අතාත්වික භූගතය (Virtual Earth):</strong> වර්ධකයේ එක් ප්‍රදානයක් (උදා: අනපවර්තන ප්‍රදානය) භූගත කර ඇති විට, අනෙක් ප්‍රදානය ද භූගත විභවයට (0 V) ආසන්නව පවතින බව සැලකීමේ සංකල්පයයි.</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-150">සූත්‍ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-950/50 p-3 rounded border border-slate-800 text-cyan-300">
+                  <li>විවෘත පුඩු ලාභය: A_0 = V_out / (V_+ - V_-)</li>
+                  <li>අපවර්තන වර්ධකයේ (Inverting Amp) ලාභය: G = -R_f / R_in</li>
+                  <li>අනපවර්තන වර්ධකයේ (Non-inverting Amp) ලාභය: G = 1 + R_f / R_in</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-150">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>පරමාදර්ශී (Ideal) Op-Amp ලක්ෂණ: අනන්ත ප්‍රදාන ප්‍රතිරෝධය (R_in = ∞), ශුන්‍ය ප්‍රතිදාන ප්‍රතිරෝධය (R_out = 0), අනන්ත විවෘත පුඩු ලාභය (A_0 = ∞), අනන්ත කලාප පළල (Infinite Bandwidth).</li>
+                  <li>ධන ප්‍රතිපෝෂණය (Positive feedback) දෝලක (Oscillators) සඳහා ද, සෘණ ප්‍රතිපෝෂණය (Negative feedback) වර්ධක (Amplifiers) සඳහා ද භාවිත වේ.</li>
+                </ul>
+              </div>
+              <div className="bg-rose-500/10 p-3 rounded-lg border border-rose-500/20">
+                <h4 className="font-bold text-rose-350 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-rose-200"><strong>ස්වර්ණමය නීති දෙක (Golden Rules):</strong> ගැටළු විසඳීමේදී අනිවාර්යයෙන් යොදාගන්න. 1. ප්‍රදාන අග්‍ර දෙක අතර විභව අන්තරය ශුන්‍ය වේ (V_+ = V_-). 2. ප්‍රදාන අග්‍ර තුළට ධාරාවක් ගමන් නොකරයි (I_+ = 0, I_- = 0).</p>
+              </div>
+            </div>
+          </Accordion>
+
+          {/* 4. සංඛ්‍යාංක ඉලෙක්ට්‍රොනික් විද්‍යාව */}
+          <Accordion title="04. සංඛ්‍යාංක ඉලෙක්ට්‍රොනික් විද්‍යාව (Digital Electronics)">
+            <div className="space-y-4 text-slate-300">
+              <div>
+                <h4 className="font-bold text-slate-150">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>තාර්කික ද්වාර (Logic Gates):</strong> බූලියානු වීජ ගණිතය මත පදනම්ව සංඛ්‍යාංක සංඥා (1 සහ 0) හසුරුවන මූලික ඉලෙක්ට්‍රොනික පරිපථ වේ.</li>
+                  <li><strong>සර්වත්ර ද්වාර (Universal Gates):</strong> වෙනත් ඕනෑම මූලික ද්වාරයක් (AND, OR, NOT) නිර්මාණය කරගැනීම සඳහා තනිවම භාවිත කළ හැකි ද්වාර වේ (උදා: NAND සහ NOR).</li>
+                  <li><strong>ෆ්ලිප්-ෆ්ලොපය (Flip-Flop):</strong> දත්ත බිටුවක් (1 bit) ගබඩා කර තබා ගත හැකි, ස්ථායී අවස්ථා දෙකක් ඇති මූලික මතක උපාංගයකි (Memory element).</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-150">සූත්‍ර සහ සමීකරණ (Equations):</h4>
+                <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-950/50 p-3 rounded border border-slate-800 text-cyan-300">
+                  <li>AND ද්වාරය: F = A · B</li>
+                  <li>OR ද්වාරය: F = A + B</li>
+                  <li>NOT ද්වාරය: F = Ā</li>
+                  <li>NAND ද්වාරය: F = A · B (inverted)</li>
+                  <li>NOR ද්වාරය: F = A + B (inverted)</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-slate-150">වැදගත් කරුණු (Key Points):</h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>NOR ද්වාර දෙකක් කතිර හැඩයට සම්බන්ධ කිරීමෙන් (Cross-coupled) S-R ෆ්ලිප්-ෆ්ලොපයක් සාදා ගත හැක.</li>
+                  <li>මතක රෙජිස්ටර (Registers) සහ පරිගණක මතක (RAM) නිර්මාණය සඳහා ෆ්ලිප්-ෆ්ලොප් බහුලව භාවිත වේ.</li>
+                </ul>
+              </div>
+              <div className="bg-rose-500/10 p-3 rounded-lg border border-rose-500/20">
+                <h4 className="font-bold text-rose-350 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
+                <p className="text-sm mt-1 text-rose-200">NOR ද්වාර භාවිතයෙන් සෑදූ S-R ෆ්ලිප්-ෆ්ලොපයකදී, ප්‍රදානයන් දෙකටම එකවර 1 ලබා දීම (S=1, R=1) &quot;වලංගු නොවන අවස්ථාවක්&quot; (Invalid state) ලෙස සැලකේ. විභාගයේදී මෙහි ප්‍රතිදානයන් Q=0 සහ Q̄=0 ලෙස ලැබේ, එය ෆ්ලිප්-ෆ්ලොපයේ මූලධර්මයට පටහැනි බැවින් භාවිත නොකෙරේ.</p>
+              </div>
+            </div>
+          </Accordion>
+
         </div>
 
         {/* Interactive Logic Gate Playground */}
