@@ -1,7 +1,10 @@
 import "./globals.css";
 import Footer from '@/components/Footer';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.URL || 'https://physicsmaster.lk';
+
 export const metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Physics Master | Flagship Studios',
   description: 'A/L Physics App developed by Flagship Studios',
 };
