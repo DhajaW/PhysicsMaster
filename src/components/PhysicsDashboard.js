@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BookOpen, Target, Calculator } from 'lucide-react';
 import AnimatedLogo from '@/components/AnimatedLogo';
@@ -19,6 +21,61 @@ const physicsUnits = [
 ];
 
 export default function PhysicsDashboard() {
+  const [completedUnits, setCompletedUnits] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('physics_progress_v1');
+    if (saved) {
+      try {
+        setCompletedUnits(JSON.parse(saved));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    setIsLoaded(true);
+  }, []);
+
+  const toggleUnit = (id) => {
+    const updated = {
+      ...completedUnits,
+      [id]: !completedUnits[id]
+    };
+    setCompletedUnits(updated);
+    localStorage.setItem('physics_progress_v1', JSON.stringify(updated));
+  };
+
+  const totalUnits = physicsUnits.length;
+  const completedCount = Object.keys(completedUnits).filter(key => completedUnits[key]).length;
+  const progressPercent = totalUnits > 0 ? Math.round((completedCount / totalUnits) * 100) : 0;
+
+  // Gamified ranks based on progress
+  let rankName = "භෞතික විද්‍යා ආධුනිකයා 📐";
+  let rankDesc = "අදම ඔයාගේ A/L Physics ගමන ආරම්භ කරන්න!";
+  let rankColor = "from-slate-400 to-slate-500";
+
+  if (completedCount >= 11) {
+    rankName = "Quantum මහාචාර්ය ⚛️🏆";
+    rankDesc = "නියමයි! ඔබ සියලුම ඒකක සාර්ථකව අවසන් කර ඇත!";
+    rankColor = "from-yellow-500 via-amber-500 to-orange-500 animate-pulse";
+  } else if (completedCount >= 9) {
+    rankName = "අයින්ස්ටයින්ගේ අනුගාමිකයා 🧠⚡";
+    rankDesc = "විශිෂ්ටයි! ඔබ සැබෑ භෞතික විද්‍යා විශාරදයෙක් වීමට ඉතා ආසන්නයි!";
+    rankColor = "from-fuchsia-500 to-purple-600";
+  } else if (completedCount >= 7) {
+    rankName = "ගුරුත්වාකර්ෂණ මාස්ටර් 🌍🧲";
+    rankDesc = "නියමයි මචන්! තව ඒකක කිහිපයයි. දිගටම යමු!";
+    rankColor = "from-indigo-500 to-blue-600";
+  } else if (completedCount >= 4) {
+    rankName = "පරිපථ ශිල්පී 🔌🔋";
+    rankDesc = "සාර්ථකව ඉදිරියට යනවා! ඔබේ උත්සාහය විශිෂ්ටයි.";
+    rankColor = "from-emerald-500 to-teal-600";
+  } else if (completedCount >= 1) {
+    rankName = "පරීක්ෂණ සහායක 🧪⚙️";
+    rankDesc = "පළමු පියවර සාර්ථකයි! දිගටම පාඩම් ටික එකතු කරමු.";
+    rankColor = "from-cyan-500 to-blue-500";
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
       {/* Top Navigation Bar */}
@@ -81,14 +138,93 @@ export default function PhysicsDashboard() {
           </div>
         </div>
 
+        {/* Progress Tracker Section */}
+        {isLoaded && (
+          <div className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm transition-all duration-300">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+              <div>
+                <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                  📊 මගේ අධ්‍යයන ප්‍රගතිය (Study Progress Tracker)
+                </h2>
+                <p className="text-sm text-gray-500 mt-1">
+                  A/L Physics ගොඩදාන්න ඔයා කරපු පාඩම් මෙතනින් ටික් කරලා ප්‍රගතිය බලාගන්න.
+                </p>
+              </div>
+              <div className={`px-4 py-2 rounded-xl bg-gradient-to-r ${rankColor} text-white font-bold text-sm shadow-sm flex items-center gap-1.5`}>
+                <span>කාණ්ඩය:</span>
+                <span>{rankName}</span>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex justify-between items-center text-sm font-semibold">
+                <span className="text-blue-600 font-bold bg-blue-50 px-2.5 py-1 rounded-lg">
+                  නිමකළ ඒකක: {completedCount} / {totalUnits}
+                </span>
+                <span className="text-emerald-600 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg">
+                  {progressPercent}% සම්පූර්ණයි
+                </span>
+              </div>
+              
+              {/* Outer Progress Bar */}
+              <div className="w-full bg-gray-105 h-5 rounded-full overflow-hidden border border-gray-200 relative shadow-inner">
+                {/* Inner animated bar */}
+                <div 
+                  className="bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 h-full rounded-full transition-all duration-1000 ease-out relative"
+                  style={{ width: `${progressPercent}%` }}
+                >
+                  {/* Shiny overlay */}
+                  <div className="absolute inset-0 bg-white/20 animate-[pulse_2s_infinite] rounded-full"></div>
+                </div>
+              </div>
+              
+              <p className="text-xs text-gray-400 italic text-center md:text-left mt-2">
+                {rankDesc}
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Grid Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {physicsUnits.map((unit) => (
-            <Link 
+            <div 
               key={unit.id}
-              href={`/units/${unit.id}`}
-              className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between hover:-translate-y-1 group text-left"
+              className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 group text-left relative overflow-hidden"
             >
+              {/* Card Link Overlay */}
+              <Link 
+                href={`/units/${unit.id}`}
+                className="absolute inset-0 z-10"
+              />
+
+              {/* Checkbox button positioned in top right */}
+              <div className="absolute top-6 right-6 z-20">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleUnit(unit.id);
+                  }}
+                  className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all cursor-pointer ${
+                    completedUnits[unit.id]
+                      ? 'bg-green-500 border-green-500 text-white shadow-md scale-110'
+                      : 'border-gray-300 hover:border-blue-500 hover:scale-105 bg-white'
+                  }`}
+                  title={completedUnits[unit.id] ? "නිම නොකළ ලෙස ලකුණු කරන්න" : "නිම කළ බව සලකුණු කරන්න"}
+                  aria-label={`Mark Unit ${unit.id} as completed`}
+                >
+                  {completedUnits[unit.id] ? (
+                    <svg className="w-4 h-4 fill-current font-bold" viewBox="0 0 20 20">
+                      <path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/>
+                    </svg>
+                  ) : (
+                    <span className="w-2.5 h-2.5 rounded-full bg-transparent hover:bg-slate-200"></span>
+                  )}
+                </button>
+              </div>
+
+              {/* Content Wrapper */}
               <div>
                 <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${unit.color} flex items-center justify-center text-2xl text-white shadow-sm mb-4`}>
                   {unit.icon}
@@ -105,7 +241,7 @@ export default function PhysicsDashboard() {
                 <span>ඇතුළු වන්න</span>
                 <span className="text-blue-600 group-hover:translate-x-1 transition-transform">→</span>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </main>
