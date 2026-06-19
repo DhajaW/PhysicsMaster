@@ -39,6 +39,14 @@ function QuizContent() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
 
+  console.log("🧩 QuizContent Render State:", {
+    isSubmitted,
+    reviewMode,
+    loading,
+    questionsLength: questions.length,
+    selectedPaper
+  });
+
   // 1. Supabase එකෙන් ප්රශ්න Fetch කිරීම
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -89,7 +97,7 @@ function QuizContent() {
 
   const handleSubmit = () => {
     setIsSubmitted(true);
-    setReviewMode(true);
+    setReviewMode(false); // Show Results Dashboard first!
   };
 
   const handleRestart = () => {
@@ -166,6 +174,70 @@ function QuizContent() {
           <Link href="/" className="inline-flex items-center justify-center px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition">
             <ArrowLeft className="w-5 h-5 mr-2" /> Dashboard එකට යන්න
           </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // Result Dashboard Screen
+  if (isSubmitted && !reviewMode) {
+    return (
+      <div className="min-h-screen bg-gray-950 text-white p-6 pt-24 font-sans">
+        <div className="max-w-3xl mx-auto space-y-8 animate-fadeIn">
+          
+          {/* Result Card Header */}
+          <div className="bg-gray-900 p-8 rounded-3xl border border-gray-800 shadow-2xl text-center space-y-6">
+            <Award className="w-20 h-20 text-yellow-400 mx-auto animate-bounce" />
+            <div>
+              <span className={`px-4 py-1.5 rounded-full border text-sm font-bold uppercase tracking-wider ${gradeColor}`}>
+                {gradeText}
+              </span>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-4 tracking-tight">
+                {scorePercent}% ලකුණු ප්‍රමාණයක්!
+              </h1>
+              <p className="text-sm text-slate-350 mt-3 max-w-md mx-auto leading-relaxed">
+                {feedbackText}
+              </p>
+            </div>
+
+            {/* Progress representation */}
+            <div className="grid grid-cols-3 gap-4 pt-4">
+              <div className="bg-gray-850/50 p-4 rounded-2xl border border-gray-800/60">
+                <span className="block text-2xl font-extrabold text-green-400">{correctCount}</span>
+                <span className="text-xs text-gray-400 uppercase font-semibold tracking-wider">නිවැරදි</span>
+              </div>
+              <div className="bg-gray-850/50 p-4 rounded-2xl border border-gray-800/60">
+                <span className="block text-2xl font-extrabold text-red-400">{wrongCount}</span>
+                <span className="text-xs text-gray-400 uppercase font-semibold tracking-wider">වැරදි</span>
+              </div>
+              <div className="bg-gray-850/50 p-4 rounded-2xl border border-gray-800/60">
+                <span className="block text-2xl font-extrabold text-gray-400">{unansweredCount}</span>
+                <span className="text-xs text-gray-400 uppercase font-semibold tracking-wider">නොකළ</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={() => setReviewMode(true)}
+              className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-2xl shadow-lg transition-all cursor-pointer"
+            >
+              <Eye className="w-5 h-5 mr-2" /> පිළිතුරු පත්‍රය පරීක්ෂා කරන්න
+            </button>
+            <button
+              onClick={handleRestart}
+              className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-2xl shadow-md border border-gray-750 transition-all cursor-pointer"
+            >
+              <RefreshCw className="w-5 h-5 mr-2" /> නැවත උත්සාහ කරන්න
+            </button>
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center px-6 py-4 bg-slate-900 hover:bg-slate-850 text-slate-300 font-bold rounded-2xl border border-slate-800 transition-all"
+            >
+              මුල් පිටුවට
+            </Link>
+          </div>
         </div>
       </div>
     );

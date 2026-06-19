@@ -95,10 +95,6 @@ export default function PhysicsDashboard() {
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
                 <span className="hidden sm:inline">විභාග රහස්</span>
               </Link>
-              <Link href="/quiz?paper=1" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
-                <Brain className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1 text-cyan-600" />
-                <span className="hidden sm:inline">Physics Quiz 🧠</span>
-              </Link>
             </div>
           </div>
         </div>
@@ -144,13 +140,13 @@ export default function PhysicsDashboard() {
               <Calculator className="w-5 h-5 mr-2" />
               Formula Cheat Sheet 🧮
             </Link>
-            <Link 
-              href="/quiz?paper=1" 
+            <a 
+              href="#model-papers" 
               className="w-full md:w-auto inline-flex items-center justify-center px-6 py-4 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold transition-all duration-200 shadow-md hover:shadow-lg border border-cyan-500 hover:-translate-y-0.5"
             >
               <Brain className="w-5 h-5 mr-2" />
-              Physics Quiz 🧠
-            </Link>
+              Model Papers 📝
+            </a>
           </div>
         </div>
 
@@ -202,7 +198,7 @@ export default function PhysicsDashboard() {
         )}
 
         {/* Model Papers Section */}
-        <div className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+        <div id="model-papers" className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm scroll-mt-20">
           <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2 mb-2">
             📝 ආදර්ශ ප්‍රශ්න පත්‍ර (Model Papers MCQ)
           </h2>
