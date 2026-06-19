@@ -1,25 +1,24 @@
+import { Orbit } from 'lucide-react';
+
 export default function AnimatedLogo() {
   return (
-    <div className="relative w-12 h-12 flex items-center justify-center bg-slate-900 rounded-xl shadow-lg border border-slate-700 overflow-hidden">
-      
-      {/* මැද තියෙන සූර්යයා / න්යෂ්ටිය (Nucleus) */}
-      <div className="absolute w-3 h-3 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full shadow-[0_0_12px_rgba(251,191,36,0.9)] z-10"></div>
-      
-      {/* 1 වෙනි කක්ෂය (Blue Planet) */}
-      <div className="absolute w-11 h-3 border border-blue-500/40 rounded-[50%] animate-[spin_3s_linear_infinite]">
-        <div className="absolute top-1/2 left-0 w-1.5 h-1.5 bg-blue-400 rounded-full shadow-[0_0_8px_#60a5fa] -translate-x-1/2 -translate-y-1/2"></div>
+    <div className="flex items-center gap-3 group cursor-pointer w-fit">
+      {/* Icon Section (The Graphic) */}
+      <div className="relative p-2.5 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl shadow-lg shadow-blue-500/30 group-hover:shadow-blue-500/50 transition-all duration-300">
+        <Orbit className="w-7 h-7 text-white group-hover:rotate-90 transition-transform duration-700 ease-in-out" />
+        {/* පොඩි Glow Effect එකක් */}
+        <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 rounded-xl transition-opacity duration-300"></div>
       </div>
 
-      {/* 2 වෙනි කක්ෂය (Emerald Planet) */}
-      <div className="absolute w-11 h-3 border border-emerald-500/40 rounded-[50%] animate-[spin_4s_linear_infinite] rotate-[60deg]">
-        <div className="absolute top-1/2 right-0 w-2 h-2 bg-emerald-400 rounded-full shadow-[0_0_8px_#34d399] translate-x-1/2 -translate-y-1/2"></div>
+      {/* Text Section (Typography) */}
+      <div className="flex flex-col justify-center">
+        <span className="text-2xl font-extrabold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent tracking-tight leading-none">
+          PhysicsMaster
+        </span>
+        <span className="text-[11px] font-bold text-blue-600 uppercase tracking-[0.25em] mt-1">
+          Advanced Level
+        </span>
       </div>
-
-      {/* 3 වෙනි කක්ෂය (Purple Planet) */}
-      <div className="absolute w-11 h-3 border border-purple-500/40 rounded-[50%] animate-[spin_5s_linear_infinite] rotate-[120deg]">
-        <div className="absolute top-0 left-1/2 w-1.5 h-1.5 bg-purple-400 rounded-full shadow-[0_0_8px_#c084fc] -translate-x-1/2 -translate-y-1/2"></div>
-      </div>
-
     </div>
   );
 }

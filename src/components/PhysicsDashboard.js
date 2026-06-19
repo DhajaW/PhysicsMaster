@@ -83,21 +83,8 @@ export default function PhysicsDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             {/* Logo Section */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              {/* අපේ අලුත් කැරකෙන ග්රහලෝක Logo එක */}
-              <div className="scale-75 sm:scale-100 origin-center flex-shrink-0">
-                <AnimatedLogo />
-              </div>
-              
-              {/* App එකේ නම */}
-              <h1 className="text-lg sm:text-2xl font-extrabold tracking-tight flex items-center">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-800">
-                  PhysicsMaster
-                </span>
-                <span className="ml-1 sm:ml-2 text-blue-500 font-bold">
-                  A/L
-                </span>
-              </h1>
+            <div className="scale-75 sm:scale-100 origin-center flex-shrink-0">
+              <AnimatedLogo />
             </div>
             <div className="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-base">
               <Link href="/lessons" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
