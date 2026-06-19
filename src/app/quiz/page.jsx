@@ -40,7 +40,9 @@ export default function QuizEngine() {
       const { data, error } = await supabase
         .from('questions')
         .select('*')
-        .order('id', { ascending: true }); // ID එක පිළිවෙළට ගන්නවා
+        .eq('paper_no', 1) // මෙතනින් තමයි පේපර් එක තෝරන්නේ!
+        .order('id', { ascending: true })
+        .limit(50); // උපරිම ප්රශ්න 50යි ගන්නේ
 
       if (error) {
         console.error("Error fetching questions:", error);
