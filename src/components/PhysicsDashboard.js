@@ -104,10 +104,6 @@ export default function PhysicsDashboard() {
                 <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
                 <span className="hidden sm:inline">පාඩම් මාලා</span>
               </Link>
-              <Link href="/formulas" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
-                <Calculator className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
-                <span className="hidden sm:inline">සමීකරණ Sheet</span>
-              </Link>
               <Link href="/exam-secrets" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
                 <span className="hidden sm:inline">විභාග රහස්</span>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 // අලුත් data ෆයිල් එකෙන් සමීකරණ ටික import කරගැනීම
 import { physicsFormulas } from "@/data/formulas"; 
 
@@ -15,6 +17,16 @@ export default function FormulasPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      {/* Back Button */}
+      <div className="max-w-3xl mx-auto mb-6">
+        <Link 
+          href="/" 
+          className="inline-flex items-center text-slate-600 hover:text-slate-900 text-sm font-semibold transition bg-white shadow-sm border border-slate-200 hover:bg-slate-50 px-4 py-2 rounded-xl"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" /> ආපසු Dashboard එකට
+        </Link>
+      </div>
+
       {/* Header Section */}
       <div className="max-w-3xl mx-auto text-center mb-10">
         <h1 className="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
