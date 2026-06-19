@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { BookOpen, Target } from 'lucide-react';
+import { BookOpen, Target, Calculator } from 'lucide-react';
 import AnimatedLogo from '@/components/AnimatedLogo';
 
 // NotebookLM Blueprint එක මත පදනම් වූ පාඩම් දත්ත
@@ -47,6 +47,10 @@ export default function PhysicsDashboard() {
                 <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
                 <span className="hidden sm:inline">පාඩම් මාලා</span>
               </Link>
+              <Link href="/formulas" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
+                <Calculator className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
+                <span className="hidden sm:inline">සමීකරණ Sheet</span>
+              </Link>
               <Link href="/exam-secrets" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
                 <span className="hidden sm:inline">විභාග රහස්</span>
@@ -59,11 +63,22 @@ export default function PhysicsDashboard() {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         {/* Welcome Section */}
-        <div className="mb-10 text-center md:text-left bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">භෞතික විද්යාව හදවතටම දැනෙන්න ඉගෙන ගමු! 👋</h1>
-          <p className="text-slate-300 max-w-2xl text-base md:text-lg">
-            සම්පත් පොත්වල අන්තර්ගතය, ප්රායෝගික උදාහරණ, විභාගයේදී ලකුණු ලැබෙන Paper Marking රහස් සහ Interactive Simulators සියල්ල එකම තැනකින්.
-          </p>
+        <div className="mb-10 text-center md:text-left bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white shadow-lg flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex-1">
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">භෞතික විද්යාව හදවතටම දැනෙන්න ඉගෙන ගමු! 👋</h1>
+            <p className="text-slate-300 max-w-2xl text-base md:text-lg">
+              සම්පත් පොත්වල අන්තර්ගතය, ප්රායෝගික උදාහරණ, විභාගයේදී ලකුණු ලැබෙන Paper Marking රහස් සහ Interactive Simulators සියල්ල එකම තැනකින්.
+            </p>
+          </div>
+          <div className="flex-shrink-0 w-full md:w-auto">
+            <Link 
+              href="/formulas" 
+              className="w-full md:w-auto inline-flex items-center justify-center px-6 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500 hover:-translate-y-0.5"
+            >
+              <Calculator className="w-5 h-5 mr-2" />
+              Formula Cheat Sheet 🧮
+            </Link>
+          </div>
         </div>
 
         {/* Grid Grid */}
