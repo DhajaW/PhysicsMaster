@@ -28,7 +28,7 @@ const renderTextWithLatex = (text) => {
 export default function QuizEngine() {
   const [questions, setQuestions] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(20 * 60);
+  const [timeLeft, setTimeLeft] = useState(2 * 60 * 60); // 2 hours (7200 seconds)
   const [answers, setAnswers] = useState({});
   const [loading, setLoading] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -70,9 +70,10 @@ export default function QuizEngine() {
   }, [timeLeft]);
 
   const formatTime = (seconds) => {
-    const m = Math.floor(seconds / 60).toString().padStart(2, "0");
+    const h = Math.floor(seconds / 3600).toString().padStart(2, "0");
+    const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, "0");
     const s = (seconds % 60).toString().padStart(2, "0");
-    return `${m}:${s}`;
+    return `${h}:${m}:${s}`;
   };
 
   const handleSelectOption = (index) => {
@@ -88,7 +89,7 @@ export default function QuizEngine() {
   const handleRestart = () => {
     setAnswers({});
     setCurrentQ(0);
-    setTimeLeft(20 * 60);
+    setTimeLeft(2 * 60 * 60); // Reset to 2 hours
     setIsSubmitted(false);
     setReviewMode(false);
   };
