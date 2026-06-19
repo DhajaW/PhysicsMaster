@@ -95,7 +95,7 @@ export default function PhysicsDashboard() {
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
                 <span className="hidden sm:inline">විභාග රහස්</span>
               </Link>
-              <Link href="/quiz" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
+              <Link href="/quiz?paper=1" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
                 <Brain className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1 text-cyan-600" />
                 <span className="hidden sm:inline">Physics Quiz 🧠</span>
               </Link>
@@ -145,7 +145,7 @@ export default function PhysicsDashboard() {
               Formula Cheat Sheet 🧮
             </Link>
             <Link 
-              href="/quiz" 
+              href="/quiz?paper=1" 
               className="w-full md:w-auto inline-flex items-center justify-center px-6 py-4 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold transition-all duration-200 shadow-md hover:shadow-lg border border-cyan-500 hover:-translate-y-0.5"
             >
               <Brain className="w-5 h-5 mr-2" />
@@ -200,6 +200,71 @@ export default function PhysicsDashboard() {
             </div>
           </div>
         )}
+
+        {/* Model Papers Section */}
+        <div className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm">
+          <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2 mb-2">
+            📝 ආදර්ශ ප්‍රශ්න පත්‍ර (Model Papers MCQ)
+          </h2>
+          <p className="text-sm text-gray-500 mb-6">
+            A/L විභාගයට සමාන මට්ටමේ බහුවරණ ප්‍රශ්න පත්‍ර (MCQ Papers) කාලය මැන ක්‍රියාත්මක කර ඔබේ සූදානම පරීක්ෂා කරන්න.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Paper 01 Card */}
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 text-white border border-slate-700 flex flex-col justify-between hover:shadow-md transition-all group relative overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+              <div>
+                <span className="px-2.5 py-1 rounded-md bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider">
+                  Paper 01
+                </span>
+                <h3 className="text-xl font-bold text-white mt-3 mb-2">
+                  භෞතික විද්‍යාව ප්‍රශ්න පත්‍රය 01
+                </h3>
+                <p className="text-sm text-slate-300 mb-6 leading-relaxed">
+                  ස්කන්ධය, යාන්ත්‍ර විද්‍යාව, තාපය ඇතුළු සියලුම ඒකක ආවරණය වන පරිදි සකස් කළ ආදර්ශ ප්‍රශ්න 50.
+                </p>
+              </div>
+              <div className="flex items-center justify-between mt-4">
+                <span className="text-xs text-slate-450 font-semibold flex items-center gap-1">
+                  ⏱️ පැය 2:00 | 📝 MCQ 50
+                </span>
+                <Link 
+                  href="/quiz?paper=1"
+                  className="px-4 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm shadow transition-all hover:-translate-y-0.5"
+                >
+                  ආරම්භ කරන්න 🚀
+                </Link>
+              </div>
+            </div>
+
+            {/* Paper 02 Card */}
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 text-white border border-slate-700 flex flex-col justify-between hover:shadow-md transition-all group relative overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+              <div>
+                <span className="px-2.5 py-1 rounded-md bg-pink-500/20 text-pink-400 text-xs font-bold uppercase tracking-wider">
+                  Paper 02
+                </span>
+                <h3 className="text-xl font-bold text-white mt-3 mb-2">
+                  භෞතික විද්‍යාව ප්‍රශ්න පත්‍රය 02
+                </h3>
+                <p className="text-sm text-slate-300 mb-6 leading-relaxed">
+                  දෝලන තරංග, ක්ෂේත්‍ර, ධාරා විද්‍යුතය සහ ඉලෙක්ට්‍රොනික විද්‍යාව ආවරණය වන පරිදි සකස් කළ දෙවන ආදර්ශ ප්‍රශ්න 50.
+                </p>
+              </div>
+              <div className="flex items-center justify-between mt-4">
+                <span className="text-xs text-slate-450 font-semibold flex items-center gap-1">
+                  ⏱️ පැය 2:00 | 📝 MCQ 50
+                </span>
+                <Link 
+                  href="/quiz?paper=2"
+                  className="px-4 py-2 rounded-lg bg-pink-600 hover:bg-pink-500 text-white font-bold text-sm shadow transition-all hover:-translate-y-0.5"
+                >
+                  ආරම්භ කරන්න 🚀
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Grid Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

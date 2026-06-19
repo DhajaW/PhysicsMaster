@@ -2,16 +2,17 @@
 
 export const dynamic = 'force-dynamic';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Clock, ChevronRight, ChevronLeft, CheckCircle2, Loader2, Award, RefreshCw, AlertTriangle, ArrowLeft, Eye } from "lucide-react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import { useSearchParams } from "next/navigation";
 
 // KaTeX CSS සහ Components
 import 'katex/dist/katex.min.css';
-import { InlineMath, BlockMath } from 'react-katex';
+import { InlineMath } from 'react-katex';
 
-// සාමාන්ය අකුරු සහ $...$ ਅස්සේ තියෙන LaTeX සමීකරණ වෙන් කරලා Render කරන Helper Function එක
+// සාමාන්ය අකුරු සහ $...$ අස්සේ තියෙන LaTeX සමීකරණ වෙන් කරලා Render කරන Helper Function එක
 const renderTextWithLatex = (text) => {
   if (!text) return "";
   const parts = text.split('$');
@@ -25,7 +26,11 @@ const renderTextWithLatex = (text) => {
   });
 };
 
-export default function QuizEngine() {
+function QuizContent() {
+  const searchParams = useSearchParams();
+  const paperParam = searchParams.get("paper") || "1";
+  const selectedPaper = parseInt(paperParam, 10) || 1;
+
   const [questions, setQuestions] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
   const [timeLeft, setTimeLeft] = useState(2 * 60 * 60); // 2 hours (7200 seconds)
@@ -37,10 +42,11 @@ export default function QuizEngine() {
   // 1. Supabase එකෙන් ප්රශ්න Fetch කිරීම
   useEffect(() => {
     const fetchQuestions = async () => {
+      setLoading(true);
       const { data, error } = await supabase
         .from('questions')
         .select('*')
-        .eq('paper_no', 1) // මෙතනින් තමයි පේපර් එක තෝරන්නේ!
+        .eq('paper_no', selectedPaper) // මෙතනින් තමයි පේපර් එක තෝරන්නේ!
         .order('id', { ascending: true })
         .limit(50); // උපරිම ප්රශ්න 50යි ගන්නේ
 
@@ -53,7 +59,7 @@ export default function QuizEngine() {
     };
 
     fetchQuestions();
-  }, []);
+  }, [selectedPaper]);
 
   // Timer Logic
   useEffect(() => {
@@ -144,7 +150,7 @@ export default function QuizEngine() {
     return (
       <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center text-cyan-500">
         <Loader2 className="w-12 h-12 animate-spin mb-4" />
-        <p className="text-xl font-semibold animate-pulse">ප්‍රශ්න පත්‍රය සූදානම් කරමින් පවතී...</p>
+        <p className="text-xl font-semibold animate-pulse">ප්‍රශ්න පත්‍රය (Paper {selectedPaper}) සූදානම් කරමින් පවතී...</p>
       </div>
     );
   }
@@ -156,74 +162,10 @@ export default function QuizEngine() {
         <div className="text-center p-8 bg-gray-900 border border-gray-800 rounded-3xl max-w-md shadow-2xl">
           <AlertTriangle className="w-16 h-16 text-yellow-500 mx-auto mb-4 animate-bounce" />
           <h3 className="text-xl font-bold text-white mb-2">ප්‍රශ්න කිසිවක් හමු නොවීය ❌</h3>
-          <p className="text-sm text-gray-500 mb-6">දැනට ප්‍රශ්න කිසිවක් දත්ත ගබඩාවේ (Questions Table) සටහන් වී නොමැත.</p>
+          <p className="text-sm text-gray-500 mb-6">දැනට ප්‍රශ්න පත්‍ර {selectedPaper} සඳහා ප්‍රශ්න කිසිවක් දත්ත ගබඩාවේ සටහන් වී නොමැත.</p>
           <Link href="/" className="inline-flex items-center justify-center px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition">
             <ArrowLeft className="w-5 h-5 mr-2" /> Dashboard එකට යන්න
           </Link>
-        </div>
-      </div>
-    );
-  }
-
-  // Result Dashboard Screen
-  if (isSubmitted && !reviewMode) {
-    return (
-      <div className="min-h-screen bg-gray-950 text-white p-6 pt-24">
-        <div className="max-w-3xl mx-auto space-y-8">
-          
-          {/* Result Card Header */}
-          <div className="bg-gray-900 p-8 rounded-3xl border border-gray-800 shadow-2xl text-center space-y-6">
-            <Award className="w-20 h-20 text-yellow-400 mx-auto animate-bounce" />
-            <div>
-              <span className={`px-4 py-1.5 rounded-full border text-sm font-bold uppercase tracking-wider ${gradeColor}`}>
-                {gradeText}
-              </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-4 tracking-tight">
-                {scorePercent}% ලකුණු ප්‍රමාණයක්!
-              </h1>
-              <p className="text-sm text-gray-400 mt-3 max-w-md mx-auto leading-relaxed">
-                {feedbackText}
-              </p>
-            </div>
-
-            {/* Progress Circular Indicators Mock */}
-            <div className="grid grid-cols-3 gap-4 pt-4">
-              <div className="bg-gray-800/50 p-4 rounded-2xl border border-gray-800/60">
-                <span className="block text-2xl font-extrabold text-green-400">{correctCount}</span>
-                <span className="text-xs text-gray-450 uppercase font-semibold tracking-wider">නිවැරදි</span>
-              </div>
-              <div className="bg-gray-800/50 p-4 rounded-2xl border border-gray-800/60">
-                <span className="block text-2xl font-extrabold text-red-400">{wrongCount}</span>
-                <span className="text-xs text-gray-450 uppercase font-semibold tracking-wider">වැරදි</span>
-              </div>
-              <div className="bg-gray-800/50 p-4 rounded-2xl border border-gray-800/60">
-                <span className="block text-2xl font-extrabold text-gray-400">{unansweredCount}</span>
-                <span className="text-xs text-gray-450 uppercase font-semibold tracking-wider">නොකළ</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => setReviewMode(true)}
-              className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-2xl shadow-lg transition-all"
-            >
-              <Eye className="w-5 h-5 mr-2" /> පිළිතුරු පත්‍රය පරීක්ෂා කරන්න
-            </button>
-            <button
-              onClick={handleRestart}
-              className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-2xl shadow-md border border-gray-750 transition-all"
-            >
-              <RefreshCw className="w-5 h-5 mr-2" /> නැවත උත්සාහ කරන්න
-            </button>
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center px-6 py-4 bg-slate-900 hover:bg-slate-850 text-slate-300 font-bold rounded-2xl border border-slate-800 transition-all"
-            >
-              මුල් පිටුවට
-            </Link>
-          </div>
         </div>
       </div>
     );
@@ -242,7 +184,7 @@ export default function QuizEngine() {
             <span className="text-xl tracking-wider font-mono">{formatTime(timeLeft)}</span>
           </div>
           <div className="text-sm font-semibold text-gray-400">
-            ප්‍රශ්න {currentQ + 1} / {questions.length}
+            Paper {selectedPaper} | ප්‍රශ්න {currentQ + 1} / {questions.length}
           </div>
           {isSubmitted ? (
             <button 
@@ -406,5 +348,18 @@ export default function QuizEngine() {
 
       </div>
     </div>
+  );
+}
+
+export default function QuizEngine() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center text-cyan-500">
+        <Loader2 className="w-12 h-12 animate-spin mb-4" />
+        <p className="text-xl font-semibold animate-pulse">ප්‍රශ්න පත්‍රය සූදානම් කරමින් පවතී...</p>
+      </div>
+    }>
+      <QuizContent />
+    </Suspense>
   );
 }
