@@ -93,7 +93,7 @@ export default function QuizEngine() {
   const getCorrectAnswersCount = () => {
     let score = 0;
     questions.forEach((q, idx) => {
-      if (answers[idx] !== undefined && answers[idx] === q.correct_option) {
+      if (answers[idx] !== undefined && answers[idx] === q.correct_answer) {
         score++;
       }
     });
@@ -265,7 +265,7 @@ export default function QuizEngine() {
               let btnClass = "border-gray-700 bg-gray-800/30 text-gray-400";
               
               if (isSubmitted) {
-                const isCorrect = answers[index] === questions[index].correct_option;
+                const isCorrect = answers[index] === questions[index].correct_answer;
                 if (answers[index] === undefined) {
                   btnClass = "border-gray-700 bg-gray-800/20 text-gray-500";
                 } else {
@@ -307,7 +307,7 @@ export default function QuizEngine() {
           <div className="space-y-4 relative z-10">
             {currentQuestion.options.map((opt, index) => {
               const isSelected = answers[currentQ] === index;
-              const isCorrectOpt = currentQuestion.correct_option === index;
+              const isCorrectOpt = currentQuestion.correct_answer === index;
               
               let optStyle = "bg-gray-800/40 border-gray-750 text-gray-300 hover:bg-gray-800 hover:border-gray-600";
               let badgeStyle = "border-gray-500 text-gray-400";
