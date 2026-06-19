@@ -105,12 +105,28 @@ export default function PhysicsDashboard() {
         {/* Welcome Section */}
         <div className="mb-10 text-center md:text-left bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white shadow-lg flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex-1">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3 flex flex-wrap items-center justify-center md:justify-start gap-1">
-              <span>භෞතික විද්යාව මොළේට</span>
-              <Brain className="inline-block w-8 h-8 md:w-9 md:h-9 text-pink-500 fill-pink-500 animate-pulse mx-1 align-middle" />
+            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-white flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1 tracking-wide">
+              <span>භෞතික විද්‍යාව මොළේට</span>
+              <span 
+                className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
+                style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
+              >
+                <Brain className="w-8 h-8 md:w-9 md:h-9 text-pink-500 fill-pink-500" />
+              </span>
               <span>වගේම හදවතටත්</span>
-              <Heart className="inline-block w-8 h-8 md:w-9 md:h-9 text-rose-500 fill-rose-500 animate-pulse mx-1 align-middle" />
-              <span>දැනෙන්න ඉගෙන ගමු!👋</span>
+              <span 
+                className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle"
+                style={{ 
+                  filter: 'drop-shadow(0 0 10px rgba(244, 63, 94, 0.8))',
+                  animation: 'pulse 1s ease-in-out infinite'
+                }}
+              >
+                <Heart className="w-8 h-8 md:w-9 md:h-9 text-rose-500 fill-rose-500" />
+              </span>
+              <span>දැනෙන්න ඉගෙන ගමු!</span>
+              <span className="inline-block hover:rotate-12 hover:-translate-y-1 transition-all duration-300 cursor-default origin-bottom-right ml-1">
+                👋
+              </span>
             </h1>
             <p className="text-slate-300 max-w-2xl text-base md:text-lg">
               සම්පත් පොත්වල අන්තර්ගතය, ප්රායෝගික උදාහරණ, විභාගයේදී ලකුණු ලැබෙන Paper Marking රහස් සහ Interactive Simulators සියල්ල එකම තැනකින්.
