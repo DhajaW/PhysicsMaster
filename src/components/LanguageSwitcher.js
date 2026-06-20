@@ -17,19 +17,22 @@ export default function LanguageSwitcher() {
         .catch((err) => console.error('Service Worker registration failed:', err));
     }
 
-    // Read Google Translate Cookie to determine active language
-    const getTranslateCookie = () => {
-      const name = 'googtrans';
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) {
-        return parts.pop().split(';').shift();
+    // Check if English translation is active in any cookie
+    const isEnglishActive = () => {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const c = cookies[i].trim();
+        if (c.startsWith('googtrans=')) {
+          const val = c.substring('googtrans='.length);
+          if (val.includes('/en')) {
+            return true;
+          }
+        }
       }
-      return null;
+      return false;
     };
 
-    const cookieVal = getTranslateCookie();
-    if (cookieVal && cookieVal.includes('/en')) {
+    if (isEnglishActive()) {
       setCurrentLang('en');
     } else {
       setCurrentLang('si');
@@ -37,17 +40,35 @@ export default function LanguageSwitcher() {
   }, []);
 
   const toggleLanguage = () => {
+    // Helper to delete all possible cookie domains to avoid duplicates
+    const deleteCookie = (name) => {
+      const host = window.location.hostname;
+      const hostParts = host.split('.');
+      
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${host};`;
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${host};`;
+      
+      let tempPart = '';
+      for (let i = hostParts.length - 1; i >= 0; i--) {
+        tempPart = hostParts[i] + (tempPart ? '.' + tempPart : '');
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${tempPart};`;
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${tempPart};`;
+      }
+    };
+
+    // Clean up any old duplicate cookies
+    deleteCookie('googtrans');
+
     if (currentLang === 'si') {
       // Set translate to English
-      document.cookie = "googtrans=/si/en; path=/";
-      document.cookie = "googtrans=/si/en; path=/; domain=" + window.location.hostname;
-      window.location.reload();
-    } else {
-      // Clear translate cookie to revert to Sinhala
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname;
-      window.location.reload();
+      const host = window.location.hostname;
+      document.cookie = "googtrans=/si/en; path=/;";
+      document.cookie = "googtrans=/si/en; path=/; domain=." + host + ";";
+      document.cookie = "googtrans=/si/en; path=/; domain=" + host + ";";
     }
+
+    window.location.reload();
   };
 
   if (!isMounted) return null;
