@@ -7,7 +7,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 const siteUrl = 
   process.env.NEXT_PUBLIC_SITE_URL || 
   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) || 
-  'https://physicsmaster.lk';
+  'https://physics-masters.vercel.app';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -24,6 +24,14 @@ export const metadata = {
     description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න.',
     url: siteUrl,
     siteName: 'Physics Master A/L',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Physics Master A/L Banner',
+      },
+    ],
     locale: 'si_LK',
     type: 'website',
   },
@@ -31,6 +39,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Physics Master A/L',
     description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න.',
+    images: ['/og-image.jpg'],
   }
 };
 
