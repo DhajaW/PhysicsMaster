@@ -222,7 +222,7 @@ export default function PhysicsDashboard() {
               </div>
               <div className="flex items-center justify-between mt-4">
                 <span className="text-xs text-slate-450 font-semibold flex items-center gap-1">
-                  ⏱️ පැය 2:00 | 📝 MCQ 20
+                  ⏱️ පැය 2:00 | 📝 MCQ 50
                 </span>
                 <Link 
                   href="/quiz?paper=1"
@@ -249,7 +249,7 @@ export default function PhysicsDashboard() {
               </div>
               <div className="flex items-center justify-between mt-4">
                 <span className="text-xs text-slate-450 font-semibold flex items-center gap-1">
-                  ⏱️ පැය 2:00 | 📝 MCQ 20
+                  ⏱️ පැය 2:00 | 📝 MCQ 50
                 </span>
                 <Link 
                   href="/quiz?paper=2"
