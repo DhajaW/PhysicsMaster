@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { BookOpen, Target, Calculator, Brain, Heart } from 'lucide-react';
+import { BookOpen, Target, Calculator, Brain, Heart, Loader2 } from 'lucide-react';
 import AnimatedLogo from '@/components/AnimatedLogo';
 import AdPlaceholder from '@/components/AdPlaceholder';
+import { supabase } from '../../lib/supabase';
 
 // NotebookLM Blueprint එක මත පදනම් වූ පාඩම් දත්ත
 const physicsUnits = [
@@ -21,9 +22,20 @@ const physicsUnits = [
   { id: '11', name: 'පදාර්ථ හා විකිරණ (Radiation)', icon: '⚛️', topics: 'ප්රකාශ විද්යුත් ආචරණය, X-කිරණ, විකිරණශීලිතාව', color: 'from-fuchsia-600 to-purple-600' }
 ];
 
+const getUnitForPaper = (paperNo) => {
+  const paddedId = paperNo.toString().padStart(2, '0');
+  return physicsUnits.find(u => u.id === paddedId) || {
+    name: `ප්‍රශ්න පත්‍රය ${paperNo} (Paper ${paperNo})`,
+    topics: 'භෞතික විද්‍යාව විෂය නිර්දේශය ආශ්‍රිත ප්‍රශ්න පත්‍රය.',
+    color: 'from-slate-750 to-slate-850'
+  };
+};
+
 export default function PhysicsDashboard() {
   const [completedUnits, setCompletedUnits] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
+  const [availablePapers, setAvailablePapers] = useState([]);
+  const [loadingPapers, setLoadingPapers] = useState(true);
 
   useEffect(() => {
     const saved = localStorage.getItem('physics_progress_v1');
@@ -35,6 +47,31 @@ export default function PhysicsDashboard() {
       }
     }
     setIsLoaded(true);
+
+    const fetchAvailablePapers = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('questions')
+          .select('paper_no');
+        
+        if (error) {
+          console.error("Error fetching papers list:", error);
+        } else if (data) {
+          const uniquePapers = Array.from(
+            new Set(data.map(q => parseInt(q.paper_no, 10)))
+          )
+          .filter(val => !isNaN(val))
+          .sort((a, b) => a - b);
+          setAvailablePapers(uniquePapers);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoadingPapers(false);
+      }
+    };
+    
+    fetchAvailablePapers();
   }, []);
 
   const toggleUnit = (id) => {
@@ -209,61 +246,57 @@ export default function PhysicsDashboard() {
           <p className="text-sm text-gray-500 mb-6">
             A/L විභාගයට සමාන මට්ටමේ බහුවරණ ප්‍රශ්න පත්‍ර (MCQ Papers) කාලය මැන ක්‍රියාත්මක කර ඔබේ සූදානම පරීක්ෂා කරන්න.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Paper 01 Card */}
-            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 text-white border border-slate-700 flex flex-col justify-between hover:shadow-md transition-all group relative overflow-hidden">
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:20px_20px]"></div>
-              <div>
-                <span className="px-2.5 py-1 rounded-md bg-cyan-500/20 text-cyan-400 text-xs font-bold uppercase tracking-wider">
-                  Paper 01
-                </span>
-                <h3 className="text-xl font-bold text-white mt-3 mb-2">
-                  මිනුම ප්‍රශ්න පත්‍රය 01 (Measurement)
-                </h3>
-                <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-                  මිනුම් උපකරණ, මාන, භෞතික රාශි සහ දෛශික ආශ්‍රිත පළමු ඒකකය (Unit 01) සඳහා විශේෂයෙන් සකස් කළ බහුවරණ ප්‍රශ්න පත්‍රය.
-                </p>
-              </div>
-              <div className="flex items-center justify-between mt-4">
-                <span className="text-xs text-slate-450 font-semibold flex items-center gap-1">
-                  ⏱️ පැය 2:00 | 📝 MCQ 50
-                </span>
-                <Link 
-                  href="/quiz?paper=1"
-                  className="px-4 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm shadow transition-all hover:-translate-y-0.5"
-                >
-                  ආරම්භ කරන්න 🚀
-                </Link>
-              </div>
-            </div>
 
-            {/* Paper 02 Card */}
-            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 text-white border border-slate-700 flex flex-col justify-between hover:shadow-md transition-all group relative overflow-hidden">
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:20px_20px]"></div>
-              <div>
-                <span className="px-2.5 py-1 rounded-md bg-pink-500/20 text-pink-400 text-xs font-bold uppercase tracking-wider">
-                  Paper 02
-                </span>
-                <h3 className="text-xl font-bold text-white mt-3 mb-2">
-                  යාන්ත්‍ර විද්‍යාව ප්‍රශ්න පත්‍රය 02 (Mechanics)
-                </h3>
-                <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-                  බලය හා චලිතය, කාර්යය-ශක්තිය, භ්‍රමණ චලිතය සහ තරල යාන්ත්‍ර විද්‍යාව ආශ්‍රිත දෙවන ඒකකය (Unit 02) සඳහා විශේෂයෙන් සකස් කළ බහුවරණ ප්‍රශ්න පත්‍රය.
-                </p>
-              </div>
-              <div className="flex items-center justify-between mt-4">
-                <span className="text-xs text-slate-450 font-semibold flex items-center gap-1">
-                  ⏱️ පැය 2:00 | 📝 MCQ 50
-                </span>
-                <Link 
-                  href="/quiz?paper=2"
-                  className="px-4 py-2 rounded-lg bg-pink-600 hover:bg-pink-500 text-white font-bold text-sm shadow transition-all hover:-translate-y-0.5"
-                >
-                  ආරම්භ කරන්න 🚀
-                </Link>
-              </div>
+          {loadingPapers ? (
+            <div className="flex justify-center items-center py-12 text-blue-600">
+              <Loader2 className="w-8 h-8 animate-spin mr-2" />
+              <span className="text-sm font-semibold">ප්‍රශ්න පත්‍ර ලැයිස්තුව ලෝඩ් වෙමින් පවතී...</span>
             </div>
-          </div>
+          ) : availablePapers.length === 0 ? (
+            <div className="text-center py-10 text-slate-400 border border-dashed border-slate-200 rounded-xl">
+              <p className="text-sm">දැනට කිසිදු ආදර්ශ ප්‍රශ්න පත්‍රයක් දත්ත ගබඩාවේ නැත.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {availablePapers.map((paperNo) => {
+                const unit = getUnitForPaper(paperNo);
+                const isEven = paperNo % 2 === 0;
+                const badgeClass = isEven ? 'bg-pink-500/20 text-pink-400' : 'bg-cyan-500/20 text-cyan-400';
+                const buttonClass = isEven ? 'bg-pink-600 hover:bg-pink-550' : 'bg-cyan-600 hover:bg-cyan-550';
+
+                return (
+                  <div 
+                    key={paperNo}
+                    className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 text-white border border-slate-700 flex flex-col justify-between hover:shadow-md transition-all group relative overflow-hidden"
+                  >
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+                    <div>
+                      <span className={`px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider ${badgeClass}`}>
+                        Paper {paperNo.toString().padStart(2, '0')}
+                      </span>
+                      <h3 className="text-xl font-bold text-white mt-3 mb-2">
+                        {unit.name} ප්‍රශ්න පත්‍රය {paperNo.toString().padStart(2, '0')}
+                      </h3>
+                      <p className="text-sm text-slate-300 mb-6 leading-relaxed">
+                        {unit.topics} ආශ්‍රිතව විභාග මට්ටමට සකස් කරන ලද බහුවරණ ප්‍රශ්න පත්‍රය.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between mt-4">
+                      <span className="text-xs text-slate-400 font-semibold flex items-center gap-1">
+                        ⏱️ පැය 2:00 | 📝 MCQ 50
+                      </span>
+                      <Link 
+                        href={`/quiz?paper=${paperNo}`}
+                        className={`px-4 py-2 rounded-lg text-white font-bold text-sm shadow transition-all hover:-translate-y-0.5 ${buttonClass}`}
+                      >
+                        ආරම්භ කරන්න 🚀
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Grid Grid */}
