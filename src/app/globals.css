@@ -20,15 +20,26 @@ body {
 }
 
 /* Google Translate styles override */
-.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
 .goog-te-banner-frame,
+.goog-te-banner,
+iframe.skiptranslate,
+.skiptranslate,
 #goog-gt-tt,
-.goog-te-balloon-frame {
+.goog-te-balloon-frame,
+.goog-te-gadget {
   display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  opacity: 0 !important;
 }
-body {
+
+body, html {
   top: 0px !important;
+  position: static !important;
 }
+
 /* Hide the Google translation suggestion tooltips on hover */
 .goog-text-highlight {
   background-color: transparent !important;

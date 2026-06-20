@@ -55,7 +55,7 @@ export default function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLanguage}
-      className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] flex items-center gap-2 px-3.5 py-2 bg-white/90 hover:bg-white border border-slate-200 shadow-md hover:shadow-lg text-slate-700 font-bold text-xs md:text-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md rounded-full"
+      className="notranslate fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999] flex items-center gap-2 px-3.5 py-2 bg-white/90 hover:bg-white border border-slate-200 shadow-md hover:shadow-lg text-slate-700 font-bold text-xs md:text-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-md rounded-full"
       title={currentLang === 'si' ? 'Translate to English' : 'සිංහලට හරවන්න'}
     >
       <Globe className="w-4 h-4 text-blue-600 animate-[spin_10s_linear_infinite]" />
