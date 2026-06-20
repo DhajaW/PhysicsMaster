@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { BookOpen, Target, Calculator, Brain, Heart } from 'lucide-react';
 import AnimatedLogo from '@/components/AnimatedLogo';
+import AdPlaceholder from '@/components/AdPlaceholder';
 
 // NotebookLM Blueprint එක මත පදනම් වූ පාඩම් දත්ත
 const physicsUnits = [
@@ -149,6 +150,9 @@ export default function PhysicsDashboard() {
             </a>
           </div>
         </div>
+
+        {/* Top AdSense Banner */}
+        <AdPlaceholder type="banner" slotId="YOUR_SLOT_1" />
 
         {/* Progress Tracker Section */}
         {isLoaded && (
@@ -321,6 +325,9 @@ export default function PhysicsDashboard() {
             </div>
           ))}
         </div>
+
+        {/* Bottom AdSense Banner */}
+        <AdPlaceholder type="banner" slotId="YOUR_SLOT_2" />
       </main>
     </div>
   );
