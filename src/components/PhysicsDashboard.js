@@ -159,7 +159,7 @@ export default function PhysicsDashboard() {
                   📊 මගේ අධ්‍යයන ප්‍රගතිය (Study Progress Tracker)
                 </h2>
                 <p className="text-sm text-gray-500 mt-1">
-                  A/L Physics ගොඩදාන්න ඔයා කරපු පාඩම් මෙතනින් ටික් කරලා ප්‍රගතිය බලාගන්න.
+                  A/L Physics ගොඩදාන්න ඔයා සම්පූර්ණ කරපු පාඩම් ටික පහල පාඩම්වලින් ටික් කරලා ප්‍රගතිය මෙතනින් බලාගන්න.
                 </p>
               </div>
               <div className={`px-4 py-2 rounded-xl bg-gradient-to-r ${rankColor} text-white font-bold text-sm shadow-sm flex items-center gap-1.5`}>
@@ -214,15 +214,15 @@ export default function PhysicsDashboard() {
                   Paper 01
                 </span>
                 <h3 className="text-xl font-bold text-white mt-3 mb-2">
-                  භෞතික විද්‍යාව ප්‍රශ්න පත්‍රය 01
+                  මිනුම ප්‍රශ්න පත්‍රය 01 (Measurement)
                 </h3>
                 <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-                  ස්කන්ධය, යාන්ත්‍ර විද්‍යාව, තාපය ඇතුළු සියලුම ඒකක ආවරණය වන පරිදි සකස් කළ ආදර්ශ ප්‍රශ්න 50.
+                  මිනුම් උපකරණ, මාන, භෞතික රාශි සහ දෛශික ආශ්‍රිත පළමු ඒකකය (Unit 01) සඳහා විශේෂයෙන් සකස් කළ බහුවරණ ප්‍රශ්න පත්‍රය.
                 </p>
               </div>
               <div className="flex items-center justify-between mt-4">
                 <span className="text-xs text-slate-450 font-semibold flex items-center gap-1">
-                  ⏱️ පැය 2:00 | 📝 MCQ 50
+                  ⏱️ පැය 2:00 | 📝 MCQ 20
                 </span>
                 <Link 
                   href="/quiz?paper=1"
@@ -241,15 +241,15 @@ export default function PhysicsDashboard() {
                   Paper 02
                 </span>
                 <h3 className="text-xl font-bold text-white mt-3 mb-2">
-                  භෞතික විද්‍යාව ප්‍රශ්න පත්‍රය 02
+                  යාන්ත්‍ර විද්‍යාව ප්‍රශ්න පත්‍රය 02 (Mechanics)
                 </h3>
                 <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-                  දෝලන තරංග, ක්ෂේත්‍ර, ධාරා විද්‍යුතය සහ ඉලෙක්ට්‍රොනික විද්‍යාව ආවරණය වන පරිදි සකස් කළ දෙවන ආදර්ශ ප්‍රශ්න 50.
+                  බලය හා චලිතය, කාර්යය-ශක්තිය, භ්‍රමණ චලිතය සහ තරල යාන්ත්‍ර විද්‍යාව ආශ්‍රිත දෙවන ඒකකය (Unit 02) සඳහා විශේෂයෙන් සකස් කළ බහුවරණ ප්‍රශ්න පත්‍රය.
                 </p>
               </div>
               <div className="flex items-center justify-between mt-4">
                 <span className="text-xs text-slate-450 font-semibold flex items-center gap-1">
-                  ⏱️ පැය 2:00 | 📝 MCQ 50
+                  ⏱️ පැය 2:00 | 📝 MCQ 20
                 </span>
                 <Link 
                   href="/quiz?paper=2"
