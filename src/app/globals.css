@@ -18,3 +18,19 @@ body {
   color: var(--foreground);
   font-family: var(--font-noto-sinhala), var(--font-inter), sans-serif;
 }
+
+/* Google Translate styles override */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
+/* Hide the Google translation suggestion tooltips on hover */
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}

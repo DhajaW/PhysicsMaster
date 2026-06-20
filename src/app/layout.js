@@ -1,6 +1,8 @@
 import "./globals.css";
 import Footer from '@/components/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from 'next/script';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 const siteUrl = 
   process.env.NEXT_PUBLIC_SITE_URL || 
@@ -11,6 +13,12 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Physics Master A/L',
   description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න.',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Physics Master',
+  },
   openGraph: {
     title: 'Physics Master A/L',
     description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න.',
@@ -34,6 +42,27 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <LanguageSwitcher />
+        
+        {/* Google Translate Init Script */}
+        <Script id="google-translate-init" strategy="beforeInteractive">
+          {`
+            window.googleTranslateElementInit = function() {
+              new google.translate.TranslateElement({
+                pageLanguage: 'si',
+                includedLanguages: 'en,si',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+              }, 'google_translate_element');
+            }
+          `}
+        </Script>
+        <Script 
+          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
+        {/* Hidden div required by Google Translate */}
+        <div id="google_translate_element" style={{ display: 'none' }}></div>
       </body>
       <GoogleAnalytics gaId="G-82HVY187H1" />
     </html>
