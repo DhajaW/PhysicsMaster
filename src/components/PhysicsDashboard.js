@@ -281,6 +281,66 @@ export default function PhysicsDashboard() {
           </div>
         )}
 
+        {/* Grid Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          {physicsUnits.map((unit) => (
+            <div 
+              key={unit.id}
+              className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 group text-left relative overflow-hidden"
+            >
+              {/* Card Link Overlay */}
+              <Link 
+                href={`/units/${unit.id}`}
+                className="absolute inset-0 z-10"
+              />
+
+              {/* Checkbox button positioned in top right */}
+              <div className="absolute top-6 right-6 z-20">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleUnit(unit.id);
+                  }}
+                  className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all cursor-pointer ${
+                    completedUnits[unit.id]
+                      ? 'bg-green-500 border-green-500 text-white shadow-md scale-110'
+                      : 'border-gray-300 hover:border-blue-500 hover:scale-105 bg-white'
+                  }`}
+                  title={completedUnits[unit.id] ? "නිම නොකළ ලෙස ලකුණු කරන්න" : "නිම කළ බව සලකුණු කරන්න"}
+                  aria-label={`Mark Unit ${unit.id} as completed`}
+                >
+                  {completedUnits[unit.id] ? (
+                    <svg className="w-4 h-4 fill-current font-bold" viewBox="0 0 20 20">
+                      <path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/>
+                    </svg>
+                  ) : (
+                    <span className="w-2.5 h-2.5 rounded-full bg-transparent hover:bg-slate-200"></span>
+                  )}
+                </button>
+              </div>
+
+              {/* Content Wrapper */}
+              <div>
+                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${unit.color} flex items-center justify-center text-2xl text-white shadow-sm mb-4`}>
+                  {unit.icon}
+                </div>
+                <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Unit {unit.id}</span>
+                <h3 className="text-xl font-bold text-gray-900 mt-1 group-hover:text-blue-600 transition-colors">
+                  {unit.name}
+                </h3>
+                <p className="text-sm text-gray-500 mt-2 line-clamp-2">
+                  {unit.topics}
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-sm font-semibold text-gray-700">
+                <span>ඇතුළු වන්න</span>
+                <span className="text-blue-600 group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Model Papers Section */}
         <div id="model-papers" className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm scroll-mt-20">
           <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2 mb-2">
@@ -340,66 +400,6 @@ export default function PhysicsDashboard() {
               })}
             </div>
           )}
-        </div>
-
-        {/* Grid Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {physicsUnits.map((unit) => (
-            <div 
-              key={unit.id}
-              className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 group text-left relative overflow-hidden"
-            >
-              {/* Card Link Overlay */}
-              <Link 
-                href={`/units/${unit.id}`}
-                className="absolute inset-0 z-10"
-              />
-
-              {/* Checkbox button positioned in top right */}
-              <div className="absolute top-6 right-6 z-20">
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleUnit(unit.id);
-                  }}
-                  className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all cursor-pointer ${
-                    completedUnits[unit.id]
-                      ? 'bg-green-500 border-green-500 text-white shadow-md scale-110'
-                      : 'border-gray-300 hover:border-blue-500 hover:scale-105 bg-white'
-                  }`}
-                  title={completedUnits[unit.id] ? "නිම නොකළ ලෙස ලකුණු කරන්න" : "නිම කළ බව සලකුණු කරන්න"}
-                  aria-label={`Mark Unit ${unit.id} as completed`}
-                >
-                  {completedUnits[unit.id] ? (
-                    <svg className="w-4 h-4 fill-current font-bold" viewBox="0 0 20 20">
-                      <path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/>
-                    </svg>
-                  ) : (
-                    <span className="w-2.5 h-2.5 rounded-full bg-transparent hover:bg-slate-200"></span>
-                  )}
-                </button>
-              </div>
-
-              {/* Content Wrapper */}
-              <div>
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${unit.color} flex items-center justify-center text-2xl text-white shadow-sm mb-4`}>
-                  {unit.icon}
-                </div>
-                <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Unit {unit.id}</span>
-                <h3 className="text-xl font-bold text-gray-900 mt-1 group-hover:text-blue-600 transition-colors">
-                  {unit.name}
-                </h3>
-                <p className="text-sm text-gray-500 mt-2 line-clamp-2">
-                  {unit.topics}
-                </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-sm font-semibold text-gray-700">
-                <span>ඇතුළු වන්න</span>
-                <span className="text-blue-600 group-hover:translate-x-1 transition-transform">→</span>
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Bottom AdSense Banner */}
