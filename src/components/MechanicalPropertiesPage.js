@@ -34,17 +34,22 @@ function Accordion({ title, children }) {
   );
 }
 
-export default function MechanicalPropertiesPage() {
-  const [liquid, setLiquid] = useState('water'); // water or glycerin
-  const [ballY, setBallY] = useState(0); // 0 to 150px motion
+// Viscosity Simulator Component to isolate high-frequency re-renders
+function ViscosityDropSimulationScreen({ liquid, isDropping, setIsDropping, onDropFinish, startDropTrigger }) {
+  const [ballY, setBallY] = useState(0);
   const [velocity, setVelocity] = useState(0);
-  const [isDropping, setIsDropping] = useState(false);
-  const [unit10Feedback, setUnit10Feedback] = useState('');
+
+  // When startDropTrigger changes, reset states and start animation
+  useEffect(() => {
+    if (startDropTrigger > 0) {
+      setBallY(0);
+      setVelocity(0);
+    }
+  }, [startDropTrigger]);
 
   useEffect(() => {
     let id;
     if (isDropping && ballY < 150) {
-      // ග්ලිසරින්වල දුස්ස්රාවිතාව වැඩි නිසා ආන්ත ප්‍රවේගය අඩු වේ, ජලයේ වේගය වැඩියි!
       const terminalVelocity = liquid === 'water' ? 8 : 2;
       id = setInterval(() => {
         setBallY((prev) => {
@@ -52,23 +57,47 @@ export default function MechanicalPropertiesPage() {
           if (next >= 150) {
             setIsDropping(false);
             setVelocity(terminalVelocity);
-            setUnit10Feedback(`🎉 නිශ්චලයි! ගෝලය එහි ආන්ත ප්‍රවේගයට (Terminal Velocity = ${terminalVelocity} m/s) ළඟා විය. ස්ටෝක්ස් නියමයට අනුව බල සමතුලිතතාව: W = U + F (මෙහි F = 6πηrv වේ).`);
+            onDropFinish(terminalVelocity);
             return 150;
           }
-          // Acceleration phase qualitatively simulated
           setVelocity(Math.min(terminalVelocity, parseFloat((prev * 0.1).toFixed(1))));
           return next;
         });
       }, 50);
     }
     return () => clearInterval(id);
-  }, [isDropping, ballY, liquid]);
+  }, [isDropping, ballY, liquid, setIsDropping, onDropFinish]);
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 w-full notranslate" translate="no">
+      <div className="md:col-span-5 flex flex-col justify-end">
+        <div className="p-4 bg-slate-950 font-mono text-xs text-center rounded-xl text-white">
+          වත්මන් වේගය: <span className="text-yellow-400 font-bold">{velocity} m/s</span>
+        </div>
+      </div>
+      <div className="md:col-span-7 bg-slate-900 h-64 rounded-xl relative flex items-center justify-center border border-slate-800">
+        <div className="w-16 h-48 bg-slate-800 border-2 border-slate-700 rounded-b-xl relative overflow-hidden flex justify-center">
+          <div className="absolute w-4 h-4 bg-slate-400 rounded-full border border-slate-200 transition-all duration-75" style={{ top: `${ballY}px` }}></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function MechanicalPropertiesPage() {
+  const [liquid, setLiquid] = useState('water'); // water or glycerin
+  const [isDropping, setIsDropping] = useState(false);
+  const [startDropTrigger, setStartDropTrigger] = useState(0);
+  const [unit10Feedback, setUnit10Feedback] = useState('');
 
   const startDrop = () => {
-    setBallY(0);
-    setVelocity(0);
+    setStartDropTrigger((prev) => prev + 1);
     setIsDropping(true);
     setUnit10Feedback('🧪 ගෝලය නිදහසේ පහළට වැටේ... වේගය ක්‍රමයෙන් වැඩි වී පසුව නියත වේ (ආන්ත ප්‍රවේගය).');
+  };
+
+  const handleDropFinish = (terminalVelocity) => {
+    setUnit10Feedback(`🎉 නිශ්චලයි! ගෝලය එහි ආන්ත ප්‍රවේගයට (Terminal Velocity = ${terminalVelocity} m/s) ළඟා විය. ස්ටෝක්ස් නියමයට අනුව බල සමතුලිතතාව: W = U + F (මෙහි F = 6πηrv වේ).`);
   };
 
   return (
@@ -297,21 +326,26 @@ export default function MechanicalPropertiesPage() {
         {/* Viscosity Test Widget */}
         <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
           <div className="bg-slate-900 text-white p-5"><h3 className="text-lg font-bold flex items-center gap-2">💧 Viscosity Drop Test (දුස්ස්රාවිතා පරීක්ෂණය)</h3></div>
-          <div className="p-6 grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div className="md:col-span-5 space-y-4">
-              <label className="text-xs font-bold text-slate-700 block">ද්‍රවය තෝරන්න:</label>
-              <div className="grid grid-cols-2 gap-2">
-                <button onClick={() => { setLiquid('water'); setBallY(0); setVelocity(0); }} className={`p-2 rounded-lg text-xs font-bold cursor-pointer transition ${liquid === 'water' ? 'bg-emerald-600 text-white shadow' : 'bg-white border text-slate-700'}`}>💧 ජලය (Water)</button>
-                <button onClick={() => { setLiquid('glycerin'); setBallY(0); setVelocity(0); }} className={`p-2 rounded-lg text-xs font-bold cursor-pointer transition ${liquid === 'glycerin' ? 'bg-emerald-600 text-white shadow' : 'bg-white border text-slate-700'}`}>🍯 ග්ලිසරින් (Glycerin)</button>
+          <div className="p-6">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              <div className="md:col-span-5 space-y-4">
+                <label className="text-xs font-bold text-slate-700 block">ද්‍රවය තෝරන්න:</label>
+                <div className="grid grid-cols-2 gap-2">
+                  <button onClick={() => setLiquid('water')} className={`p-2 rounded-lg text-xs font-bold cursor-pointer transition ${liquid === 'water' ? 'bg-emerald-600 text-white shadow' : 'bg-white border text-slate-700'}`}>💧 ජලය (Water)</button>
+                  <button onClick={() => setLiquid('glycerin')} className={`p-2 rounded-lg text-xs font-bold cursor-pointer transition ${liquid === 'glycerin' ? 'bg-emerald-600 text-white shadow' : 'bg-white border text-slate-700'}`}>🍯 ග්ලිසරින් (Glycerin)</button>
+                </div>
+                <button onClick={startDrop} className="w-full bg-slate-900 text-white p-3 rounded-lg text-xs font-bold flex items-center justify-center gap-2 shadow cursor-pointer hover:bg-slate-800 transition"><Play className="w-4 h-4" /> ගෝලය අත්හරින්න</button>
               </div>
-              <button onClick={startDrop} className="w-full bg-slate-900 text-white p-3 rounded-lg text-xs font-bold flex items-center justify-center gap-2 shadow cursor-pointer hover:bg-slate-800 transition"><Play className="w-4 h-4" /> ගෝලය අත්හරින්න</button>
-              <div className="p-4 bg-slate-950 font-mono text-xs text-center rounded-xl text-white">වත්මන් වේගය: <span className="text-yellow-400 font-bold">{velocity} m/s</span></div>
-            </div>
-            <div className="md:col-span-7 bg-slate-900 h-64 rounded-xl relative flex items-center justify-center border border-slate-800">
-              <div className="w-16 h-48 bg-slate-800 border-2 border-slate-700 rounded-b-xl relative overflow-hidden flex justify-center">
-                <div className={`absolute w-4 h-4 bg-slate-400 rounded-full border border-slate-200 transition-all duration-75`} style={{ top: `${ballY}px` }}></div>
+              <div className="md:col-span-7 relative">
+                <ViscosityDropSimulationScreen 
+                  liquid={liquid}
+                  isDropping={isDropping}
+                  setIsDropping={setIsDropping}
+                  onDropFinish={handleDropFinish}
+                  startDropTrigger={startDropTrigger}
+                />
+                {unit10Feedback && <div className="absolute bottom-2 left-2 right-2 text-[11px] bg-slate-950/90 text-slate-300 p-2 rounded text-center font-mono z-20">{unit10Feedback}</div>}
               </div>
-              {unit10Feedback && <div className="absolute bottom-2 left-2 right-2 text-[11px] bg-slate-950/90 text-slate-300 p-2 rounded text-center font-mono">{unit10Feedback}</div>}
             </div>
           </div>
         </div>

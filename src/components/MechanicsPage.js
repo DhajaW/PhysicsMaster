@@ -34,19 +34,10 @@ function Accordion({ title, children }) {
   );
 }
 
-export default function MechanicsPage() {
-  // Simulator 1: Ice Skater Angular Momentum States
-  const [armsExtended, setArmsExtended] = useState(true);
+// Ice Skater Visual Component to isolate state updates and prevent page-wide flickering
+function SkaterSimulationScreen({ isPlaying, armsExtended }) {
   const [rotationAngle, setRotationAngle] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
 
-  // Simulator 2: Motion Sign Convention States
-  const [chosenDirection, setChosenDirection] = useState('up'); // up is positive or down is positive
-  const [uInput, setUInput] = useState('10'); // Initial velocity
-  const [tInput, setTInput] = useState('2');  // Time
-  const [motionFeedback, setMotionFeedback] = useState({ status: '', msg: '' });
-
-  // Ice Skater Rotation Logic
   useEffect(() => {
     let interval;
     if (isPlaying) {
@@ -58,6 +49,34 @@ export default function MechanicsPage() {
     }
     return () => clearInterval(interval);
   }, [isPlaying, armsExtended]);
+
+  return (
+    <div className="md:col-span-7 bg-slate-950 h-56 rounded-xl flex items-center justify-center relative overflow-hidden border border-slate-800 notranslate" translate="no">
+      <div 
+        style={{ transform: `rotate(${rotationAngle}deg)` }}
+        className="w-24 h-24 rounded-full border-4 border-dashed border-red-500 flex items-center justify-center transition-transform duration-75"
+      >
+        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-xl shadow-lg">
+          {armsExtended ? '👐' : '🧍'}
+        </div>
+      </div>
+      <div className="absolute bottom-3 right-3 text-[10px] font-mono text-slate-500">
+        සජීවී භ්‍රමණ සමාකරණය
+      </div>
+    </div>
+  );
+}
+
+export default function MechanicsPage() {
+  // Simulator 1: Ice Skater Angular Momentum States
+  const [armsExtended, setArmsExtended] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  // Simulator 2: Motion Sign Convention States
+  const [chosenDirection, setChosenDirection] = useState('up'); // up is positive or down is positive
+  const [uInput, setUInput] = useState('10'); // Initial velocity
+  const [tInput, setTInput] = useState('2');  // Time
+  const [motionFeedback, setMotionFeedback] = useState({ status: '', msg: '' });
 
   // Motion Equation Check Logic
   const checkMotionEquation = () => {
@@ -348,19 +367,10 @@ export default function MechanicsPage() {
             </div>
 
             {/* Live Animation Graphic Visual */}
-            <div className="md:col-span-7 bg-slate-950 h-56 rounded-xl flex items-center justify-center relative overflow-hidden border border-slate-800">
-              <div 
-                style={{ transform: `rotate(${rotationAngle}deg)` }}
-                className="w-24 h-24 rounded-full border-4 border-dashed border-red-500 flex items-center justify-center transition-transform duration-75"
-              >
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-xl shadow-lg">
-                  {armsExtended ? '👐' : '🧍'}
-                </div>
-              </div>
-              <div className="absolute bottom-3 right-3 text-[10px] font-mono text-slate-500">
-                සජීවී භ්‍රමණ සමාකරණය
-              </div>
-            </div>
+            <SkaterSimulationScreen 
+              isPlaying={isPlaying}
+              armsExtended={armsExtended}
+            />
           </div>
         </div>
 

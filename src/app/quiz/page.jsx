@@ -26,6 +26,40 @@ const renderTextWithLatex = (text) => {
   });
 };
 
+// Quiz Timer Component to prevent parent re-renders every second
+function QuizTimer({ duration, isPaused, onTimeUp }) {
+  const [timeLeft, setTimeLeft] = useState(duration);
+
+  useEffect(() => {
+    if (timeLeft <= 0 || isPaused) return;
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          onTimeUp();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [timeLeft, isPaused, onTimeUp]);
+
+  const formatTime = (seconds) => {
+    const h = Math.floor(seconds / 3600).toString().padStart(2, "0");
+    const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, "0");
+    const s = (seconds % 60).toString().padStart(2, "0");
+    return `${h}:${m}:${s}`;
+  };
+
+  return (
+    <div className="flex items-center gap-3 text-cyan-400 font-bold notranslate" translate="no">
+      <Clock className="w-6 h-6 animate-pulse" />
+      <span className="text-xl tracking-wider font-mono">{formatTime(timeLeft)}</span>
+    </div>
+  );
+}
+
 function QuizContent() {
   const searchParams = useSearchParams();
   const paperParam = searchParams.get("paper") || "1";
@@ -33,7 +67,7 @@ function QuizContent() {
 
   const [questions, setQuestions] = useState([]);
   const [currentQ, setCurrentQ] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(2 * 60 * 60); // 2 hours (7200 seconds)
+  const [timerKey, setTimerKey] = useState(0); // Used to reset the QuizTimer component state
   const [answers, setAnswers] = useState({});
   const [loading, setLoading] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -69,27 +103,6 @@ function QuizContent() {
     fetchQuestions();
   }, [selectedPaper]);
 
-  // Timer Logic
-  useEffect(() => {
-    if (timeLeft <= 0 || loading || isSubmitted) return;
-    const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
-    return () => clearInterval(timer);
-  }, [timeLeft, loading, isSubmitted]);
-
-  // Auto-submit when timer reaches 0
-  useEffect(() => {
-    if (timeLeft === 0 && !isSubmitted && !loading && questions.length > 0) {
-      handleSubmit();
-    }
-  }, [timeLeft]);
-
-  const formatTime = (seconds) => {
-    const h = Math.floor(seconds / 3600).toString().padStart(2, "0");
-    const m = Math.floor((seconds % 3600) / 60).toString().padStart(2, "0");
-    const s = (seconds % 60).toString().padStart(2, "0");
-    return `${h}:${m}:${s}`;
-  };
-
   const handleSelectOption = (index) => {
     if (isSubmitted) return; // Prevent changing answers after submission
     setAnswers({ ...answers, [currentQ]: index });
@@ -103,7 +116,7 @@ function QuizContent() {
   const handleRestart = () => {
     setAnswers({});
     setCurrentQ(0);
-    setTimeLeft(2 * 60 * 60); // Reset to 2 hours
+    setTimerKey((prev) => prev + 1); // Reset the QuizTimer state by changing its key
     setIsSubmitted(false);
     setReviewMode(false);
   };
@@ -251,10 +264,12 @@ function QuizContent() {
         
         {/* Top Control Panel */}
         <div className="flex justify-between items-center bg-gray-900 p-4 rounded-2xl border border-gray-800 shadow-xl">
-          <div className="flex items-center gap-3 text-cyan-400 font-bold">
-            <Clock className="w-6 h-6 animate-pulse" />
-            <span className="text-xl tracking-wider font-mono">{formatTime(timeLeft)}</span>
-          </div>
+          <QuizTimer 
+            key={timerKey}
+            duration={2 * 60 * 60}
+            isPaused={isSubmitted || loading}
+            onTimeUp={handleSubmit}
+          />
           <div className="text-sm font-semibold text-gray-400">
             Paper {selectedPaper} | ප්‍රශ්න {currentQ + 1} / {questions.length}
           </div>

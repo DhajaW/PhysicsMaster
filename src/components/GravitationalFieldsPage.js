@@ -34,11 +34,57 @@ function Accordion({ title, children }) {
   );
 }
 
+// Satellite Simulator Visual Component to isolate state updates and prevent page-wide flickering
+function SatelliteSimulationScreen({ satelliteStatus, velocitySlider }) {
+  const [orbitAngle, setOrbitAngle] = useState(0);
+
+  useEffect(() => {
+    let interval;
+    if (satelliteStatus === 'orbit') {
+      interval = setInterval(() => {
+        setOrbitAngle((prev) => (prev + (velocitySlider * 0.5)) % 360);
+      }, 40);
+    }
+    return () => clearInterval(interval);
+  }, [satelliteStatus, velocitySlider]);
+
+  return (
+    <div className="lg:col-span-7 bg-slate-950 h-64 rounded-xl flex items-center justify-center relative overflow-hidden border border-slate-900 notranslate" translate="no">
+      {/* Earth Graphic */}
+      <div className="w-16 h-16 bg-blue-500 rounded-full border-2 border-cyan-400 flex items-center justify-center text-xl shadow-lg z-10">
+        🌍
+      </div>
+
+      {/* Orbit Path Ring */}
+      {satelliteStatus === 'orbit' && (
+        <div className="absolute w-44 h-44 rounded-full border border-dashed border-slate-700 animate-spin" style={{ animationDuration: '20s' }}></div>
+      )}
+
+      {/* Moving Satellite Graphic */}
+      {satelliteStatus === 'orbit' && (
+        <div 
+          className="absolute w-44 h-44 flex items-center justify-center transition-transform duration-75"
+          style={{ transform: `rotate(${orbitAngle}deg)` }}
+        >
+          <div className="text-sm absolute -top-2 transform rotate-90">🛰️</div>
+        </div>
+      )}
+
+      {satelliteStatus === 'crash' && (
+        <div className="absolute text-sm animate-bounce text-red-500 font-bold bg-slate-900/80 px-2 py-1 rounded border border-red-800">🔥 කඩා වැටුණි!</div>
+      )}
+
+      {satelliteStatus === 'escape' && (
+        <div className="absolute text-sm text-cyan-400 font-bold bg-slate-900/80 px-2 py-1 rounded border border-cyan-800 animate-pulse">🚀 ක්ෂේත්‍රයෙන් ඉවතට ඇදී යයි...</div>
+      )}
+    </div>
+  );
+}
+
 export default function GravitationalFieldsPage() {
   // Orbit Simulator States
   const [velocitySlider, setVelocitySlider] = useState(7.9); // km/s (Standard orbital speed)
   const [satelliteStatus, setSatelliteStatus] = useState('orbit'); // orbit, crash, escape
-  const [orbitAngle, setOrbitAngle] = useState(0);
   const [simFeedback, setSimFeedback] = useState({ status: 'normal', msg: '✨ චන්ද්‍රිකාව පෘථිවිය වටා ස්ථාවර කක්ෂයක ගමන් කරයි.' });
 
   // Quiz State
@@ -62,17 +108,6 @@ export default function GravitationalFieldsPage() {
     setSatelliteStatus(status);
     setSimFeedback({ status, msg });
   }, [velocitySlider]);
-
-  // Orbit Animation Ring
-  useEffect(() => {
-    let interval;
-    if (satelliteStatus === 'orbit') {
-      interval = setInterval(() => {
-        setOrbitAngle((prev) => (prev + (velocitySlider * 0.5)) % 360);
-      }, 40);
-    }
-    return () => clearInterval(interval);
-  }, [satelliteStatus, velocitySlider]);
 
   const checkEnergyQuiz = () => {
     if (selectedEnergyAns === 'negative') {
@@ -288,35 +323,10 @@ export default function GravitationalFieldsPage() {
             </div>
 
             {/* Orbit Graphics Screen */}
-            <div className="lg:col-span-7 bg-slate-950 h-64 rounded-xl flex items-center justify-center relative overflow-hidden border border-slate-900">
-              {/* Earth Graphic */}
-              <div className="w-16 h-16 bg-blue-500 rounded-full border-2 border-cyan-400 flex items-center justify-center text-xl shadow-lg z-10">
-                🌍
-              </div>
-
-              {/* Orbit Path Ring */}
-              {satelliteStatus === 'orbit' && (
-                <div className="absolute w-44 h-44 rounded-full border border-dashed border-slate-700 animate-spin" style={{ animationDuration: '20s' }}></div>
-              )}
-
-              {/* Moving Satellite Graphic */}
-              {satelliteStatus === 'orbit' && (
-                <div 
-                  className="absolute w-44 h-44 flex items-center justify-center transition-transform duration-75"
-                  style={{ transform: `rotate(${orbitAngle}deg)` }}
-                >
-                  <div className="text-sm absolute -top-2 transform rotate-90">🛰️</div>
-                </div>
-              )}
-
-              {satelliteStatus === 'crash' && (
-                <div className="absolute text-sm animate-bounce text-red-500 font-bold bg-slate-900/80 px-2 py-1 rounded border border-red-800">🔥 කඩා වැටුණි!</div>
-              )}
-
-              {satelliteStatus === 'escape' && (
-                <div className="absolute text-sm text-cyan-400 font-bold bg-slate-900/80 px-2 py-1 rounded border border-cyan-800 animate-pulse">🚀 ක්ෂේත්‍රයෙන් ඉවතට ඇදී යයි...</div>
-              )}
-            </div>
+            <SatelliteSimulationScreen 
+              satelliteStatus={satelliteStatus}
+              velocitySlider={velocitySlider}
+            />
           </div>
         </div>
 
