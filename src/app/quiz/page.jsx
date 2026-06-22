@@ -72,6 +72,24 @@ function QuizContent() {
   const [loading, setLoading] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
+  const [isEnglish, setIsEnglish] = useState(false);
+
+  useEffect(() => {
+    const isEnglishActive = () => {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const c = cookies[i].trim();
+        if (c.startsWith('googtrans=')) {
+          const val = c.substring('googtrans='.length);
+          if (val.includes('/en')) {
+            return true;
+          }
+        }
+      }
+      return false;
+    };
+    setIsEnglish(isEnglishActive());
+  }, []);
 
   console.log("🧩 QuizContent Render State:", {
     isSubmitted,
@@ -148,22 +166,30 @@ function QuizContent() {
   const scorePercent = questions.length > 0 ? Math.round((correctCount / questions.length) * 100) : 0;
 
   // Grade and Feedback Generation
-  let gradeText = "නැවත පුහුණු වෙමු! 📚";
+  let gradeText = isEnglish ? "Let's practice again! 📚" : "නැවත පුහුණු වෙමු! 📚";
   let gradeColor = "text-red-400 border-red-500/30 bg-red-500/10";
-  let feedbackText = "භෞතික විද්‍යා සිද්ධාන්ත නැවත හොඳින් අධ්‍යයනය කර නැවත උත්සාහ කරන්න.";
+  let feedbackText = isEnglish 
+    ? "Study the physics theories again and try again." 
+    : "භෞතික විද්‍යා සිද්ධාන්ත නැවත හොඳින් අධ්‍යයනය කර නැවත උත්සාහ කරන්න.";
 
   if (scorePercent >= 75) {
-    gradeText = "විශිෂ්ටයි! A සාමාර්ථයක් 🏆🎓";
+    gradeText = isEnglish ? "Excellent! A Pass 🏆🎓" : "විශිෂ්ටයි! A සාමාර්ථයක් 🏆🎓";
     gradeColor = "text-yellow-400 border-yellow-500/30 bg-yellow-500/10";
-    feedbackText = "ඔබගේ සූදානම ඉතාමත් විශිෂ්ට මට්ටමක පවතී. දිගටම මේ ආකාරයෙන්ම කැපවෙන්න!";
+    feedbackText = isEnglish 
+      ? "Your preparation is at an excellent level. Keep up the great work!" 
+      : "ඔබගේ සූදානම ඉතාමත් විශිෂ්ට මට්ටමක පවතී. දිගටම මේ ආකාරයෙන්ම කැපවෙන්න!";
   } else if (scorePercent >= 60) {
-    gradeText = "ඉතා හොඳයි! B සාමාර්ථයක් 🌟";
+    gradeText = isEnglish ? "Very Good! B Pass 🌟" : "ඉතා හොඳයි! B සාමාර්ථයක් 🌟";
     gradeColor = "text-emerald-400 border-emerald-500/30 bg-emerald-500/10";
-    feedbackText = "නියමයි මචන්! තව සුළු වැරදි කිහිපයක් පමණයි හැදාගන්න තියෙන්නේ. දිගටම කරගෙන යමු.";
+    feedbackText = isEnglish 
+      ? "Great job! Only a few minor mistakes left to fix. Keep going." 
+      : "නියමයි මචන්! තව සුළු වැරදි කිහිපයක් පමණයි හැදාගන්න තියෙන්නේ. දිගටම කරගෙන යමු.";
   } else if (scorePercent >= 45) {
-    gradeText = "සාමාන්‍යයි! C/S සාමාර්ථයක් 💪";
+    gradeText = isEnglish ? "Average! C/S Pass 💪" : "සාමාන්‍යයි! C/S සාමාර්ථයක් 💪";
     gradeColor = "text-blue-400 border-blue-500/30 bg-blue-500/10";
-    feedbackText = "තව ටිකක් උත්සාහ කළහොත් ඔබට ඉහළ සාමාර්ථයකට ළඟා විය හැක.";
+    feedbackText = isEnglish 
+      ? "With a little more effort, you can reach a higher grade." 
+      : "තව ටිකක් උත්සාහ කළහොත් ඔබට ඉහළ සාමාර්ථයකට ළඟා විය හැක.";
   }
 
   // Loading Screen
@@ -171,7 +197,11 @@ function QuizContent() {
     return (
       <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center text-cyan-500">
         <Loader2 className="w-12 h-12 animate-spin mb-4" />
-        <p className="text-xl font-semibold animate-pulse">ප්‍රශ්න පත්‍රය (Paper {selectedPaper}) සූදානම් කරමින් පවතී...</p>
+        <p className="text-xl font-semibold animate-pulse notranslate" translate="no">
+          {isEnglish 
+            ? `Preparing the quiz (Paper ${selectedPaper})...` 
+            : `ප්‍රශ්න පත්‍රය (Paper ${selectedPaper}) සූදානම් කරමින් පවතී...`}
+        </p>
       </div>
     );
   }
@@ -182,10 +212,16 @@ function QuizContent() {
       <div className="min-h-screen bg-gray-950 flex items-center justify-center text-gray-400">
         <div className="text-center p-8 bg-gray-900 border border-gray-800 rounded-3xl max-w-md shadow-2xl">
           <AlertTriangle className="w-16 h-16 text-yellow-500 mx-auto mb-4 animate-bounce" />
-          <h3 className="text-xl font-bold text-white mb-2">ප්‍රශ්න කිසිවක් හමු නොවීය ❌</h3>
-          <p className="text-sm text-gray-500 mb-6">දැනට ප්‍රශ්න පත්‍ර {selectedPaper} සඳහා ප්‍රශ්න කිසිවක් දත්ත ගබඩාවේ සටහන් වී නොමැත.</p>
-          <Link href="/" className="inline-flex items-center justify-center px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition">
-            <ArrowLeft className="w-5 h-5 mr-2" /> Dashboard එකට යන්න
+          <h3 className="text-xl font-bold text-white mb-2 notranslate" translate="no">
+            {isEnglish ? "No questions found ❌" : "ප්‍රශ්න කිසිවක් හමු නොවීය ❌"}
+          </h3>
+          <p className="text-sm text-gray-500 mb-6 notranslate" translate="no">
+            {isEnglish 
+              ? `No questions are currently recorded in the database for Paper ${selectedPaper}.` 
+              : `දැනට ප්‍රශ්න පත්‍ර ${selectedPaper} සඳහා ප්‍රශ්න කිසිවක් දත්ත ගබඩාවේ සටහන් වී නොමැත.`}
+          </p>
+          <Link href="/" className="inline-flex items-center justify-center px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition notranslate" translate="no">
+            <ArrowLeft className="w-5 h-5 mr-2" /> {isEnglish ? "Go to Dashboard" : "Dashboard එකට යන්න"}
           </Link>
         </div>
       </div>
@@ -205,8 +241,8 @@ function QuizContent() {
               <span className={`px-4 py-1.5 rounded-full border text-sm font-bold uppercase tracking-wider ${gradeColor}`}>
                 {gradeText}
               </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-4 tracking-tight">
-                {scorePercent}% ලකුණු ප්‍රමාණයක්!
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-4 tracking-tight notranslate" translate="no">
+                {isEnglish ? `${scorePercent}% Score!` : `${scorePercent}% ලකුණු ප්‍රමාණයක්!`}
               </h1>
               <p className="text-sm text-slate-350 mt-3 max-w-md mx-auto leading-relaxed">
                 {feedbackText}
@@ -215,17 +251,17 @@ function QuizContent() {
 
             {/* Progress representation */}
             <div className="grid grid-cols-3 gap-4 pt-4">
-              <div className="bg-gray-850/50 p-4 rounded-2xl border border-gray-800/60">
+              <div className="bg-gray-850/50 p-4 rounded-2xl border border-gray-800/60 notranslate" translate="no">
                 <span className="block text-2xl font-extrabold text-green-400">{correctCount}</span>
-                <span className="text-xs text-gray-400 uppercase font-semibold tracking-wider">නිවැරදි</span>
+                <span className="text-xs text-gray-400 uppercase font-semibold tracking-wider">{isEnglish ? "Correct" : "නිවැරදි"}</span>
               </div>
-              <div className="bg-gray-850/50 p-4 rounded-2xl border border-gray-800/60">
+              <div className="bg-gray-850/50 p-4 rounded-2xl border border-gray-800/60 notranslate" translate="no">
                 <span className="block text-2xl font-extrabold text-red-400">{wrongCount}</span>
-                <span className="text-xs text-gray-400 uppercase font-semibold tracking-wider">වැරදි</span>
+                <span className="text-xs text-gray-400 uppercase font-semibold tracking-wider">{isEnglish ? "Wrong" : "වැරදි"}</span>
               </div>
-              <div className="bg-gray-850/50 p-4 rounded-2xl border border-gray-800/60">
+              <div className="bg-gray-850/50 p-4 rounded-2xl border border-gray-800/60 notranslate" translate="no">
                 <span className="block text-2xl font-extrabold text-gray-400">{unansweredCount}</span>
-                <span className="text-xs text-gray-400 uppercase font-semibold tracking-wider">නොකළ</span>
+                <span className="text-xs text-gray-400 uppercase font-semibold tracking-wider">{isEnglish ? "Unanswered" : "නොකළ"}</span>
               </div>
             </div>
           </div>
@@ -234,21 +270,24 @@ function QuizContent() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => setReviewMode(true)}
-              className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-2xl shadow-lg transition-all cursor-pointer"
+              className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-2xl shadow-lg transition-all cursor-pointer notranslate"
+              translate="no"
             >
-              <Eye className="w-5 h-5 mr-2" /> පිළිතුරු පත්‍රය පරීක්ෂා කරන්න
+              <Eye className="w-5 h-5 mr-2" /> {isEnglish ? "Review Answer Sheet" : "පිළිතුරු පත්‍රය පරීක්ෂා කරන්න"}
             </button>
             <button
               onClick={handleRestart}
-              className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-2xl shadow-md border border-gray-750 transition-all cursor-pointer"
+              className="flex-1 inline-flex items-center justify-center px-6 py-4 bg-gray-800 hover:bg-gray-700 text-white font-bold rounded-2xl shadow-md border border-gray-750 transition-all cursor-pointer notranslate"
+              translate="no"
             >
-              <RefreshCw className="w-5 h-5 mr-2" /> නැවත උත්සාහ කරන්න
+              <RefreshCw className="w-5 h-5 mr-2" /> {isEnglish ? "Try Again" : "නැවත උත්සාහ කරන්න"}
             </button>
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-6 py-4 bg-slate-900 hover:bg-slate-850 text-slate-300 font-bold rounded-2xl border border-slate-800 transition-all"
+              className="inline-flex items-center justify-center px-6 py-4 bg-slate-900 hover:bg-slate-850 text-slate-300 font-bold rounded-2xl border border-slate-800 transition-all notranslate"
+              translate="no"
             >
-              මුල් පිටුවට
+              {isEnglish ? "Go to Home" : "මුල් පිටුවට"}
             </Link>
           </div>
         </div>
@@ -270,22 +309,28 @@ function QuizContent() {
             isPaused={isSubmitted || loading}
             onTimeUp={handleSubmit}
           />
-          <div className="text-sm font-semibold text-gray-400">
-            Paper {selectedPaper} | ප්‍රශ්න {currentQ + 1} / {questions.length}
+          <div className="text-sm font-semibold text-gray-400 notranslate" translate="no">
+            {isEnglish ? (
+              `Paper ${selectedPaper} | Question ${currentQ + 1} / ${questions.length}`
+            ) : (
+              `Paper ${selectedPaper} | ප්‍රශ්න ${currentQ + 1} / ${questions.length}`
+            )}
           </div>
           {isSubmitted ? (
             <button 
               onClick={() => setReviewMode(false)}
-              className="px-4 py-1.5 rounded-xl border border-yellow-500/40 text-yellow-400 bg-yellow-500/10 font-bold text-xs hover:bg-yellow-500/20 transition cursor-pointer"
+              className="px-4 py-1.5 rounded-xl border border-yellow-500/40 text-yellow-400 bg-yellow-500/10 font-bold text-xs hover:bg-yellow-500/20 transition cursor-pointer notranslate"
+              translate="no"
             >
-              ප්‍රතිඵල බැලීමට
+              {isEnglish ? "View Results" : "ප්‍රතිඵල බැලීමට"}
             </button>
           ) : (
             <button 
               onClick={handleSubmit}
-              className="px-4 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow transition cursor-pointer"
+              className="px-4 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs shadow transition cursor-pointer notranslate"
+              translate="no"
             >
-              End Test ❌
+              {isEnglish ? "End Test ❌" : "End Test ❌"}
             </button>
           )}
         </div>
@@ -387,8 +432,8 @@ function QuizContent() {
           {/* Review Mode Explanatory Notes */}
           {isSubmitted && currentQuestion.explanation && (
             <div className="mt-8 p-5 bg-blue-500/10 border border-blue-500/30 rounded-2xl space-y-2.5 animate-fadeIn">
-              <h4 className="text-sm font-extrabold text-blue-400 uppercase tracking-widest flex items-center gap-1.5">
-                💡 විවරණය (Explanation):
+              <h4 className="text-sm font-extrabold text-blue-400 uppercase tracking-widest flex items-center gap-1.5 notranslate" translate="no">
+                💡 {isEnglish ? "Explanation:" : "විවරණය (Explanation):"}
               </h4>
               <p className="text-sm text-blue-200 leading-relaxed font-sans">
                 {renderTextWithLatex(currentQuestion.explanation)}
@@ -402,23 +447,26 @@ function QuizContent() {
           <button
             onClick={() => setCurrentQ((prev) => Math.max(0, prev - 1))}
             disabled={currentQ === 0}
-            className="flex items-center px-5 py-3.5 bg-gray-900 hover:bg-gray-850 border border-gray-800 text-white font-bold rounded-2xl disabled:opacity-40 disabled:hover:bg-gray-900 transition cursor-pointer"
+            className="flex items-center px-5 py-3.5 bg-gray-900 hover:bg-gray-850 border border-gray-800 text-white font-bold rounded-2xl disabled:opacity-40 disabled:hover:bg-gray-900 transition cursor-pointer notranslate"
+            translate="no"
           >
-            <ChevronLeft className="w-5 h-5 mr-1" /> පෙර ප්‍රශ්නය
+            <ChevronLeft className="w-5 h-5 mr-1" /> {isEnglish ? "Previous Question" : "පෙර ප්‍රශ්නය"}
           </button>
 
           {currentQ === questions.length - 1 ? (
             !isSubmitted ? (
               <button 
                 onClick={handleSubmit}
-                className="px-8 py-3.5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl font-extrabold text-white hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-0.5 transition cursor-pointer"
+                className="px-8 py-3.5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl font-extrabold text-white hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-0.5 transition cursor-pointer notranslate"
+                translate="no"
               >
                 Submit Quiz 🚀
               </button>
             ) : (
               <button 
                 onClick={handleRestart}
-                className="px-8 py-3.5 bg-gray-800 hover:bg-gray-700 rounded-2xl font-extrabold text-white transition cursor-pointer"
+                className="px-8 py-3.5 bg-gray-800 hover:bg-gray-700 rounded-2xl font-extrabold text-white transition cursor-pointer notranslate"
+                translate="no"
               >
                 Reset Exam 🔄
               </button>
@@ -426,9 +474,10 @@ function QuizContent() {
           ) : (
             <button
               onClick={() => setCurrentQ((prev) => Math.min(questions.length - 1, prev + 1))}
-              className="flex items-center px-5 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-2xl hover:-translate-y-0.5 shadow-md shadow-cyan-900/10 transition cursor-pointer"
+              className="flex items-center px-5 py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-2xl hover:-translate-y-0.5 shadow-md shadow-cyan-900/10 transition cursor-pointer notranslate"
+              translate="no"
             >
-              ඊළඟ ප්‍රශ්නය <ChevronRight className="w-5 h-5 ml-1" />
+              {isEnglish ? "Next Question" : "ඊළඟ ප්‍රශ්නය"} <ChevronRight className="w-5 h-5 ml-1" />
             </button>
           )}
         </div>
