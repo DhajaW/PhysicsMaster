@@ -12,6 +12,7 @@ import ElectromagnetismPage from '@/components/ElectromagnetismPage';
 import ElectronicsPage from '@/components/ElectronicsPage';
 import MechanicalPropertiesPage from '@/components/MechanicalPropertiesPage';
 import QuantumPhysicsPage from '@/components/QuantumPhysicsPage';
+import ParticleBackground from '@/components/ParticleBackground';
 
 const physicsUnitsSi = [
   { id: '01', name: 'මිනුම (Measurement)', icon: '📐', topics: 'භෞතික රාශි, මාන, මිනුම් උපකරණ, දෛශික', color: 'from-blue-500 to-indigo-600' },
@@ -83,15 +84,16 @@ export default async function UnitPage({ params }) {
 
   if (!unit) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-        <div className="text-center bg-white rounded-2xl p-8 shadow-xl max-w-md">
-          <h2 className="text-2xl font-bold text-red-650 mb-4">
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6 relative overflow-hidden">
+        <ParticleBackground mode="stars" />
+        <div className="text-center bg-slate-900/60 backdrop-blur border border-slate-800 rounded-2xl p-8 shadow-xl max-w-md relative z-10">
+          <h2 className="text-2xl font-bold text-red-550 mb-4">
             {lang === 'en' ? 'Unit Not Found ❌' : 'ඒකකය හමු නොවීය ❌'}
           </h2>
-          <p className="text-gray-650 mb-6 font-sans">
+          <p className="text-slate-350 mb-6 font-sans">
             {lang === 'en' ? 'The unit you are looking for does not exist.' : 'ඔබ සොයන ඒකකය පද්ධතිය තුළ නොපවතී.'}
           </p>
-          <Link href={`/${lang}`} className="inline-flex items-center text-blue-600 font-semibold hover:underline">
+          <Link href={`/${lang}`} className="inline-flex items-center text-blue-400 font-semibold hover:underline">
             <ArrowLeft className="w-5 h-5 mr-2" /> {lang === 'en' ? 'Back to Home' : 'ආපසු මුල් පිටුවට'}
           </Link>
         </div>
@@ -99,94 +101,80 @@ export default async function UnitPage({ params }) {
     );
   }
 
+  let pageContent = null;
   if (id === '01') {
-    return <MeasurementPage lang={lang} />;
-  }
+    pageContent = <MeasurementPage lang={lang} />;
+  } else if (id === '02') {
+    pageContent = <MechanicsPage lang={lang} />;
+  } else if (id === '03') {
+    pageContent = <WavesAndOpticsPage lang={lang} />;
+  } else if (id === '04') {
+    pageContent = <ThermalPhysicsPage lang={lang} />;
+  } else if (id === '05') {
+    pageContent = <GravitationalFieldsPage lang={lang} />;
+  } else if (id === '06') {
+    pageContent = <ElectrostaticsPage lang={lang} />;
+  } else if (id === '07') {
+    pageContent = <CurrentElectricityPage lang={lang} />;
+  } else if (id === '08') {
+    pageContent = <ElectromagnetismPage lang={lang} />;
+  } else if (id === '09') {
+    pageContent = <ElectronicsPage lang={lang} />;
+  } else if (id === '10') {
+    pageContent = <MechanicalPropertiesPage lang={lang} />;
+  } else if (id === '11') {
+    pageContent = <QuantumPhysicsPage lang={lang} />;
+  } else {
+    pageContent = (
+      <div className="min-h-screen bg-slate-950 font-sans pb-16">
+        {/* Top Banner */}
+        <div className={`bg-gradient-to-r ${unit.color} text-white py-12 px-6 shadow-md relative overflow-hidden`}>
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center relative z-10">
+            <div>
+              <Link href={`/${lang}`} className="inline-flex items-center text-white/90 hover:text-white mb-4 text-sm font-semibold transition bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg">
+                <ArrowLeft className="w-4 h-4 mr-2" /> {lang === 'en' ? 'Back to Dashboard' : 'ආපසු Dashboard එකට'}
+              </Link>
+              <div className="flex items-center gap-3">
+                <span className="text-3xl bg-white/20 p-2 rounded-xl shadow-inner">{unit.icon}</span>
+                <div>
+                  <span className="text-xs uppercase tracking-wider text-white/80 font-bold">Unit {unit.id}</span>
+                  <h1 className="text-3xl font-extrabold mt-1">{unit.name}</h1>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 md:mt-0 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/20 text-sm">
+              {lang === 'en' ? '🎯 Exam Weight: ' : '🎯 විභාග බර තැබීම: '}
+              <span className="font-bold text-yellow-300">{lang === 'en' ? 'Very High' : 'ඉතා ඉහළයි'}</span>
+            </div>
+          </div>
+          <div className="absolute right-0 bottom-0 translate-y-1/2 translate-x-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+        </div>
 
-  if (id === '02') {
-    return <MechanicsPage lang={lang} />;
-  }
-
-  if (id === '03') {
-    return <WavesAndOpticsPage lang={lang} />;
-  }
-
-  if (id === '04') {
-    return <ThermalPhysicsPage lang={lang} />;
-  }
-
-  if (id === '05') {
-    return <GravitationalFieldsPage lang={lang} />;
-  }
-
-  if (id === '06') {
-    return <ElectrostaticsPage lang={lang} />;
-  }
-
-  if (id === '07') {
-    return <CurrentElectricityPage lang={lang} />;
-  }
-
-  if (id === '08') {
-    return <ElectromagnetismPage lang={lang} />;
-  }
-
-  if (id === '09') {
-    return <ElectronicsPage lang={lang} />;
-  }
-
-  if (id === '10') {
-    return <MechanicalPropertiesPage lang={lang} />;
-  }
-
-  if (id === '11') {
-    return <QuantumPhysicsPage lang={lang} />;
-  }
-
-  // Fallback layout (should not normally be reached as all 11 units are covered above)
-  const isUnit07 = id === '07';
-
-  return (
-    <div className="min-h-screen bg-gray-50 font-sans pb-16">
-      {/* Top Banner */}
-      <div className={`bg-gradient-to-r ${unit.color} text-white py-12 px-6 shadow-md relative overflow-hidden`}>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center relative z-10">
-          <div>
-            <Link href={`/${lang}`} className="inline-flex items-center text-white/90 hover:text-white mb-4 text-sm font-semibold transition bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg">
-              <ArrowLeft className="w-4 h-4 mr-2" /> {lang === 'en' ? 'Back to Dashboard' : 'ආපසු Dashboard එකට'}
-            </Link>
-            <div className="flex items-center gap-3">
-              <span className="text-3xl bg-white/20 p-2 rounded-xl shadow-inner">{unit.icon}</span>
-              <div>
-                <span className="text-xs uppercase tracking-wider text-white/80 font-bold">Unit {unit.id}</span>
-                <h1 className="text-3xl font-extrabold mt-1">{unit.name}</h1>
+        {/* Content Area */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Main Syllabus Details */}
+            <div className="lg:col-span-8 space-y-8">
+              <div className="bg-slate-900/40 backdrop-blur border border-slate-800 rounded-2xl p-6 shadow-sm">
+                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                  <BookOpen className="w-6 h-6 text-blue-400" /> {lang === 'en' ? 'Key Syllabus Topics' : 'විෂය නිර්දේශයේ ප්‍රධාන කොටස් (Topics)'}
+                </h2>
+                <p className="text-slate-300 leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-850">
+                  {unit.topics}
+                </p>
               </div>
             </div>
           </div>
-          <div className="mt-4 md:mt-0 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-xl border border-white/20 text-sm">
-            {lang === 'en' ? '🎯 Exam Weight: ' : '🎯 විභාග බර තැබීම: '}
-            <span className="font-bold text-yellow-300">{lang === 'en' ? 'Very High' : 'ඉතා ඉහළයි'}</span>
-          </div>
         </div>
-        <div className="absolute right-0 bottom-0 translate-y-1/2 translate-x-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
       </div>
+    );
+  }
 
-      {/* Content Area */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
-          {/* Main Syllabus Details */}
-          <div className="lg:col-span-8 space-y-8">
-            <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <BookOpen className="w-6 h-6 text-blue-600" /> {lang === 'en' ? 'Key Syllabus Topics' : 'විෂය නිර්දේශයේ ප්‍රධාන කොටස් (Topics)'}
-              </h2>
-              <p className="text-gray-700 leading-relaxed bg-gray-50 p-4 rounded-xl border border-gray-150">
-                {unit.topics}
-              </p>
-            </div>
-          </div>
-        </div>
+  return (
+    <div className="relative min-h-screen bg-slate-950 overflow-hidden">
+      <ParticleBackground mode="stars" />
+      <div className="relative z-10">
+        {pageContent}
       </div>
     </div>
   );

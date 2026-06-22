@@ -7,6 +7,8 @@ import AnimatedLogo from '@/components/AnimatedLogo';
 import AdPlaceholder from '@/components/AdPlaceholder';
 import { supabase } from '../../lib/supabase';
 import { translations } from '@/lib/translations';
+import ParticleBackground from '@/components/ParticleBackground';
+import ThreeDAtom from '@/components/ThreeDAtom';
 
 // 11 Physics Units in Sinhala and English
 const physicsUnitsSi = [
@@ -134,9 +136,11 @@ export default function PhysicsDashboard({ lang = 'si' }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans relative overflow-hidden">
+      <ParticleBackground mode="nodes" />
+      
       {/* Top Navigation Bar */}
-      <nav className="bg-white border-b border-gray-200 fixed top-0 w-full z-50">
+      <nav className="bg-slate-950/80 backdrop-blur-md border-b border-slate-900 fixed top-0 w-full z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             {/* Logo Section */}
@@ -144,12 +148,12 @@ export default function PhysicsDashboard({ lang = 'si' }) {
               <AnimatedLogo />
             </div>
             <div className="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-base">
-              <Link href={`/${lang}/lessons`} className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
-                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
+              <Link href={`/${lang}/lessons`} className="flex items-center text-slate-300 hover:text-cyan-400 font-medium transition-colors">
+                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1 text-cyan-500" />
                 <span className="hidden sm:inline">{lang === 'en' ? 'Lessons' : 'පාඩම් මාලා'}</span>
               </Link>
-              <Link href={`/${lang}/exam-secrets`} className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
-                <Target className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
+              <Link href={`/${lang}/exam-secrets`} className="flex items-center text-slate-300 hover:text-cyan-400 font-medium transition-colors">
+                <Target className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1 text-cyan-500" />
                 <span className="hidden sm:inline">{lang === 'en' ? 'Exam Secrets' : 'විභාග රහස්'}</span>
               </Link>
             </div>
@@ -158,11 +162,13 @@ export default function PhysicsDashboard({ lang = 'si' }) {
       </nav>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 relative z-10">
         {/* Welcome Section */}
-        <div className="mb-10 text-center md:text-left bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white shadow-lg flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex-1 text-left">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-white flex flex-wrap items-center justify-start gap-x-2 gap-y-1 tracking-wide">
+        <div className="mb-10 text-center md:text-left bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-8 text-white shadow-2xl flex flex-col lg:flex-row justify-between items-center gap-8 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-cyan-500/5 pointer-events-none"></div>
+          
+          <div className="flex-1 text-left relative z-10 space-y-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight flex flex-wrap items-center justify-start gap-x-2 gap-y-1">
               {isEnglish ? (
                 <>
                   <span>Master Physics with your mind</span>
@@ -210,27 +216,30 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                 👋
               </span>
             </h1>
-            <p className="text-slate-300 max-w-2xl text-base md:text-lg">
+            <p className="text-slate-400 max-w-2xl text-base md:text-lg leading-relaxed">
               {isEnglish 
                 ? 'Syllabus notes, practical examples, marking scheme traps, and interactive web simulators in one single portal.'
                 : 'සම්පත් පොත්වල අන්තර්ගතය, ප්රායෝගික උදාහරණ, විභාගයේදී ලකුණු ලැබෙන Paper Marking රහස් සහ Interactive Simulators සියල්ල එකම තැනකින්.'}
             </p>
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              <Link 
+                href={`/${lang}/formulas`} 
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all duration-300 shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5"
+              >
+                <Calculator className="w-5 h-5 mr-2" />
+                Formula Cheat Sheet 🧮
+              </Link>
+              <a 
+                href="#model-papers" 
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold transition-all duration-300 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-0.5"
+              >
+                <Brain className="w-5 h-5 mr-2" />
+                Model Papers 📝
+              </a>
+            </div>
           </div>
-          <div className="flex-shrink-0 w-full md:w-auto flex flex-col sm:flex-row gap-3">
-            <Link 
-              href={`/${lang}/formulas`} 
-              className="w-full md:w-auto inline-flex items-center justify-center px-6 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500 hover:-translate-y-0.5"
-            >
-              <Calculator className="w-5 h-5 mr-2" />
-              Formula Cheat Sheet 🧮
-            </Link>
-            <a 
-              href="#model-papers" 
-              className="w-full md:w-auto inline-flex items-center justify-center px-6 py-4 rounded-xl bg-cyan-600 hover:bg-cyan-700 text-white font-bold transition-all duration-200 shadow-md hover:shadow-lg border border-cyan-500 hover:-translate-y-0.5"
-            >
-              <Brain className="w-5 h-5 mr-2" />
-              Model Papers 📝
-            </a>
+          <div className="flex-shrink-0 relative z-10 flex justify-center items-center">
+            <ThreeDAtom />
           </div>
         </div>
 
@@ -239,13 +248,13 @@ export default function PhysicsDashboard({ lang = 'si' }) {
 
         {/* Progress Tracker Section */}
         {isLoaded && (
-          <div className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm transition-all duration-300 text-left">
+          <div className="mb-10 bg-slate-900/40 backdrop-blur border border-slate-800/80 rounded-3xl p-6 shadow-xl transition-all duration-300 text-left">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
               <div>
-                <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <h2 className="text-xl font-bold text-white flex items-center gap-2">
                   📊 {isEnglish ? 'My Study Progress Tracker' : '📊 මගේ අධ්‍යයන ප්‍රගතිය (Study Progress Tracker)'}
                 </h2>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-slate-400 mt-1">
                   {isEnglish
                     ? 'Check the units you have completed to keep track of your coverage of the A/L Physics syllabus.'
                     : 'A/L Physics ගොඩදාන්න ඔයා සම්පූර්ණ කරපු පාඩම් ටික පහල පාඩම්වලින් ටික් කරලා ප්‍රගතිය මෙතනින් බලාගන්න.'}
@@ -259,15 +268,15 @@ export default function PhysicsDashboard({ lang = 'si' }) {
 
             <div className="space-y-3">
               <div className="flex justify-between items-center text-sm font-semibold">
-                <span className="text-blue-600 font-bold bg-blue-50 px-2.5 py-1 rounded-lg">
+                <span className="text-blue-400 font-bold bg-blue-500/10 px-2.5 py-1 rounded-lg border border-blue-500/20">
                   {isEnglish ? `Completed: ${completedCount} / ${totalUnits}` : `නිමකළ ඒකක: ${completedCount} / ${totalUnits}`}
                 </span>
-                <span className="text-emerald-600 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg">
+                <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/20">
                   {progressPercent}% {isEnglish ? 'Complete' : 'සම්පූර්ණයි'}
                 </span>
               </div>
               
-              <div className="w-full bg-gray-105 h-5 rounded-full overflow-hidden border border-gray-200 relative shadow-inner">
+              <div className="w-full bg-slate-950 h-5 rounded-full overflow-hidden border border-slate-800 relative shadow-inner">
                 <div 
                   className="bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 h-full rounded-full transition-all duration-1000 ease-out relative"
                   style={{ width: `${progressPercent}%` }}
@@ -276,7 +285,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                 </div>
               </div>
               
-              <p className="text-xs text-gray-400 italic text-center md:text-left mt-2">
+              <p className="text-xs text-slate-500 italic text-center md:text-left mt-2">
                 {rankDesc}
               </p>
             </div>
@@ -288,7 +297,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
           {physicsUnits.map((unit) => (
             <div 
               key={unit.id}
-              className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between hover:-translate-y-1 group text-left relative overflow-hidden"
+              className="bg-slate-900/40 backdrop-blur border border-slate-800/80 rounded-2xl p-6 shadow-xl hover:shadow-2xl hover:border-slate-700 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 group text-left relative overflow-hidden"
             >
               {/* Card Link Overlay */}
               <Link 
@@ -307,7 +316,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                   className={`w-7 h-7 rounded-full border-2 flex items-center justify-center transition-all cursor-pointer ${
                     completedUnits[unit.id]
                       ? 'bg-green-500 border-green-500 text-white shadow-md scale-110'
-                      : 'border-gray-300 hover:border-blue-500 hover:scale-105 bg-white'
+                      : 'border-slate-700 hover:border-blue-500 hover:scale-105 bg-slate-950 text-slate-400'
                   }`}
                   title={isEnglish 
                     ? (completedUnits[unit.id] ? "Mark as uncompleted" : "Mark as completed") 
@@ -319,7 +328,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                       <path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/>
                     </svg>
                   ) : (
-                    <span className="w-2.5 h-2.5 rounded-full bg-transparent hover:bg-slate-200"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-transparent hover:bg-slate-800"></span>
                   )}
                 </button>
               </div>
@@ -329,40 +338,40 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                 <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${unit.color} flex items-center justify-center text-2xl text-white shadow-sm mb-4`}>
                   {unit.icon}
                 </div>
-                <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">Unit {unit.id}</span>
-                <h3 className="text-xl font-bold text-gray-900 mt-1 group-hover:text-blue-600 transition-colors">
+                <span className="text-xs font-semibold text-blue-400 uppercase tracking-wider">Unit {unit.id}</span>
+                <h3 className="text-xl font-bold text-white mt-1 group-hover:text-cyan-400 transition-colors">
                   {unit.name}
                 </h3>
-                <p className="text-sm text-gray-500 mt-2 line-clamp-2">
+                <p className="text-sm text-slate-400 mt-2 line-clamp-2">
                   {unit.topics}
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-sm font-semibold text-gray-700">
+              <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-sm font-semibold text-slate-350">
                 <span>{isEnglish ? 'Study Now' : 'ඇතුළු වන්න'}</span>
-                <span className="text-blue-600 group-hover:translate-x-1 transition-transform">→</span>
+                <span className="text-blue-400 group-hover:translate-x-1.5 transition-transform">→</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Model Papers Section */}
-        <div id="model-papers" className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm scroll-mt-20 text-left">
-          <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2 mb-2">
+        <div id="model-papers" className="mb-10 bg-slate-900/40 backdrop-blur border border-slate-800/80 rounded-3xl p-6 shadow-xl scroll-mt-20 text-left">
+          <h2 className="text-xl font-bold text-white flex items-center gap-2 mb-2">
             📝 {isEnglish ? 'Practice Model Papers (MCQ)' : '📝 ආදර්ශ ප්‍රශ්න පත්‍ර (Model Papers MCQ)'}
           </h2>
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="text-sm text-slate-400 mb-6">
             {isEnglish 
               ? 'Evaluate your score by taking multiple choice tests timed exactly like the G.C.E. A/L exam.' 
               : 'A/L විභාගයට සමාන මට්ටමේ බහුවරණ ප්‍රශ්න පත්‍ර (MCQ Papers) කාලය මැන ක්‍රියාත්මක කර ඔබේ සූදානම පරීක්ෂා කරන්න.'}
           </p>
 
           {loadingPapers ? (
-            <div className="flex justify-center items-center py-12 text-blue-600">
+            <div className="flex justify-center items-center py-12 text-blue-400">
               <Loader2 className="w-8 h-8 animate-spin mr-2" />
               <span className="text-sm font-semibold">{isEnglish ? 'Loading exams...' : 'ප්‍රශ්න පත්‍ර ලැයිස්තුව ලෝඩ් වෙමින් පවතී...'}</span>
             </div>
           ) : availablePapers.length === 0 ? (
-            <div className="text-center py-10 text-slate-400 border border-dashed border-slate-200 rounded-xl">
+            <div className="text-center py-10 text-slate-500 border border-dashed border-slate-800 rounded-xl">
               <p className="text-sm">{isEnglish ? 'No model papers available in database.' : 'දැනට කිසිදු ආදර්ශ ප්‍රශ්න පත්‍රයක් දත්ත ගබඩාවේ නැත.'}</p>
             </div>
           ) : (
@@ -371,12 +380,12 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                 const unit = getUnitForPaper(paperNo);
                 const isEven = paperNo % 2 === 0;
                 const badgeClass = isEven ? 'bg-pink-500/20 text-pink-400' : 'bg-cyan-500/20 text-cyan-400';
-                const buttonClass = isEven ? 'bg-pink-600 hover:bg-pink-550' : 'bg-cyan-600 hover:bg-cyan-550';
+                const buttonClass = isEven ? 'bg-pink-600 hover:bg-pink-500' : 'bg-cyan-600 hover:bg-cyan-500';
 
                 return (
                   <div 
                     key={paperNo}
-                    className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 text-white border border-slate-700 flex flex-col justify-between hover:shadow-md transition-all group relative overflow-hidden text-left"
+                    className="bg-slate-900/60 backdrop-blur border border-slate-850 rounded-2xl p-6 text-white hover:border-slate-700 flex flex-col justify-between hover:shadow-2xl transition-all duration-350 group relative overflow-hidden text-left"
                   >
                     <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:20px_20px]"></div>
                     <div>
@@ -386,7 +395,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                       <h3 className="text-xl font-bold text-white mt-3 mb-2">
                         {isEnglish ? `Unit ${paperNo.toString().padStart(2, '0')} Practice Paper` : `${unit.name} ප්‍රශ්න පත්‍රය ${paperNo.toString().padStart(2, '0')}`}
                       </h3>
-                      <p className="text-sm text-slate-300 mb-6 leading-relaxed">
+                      <p className="text-sm text-slate-350 mb-6 leading-relaxed">
                         {isEnglish 
                           ? `A/L standard MCQ practice paper prepared for Unit ${paperNo.toString().padStart(2, '0')} topics.` 
                           : `${unit.topics} ආශ්‍රිතව විභාග මට්ටමට සකස් කරන ලද බහුවරණ ප්‍රශ්න පත්‍රය.`}
@@ -398,7 +407,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                       </span>
                       <Link 
                         href={`/${lang}/quiz?paper=${paperNo}`}
-                        className={`px-4 py-2 rounded-lg text-white font-bold text-sm shadow transition-all hover:-translate-y-0.5 ${buttonClass} cursor-pointer`}
+                        className={`px-4 py-2 rounded-lg text-white font-bold text-sm shadow transition-all hover:scale-105 ${buttonClass} cursor-pointer`}
                       >
                         {isEnglish ? 'Start Exam 🚀' : 'ආරම්භ කරන්න 🚀'}
                       </Link>

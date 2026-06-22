@@ -73,7 +73,7 @@ export default async function RootLayout({ children, params }) {
   
   return (
     <html lang={lang || "si"} className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-gray-50">
+      <body className="min-h-full flex flex-col bg-slate-950 text-slate-100">
         <main className="flex-grow">
           {children}
         </main>

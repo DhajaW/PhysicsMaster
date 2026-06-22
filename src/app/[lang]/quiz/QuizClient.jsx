@@ -5,6 +5,8 @@ import { Clock, ChevronRight, ChevronLeft, CheckCircle2, Loader2, Award, Refresh
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { useSearchParams } from "next/navigation";
+import ParticleBackground from "@/components/ParticleBackground";
+import quizTranslations from "@/data/quiz_translations.json";
 
 // KaTeX CSS සහ Components
 import 'katex/dist/katex.min.css';
@@ -94,13 +96,27 @@ function QuizContent({ lang }) {
       if (error) {
         console.error("Error fetching questions:", error);
       } else {
-        setQuestions(data || []);
+        const processed = (data || []).map(q => {
+          if (isEnglish) {
+            const translation = quizTranslations[q.id.toString()];
+            if (translation) {
+              return {
+                ...q,
+                question_text: translation.question_text_en,
+                options: translation.options_en,
+                explanation: translation.explanation_en
+              };
+            }
+          }
+          return q;
+        });
+        setQuestions(processed);
       }
       setLoading(false);
     };
 
     fetchQuestions();
-  }, [selectedPaper]);
+  }, [selectedPaper, isEnglish]);
 
   const handleSelectOption = (index) => {
     if (isSubmitted) return; // Prevent changing answers after submission
@@ -469,14 +485,22 @@ function QuizContent({ lang }) {
 }
 
 export default function QuizClient({ lang }) {
+  const isEnglish = lang === 'en';
   return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center text-cyan-500">
-        <Loader2 className="w-12 h-12 animate-spin mb-4" />
-        <p className="text-xl font-semibold animate-pulse">ප්‍රශ්න පත්‍රය සූදානම් කරමින් පවතී...</p>
+    <div className="relative min-h-screen bg-slate-950 overflow-hidden">
+      <ParticleBackground mode="stars" />
+      <div className="relative z-10">
+        <Suspense fallback={
+          <div className="min-h-screen flex flex-col items-center justify-center text-cyan-500">
+            <Loader2 className="w-12 h-12 animate-spin mb-4" />
+            <p className="text-xl font-semibold animate-pulse">
+              {isEnglish ? "Preparing the quiz..." : "ප්‍රශ්න පත්‍රය සූදානම් කරමින් පවතී..."}
+            </p>
+          </div>
+        }>
+          <QuizContent lang={lang} />
+        </Suspense>
       </div>
-    }>
-      <QuizContent lang={lang} />
-    </Suspense>
+    </div>
   );
 }

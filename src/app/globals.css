@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #030712;
+  --foreground: #f3f4f6;
   --font-inter: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --font-noto-sinhala: 'Noto Sans Sinhala', 'Iskoola Pota', 'Abhaya Libre', 'Noto Serif Sinhala', sans-serif;
 }
@@ -17,6 +17,132 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-noto-sinhala), var(--font-inter), sans-serif;
+}
+
+/* ----------------------------------------------------
+   PREMIUM GLASSMORPHIC DARK THEME GLOBAL OVERRIDES
+   ---------------------------------------------------- */
+
+/* Force page background dark */
+.bg-gray-50, .bg-slate-50, .min-h-screen, .bg-slate-100, .bg-gray-100 {
+  background-color: #030712 !important;
+  color: #f3f4f6 !important;
+}
+
+/* Glassmorphism for standard white cards */
+.bg-white {
+  background-color: rgba(15, 23, 42, 0.55) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Readability - Force Light Neutral Colors on text classes */
+.text-slate-900, .text-gray-900, .text-slate-850, .text-slate-800, .text-slate-750, .text-slate-700, .text-gray-800, .text-gray-700 {
+  color: #f3f4f6 !important;
+}
+.text-slate-600, .text-slate-500, .text-gray-650, .text-gray-600, .text-gray-500, .text-slate-650 {
+  color: #94a3b8 !important; /* slate-400 */
+}
+
+/* Highlighted Equations / Formulas Box styling */
+.bg-slate-50.font-mono, 
+.bg-gray-50.font-mono, 
+p.font-mono, 
+pre.font-mono, 
+ul.font-mono, 
+.font-mono.bg-slate-50 {
+  background-color: rgba(6, 182, 212, 0.08) !important;
+  border: 1px solid rgba(6, 182, 212, 0.25) !important;
+  color: #38bdf8 !important; /* light blue/cyan font */
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.08) !important;
+  border-radius: 0.75rem !important;
+}
+.bg-slate-50.font-mono *, 
+.bg-gray-50.font-mono *, 
+p.font-mono *, 
+pre.font-mono *, 
+ul.font-mono * {
+  color: #38bdf8 !important;
+}
+
+/* Custom Warning / Exam Traps Boxes styling */
+.bg-orange-50.border-orange-200 {
+  background-color: rgba(245, 158, 11, 0.08) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  color: #fbbf24 !important; /* gold/amber font */
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.05) !important;
+  border-radius: 0.75rem !important;
+}
+.bg-orange-50.border-orange-200 * {
+  color: #fbbf24 !important;
+}
+
+/* Header Gradient Contrast Improvement Overlay */
+div.bg-gradient-to-r.text-white {
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+div.bg-gradient-to-r.text-white::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15)) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+div.bg-gradient-to-r.text-white > * {
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Dashboard Progress Tracker border-radius and background */
+.bg-gray-105 {
+  background-color: rgba(3, 7, 18, 0.6) !important;
+}
+
+/* Language Switcher floating button glass style override */
+button.fixed.bottom-4.right-4, button.fixed.bottom-6.right-6 {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: #ffffff !important;
+}
+button.fixed.bottom-4.right-4:hover, button.fixed.bottom-6.right-6:hover {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Accordion custom styling in dark mode */
+.border-b.border-slate-100 {
+  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
+}
+.border-b.border-slate-100 button span {
+  color: #f3f4f6 !important;
+}
+.border-b.border-slate-100 button:hover span {
+  color: #22d3ee !important; /* cyan-400 */
+}
+
+/* Sub-simulators background */
+.bg-slate-950 {
+  background-color: #020617 !important;
+}
+
+/* Footer border styling */
+footer.bg-slate-900 {
+  background-color: #030712 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Interactive elements transition */
+a, button {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* Google Translate styles override */
