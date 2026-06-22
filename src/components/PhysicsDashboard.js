@@ -6,9 +6,10 @@ import { BookOpen, Target, Calculator, Brain, Heart, Loader2 } from 'lucide-reac
 import AnimatedLogo from '@/components/AnimatedLogo';
 import AdPlaceholder from '@/components/AdPlaceholder';
 import { supabase } from '../../lib/supabase';
+import { translations } from '@/lib/translations';
 
-// NotebookLM Blueprint එක මත පදනම් වූ පාඩම් දත්ත
-const physicsUnits = [
+// 11 Physics Units in Sinhala and English
+const physicsUnitsSi = [
   { id: '01', name: 'මිනුම (Measurement)', icon: '📐', topics: 'භෞතික රාශි, මාන, මිනුම් උපකරණ, දෛශික', color: 'from-blue-500 to-indigo-600' },
   { id: '02', name: 'යාන්ත්ර විද්යාව (Mechanics)', icon: '⚙️', topics: 'බලය හා චලිතය, කාර්යය-ශක්තිය, භ්රමණ චලිතය', color: 'from-red-500 to-orange-600' },
   { id: '03', name: 'දෝලන හා තරංග (Waves)', icon: '🌊', topics: 'සරල අනුවර්තීය චලිතය, ධ්වනි විද්යාව, ප්රකාශ විද්යාව', color: 'from-teal-500 to-emerald-600' },
@@ -22,39 +23,40 @@ const physicsUnits = [
   { id: '11', name: 'පදාර්ථ හා විකිරණ (Radiation)', icon: '⚛️', topics: 'ප්රකාශ විද්යුත් ආචරණය, X-කිරණ, විකිරණශීලිතාව', color: 'from-fuchsia-600 to-purple-600' }
 ];
 
-const getUnitForPaper = (paperNo) => {
-  const paddedId = paperNo.toString().padStart(2, '0');
-  return physicsUnits.find(u => u.id === paddedId) || {
-    name: `ප්‍රශ්න පත්‍රය ${paperNo} (Paper ${paperNo})`,
-    topics: 'භෞතික විද්‍යාව විෂය නිර්දේශය ආශ්‍රිත ප්‍රශ්න පත්‍රය.',
-    color: 'from-slate-750 to-slate-850'
-  };
-};
+const physicsUnitsEn = [
+  { id: '01', name: 'Measurement', icon: '📐', topics: 'Physical Quantities, Dimensions, Measuring Instruments, Vectors', color: 'from-blue-500 to-indigo-600' },
+  { id: '02', name: 'Mechanics', icon: '⚙️', topics: 'Force and Motion, Work-Energy, Rotational Motion', color: 'from-red-500 to-orange-600' },
+  { id: '03', name: 'Oscillations & Waves', icon: '🌊', topics: 'Simple Harmonic Motion, Acoustics, Optics', color: 'from-teal-500 to-emerald-600' },
+  { id: '04', name: 'Thermal Physics', icon: '🔥', topics: 'Thermometry, Thermal Expansion, Heat Transfer', color: 'from-orange-500 to-amber-600' },
+  { id: '05', name: 'Gravitational Fields', icon: '🌍', topics: 'Newtons Law of Gravitation, Satellite Orbits', color: 'from-purple-500 to-indigo-600' },
+  { id: '06', name: 'Electrostatic Fields', icon: '⚡', topics: 'Electric Field Lines, Electric Potential, Capacitors', color: 'from-blue-600 to-cyan-500' },
+  { id: '07', name: '💡 Current Electricity', icon: '🔌', topics: 'Ohms Law, Kirchhoffs Laws, Circuit Diagrams', color: 'from-yellow-500 to-orange-600' },
+  { id: '08', name: 'Electromagnetism', icon: '🧲', topics: 'Magnetic Fields, Electromagnetic Induction', color: 'from-violet-600 to-purple-500' },
+  { id: '09', name: 'Electronics', icon: '🎛️', topics: 'Semiconductors, Transistors, Logic Gates', color: 'from-pink-500 to-rose-600' },
+  { id: '10', name: 'Mechanical Properties of Matter', icon: '🧪', topics: 'Elasticity, Viscosity, Surface Tension', color: 'from-emerald-500 to-cyan-600' },
+  { id: '11', name: 'Matter and Radiation', icon: '⚛️', topics: 'Photoelectric Effect, X-Rays, Radioactivity', color: 'from-fuchsia-600 to-purple-600' }
+];
 
-export default function PhysicsDashboard() {
+export default function PhysicsDashboard({ lang = 'si' }) {
   const [completedUnits, setCompletedUnits] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [availablePapers, setAvailablePapers] = useState([]);
   const [loadingPapers, setLoadingPapers] = useState(true);
-  const [isEnglish, setIsEnglish] = useState(false);
+
+  const isEnglish = lang === 'en';
+  const t = translations[lang] || translations.si;
+  const physicsUnits = isEnglish ? physicsUnitsEn : physicsUnitsSi;
+
+  const getUnitForPaper = (paperNo) => {
+    const paddedId = paperNo.toString().padStart(2, '0');
+    return physicsUnits.find(u => u.id === paddedId) || {
+      name: isEnglish ? `Model Paper ${paperNo}` : `ප්‍රශ්න පත්‍රය ${paperNo}`,
+      topics: isEnglish ? 'Questions from across the A/L Physics syllabus.' : 'භෞතික විද්‍යාව විෂය නිර්දේශය ආශ්‍රිත ප්‍රශ්න පත්‍රය.',
+      color: 'from-slate-750 to-slate-850'
+    };
+  };
 
   useEffect(() => {
-    // Check if English translation is active
-    const isEnglishActive = () => {
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-        const c = cookies[i].trim();
-        if (c.startsWith('googtrans=')) {
-          const val = c.substring('googtrans='.length);
-          if (val.includes('/en')) {
-            return true;
-          }
-        }
-      }
-      return false;
-    };
-    setIsEnglish(isEnglishActive());
-
     const saved = localStorage.getItem('physics_progress_v1');
     if (saved) {
       try {
@@ -105,29 +107,29 @@ export default function PhysicsDashboard() {
   const progressPercent = totalUnits > 0 ? Math.round((completedCount / totalUnits) * 100) : 0;
 
   // Gamified ranks based on progress
-  let rankName = "භෞතික විද්‍යා ආධුනිකයා 📐";
-  let rankDesc = "අදම ඔයාගේ A/L Physics ගමන ආරම්භ කරන්න!";
+  let rankName = isEnglish ? "Physics Novice 📐" : "භෞතික විද්‍යා ආධුනිකයා 📐";
+  let rankDesc = isEnglish ? "Start your A/L Physics study journey today!" : "අදම ඔයාගේ A/L Physics ගමන ආරම්භ කරන්න!";
   let rankColor = "from-slate-400 to-slate-500";
 
   if (completedCount >= 11) {
-    rankName = "Quantum මහාචාර්ය ⚛️🏆";
-    rankDesc = "නියමයි! ඔබ සියලුම ඒකක සාර්ථකව අවසන් කර ඇත!";
+    rankName = isEnglish ? "Quantum Professor ⚛️🏆" : "Quantum මහාචාර්ය ⚛️🏆";
+    rankDesc = isEnglish ? "Perfect! You have completed all 11 physics units!" : "නියමයි! ඔබ සියලුම ඒකක සාර්ථකව අවසන් කර ඇත!";
     rankColor = "from-yellow-500 via-amber-500 to-orange-500 animate-pulse";
   } else if (completedCount >= 9) {
-    rankName = "අයින්ස්ටයින්ගේ අනුගාමිකයා 🧠⚡";
-    rankDesc = "විශිෂ්ටයි! ඔබ සැබෑ භෞතික විද්‍යා විශාරදයෙක් වීමට ඉතා ආසන්නයි!";
+    rankName = isEnglish ? "Einstein Follower 🧠⚡" : "අයින්ස්ටයින්ගේ අනුගාමිකයා 🧠⚡";
+    rankDesc = isEnglish ? "Excellent! You are very close to becoming a true master." : "විශිෂ්ටයි! ඔබ සැබෑ භෞතික විද්‍යා විශාරදයෙක් වීමට ඉතා ආසන්නයි!";
     rankColor = "from-fuchsia-500 to-purple-600";
   } else if (completedCount >= 7) {
-    rankName = "ගුරුත්වාකර්ෂණ මාස්ටර් 🌍🧲";
-    rankDesc = "නියමයි මචන්! තව ඒකක කිහිපයයි. දිගටම යමු!";
+    rankName = isEnglish ? "Gravity Master 🌍🧲" : "ගුරුත්වාකර්ෂණ මාස්ටර් 🌍🧲";
+    rankDesc = isEnglish ? "Great job! Just a few more units left. Keep pushing!" : "නියමයි මචන්! තව ඒකක කිහිපයයි. දිගටම යමු!";
     rankColor = "from-indigo-500 to-blue-600";
   } else if (completedCount >= 4) {
-    rankName = "පරිපථ ශිල්පී 🔌🔋";
-    rankDesc = "සාර්ථකව ඉදිරියට යනවා! ඔබේ උත්සාහය විශිෂ්ටයි.";
+    rankName = isEnglish ? "Circuit Specialist 🔌🔋" : "පරිපථ ශිල්පී 🔌🔋";
+    rankDesc = isEnglish ? "Great progress! Your effort is paying off." : "සාර්ථකව ඉදිරියට යනවා! ඔබේ උත්සාහය විශිෂ්ටයි.";
     rankColor = "from-emerald-500 to-teal-600";
   } else if (completedCount >= 1) {
-    rankName = "පරීක්ෂණ සහායක 🧪⚙️";
-    rankDesc = "පළමු පියවර සාර්ථකයි! දිගටම පාඩම් ටික එකතු කරමු.";
+    rankName = isEnglish ? "Lab Assistant 🧪⚙️" : "පරීක්ෂණ සහායක 🧪⚙️";
+    rankDesc = isEnglish ? "First step completed! Let\'s keep adding completed lessons." : "පළමු පියවර සාර්ථකයි! දිගටම පාඩම් ටික එකතු කරමු.";
     rankColor = "from-cyan-500 to-blue-500";
   }
 
@@ -142,13 +144,13 @@ export default function PhysicsDashboard() {
               <AnimatedLogo />
             </div>
             <div className="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-base">
-              <Link href="/lessons" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
+              <Link href={`/${lang}/lessons`} className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
                 <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
-                <span className="hidden sm:inline">පාඩම් මාලා</span>
+                <span className="hidden sm:inline">{lang === 'en' ? 'Lessons' : 'පාඩම් මාලා'}</span>
               </Link>
-              <Link href="/exam-secrets" className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
+              <Link href={`/${lang}/exam-secrets`} className="flex items-center text-gray-600 hover:text-blue-600 font-medium">
                 <Target className="w-4 h-4 sm:w-5 sm:h-5 sm:mr-1" />
-                <span className="hidden sm:inline">විභාග රහස්</span>
+                <span className="hidden sm:inline">{lang === 'en' ? 'Exam Secrets' : 'විභාග රහස්'}</span>
               </Link>
             </div>
           </div>
@@ -159,63 +161,64 @@ export default function PhysicsDashboard() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         {/* Welcome Section */}
         <div className="mb-10 text-center md:text-left bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-8 text-white shadow-lg flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex-1">
-            {isEnglish ? (
-              <h1 className="text-3xl md:text-4xl font-bold mb-3 text-white flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1 tracking-wide notranslate">
-                <span>Master Physics with your mind</span>
-                <span 
-                  className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
-                  style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
-                >
-                  <Brain className="w-8 h-8 md:w-9 md:h-9 text-pink-500 fill-pink-500" />
-                </span>
-                <span>, love it with your heart</span>
-                <span 
-                  className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle"
-                  style={{ 
-                    filter: 'drop-shadow(0 0 10px rgba(244, 63, 94, 0.8))',
-                    animation: 'pulse 1s ease-in-out infinite'
-                  }}
-                >
-                  <Heart className="w-8 h-8 md:w-9 md:h-9 text-rose-500 fill-rose-500" />
-                </span>
-                <span>. Let's truly understand it!</span>
-                <span className="inline-block hover:rotate-12 hover:-translate-y-1 transition-all duration-300 cursor-default origin-bottom-right ml-1">
-                  👋
-                </span>
-              </h1>
-            ) : (
-              <h1 className="text-3xl md:text-4xl font-bold mb-3 text-white flex flex-wrap items-center justify-center md:justify-start gap-x-2 gap-y-1 tracking-wide">
-                <span>භෞතික විද්‍යාව මොළේට</span>
-                <span 
-                  className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
-                  style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
-                >
-                  <Brain className="w-8 h-8 md:w-9 md:h-9 text-pink-500 fill-pink-500" />
-                </span>
-                <span>වගේම හදවතටත්</span>
-                <span 
-                  className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle"
-                  style={{ 
-                    filter: 'drop-shadow(0 0 10px rgba(244, 63, 94, 0.8))',
-                    animation: 'pulse 1s ease-in-out infinite'
-                  }}
-                >
-                  <Heart className="w-8 h-8 md:w-9 md:h-9 text-rose-500 fill-rose-500" />
-                </span>
-                <span>දැනෙන්න ඉගෙන ගමු!</span>
-                <span className="inline-block hover:rotate-12 hover:-translate-y-1 transition-all duration-300 cursor-default origin-bottom-right ml-1">
-                  👋
-                </span>
-              </h1>
-            )}
+          <div className="flex-1 text-left">
+            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-white flex flex-wrap items-center justify-start gap-x-2 gap-y-1 tracking-wide">
+              {isEnglish ? (
+                <>
+                  <span>Master Physics with your mind</span>
+                  <span 
+                    className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
+                    style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
+                  >
+                    <Brain className="w-8 h-8 md:w-9 md:h-9 text-pink-500 fill-pink-500" />
+                  </span>
+                  <span>, love it with your heart</span>
+                  <span 
+                    className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle"
+                    style={{ 
+                      filter: 'drop-shadow(0 0 10px rgba(244, 63, 94, 0.8))',
+                      animation: 'pulse 1s ease-in-out infinite'
+                    }}
+                  >
+                    <Heart className="w-8 h-8 md:w-9 md:h-9 text-rose-500 fill-rose-500" />
+                  </span>
+                  <span>. Let's truly understand it!</span>
+                </>
+              ) : (
+                <>
+                  <span>භෞතික විද්‍යාව මොළේට</span>
+                  <span 
+                    className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
+                    style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
+                  >
+                    <Brain className="w-8 h-8 md:w-9 md:h-9 text-pink-500 fill-pink-500" />
+                  </span>
+                  <span>වගේම හදවතටත්</span>
+                  <span 
+                    className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle"
+                    style={{ 
+                      filter: 'drop-shadow(0 0 10px rgba(244, 63, 94, 0.8))',
+                      animation: 'pulse 1s ease-in-out infinite'
+                    }}
+                  >
+                    <Heart className="w-8 h-8 md:w-9 md:h-9 text-rose-500 fill-rose-500" />
+                  </span>
+                  <span>දැනෙන්න ඉගෙන ගමු!</span>
+                </>
+              )}
+              <span className="inline-block hover:rotate-12 hover:-translate-y-1 transition-all duration-300 cursor-default origin-bottom-right ml-1">
+                👋
+              </span>
+            </h1>
             <p className="text-slate-300 max-w-2xl text-base md:text-lg">
-              සම්පත් පොත්වල අන්තර්ගතය, ප්රායෝගික උදාහරණ, විභාගයේදී ලකුණු ලැබෙන Paper Marking රහස් සහ Interactive Simulators සියල්ල එකම තැනකින්.
+              {isEnglish 
+                ? 'Syllabus notes, practical examples, marking scheme traps, and interactive web simulators in one single portal.'
+                : 'සම්පත් පොත්වල අන්තර්ගතය, ප්රායෝගික උදාහරණ, විභාගයේදී ලකුණු ලැබෙන Paper Marking රහස් සහ Interactive Simulators සියල්ල එකම තැනකින්.'}
             </p>
           </div>
           <div className="flex-shrink-0 w-full md:w-auto flex flex-col sm:flex-row gap-3">
             <Link 
-              href="/formulas" 
+              href={`/${lang}/formulas`} 
               className="w-full md:w-auto inline-flex items-center justify-center px-6 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all duration-200 shadow-md hover:shadow-lg border border-blue-500 hover:-translate-y-0.5"
             >
               <Calculator className="w-5 h-5 mr-2" />
@@ -236,18 +239,20 @@ export default function PhysicsDashboard() {
 
         {/* Progress Tracker Section */}
         {isLoaded && (
-          <div className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm transition-all duration-300">
+          <div className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm transition-all duration-300 text-left">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
               <div>
                 <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                  📊 මගේ අධ්‍යයන ප්‍රගතිය (Study Progress Tracker)
+                  📊 {isEnglish ? 'My Study Progress Tracker' : '📊 මගේ අධ්‍යයන ප්‍රගතිය (Study Progress Tracker)'}
                 </h2>
                 <p className="text-sm text-gray-500 mt-1">
-                  A/L Physics ගොඩදාන්න ඔයා සම්පූර්ණ කරපු පාඩම් ටික පහල පාඩම්වලින් ටික් කරලා ප්‍රගතිය මෙතනින් බලාගන්න.
+                  {isEnglish
+                    ? 'Check the units you have completed to keep track of your coverage of the A/L Physics syllabus.'
+                    : 'A/L Physics ගොඩදාන්න ඔයා සම්පූර්ණ කරපු පාඩම් ටික පහල පාඩම්වලින් ටික් කරලා ප්‍රගතිය මෙතනින් බලාගන්න.'}
                 </p>
               </div>
               <div className={`px-4 py-2 rounded-xl bg-gradient-to-r ${rankColor} text-white font-bold text-sm shadow-sm flex items-center gap-1.5`}>
-                <span>කාණ්ඩය:</span>
+                <span>{isEnglish ? 'Rank:' : 'කාණ්ඩය:'}</span>
                 <span>{rankName}</span>
               </div>
             </div>
@@ -255,21 +260,18 @@ export default function PhysicsDashboard() {
             <div className="space-y-3">
               <div className="flex justify-between items-center text-sm font-semibold">
                 <span className="text-blue-600 font-bold bg-blue-50 px-2.5 py-1 rounded-lg">
-                  නිමකළ ඒකක: {completedCount} / {totalUnits}
+                  {isEnglish ? `Completed: ${completedCount} / ${totalUnits}` : `නිමකළ ඒකක: ${completedCount} / ${totalUnits}`}
                 </span>
                 <span className="text-emerald-600 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg">
-                  {progressPercent}% සම්පූර්ණයි
+                  {progressPercent}% {isEnglish ? 'Complete' : 'සම්පූර්ණයි'}
                 </span>
               </div>
               
-              {/* Outer Progress Bar */}
               <div className="w-full bg-gray-105 h-5 rounded-full overflow-hidden border border-gray-200 relative shadow-inner">
-                {/* Inner animated bar */}
                 <div 
                   className="bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 h-full rounded-full transition-all duration-1000 ease-out relative"
                   style={{ width: `${progressPercent}%` }}
                 >
-                  {/* Shiny overlay */}
                   <div className="absolute inset-0 bg-white/20 animate-[pulse_2s_infinite] rounded-full"></div>
                 </div>
               </div>
@@ -290,7 +292,7 @@ export default function PhysicsDashboard() {
             >
               {/* Card Link Overlay */}
               <Link 
-                href={`/units/${unit.id}`}
+                href={`/${lang}/units/${unit.id}`}
                 className="absolute inset-0 z-10"
               />
 
@@ -307,7 +309,9 @@ export default function PhysicsDashboard() {
                       ? 'bg-green-500 border-green-500 text-white shadow-md scale-110'
                       : 'border-gray-300 hover:border-blue-500 hover:scale-105 bg-white'
                   }`}
-                  title={completedUnits[unit.id] ? "නිම නොකළ ලෙස ලකුණු කරන්න" : "නිම කළ බව සලකුණු කරන්න"}
+                  title={isEnglish 
+                    ? (completedUnits[unit.id] ? "Mark as uncompleted" : "Mark as completed") 
+                    : (completedUnits[unit.id] ? "නිම නොකළ ලෙස ලකුණු කරන්න" : "නිම කළ බව සලකුණු කරන්න")}
                   aria-label={`Mark Unit ${unit.id} as completed`}
                 >
                   {completedUnits[unit.id] ? (
@@ -334,7 +338,7 @@ export default function PhysicsDashboard() {
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-sm font-semibold text-gray-700">
-                <span>ඇතුළු වන්න</span>
+                <span>{isEnglish ? 'Study Now' : 'ඇතුළු වන්න'}</span>
                 <span className="text-blue-600 group-hover:translate-x-1 transition-transform">→</span>
               </div>
             </div>
@@ -342,22 +346,24 @@ export default function PhysicsDashboard() {
         </div>
 
         {/* Model Papers Section */}
-        <div id="model-papers" className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm scroll-mt-20">
+        <div id="model-papers" className="mb-10 bg-white rounded-2xl p-6 border border-gray-200 shadow-sm scroll-mt-20 text-left">
           <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2 mb-2">
-            📝 ආදර්ශ ප්‍රශ්න පත්‍ර (Model Papers MCQ)
+            📝 {isEnglish ? 'Practice Model Papers (MCQ)' : '📝 ආදර්ශ ප්‍රශ්න පත්‍ර (Model Papers MCQ)'}
           </h2>
           <p className="text-sm text-gray-500 mb-6">
-            A/L විභාගයට සමාන මට්ටමේ බහුවරණ ප්‍රශ්න පත්‍ර (MCQ Papers) කාලය මැන ක්‍රියාත්මක කර ඔබේ සූදානම පරීක්ෂා කරන්න.
+            {isEnglish 
+              ? 'Evaluate your score by taking multiple choice tests timed exactly like the G.C.E. A/L exam.' 
+              : 'A/L විභාගයට සමාන මට්ටමේ බහුවරණ ප්‍රශ්න පත්‍ර (MCQ Papers) කාලය මැන ක්‍රියාත්මක කර ඔබේ සූදානම පරීක්ෂා කරන්න.'}
           </p>
 
           {loadingPapers ? (
             <div className="flex justify-center items-center py-12 text-blue-600">
               <Loader2 className="w-8 h-8 animate-spin mr-2" />
-              <span className="text-sm font-semibold">ප්‍රශ්න පත්‍ර ලැයිස්තුව ලෝඩ් වෙමින් පවතී...</span>
+              <span className="text-sm font-semibold">{isEnglish ? 'Loading exams...' : 'ප්‍රශ්න පත්‍ර ලැයිස්තුව ලෝඩ් වෙමින් පවතී...'}</span>
             </div>
           ) : availablePapers.length === 0 ? (
             <div className="text-center py-10 text-slate-400 border border-dashed border-slate-200 rounded-xl">
-              <p className="text-sm">දැනට කිසිදු ආදර්ශ ප්‍රශ්න පත්‍රයක් දත්ත ගබඩාවේ නැත.</p>
+              <p className="text-sm">{isEnglish ? 'No model papers available in database.' : 'දැනට කිසිදු ආදර්ශ ප්‍රශ්න පත්‍රයක් දත්ත ගබඩාවේ නැත.'}</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -370,7 +376,7 @@ export default function PhysicsDashboard() {
                 return (
                   <div 
                     key={paperNo}
-                    className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 text-white border border-slate-700 flex flex-col justify-between hover:shadow-md transition-all group relative overflow-hidden"
+                    className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 text-white border border-slate-700 flex flex-col justify-between hover:shadow-md transition-all group relative overflow-hidden text-left"
                   >
                     <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:20px_20px]"></div>
                     <div>
@@ -378,21 +384,23 @@ export default function PhysicsDashboard() {
                         Paper {paperNo.toString().padStart(2, '0')}
                       </span>
                       <h3 className="text-xl font-bold text-white mt-3 mb-2">
-                        {unit.name} ප්‍රශ්න පත්‍රය {paperNo.toString().padStart(2, '0')}
+                        {isEnglish ? `Unit ${paperNo.toString().padStart(2, '0')} Practice Paper` : `${unit.name} ප්‍රශ්න පත්‍රය ${paperNo.toString().padStart(2, '0')}`}
                       </h3>
                       <p className="text-sm text-slate-300 mb-6 leading-relaxed">
-                        {unit.topics} ආශ්‍රිතව විභාග මට්ටමට සකස් කරන ලද බහුවරණ ප්‍රශ්න පත්‍රය.
+                        {isEnglish 
+                          ? `A/L standard MCQ practice paper prepared for Unit ${paperNo.toString().padStart(2, '0')} topics.` 
+                          : `${unit.topics} ආශ්‍රිතව විභාග මට්ටමට සකස් කරන ලද බහුවරණ ප්‍රශ්න පත්‍රය.`}
                       </p>
                     </div>
                     <div className="flex items-center justify-between mt-4">
                       <span className="text-xs text-slate-400 font-semibold flex items-center gap-1">
-                        ⏱️ පැය 2:00 | 📝 MCQ 50
+                        ⏱️ {isEnglish ? 'Duration 2:00 h | 50 MCQs' : '⏱️ පැය 2:00 | 📝 MCQ 50'}
                       </span>
                       <Link 
-                        href={`/quiz?paper=${paperNo}`}
-                        className={`px-4 py-2 rounded-lg text-white font-bold text-sm shadow transition-all hover:-translate-y-0.5 ${buttonClass}`}
+                        href={`/${lang}/quiz?paper=${paperNo}`}
+                        className={`px-4 py-2 rounded-lg text-white font-bold text-sm shadow transition-all hover:-translate-y-0.5 ${buttonClass} cursor-pointer`}
                       >
-                        ආරම්භ කරන්න 🚀
+                        {isEnglish ? 'Start Exam 🚀' : 'ආරම්භ කරන්න 🚀'}
                       </Link>
                     </div>
                   </div>

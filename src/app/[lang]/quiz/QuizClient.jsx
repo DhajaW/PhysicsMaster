@@ -1,7 +1,5 @@
 "use client";
 
-export const dynamic = 'force-dynamic';
-
 import { useState, useEffect, Suspense } from "react";
 import { Clock, ChevronRight, ChevronLeft, CheckCircle2, Loader2, Award, RefreshCw, AlertTriangle, ArrowLeft, Eye } from "lucide-react";
 import Link from "next/link";
@@ -60,7 +58,7 @@ function QuizTimer({ duration, isPaused, onTimeUp }) {
   );
 }
 
-function QuizContent() {
+function QuizContent({ lang }) {
   const searchParams = useSearchParams();
   const paperParam = searchParams.get("paper") || "1";
   const selectedPaper = parseInt(paperParam, 10) || 1;
@@ -72,24 +70,7 @@ function QuizContent() {
   const [loading, setLoading] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [reviewMode, setReviewMode] = useState(false);
-  const [isEnglish, setIsEnglish] = useState(false);
-
-  useEffect(() => {
-    const isEnglishActive = () => {
-      const cookies = document.cookie.split(';');
-      for (let i = 0; i < cookies.length; i++) {
-        const c = cookies[i].trim();
-        if (c.startsWith('googtrans=')) {
-          const val = c.substring('googtrans='.length);
-          if (val.includes('/en')) {
-            return true;
-          }
-        }
-      }
-      return false;
-    };
-    setIsEnglish(isEnglishActive());
-  }, []);
+  const isEnglish = lang === 'en';
 
   console.log("🧩 QuizContent Render State:", {
     isSubmitted,
@@ -220,7 +201,7 @@ function QuizContent() {
               ? `No questions are currently recorded in the database for Paper ${selectedPaper}.` 
               : `දැනට ප්‍රශ්න පත්‍ර ${selectedPaper} සඳහා ප්‍රශ්න කිසිවක් දත්ත ගබඩාවේ සටහන් වී නොමැත.`}
           </p>
-          <Link href="/" className="inline-flex items-center justify-center px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition notranslate" translate="no">
+          <Link href={`/${lang}`} className="inline-flex items-center justify-center px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-xl transition notranslate" translate="no">
             <ArrowLeft className="w-5 h-5 mr-2" /> {isEnglish ? "Go to Dashboard" : "Dashboard එකට යන්න"}
           </Link>
         </div>
@@ -283,8 +264,8 @@ function QuizContent() {
               <RefreshCw className="w-5 h-5 mr-2" /> {isEnglish ? "Try Again" : "නැවත උත්සාහ කරන්න"}
             </button>
             <Link
-              href="/"
-              className="inline-flex items-center justify-center px-6 py-4 bg-slate-900 hover:bg-slate-850 text-slate-300 font-bold rounded-2xl border border-slate-800 transition-all notranslate"
+              href={`/${lang}`}
+              className="inline-flex items-center justify-center px-6 py-4 bg-slate-900 hover:bg-slate-855 text-slate-300 font-bold rounded-2xl border border-slate-800 transition-all notranslate"
               translate="no"
             >
               {isEnglish ? "Go to Home" : "මුල් පිටුවට"}
@@ -395,7 +376,7 @@ function QuizContent() {
               if (isSubmitted) {
                 if (isCorrectOpt) {
                   optStyle = "bg-green-500/15 border-green-500 text-green-100 shadow-[0_0_12px_rgba(34,197,94,0.15)]";
-                  badgeStyle = "bg-green-500 border-green-500 text-gray-950 font-bold";
+                  badgeStyle = "bg-green-50 border-green-500 text-gray-950 font-bold";
                   badgeContent = "✓";
                 } else if (isSelected) {
                   optStyle = "bg-red-500/15 border-red-500 text-red-100";
@@ -487,7 +468,7 @@ function QuizContent() {
   );
 }
 
-export default function QuizEngine() {
+export default function QuizClient({ lang }) {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center text-cyan-500">
@@ -495,7 +476,7 @@ export default function QuizEngine() {
         <p className="text-xl font-semibold animate-pulse">ප්‍රශ්න පත්‍රය සූදානම් කරමින් පවතී...</p>
       </div>
     }>
-      <QuizContent />
+      <QuizContent lang={lang} />
     </Suspense>
   );
 }

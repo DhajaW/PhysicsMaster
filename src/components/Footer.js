@@ -1,25 +1,28 @@
-import { Heart, Phone, Mail, Sparkles } from 'lucide-react';
+import { Heart, Phone, Sparkles } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ lang = 'si' }) {
   const currentYear = new Date().getFullYear();
+  const isEnglish = lang === 'en';
 
   return (
     <footer className="bg-slate-900 text-slate-300 py-10 mt-16 border-t-4 border-blue-500 font-sans">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 text-left">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
           
-          {/* වම් පැත්ත: App එක ගැන (Meaningful Section) */}
+          {/* Left: About the App */}
           <div className="text-center md:text-left max-w-sm">
             <h3 className="text-2xl font-bold text-white mb-2 flex items-center justify-center md:justify-start gap-2">
               <Sparkles className="w-5 h-5 text-amber-400" />
               Physics Master
             </h3>
             <p className="text-sm text-slate-400 leading-relaxed">
-              උසස් පෙළ භෞතික විද්යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. ශ්රී ලාංකේය සිසුන්ගේ විභාග ජයග්රහණය වෙනුවෙන්ම නිර්මාණය කළ අද්විතීය ඩිජිටල් අත්දැකීමකි.
+              {isEnglish 
+                ? 'Master A/L Physics simply and correctly. A unique digital experience designed specifically for Sri Lankan students to conquer their exams.'
+                : 'උසස් පෙළ භෞතික විද්යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. ශ්රී ලාංකේය සිසුන්ගේ විභාග ජයග්රහණය වෙනුවෙන්ම නිර්මාණය කළ අද්විතීය ඩිජිටල් අත්දැකීමකි.'}
             </p>
           </div>
 
-          {/* දකුණු පැත්ත: Flagship Studios Branding */}
+          {/* Right: Flagship Studios Branding */}
           <div className="text-center md:text-right bg-slate-800/50 p-5 rounded-2xl border border-slate-700/50">
             <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold mb-2 flex items-center justify-center md:justify-end gap-1">
               Developed with <Heart className="w-4 h-4 text-rose-500 fill-rose-500 animate-pulse" /> by
@@ -39,7 +42,7 @@ export default function Footer() {
 
         </div>
 
-        {/* පහළම කොටස: Copyright */}
+        {/* Bottom: Copyright */}
         <div className="mt-10 pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <p>© {currentYear} Physics Master. All rights reserved.</p>
           <p>Sri Lanka&apos;s Premium EdTech Platform</p>

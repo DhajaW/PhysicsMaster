@@ -1,12 +1,28 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import { ShieldAlert, AlertTriangle, ArrowLeft } from 'lucide-react';
+import { translations } from '@/lib/translations';
 
-export default function ExamSecretsPage() {
-  
-  const examSecretsData = [
+export async function generateMetadata({ params }) {
+  const { lang = 'si' } = await params;
+  return {
+    title: lang === 'en' 
+      ? 'Paper Marking secrets (Exam Traps) | Physics Master A/L' 
+      : 'විභාග රහස් (Exam Traps) | Physics Master A/L',
+    description: lang === 'en'
+      ? 'Learn the hidden marking scheme secrets and common student traps in G.C.E. A/L Physics papers according to past marking criteria.'
+      : 'ශ්‍රී ලංකා විභාග දෙපාර්තමේන්තුවේ A/L Physics පසුගිය වසරවල marking schemes අනුව ලකුණු කැපෙන තැන් සහ බහුලවම කරන වැරදි මෙතැනින් බලන්න.',
+    alternates: {
+      canonical: `/${lang}/exam-secrets`,
+    },
+  };
+}
+
+export default async function ExamSecretsPage({ params }) {
+  const { lang = 'si' } = await params;
+  const t = translations[lang] || translations.si;
+
+  const examSecretsDataSi = [
     {
       unit: "Unit 1: මිනුම (Measurement)",
       traps: [
@@ -132,6 +148,134 @@ export default function ExamSecretsPage() {
     }
   ];
 
+  const examSecretsDataEn = [
+    {
+      unit: "Unit 1: Measurement",
+      traps: [
+        {
+          title: "Graph Axis Labeling Trap:",
+          description: "When labeling a graph's axes, writing only the physical quantity (e.g., T) without the unit (e.g., s) results in no marks for that axis. Write it clearly as 'T / s' or 'T (s)'."
+        },
+        {
+          title: "Subtracting Zero Errors:",
+          description: "In micrometer or vernier caliper readings, always subtract the zero error 'with its sign' from the observed reading. A negative zero error results in an addition."
+        }
+      ]
+    },
+    {
+      unit: "Unit 2: Mechanics",
+      traps: [
+        {
+          title: "Free Body Diagrams (FBD) Trap:",
+          description: "When labeling forces on an object, the arrow must start exactly from the point of application. Do not draw reaction forces that this object exerts on others."
+        },
+        {
+          title: "Conservation of Momentum Direction:",
+          description: "Momentum is a vector. When applying the equation, assume one direction as positive (+) and write the velocity of objects traveling in the opposite direction as negative (-)."
+        }
+      ]
+    },
+    {
+      unit: "Unit 3: Oscillations & Waves",
+      traps: [
+        {
+          title: "Labeling Nodes (N) and Antinodes (A):",
+          description: "In resonance tube structured essay questions, explicitly label the open end as an antinode (A) and the closed end as a node (N) using letters inside your drawing."
+        }
+      ]
+    },
+    {
+      unit: "Unit 4: Optics",
+      traps: [
+        {
+          title: "Ray Diagram Arrow Trap:",
+          description: "When drawing light rays passing through lenses or prisms, forgetting to draw directional arrows on the rays results in zero marks for the diagram. Arrows are mandatory."
+        }
+      ]
+    },
+    {
+      unit: "Unit 5: Gravitational Fields",
+      traps: [
+        {
+          title: "Negative Sign in Gravitational Intensity (g) Graph:",
+          description: "Gravitational field intensity decreases with height. Since it is directed toward the center of the Earth (negative radial direction), marking schemes often strictly check if the graph is drawn in the negative y-axis."
+        }
+      ]
+    },
+    {
+      unit: "Unit 6: Electrostatics",
+      traps: [
+        {
+          title: "Rules for Drawing Electric Field Lines:",
+          description: "Field lines must never intersect. Also, they must touch conductive surfaces perpendicularly (at 95 degrees) both when starting and ending."
+        }
+      ]
+    },
+    {
+      unit: "Unit 7: Current Electricity",
+      traps: [
+        {
+          title: "Kirchhoff's Laws Loop Direction:",
+          description: "When applying Kirchhoff's loop rule, if you travel in the direction of the electromotive force (EMF), it is positive (+); if traveling in the opposite direction, it must be negative (-)."
+        },
+        {
+          title: "Non-Ideal Voltmeters:",
+          description: "Unless explicitly stated as an 'ideal voltmeter', it has a finite internal resistance. You must calculate current drawing through the voltmeter in your equations."
+        }
+      ]
+    },
+    {
+      unit: "Unit 8: Electromagnetism",
+      traps: [
+        {
+          title: "Mixing Up Fleming's Hand Rules:",
+          description: "Use Fleming's Left-Hand Rule for motors (to find force) and the Right-Hand Rule for generators/induction (to find induced current direction). Confusing these loses all marks."
+        }
+      ]
+    },
+    {
+      unit: "Unit 9: Electronics",
+      traps: [
+        {
+          title: "Operational Amplifier (Op-Amp) Virtual Ground:",
+          description: "Before solving op-amp problems using V+ = V-, you must write 'Since this is an ideal operational amplifier'. Forgetting this disclaimer loses schema points."
+        },
+        {
+          title: "Transistor Active Region Limit:",
+          description: "The formula Ic = beta * Ib can only be used if the transistor operates in the 'Active Region'. Using it in the saturation region is completely incorrect."
+        }
+      ]
+    },
+    {
+      unit: "Unit 10: Mechanical Properties of Matter",
+      traps: [
+        {
+          title: "Surface Tension of a Soap Bubble:",
+          description: "Unlike a liquid droplet which has one interface, a soap bubble has two interfaces (inner and outer). Thus, the excess pressure formula must be multiplied by 2 (P = 4T/r)."
+        },
+        {
+          title: "Radius vs Diameter in Poiseuille's Equation:",
+          description: "Poiseuille's equation uses the fourth power of the radius (r^4). Exams often provide the diameter instead; forgetting to divide it by 2 leads to choosing incorrect MCQ options."
+        }
+      ]
+    },
+    {
+      unit: "Unit 11: Matter and Radiation",
+      traps: [
+        {
+          title: "Intercept of Photoelectric Stopping Potential Graph:",
+          description: "In the graph of stopping potential (V) against frequency (f), the intercept on the negative y-axis must be labeled as '-Phi/e'. Forgetting this loses graph marks."
+        },
+        {
+          title: "Remaining Mass in Radioactive Half-Life:",
+          description: "Half-life equations solve for the 'remaining' nuclei (N). If the question asks for the 'decayed' nuclei mass, always subtract the remaining nuclei from the initial amount (N0 - N)."
+        }
+      ]
+    }
+  ];
+
+  const examSecretsData = lang === 'en' ? examSecretsDataEn : examSecretsDataSi;
+
   return (
     <div className="min-h-screen bg-gray-50 p-6 md:p-12 font-sans">
       <div className="max-w-4xl mx-auto">
@@ -141,13 +285,17 @@ export default function ExamSecretsPage() {
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 flex items-center gap-3">
               <ShieldAlert className="text-emerald-500 w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" />
-              <span>Paper Marking රහස් (Exam Traps)</span>
+              <span>{lang === 'en' ? 'Paper Marking Secrets' : 'Paper Marking රහස් (Exam Traps)'}</span>
             </h1>
-            <p className="text-sm text-gray-500 mt-2">A/L Physics Marking Scheme එකේ හැංගිලා තියෙන ලකුණු කැපෙන තැන්!</p>
+            <p className="text-sm text-gray-500 mt-2">
+              {lang === 'en' 
+                ? 'Hidden traps and common marks-deducting errors inside GCE A/L Physics marking schemes.' 
+                : 'A/L Physics Marking Scheme එකේ හැංගිලා තියෙන ලකුණු කැපෙන තැන්!'}
+            </p>
           </div>
-          <Link href="/" className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors self-stretch sm:self-auto justify-center text-center">
+          <Link href={`/${lang}`} className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors self-stretch sm:self-auto justify-center text-center">
             <ArrowLeft className="w-4 h-4" />
-            <span>ආපසු</span>
+            <span>{t.back}</span>
           </Link>
         </div>
 
