@@ -329,7 +329,7 @@ function QuizContent() {
         </div>
 
         {/* Question Card Box */}
-        <div className="bg-gray-900 p-8 rounded-3xl border border-gray-850 shadow-2xl relative overflow-hidden group">
+        <div key={currentQ} className="bg-gray-900 p-8 rounded-3xl border border-gray-850 shadow-2xl relative overflow-hidden group">
           {/* Subtle grid pattern background */}
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:20px_20px]"></div>
 
