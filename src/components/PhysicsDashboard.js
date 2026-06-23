@@ -44,7 +44,7 @@ const heroSlides = [
     image: '/images/hero_einstein.png',
     si: 'ඇල්බට් අයින්ස්ටයින්',
     en: 'Albert Einstein',
-    position: 'center',
+    position: 'center 10%',
     size: 'cover',
     mirror: false
   },
