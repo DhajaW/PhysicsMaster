@@ -199,7 +199,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 relative z-10">
         {/* Welcome Section / Hero Carousel */}
-        <div className="mb-16 bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden min-h-[360px] md:min-h-[460px] group/hero text-left">
+        <div className="mb-8 bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden min-h-[360px] md:min-h-[460px] group/hero text-left">
           {/* Background Image Carousel */}
           <div className="absolute inset-0 z-0 select-none">
             {heroSlides.map((slide, idx) => (
