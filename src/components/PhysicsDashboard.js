@@ -43,17 +43,26 @@ const heroSlides = [
   {
     image: '/images/hero_einstein.png',
     si: 'ඇල්බට් අයින්ස්ටයින්',
-    en: 'Albert Einstein'
+    en: 'Albert Einstein',
+    position: '50% 30%',
+    size: '130%',
+    mirror: true
   },
   {
     image: '/images/hero_tesla.png',
     si: 'නිකොලා ටෙස්ලා',
-    en: 'Nikola Tesla'
+    en: 'Nikola Tesla',
+    position: 'center',
+    size: 'cover',
+    mirror: false
   },
   {
     image: '/images/hero_curie.png',
     si: 'මාරි කියුරි',
-    en: 'Marie Curie'
+    en: 'Marie Curie',
+    position: 'center',
+    size: 'cover',
+    mirror: false
   }
 ];
 
@@ -196,11 +205,20 @@ export default function PhysicsDashboard({ lang = 'si' }) {
             {heroSlides.map((slide, idx) => (
               <div
                 key={idx}
-                className={`absolute inset-0 bg-cover bg-[position:70%_center] md:bg-center transition-all duration-1000 ease-in-out transform ${
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${
                   activeSlide === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
                 }`}
-                style={{ backgroundImage: `url('${slide.image}')` }}
-              />
+              >
+                <div
+                  className="absolute inset-0 bg-cover"
+                  style={{
+                    backgroundImage: `url('${slide.image}')`,
+                    backgroundPosition: slide.position || 'center',
+                    backgroundSize: slide.size || 'cover',
+                    transform: slide.mirror ? 'scaleX(-1)' : undefined
+                  }}
+                />
+              </div>
             ))}
             
             {/* Premium Dark Overlay & Multi-layered Gradients (Adjusted for better scientist visibility) */}
@@ -213,14 +231,14 @@ export default function PhysicsDashboard({ lang = 'si' }) {
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight flex flex-wrap items-center justify-start gap-x-2 gap-y-1">
               {isEnglish ? (
                 <>
-                  <span>Master Physics with your mind</span>
+                  <span>Engage your mind</span>
                   <span 
                     className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
                     style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
                   >
                     <Brain className="w-7 h-7 md:w-8 md:h-8 text-pink-500 fill-pink-500" />
                   </span>
-                  <span>, love it with your heart</span>
+                  <span>. Inspire your heart</span>
                   <span 
                     className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle"
                     style={{ 
@@ -230,7 +248,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                   >
                     <Heart className="w-7 h-7 md:w-8 md:h-8 text-rose-500 fill-rose-500" />
                   </span>
-                  <span>. Let's truly understand it!</span>
+                  <span>. Master Physics.</span>
                   <span className="inline-block hover:rotate-12 hover:-translate-y-1 transition-all duration-300 cursor-default origin-bottom-right ml-1">
                     👋
                   </span>
