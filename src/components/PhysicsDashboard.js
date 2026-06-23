@@ -232,32 +232,15 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                     <Heart className="w-7 h-7 md:w-8 md:h-8 text-rose-500 fill-rose-500" />
                   </span>
                   <span>. Let's truly understand it!</span>
+                  <span className="inline-block hover:rotate-12 hover:-translate-y-1 transition-all duration-300 cursor-default origin-bottom-right ml-1">
+                    👋
+                  </span>
                 </>
               ) : (
                 <>
-                  <span>භෞතික විද්‍යාව මොළේට</span>
-                  <span 
-                    className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
-                    style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
-                  >
-                    <Brain className="w-7 h-7 md:w-8 md:h-8 text-pink-500 fill-pink-500" />
-                  </span>
-                  <span>වගේම හදවතටත්</span>
-                  <span 
-                    className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle"
-                    style={{ 
-                      filter: 'drop-shadow(0 0 10px rgba(244, 63, 94, 0.8))',
-                      animation: 'pulse 1s ease-in-out infinite'
-                    }}
-                  >
-                    <Heart className="w-7 h-7 md:w-8 md:h-8 text-rose-500 fill-rose-500" />
-                  </span>
-                  <span>දැනෙන්න ඉගෙන ගමු!</span>
+                  <span>භෞතික විද්‍යාව: නිවැරදි අවබෝධයෙන් විශිෂ්ටත්වය කරා</span>
                 </>
               )}
-              <span className="inline-block hover:rotate-12 hover:-translate-y-1 transition-all duration-300 cursor-default origin-bottom-right ml-1">
-                👋
-              </span>
             </h1>
             <p className="text-slate-200 max-w-2xl text-base md:text-lg leading-relaxed font-medium drop-shadow-md">
               {isEnglish 
