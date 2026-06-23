@@ -39,15 +39,42 @@ const physicsUnitsEn = [
   { id: '11', name: 'Matter and Radiation', icon: '⚛️', topics: 'Photoelectric Effect, X-Rays, Radioactivity', color: 'from-fuchsia-600 to-purple-600' }
 ];
 
+// Carousel slide backgrounds and labels
+const heroSlides = [
+  {
+    image: '/images/hero_einstein.png',
+    si: 'ඇල්බට් අයින්ස්ටයින්',
+    en: 'Albert Einstein'
+  },
+  {
+    image: '/images/hero_tesla.png',
+    si: 'නිකොලා ටෙස්ලා',
+    en: 'Nikola Tesla'
+  },
+  {
+    image: '/images/hero_curie.png',
+    si: 'මාරි කියුරි',
+    en: 'Marie Curie'
+  }
+];
+
 export default function PhysicsDashboard({ lang = 'si' }) {
   const [completedUnits, setCompletedUnits] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [availablePapers, setAvailablePapers] = useState([]);
   const [loadingPapers, setLoadingPapers] = useState(true);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const isEnglish = lang === 'en';
   const t = translations[lang] || translations.si;
   const physicsUnits = isEnglish ? physicsUnitsEn : physicsUnitsSi;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const getUnitForPaper = (paperNo) => {
     const paddedId = paperNo.toString().padStart(2, '0');
@@ -163,10 +190,26 @@ export default function PhysicsDashboard({ lang = 'si' }) {
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 relative z-10">
-        {/* Welcome Section */}
-        <div className="mb-10 text-center md:text-left bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-8 text-white shadow-2xl flex flex-col lg:flex-row justify-between items-center gap-8 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-cyan-500/5 pointer-events-none"></div>
-          
+        {/* Welcome Section / Hero Carousel */}
+        <div className="mb-10 text-center md:text-left bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-8 text-white shadow-2xl flex flex-col lg:flex-row justify-between items-center gap-8 relative overflow-hidden min-h-[380px] group/hero">
+          {/* Background Image Carousel */}
+          <div className="absolute inset-0 z-0 select-none">
+            {heroSlides.map((slide, idx) => (
+              <div
+                key={idx}
+                className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out transform ${
+                  activeSlide === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                }`}
+                style={{ backgroundImage: `url('${slide.image}')` }}
+              />
+            ))}
+            
+            {/* Premium Dark Overlay & Multi-layered Gradients */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/45 z-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-950/50 z-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-black/45 mix-blend-multiply z-10 pointer-events-none"></div>
+          </div>
+
           <div className="flex-1 text-left relative z-10 space-y-4">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight flex flex-wrap items-center justify-start gap-x-2 gap-y-1">
               {isEnglish ? (
@@ -216,7 +259,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                 👋
               </span>
             </h1>
-            <p className="text-slate-400 max-w-2xl text-base md:text-lg leading-relaxed">
+            <p className="text-slate-200 max-w-2xl text-base md:text-lg leading-relaxed font-medium drop-shadow-md">
               {isEnglish 
                 ? 'Syllabus notes, practical examples, marking scheme traps, and interactive web simulators in one single portal.'
                 : 'සම්පත් පොත්වල අන්තර්ගතය, ප්රායෝගික උදාහරණ, විභාගයේදී ලකුණු ලැබෙන Paper Marking රහස් සහ Interactive Simulators සියල්ල එකම තැනකින්.'}
@@ -240,6 +283,46 @@ export default function PhysicsDashboard({ lang = 'si' }) {
           </div>
           <div className="flex-shrink-0 relative z-10 flex justify-center items-center">
             <ThreeDAtom />
+          </div>
+
+          {/* Arrow Buttons (Visible on hover of Welcome container on desktop) */}
+          <button
+            onClick={() => setActiveSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-900/40 hover:bg-slate-900/85 border border-slate-800/80 text-slate-300 hover:text-cyan-400 opacity-0 group-hover/hero:opacity-100 transition-all duration-300 cursor-pointer backdrop-blur-sm hidden md:flex items-center justify-center"
+            aria-label="Previous Slide"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
+          <button
+            onClick={() => setActiveSlide((prev) => (prev + 1) % heroSlides.length)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-slate-900/40 hover:bg-slate-900/85 border border-slate-800/80 text-slate-300 hover:text-cyan-400 opacity-0 group-hover/hero:opacity-100 transition-all duration-300 cursor-pointer backdrop-blur-sm hidden md:flex items-center justify-center"
+            aria-label="Next Slide"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+
+          {/* Navigation Controls & Pagination Indicators */}
+          <div className="absolute bottom-6 right-8 z-20 flex items-center space-x-3">
+            {heroSlides.map((slide, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveSlide(idx)}
+                className={`group/dot relative h-3 rounded-full transition-all duration-500 cursor-pointer ${
+                  activeSlide === idx ? 'w-8 bg-cyan-400' : 'w-3 bg-slate-500/50 hover:bg-slate-400'
+                }`}
+                title={isEnglish ? `View ${slide.en}` : `${slide.si} පෙන්වන්න`}
+                aria-label={`Go to slide ${idx + 1}`}
+              >
+                {/* Tooltip on hover */}
+                <span className="absolute bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded bg-slate-900/90 border border-slate-700/80 text-xs font-semibold text-cyan-400 opacity-0 group-hover/dot:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none backdrop-blur-sm shadow-xl">
+                  {isEnglish ? slide.en : slide.si}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
 
