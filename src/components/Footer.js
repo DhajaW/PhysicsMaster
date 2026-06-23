@@ -18,7 +18,7 @@ export default function Footer({ lang = 'si' }) {
             <p className="text-sm text-slate-400 leading-relaxed">
               {isEnglish 
                 ? 'Master A/L Physics simply and correctly. A unique digital experience designed specifically for Sri Lankan students to conquer their exams.'
-                : 'උසස් පෙළ භෞතික විද්යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. ශ්රී ලාංකේය සිසුන්ගේ විභාග ජයග්රහණය වෙනුවෙන්ම නිර්මාණය කළ අද්විතීය ඩිජිටල් අත්දැකීමකි.'}
+                : 'උසස් පෙළ භෞතික විද්යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. ශ්‍රී ලාංකේය සිසුන්ගේ විභාග ජයග්‍රහණය වෙනුවෙන්ම නිර්මාණය කළ අද්විතීය ඩිජිටල් අත්දැකීමකි.'}
             </p>
           </div>
 

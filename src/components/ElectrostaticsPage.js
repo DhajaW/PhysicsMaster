@@ -142,15 +142,15 @@ export default function ElectrostaticsPage({ lang = 'si' }) {
           <Accordion title={isEnglish ? "01. Coulomb's Law" : "01. කූලෝම් නියමය (Coulomb's Law)"}>
             <div className="space-y-4 text-slate-700">
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්‍රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
                 <p>
                   {isEnglish
                     ? <span><strong>Coulomb's Law:</strong> The mutual electrostatic force acting between two point charges is directly proportional to the product of the charges and inversely proportional to the square of the distance between them.</span>
-                    : <span><strong>කූලෝම් නියමය:</strong> ලක්ෂීය ආරෝපණ දෙකක් අතර ක්රියා කරන අන්යෝන්ය විද්යුත් බලය, ආරෝපණවල ගුණිතයට අනුලෝමව ද දුරෙහි වර්ගයට ප්රතිලෝමව ද සමානුපාතික වේ.</span>}
+                    : <span><strong>කූලෝම් නියමය:</strong> ලක්ෂීය ආරෝපණ දෙකක් අතර ක්‍රියා කරන අන්යෝන්ය විද්යුත් බලය, ආරෝපණවල ගුණිතයට අනුලෝමව ද දුරෙහි වර්ගයට ප්‍රතිලෝමව ද සමානුපාතික වේ.</span>}
                 </p>
               </div>
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්ර සහ සමීකරණ (Equations):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <p className="bg-slate-50 p-2.5 rounded font-mono text-sm border text-slate-800">
                   F = (1 / 4πε₀) * (Q₁Q₂ / r²) ({isEnglish ? 'ε₀ = Permittivity of free space' : 'ε₀ = රික්තයේ පාරවේද්යතාව'})
                 </p>
@@ -176,31 +176,31 @@ export default function ElectrostaticsPage({ lang = 'si' }) {
             </div>
           </Accordion>
 
-          {/* 2. විද්යුත් ක්ෂේත්ර තීව්රතාව සහ ගවුස් ප්රමේයය */}
-          <Accordion title={isEnglish ? "02. Electric Field Intensity & Gauss's Theorem" : "02. විද්යුත් ක්ෂේත්ර තීව්රතාව සහ ගවුස් ප්රමේයය (Electric Field Intensity & Gauss's Law)"}>
+          {/* 2. විද්යුත් ක්ෂේත්‍ර තීව්‍රතාව සහ ගවුස් ප්‍රමේයය */}
+          <Accordion title={isEnglish ? "02. Electric Field Intensity & Gauss's Theorem" : "02. විද්යුත් ක්ෂේත්‍ර තීව්‍රතාව සහ ගවුස් ප්‍රමේයය (Electric Field Intensity & Gauss's Law)"}>
             <div className="space-y-4 text-slate-700">
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්‍රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
                 <ul className="list-disc pl-5 space-y-1">
                   <li>
-                    <strong>{isEnglish ? 'Electric Field Intensity (E):' : 'විද්යුත් ක්ෂේත්ර තීව්රතාව (E):'}</strong>{' '}
+                    <strong>{isEnglish ? 'Electric Field Intensity (E):' : 'විද්යුත් ක්ෂේත්‍ර තීව්‍රතාව (E):'}</strong>{' '}
                     {isEnglish
                       ? 'The force acting on a unit positive charge placed at a given point in the electric field.'
-                      : 'ක්ෂේත්රයක යම් ලක්ෂ්යයක තැබූ ඒකක ධන ආරෝපණයක් මත ක්රියා කරන බලයයි.'}
+                      : 'ක්ෂේත්‍රයක යම් ලක්ෂ්යයක තැබූ ඒකක ධන ආරෝපණයක් මත ක්‍රියා කරන බලයයි.'}
                   </li>
                   <li>
-                    <strong>{isEnglish ? "Gauss's Theorem:" : 'ගවුස් ප්රමේයය (Gauss\'s Theorem):'}</strong>{' '}
+                    <strong>{isEnglish ? "Gauss's Theorem:" : 'ගවුස් ප්‍රමේයය (Gauss\'s Theorem):'}</strong>{' '}
                     {isEnglish
                       ? 'The total electric flux through any closed surface is equal to the net charge enclosed by that surface divided by ε₀.'
-                      : 'ඕනෑම සංවෘත පෘෂ්ඨයක් හරහා ඇති මුළු විද්යුත් ස්රාවය, එම පෘෂ්ඨයෙන් වටකර ඇති ශුද්ධ ආරෝපණය ε₀ න් බෙදූ විට ලැබෙන අගයට සමාන වේ.'}
+                      : 'ඕනෑම සංවෘත පෘෂ්ඨයක් හරහා ඇති මුළු විද්යුත් ස්‍රාවය, එම පෘෂ්ඨයෙන් වටකර ඇති ශුද්ධ ආරෝපණය ε₀ න් බෙදූ විට ලැබෙන අගයට සමාන වේ.'}
                   </li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්ර සහ සමීකරණ (Equations):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
-                  <li>{isEnglish ? 'Field Intensity:' : 'තීව්රතාව:'} E = F / q = (1 / 4πε₀) * (Q / r²)</li>
-                  <li>{isEnglish ? 'Flux:' : 'ස්්රාවය:'} φ = EA = Q / ε₀</li>
+                  <li>{isEnglish ? 'Field Intensity:' : 'තීව්‍රතාව:'} E = F / q = (1 / 4πε₀) * (Q / r²)</li>
+                  <li>{isEnglish ? 'Flux:' : 'ස්්‍රාවය:'} φ = EA = Q / ε₀</li>
                 </ul>
               </div>
               <div>
@@ -209,7 +209,7 @@ export default function ElectrostaticsPage({ lang = 'si' }) {
                   <li>
                     {isEnglish
                       ? 'The electric field intensity at any point inside a conducting sphere is zero (E = 0).'
-                      : 'සන්නායක ගෝලයක අභ්යන්තරයේ ඕනෑම ලක්ෂ්යයක විද්යුත් ක්ෂේත්ර තීව්රතාව ශුන්ය වේ (E = 0).'}
+                      : 'සන්නායක ගෝලයක අභ්යන්තරයේ ඕනෑම ලක්ෂ්යයක විද්යුත් ක්ෂේත්‍ර තීව්‍රතාව ශුන්ය වේ (E = 0).'}
                   </li>
                 </ul>
               </div>
@@ -228,20 +228,20 @@ export default function ElectrostaticsPage({ lang = 'si' }) {
           <Accordion title={isEnglish ? "03. Electric Potential" : "03. විද්යුත් විභවය (Electric Potential)"}>
             <div className="space-y-4 text-slate-700">
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්‍රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
                 <p>
                   <strong>{isEnglish ? 'Electric Potential (V):' : 'විද්යුත් විභවය (V):'}</strong>{' '}
                   {isEnglish
                     ? 'The work done in bringing a unit positive charge from infinity to a given point in an electric field.'
-                    : 'අනන්තයේ සිට ඒකක ධන ආරෝපණයක් විද්යුත් ක්ෂේත්රයේ යම් ලක්ෂ්යයකට ගෙන ඒමට කළ යුතු කාර්යයයි.'}
+                    : 'අනන්තයේ සිට ඒකක ධන ආරෝපණයක් විද්යුත් ක්ෂේත්‍රයේ යම් ලක්ෂ්යයකට ගෙන ඒමට කළ යුතු කාර්යයයි.'}
                 </p>
               </div>
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්ර සහ සමීකරණ (Equations):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                   <li>{isEnglish ? 'Potential:' : 'විභවය:'} V = (1 / 4πε₀) * (Q / r)</li>
                   <li>{isEnglish ? 'Work Done:' : 'කළ කාර්යය:'} W = V * q</li>
-                  <li>{isEnglish ? 'Relationship between Intensity and Potential:' : 'තීව්රතාව සහ විභවය අතර සම්බන්ධය:'} E = V / d {isEnglish ? '(for parallel plates)' : '(සමාන්තර තහඩු සඳහා)'}</li>
+                  <li>{isEnglish ? 'Relationship between Intensity and Potential:' : 'තීව්‍රතාව සහ විභවය අතර සම්බන්ධය:'} E = V / d {isEnglish ? '(for parallel plates)' : '(සමාන්තර තහඩු සඳහා)'}</li>
                 </ul>
               </div>
               <div>
@@ -265,26 +265,26 @@ export default function ElectrostaticsPage({ lang = 'si' }) {
             </div>
           </Accordion>
 
-          {/* 4. ධාරිත්රක */}
-          <Accordion title={isEnglish ? "04. Capacitors" : "04. ධාරිත්රක (Capacitors)"}>
+          {/* 4. ධාරිත්‍රක */}
+          <Accordion title={isEnglish ? "04. Capacitors" : "04. ධාරිත්‍රක (Capacitors)"}>
             <div className="space-y-4 text-slate-700">
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්‍රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
                 <p>
                   <strong>{isEnglish ? 'Capacitance (C):' : 'ධාරිතාව (Capacitance - C):'}</strong>{' '}
                   {isEnglish
                     ? 'The amount of charge that must be given to a conductor to increase its potential by one unit.'
-                    : 'සන්නායකයක විභවය ඒකකයකින් වැඩි කිරීමට ඊට ලබා දිය යුතු ආරෝපණ ප්රමාණයයි.'}
+                    : 'සන්නායකයක විභවය ඒකකයකින් වැඩි කිරීමට ඊට ලබා දිය යුතු ආරෝපණ ප්‍රමාණයයි.'}
                 </p>
               </div>
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්ර සහ සමීකරණ (Equations):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                   <li>{isEnglish ? 'Capacitance:' : 'ධාරිතාව:'} C = Q / V</li>
-                  <li>{isEnglish ? 'For a parallel plate capacitor:' : 'සමාන්තර තහඩු ධාරිත්රකයක් සඳහා:'} C = ε₀ A / d</li>
+                  <li>{isEnglish ? 'For a parallel plate capacitor:' : 'සමාන්තර තහඩු ධාරිත්‍රකයක් සඳහා:'} C = ε₀ A / d</li>
                   <li>{isEnglish ? 'Stored Energy:' : 'ගබඩා වන ශක්තිය:'} W = 1/2 * QV = 1/2 * CV²</li>
-                  <li>{isEnglish ? 'Capacitors in series:' : 'ධාරිත්රක ශ්රේණිගතව:'} 1/C_total = 1/C₁ + 1/C₂</li>
-                  <li>{isEnglish ? 'Capacitors in parallel:' : 'ධාරිත්රක සමාන්තරගතව:'} C_total = C₁ + C₂</li>
+                  <li>{isEnglish ? 'Capacitors in series:' : 'ධාරිත්‍රක ශ්‍රේණිගතව:'} 1/C_total = 1/C₁ + 1/C₂</li>
+                  <li>{isEnglish ? 'Capacitors in parallel:' : 'ධාරිත්‍රක සමාන්තරගතව:'} C_total = C₁ + C₂</li>
                 </ul>
               </div>
               <div>
@@ -293,7 +293,7 @@ export default function ElectrostaticsPage({ lang = 'si' }) {
                   <li>
                     {isEnglish
                       ? 'When a dielectric material is placed between the plates, the capacitance increases by k times (C = kε₀ A / d). The dielectric constant k is always greater than 1.'
-                      : 'තහඩු අතර පාරවිද්යුත් ද්රව්යයක් (Dielectric) තැබූ විට ධාරිතාව k ගුණයකින් වැඩි වේ (C = kε₀ A / d). පාරවිද්යුත් නියතය k සෑමවිටම 1ට වඩා විශාල අගයකි.'}
+                      : 'තහඩු අතර පාරවිද්යුත් ද්‍රව්යයක් (Dielectric) තැබූ විට ධාරිතාව k ගුණයකින් වැඩි වේ (C = kε₀ A / d). පාරවිද්යුත් නියතය k සෑමවිටම 1ට වඩා විශාල අගයකි.'}
                   </li>
                 </ul>
               </div>
@@ -302,7 +302,7 @@ export default function ElectrostaticsPage({ lang = 'si' }) {
                 <p className="text-sm mt-1 text-amber-900">
                   {isEnglish
                     ? 'If a capacitor is disconnected from the electric source (cell) and a dielectric material is inserted, the charge (Q) remains constant. If it is inserted while still connected to the cell, the potential difference (V) remains constant.'
-                    : 'ධාරිත්රකයක් විද්යුත් ප්රභවයකින් (කෝෂයකින්) විසන්ධි කර පාරවිද්යුත් ද්රව්යය ඇතුළු කළහොත් ආරෝපණය (Q) නියතව පවතින අතර, කෝෂයට සම්බන්ධ කර තිබියදීම ඇතුළු කළහොත් විභව අන්තරය (V) නියතව පවතී.'}
+                    : 'ධාරිත්‍රකයක් විද්යුත් ප්‍රභවයකින් (කෝෂයකින්) විසන්ධි කර පාරවිද්යුත් ද්‍රව්යය ඇතුළු කළහොත් ආරෝපණය (Q) නියතව පවතින අතර, කෝෂයට සම්බන්ධ කර තිබියදීම ඇතුළු කළහොත් විභව අන්තරය (V) නියතව පවතී.'}
                 </p>
               </div>
             </div>

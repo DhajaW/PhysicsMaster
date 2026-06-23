@@ -82,7 +82,7 @@ function QuizContent({ lang }) {
     selectedPaper
   });
 
-  // 1. Supabase එකෙන් ප්රශ්න Fetch කිරීම
+  // 1. Supabase එකෙන් ප්‍රශ්න Fetch කිරීම
   useEffect(() => {
     const fetchQuestions = async () => {
       setLoading(true);
@@ -91,7 +91,7 @@ function QuizContent({ lang }) {
         .select('*')
         .eq('paper_no', selectedPaper) // මෙතනින් තමයි පේපර් එක තෝරන්නේ!
         .order('id', { ascending: true })
-        .limit(50); // උපරිම ප්රශ්න 50යි ගන්නේ
+        .limit(50); // උපරිම ප්‍රශ්න 50යි ගන්නේ
 
       if (error) {
         console.error("Error fetching questions:", error);

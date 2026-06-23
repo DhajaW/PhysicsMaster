@@ -142,19 +142,19 @@ export default function ElectromagnetismPage({ lang = 'si' }) {
             <span>📘</span> {isEnglish ? 'Resource Book Summary: Magnetic Fields (Electromagnetism)' : 'සම්පත් පොත් සාරාංශය: චුම්භක ක්ෂේත්‍ර (විද්‍යුත් චුම්භකත්වය)'}
           </h2>
 
-          {/* 1. චුම්භක ක්ෂේත්රයක් තුළ ආරෝපණ සහ ධාරා මත බලය */}
-          <Accordion title={isEnglish ? "01. Force on Charges and Currents in a Magnetic Field" : "01. චුම්භක ක්ෂේත්රයක් තුළ ආරෝපණ සහ ධාරා මත බලය"}>
+          {/* 1. චුම්භක ක්ෂේත්‍රයක් තුළ ආරෝපණ සහ ධාරා මත බලය */}
+          <Accordion title={isEnglish ? "01. Force on Charges and Currents in a Magnetic Field" : "01. චුම්භක ක්ෂේත්‍රයක් තුළ ආරෝපණ සහ ධාරා මත බලය"}>
             <div className="space-y-4 text-slate-700">
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්‍රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
                 <p>
                   {isEnglish
                     ? 'When a moving electric charge or a current-carrying conductor is placed in a magnetic field, a magnetic force acts on it.'
-                    : 'ගමන් කරන විද්යුත් ආරෝපණයක් හෝ ධාරාවක් ගෙනයන සන්නායකයක් චුම්භක ක්ෂේත්රයක් තුළ තැබූ විට ඒ මත චුම්භක බලයක් ක්රියා කරයි.'}
+                    : 'ගමන් කරන විද්යුත් ආරෝපණයක් හෝ ධාරාවක් ගෙනයන සන්නායකයක් චුම්භක ක්ෂේත්‍රයක් තුළ තැබූ විට ඒ මත චුම්භක බලයක් ක්‍රියා කරයි.'}
                 </p>
               </div>
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්ර සහ සමීකරණ (Equations):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                   <li>{isEnglish ? 'Force on a charge:' : 'ආරෝපණයක් මත බලය:'} F = Bqv sin θ</li>
                   <li>{isEnglish ? 'Force on a current-carrying conductor:' : 'ධාරා සන්නායකයක් මත බලය:'} F = BIl sin θ</li>
@@ -166,7 +166,7 @@ export default function ElectromagnetismPage({ lang = 'si' }) {
                   <li>
                     {isEnglish
                       ? 'The direction of the magnetic force can be found using Fleming\'s Left Hand Rule.'
-                      : 'චුම්භක බලයේ දිශාව ෆ්ලෙමින්ගේ වමත් නියමය (Fleming\'s Left Hand Rule) මගින් සොයාගත හැක.'}
+                      : 'චුම්භක බලයේ දිශාව ෆ්‍ලෙමින්ගේ වමත් නියමය (Fleming\'s Left Hand Rule) මගින් සොයාගත හැක.'}
                   </li>
                 </ul>
               </div>
@@ -175,29 +175,29 @@ export default function ElectromagnetismPage({ lang = 'si' }) {
                 <p className="text-sm mt-1 text-amber-900">
                   {isEnglish
                     ? 'When a charge moves parallel to the magnetic field, or is stationary, no magnetic force acts on it (since v = 0 or θ = 0, the force is zero).'
-                    : 'ආරෝපණයක් චුම්භක ක්ෂේත්රයට සමාන්තරව ගමන් කරන විට හෝ නිශ්චලව පවතින විට ඒ මත චුම්භක බලයක් ක්රියා නොකරයි (v = 0 හෝ θ = 0 බැවින් බලය ශුන්ය වේ).'}
+                    : 'ආරෝපණයක් චුම්භක ක්ෂේත්‍රයට සමාන්තරව ගමන් කරන විට හෝ නිශ්චලව පවතින විට ඒ මත චුම්භක බලයක් ක්‍රියා නොකරයි (v = 0 හෝ θ = 0 බැවින් බලය ශුන්ය වේ).'}
                 </p>
               </div>
             </div>
           </Accordion>
 
-          {/* 2. චුම්භක ස්රාව ඝනත්වය සහ බයෝ-සවා නියමය */}
-          <Accordion title={isEnglish ? "02. Magnetic Flux Density & Biot-Savart Law" : "02. චුම්භක ස්රාව ඝනත්වය සහ බයෝ-සවා නියමය (Biot-Savart Law)"}>
+          {/* 2. චුම්භක ස්‍රාව ඝනත්වය සහ බයෝ-සවා නියමය */}
+          <Accordion title={isEnglish ? "02. Magnetic Flux Density & Biot-Savart Law" : "02. චුම්භක ස්‍රාව ඝනත්වය සහ බයෝ-සවා නියමය (Biot-Savart Law)"}>
             <div className="space-y-4 text-slate-700">
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්‍රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
                 <p>
                   <strong>{isEnglish ? 'Biot-Savart Law:' : 'බයෝ-සවා නියමය (Biot-Savart Law):'}</strong>{' '}
                   {isEnglish
                     ? 'Used to determine the magnetic flux density produced at a point by a current element.'
-                    : 'ධාරා අංශුවක් මගින් යම් ලක්ෂ්යයක ඇති කරන චුම්භක ස්රාව ඝනත්වය සෙවීම සඳහා භාවිතා වේ.'}
+                    : 'ධාරා අංශුවක් මගින් යම් ලක්ෂ්යයක ඇති කරන චුම්භක ස්‍රාව ඝනත්වය සෙවීම සඳහා භාවිතා වේ.'}
                 </p>
               </div>
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්ර සහ සමීකරණ (Equations):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                   <li>{isEnglish ? 'For an infinitely long straight wire:' : 'අනන්ත දිග සෘජු කම්බියකට:'} B = μ₀ I / (2π r)</li>
-                  <li>{isEnglish ? 'At the center of a circular coil:' : 'වෘත්තාකාර දඟරයක කේන්ද්රයේ:'} B = μ₀ NI / (2r)</li>
+                  <li>{isEnglish ? 'At the center of a circular coil:' : 'වෘත්තාකාර දඟරයක කේන්ද්‍රයේ:'} B = μ₀ NI / (2r)</li>
                   <li>{isEnglish ? 'Along the axis of a solenoid:' : 'පරිනාලිකාවක (Solenoid) අක්ෂය මත:'} B = μ₀ nI</li>
                 </ul>
               </div>
@@ -207,7 +207,7 @@ export default function ElectromagnetismPage({ lang = 'si' }) {
                   <li>
                     {isEnglish
                       ? 'The direction of the magnetic field can be found using the Right Hand Grip Rule.'
-                      : 'චුම්භක ක්ෂේත්රයේ දිශාව දකුණත් ග්රහණ නියමය (Right Hand Grip Rule) භාවිතයෙන් සෙවිය හැක.'}
+                      : 'චුම්භක ක්ෂේත්‍රයේ දිශාව දකුණත් ග්‍රහණ නියමය (Right Hand Grip Rule) භාවිතයෙන් සෙවිය හැක.'}
                   </li>
                 </ul>
               </div>
@@ -226,19 +226,19 @@ export default function ElectromagnetismPage({ lang = 'si' }) {
           <Accordion title={isEnglish ? "03. Hall Effect" : "03. හෝල් ආචරණය (Hall Effect)"}>
             <div className="space-y-4 text-slate-700">
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්‍රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
                 <p>
                   <strong>{isEnglish ? 'Hall Effect:' : 'හෝල් ආචරණය (Hall Effect):'}</strong>{' '}
                   {isEnglish
                     ? 'The phenomenon where a potential difference is produced across a conductor transverse to the current when a perpendicular magnetic field is applied.'
-                    : 'ධාරාවක් ගමන් කරන සන්නායකයක් හරහා ලම්බකව චුම්භක ක්ෂේත්රයක් යෙදූ විට, සන්නායකයේ හරස්කඩ දෙපසින් විභව අන්තරයක් හටගැනීමේ සංසිද්ධියයි.'}
+                    : 'ධාරාවක් ගමන් කරන සන්නායකයක් හරහා ලම්බකව චුම්භක ක්ෂේත්‍රයක් යෙදූ විට, සන්නායකයේ හරස්කඩ දෙපසින් විභව අන්තරයක් හටගැනීමේ සංසිද්ධියයි.'}
                 </p>
               </div>
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්ර සහ සමීකරණ (Equations):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                   <li>{isEnglish ? 'Hall Voltage:' : 'හෝල් වෝල්ටීයතාවය:'} V_H = Bvd</li>
-                  <li>{isEnglish ? 'Hall Electric Field:' : 'හෝල් විද්යුත් ක්ෂේත්රය:'} E = Bv</li>
+                  <li>{isEnglish ? 'Hall Electric Field:' : 'හෝල් විද්යුත් ක්ෂේත්‍රය:'} E = Bv</li>
                 </ul>
               </div>
               <div>
@@ -247,7 +247,7 @@ export default function ElectromagnetismPage({ lang = 'si' }) {
                   <li>
                     {isEnglish
                       ? 'This is practically used to identify the type of charge carriers (electrons or holes) in a material.'
-                      : 'මෙය යම් ද්රව්යයක ආරෝපණ වාහක වර්ගය (ඉලෙක්ට්රෝන ද එසේත් නැත්නම් කුහර ද යන්න) හඳුනා ගැනීමට ප්රායෝගිකව යොදා ගැනේ.'}
+                      : 'මෙය යම් ද්‍රව්යයක ආරෝපණ වාහක වර්ගය (ඉලෙක්ට්‍රෝන ද එසේත් නැත්නම් කුහර ද යන්න) හඳුනා ගැනීමට ප්‍රායෝගිකව යොදා ගැනේ.'}
                   </li>
                 </ul>
               </div>
@@ -256,38 +256,38 @@ export default function ElectromagnetismPage({ lang = 'si' }) {
                 <p className="text-sm mt-1 text-amber-900">
                   {isEnglish
                     ? 'In calculations, remember that the direction of electron motion in a metal strip is opposite to the direction of conventional current.'
-                    : 'ගණනය කිරීම් වලදී ලෝහ පටියක් තුළ ඉලෙක්ට්රෝන චලනය වන දිශාව, සම්මත ධාරාව ගමන් කරන දිශාවට ප්රතිවිරුද්ධ බව මතක තබා ගන්න.'}
+                    : 'ගණනය කිරීම් වලදී ලෝහ පටියක් තුළ ඉලෙක්ට්‍රෝන චලනය වන දිශාව, සම්මත ධාරාව ගමන් කරන දිශාවට ප්‍රතිවිරුද්ධ බව මතක තබා ගන්න.'}
                 </p>
               </div>
             </div>
           </Accordion>
 
-          {/* 4. විද්යුත් චුම්භක ප්රේරණය */}
-          <Accordion title={isEnglish ? "04. Electromagnetic Induction" : "04. විද්යුත් චුම්භක ප්රේරණය (Electromagnetic Induction)"}>
+          {/* 4. විද්යුත් චුම්භක ප්‍රේරණය */}
+          <Accordion title={isEnglish ? "04. Electromagnetic Induction" : "04. විද්යුත් චුම්භක ප්‍රේරණය (Electromagnetic Induction)"}>
             <div className="space-y-4 text-slate-700">
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්‍රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
                 <ul className="list-disc pl-5 space-y-1">
                   <li>
                     <strong>{isEnglish ? "Faraday's Law:" : 'ෆැරඩේ නියමය (Faraday\'s Law):'}</strong>{' '}
                     {isEnglish
                       ? 'Whenever the magnetic flux associated with a circuit changes, an EMF is induced in it, which is directly proportional to the rate of change of flux.'
-                      : 'පරිපථයක් හා සම්බන්ධ චුම්භක ස්රාවය වෙනස් වීමේදී එහි ප්රේරිත විද්යුත් ගාමක බලයක් හටගන්නා අතර, එය ස්රාවය වෙනස් වීමේ සීඝ්රතාවට අනුලෝමව සමානුපාතික වේ.'}
+                      : 'පරිපථයක් හා සම්බන්ධ චුම්භක ස්‍රාවය වෙනස් වීමේදී එහි ප්‍රේරිත විද්යුත් ගාමක බලයක් හටගන්නා අතර, එය ස්‍රාවය වෙනස් වීමේ සීඝ්‍රතාවට අනුලෝමව සමානුපාතික වේ.'}
                   </li>
                   <li>
                     <strong>{isEnglish ? "Lenz's Law:" : 'ලෙන්ස් නියමය (Lenz\'s Law):'}</strong>{' '}
                     {isEnglish
                       ? 'The direction of the induced current is always such that it opposes the change that produced it.'
-                      : 'ප්රේරිත විද්යුත් ධාරාවේ දිශාව සැමවිටම එය ඇතිවීමට හේතු වූ වෙනසට විරුද්ධ වන අයුරින් ක්රියා කරයි.'}
+                      : 'ප්‍රේරිත විද්යුත් ධාරාවේ දිශාව සැමවිටම එය ඇතිවීමට හේතු වූ වෙනසට විරුද්ධ වන අයුරින් ක්‍රියා කරයි.'}
                   </li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්ර සහ සමීකරණ (Equations):'}</h4>
+                <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                   <li>E = -dΦ / dt ({isEnglish ? 'negative sign indicates Lenz\'s law' : 'සෘණ ලකුණින් ලෙන්ස් නියමය දැක්වේ'})</li>
                   <li>{isEnglish ? 'For a moving straight conductor:' : 'චලනය වන සෘජු සන්නායකයක් සඳහා:'} E = Blv</li>
-                  <li>{isEnglish ? 'Maximum induced EMF of a rotating coil (generator):' : 'භ්රමණය වන දඟරයක (ජනක යන්ත්රයක) උපරිම ප්රේරිත වි.ගා.බ.:'} E = NABω</li>
+                  <li>{isEnglish ? 'Maximum induced EMF of a rotating coil (generator):' : 'භ්‍රමණය වන දඟරයක (ජනක යන්ත්‍රයක) උපරිම ප්‍රේරිත වි.ගා.බ.:'} E = NABω</li>
                 </ul>
               </div>
               <div>
@@ -296,7 +296,7 @@ export default function ElectromagnetismPage({ lang = 'si' }) {
                   <li>
                     {isEnglish
                       ? 'Lenz\'s law is another manifestation of the law of conservation of energy. Use Fleming\'s Right Hand Rule to find the direction of induced current.'
-                      : 'ලෙන්ස් නියමය යනු ශක්ති සංරක්ෂණ මූලධර්මයේම තවත් මුහුණුවරක් බව විභාග ප්රශ්නවල නිතර අසනු ලැබේ. ප්රේරිත දිශාව සෙවීමට ෆ්ලෙමින්ගේ දකුණත් නියමය (Fleming\'s Right Hand Rule) භාවිත කරන්න.'}
+                      : 'ලෙන්ස් නියමය යනු ශක්ති සංරක්ෂණ මූලධර්මයේම තවත් මුහුණුවරක් බව විභාග ප්‍රශ්නවල නිතර අසනු ලැබේ. ප්‍රේරිත දිශාව සෙවීමට ෆ්‍ලෙමින්ගේ දකුණත් නියමය (Fleming\'s Right Hand Rule) භාවිත කරන්න.'}
                   </li>
                 </ul>
               </div>

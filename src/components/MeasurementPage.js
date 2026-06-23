@@ -233,9 +233,9 @@ export default function MeasurementPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම්:</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>මූලික රාශි (Base Quantities):</strong> වෙනත් කිසිදු භෞතික රාශියක් ඇසුරෙන් ප්රකාශ කළ නොහැකි, ස්වාධීන රාශීන් ය.</li>
+                      <li><strong>මූලික රාශි (Base Quantities):</strong> වෙනත් කිසිදු භෞතික රාශියක් ඇසුරෙන් ප්‍රකාශ කළ නොහැකි, ස්වාධීන රාශීන් ය.</li>
                       <li><strong>ව්යුත්පන්න රාශි (Derived Quantities):</strong> මූලික රාශි දෙකක් හෝ කිහිපයක් ගුණ කිරීමෙන් හෝ බෙදීමෙන් ලබා ගන්නා රාශීන් ය.</li>
                     </ul>
                   </div>
@@ -265,7 +265,7 @@ export default function MeasurementPage({ lang = 'si' }) {
                   </thead>
                   <tbody>
                     <tr className="border-b"><td className="p-2">{isEnglish ? 'Length' : 'දිග (Length)'}</td><td className="p-2">{isEnglish ? 'meter' : 'මීටරය'}</td><td className="p-2 font-mono">m</td></tr>
-                    <tr className="border-b"><td className="p-2">{isEnglish ? 'Mass' : 'ස්කන්ධය (Mass)'}</td><td className="p-2">{isEnglish ? 'kilogram' : 'කිලෝග්රෑමය'}</td><td className="p-2 font-mono">kg</td></tr>
+                    <tr className="border-b"><td className="p-2">{isEnglish ? 'Mass' : 'ස්කන්ධය (Mass)'}</td><td className="p-2">{isEnglish ? 'kilogram' : 'කිලෝග්‍රෑමය'}</td><td className="p-2 font-mono">kg</td></tr>
                     <tr className="border-b"><td className="p-2">{isEnglish ? 'Time' : 'කාලය (Time)'}</td><td className="p-2">{isEnglish ? 'second' : 'තත්පරය'}</td><td className="p-2 font-mono">s</td></tr>
                     <tr className="border-b"><td className="p-2">{isEnglish ? 'Temperature' : 'උෂ්ණත්වය (Temperature)'}</td><td className="p-2">{isEnglish ? 'kelvin' : 'කෙල්විනය'}</td><td className="p-2 font-mono">K</td></tr>
                     <tr className="border-b"><td className="p-2">{isEnglish ? 'Electric Current' : 'විද්‍යුත් ධාරාව (Electric Current)'}</td><td className="p-2">{isEnglish ? 'ampere' : 'ඇම්පියරය'}</td><td className="p-2 font-mono">A</td></tr>
@@ -278,7 +278,7 @@ export default function MeasurementPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 02. Dimensions */}
-          <Accordion title={isEnglish ? "02. Dimensions and Analysis" : "02. මාන සහ මාන විශ්ලේෂණය (Dimensions)"}>
+          <Accordion title={isEnglish ? "02. Dimensions and Analysis" : "02. මාන සහ මාන විශ්‍ලේෂණය (Dimensions)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -298,8 +298,8 @@ export default function MeasurementPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
-                    <p><strong>මාන (Dimensions):</strong> භෞතික රාශියක් මූලික රාශිවලට බැඳී ඇති ආකාරය දක්වන සංකේතාත්මක ප්රකාශනයකි.</p>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම්:</h4>
+                    <p><strong>මාන (Dimensions):</strong> භෞතික රාශියක් මූලික රාශිවලට බැඳී ඇති ආකාරය දක්වන සංකේතාත්මක ප්‍රකාශනයකි.</p>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
@@ -307,7 +307,7 @@ export default function MeasurementPage({ lang = 'si' }) {
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">මාන විශ්ලේෂණය භාවිතයෙන් සමීකරණයක ඇති නියතවල (Constants) අගය සෙවිය නොහැක.</p>
+                    <p className="text-sm mt-1 text-amber-900">මාන විශ්‍ලේෂණය භාවිතයෙන් සමීකරණයක ඇති නියතවල (Constants) අගය සෙවිය නොහැක.</p>
                   </div>
                 </>
               )}
@@ -339,7 +339,7 @@ export default function MeasurementPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම්:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li><strong>ඒකාංග දෝෂ (Systematic Errors):</strong> උපකරණයේ දෝෂ හෝ වැරදි පරිහරණය නිසා එක් දිශාවකට පමණක් සිදුවන දෝෂ.</li>
                       <li><strong>අහඹු දෝෂ (Random Errors):</strong> පරීක්ෂණයේ නිරීක්ෂණ ගන්නා විට අහඹු ලෙස සිදුවන දෝෂ. මධ්යන්යය ගැනීමෙන් මෙය අවම කළ හැක.</li>
@@ -348,11 +348,11 @@ export default function MeasurementPage({ lang = 'si' }) {
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
-                    <p className="bg-gray-50 p-2 rounded font-mono text-sm border">ප්රතිශත දෝෂය = (නිරපේක්ෂ දෝෂය / මැනිය යුතු මිනුම) × 100%</p>
+                    <p className="bg-gray-50 p-2 rounded font-mono text-sm border">ප්‍රතිශත දෝෂය = (නිරපේක්ෂ දෝෂය / මැනිය යුතු මිනුම) × 100%</p>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">සාමාන්ය මීටර රූලක කුඩා ම මිනුම 1 mm වේ. ප්රතිශත දෝෂය 1% කට වඩා අඩුවෙන් තබා ගැනීමට නම් මීටර රූලෙන් මනින අවම දිග 100 mm (10 cm) විය යුතුය.</p>
+                    <p className="text-sm mt-1 text-amber-900">සාමාන්ය මීටර රූලක කුඩා ම මිනුම 1 mm වේ. ප්‍රතිශත දෝෂය 1% කට වඩා අඩුවෙන් තබා ගැනීමට නම් මීටර රූලෙන් මනින අවම දිග 100 mm (10 cm) විය යුතුය.</p>
                   </div>
                 </>
               )}

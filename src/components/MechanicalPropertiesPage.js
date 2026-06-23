@@ -126,7 +126,7 @@ export default function MechanicalPropertiesPage({ lang = 'si' }) {
             <p className="text-emerald-100 text-sm mt-1">
               {isEnglish
                 ? 'Exam secrets of elasticity, Young\'s modulus, viscosity, and surface tension.'
-                : 'ප්‍රත්‍යාස්ථතාව, යං මාපාංකය, දුස්ස්රාවිතාව සහ පෘෂ්ඨික ආතතියේ විභාග රහස්.'}
+                : 'ප්‍රත්‍යාස්ථතාව, යං මාපාංකය, දුස්ස්‍රාවිතාව සහ පෘෂ්ඨික ආතතියේ විභාග රහස්.'}
             </p>
           </div>
         </div>
@@ -148,7 +148,7 @@ export default function MechanicalPropertiesPage({ lang = 'si' }) {
                 • <strong className="text-slate-800">{isEnglish ? 'Stokes\' Law (F = 6πηrv):' : 'ස්ටෝක්ස් නියමය (F = 6πηrv):'}</strong>{' '}
                 {isEnglish
                   ? 'The formula for finding the viscous drag force acting on a small spherical object moving through a viscous medium.'
-                  : 'දුස්ස්රාවී මාධ්‍යයක් තුළින් චලනය වන කුඩා ගෝලීය වස්තුවක් මත ක්‍රියා කරන දුස්ස්රාවිතා බලය සෙවීමේ සූත්‍රයයි.'}
+                  : 'දුස්ස්‍රාවී මාධ්‍යයක් තුළින් චලනය වන කුඩා ගෝලීය වස්තුවක් මත ක්‍රියා කරන දුස්ස්‍රාවිතා බලය සෙවීමේ සූත්‍රයයි.'}
               </li>
             </ul>
           </div>
@@ -236,14 +236,14 @@ export default function MechanicalPropertiesPage({ lang = 'si' }) {
             </div>
           </Accordion>
 
-          {/* 2. දුස්ස්රාවිතාව සහ තරල ප්‍රවාහය */}
-          <Accordion title={isEnglish ? "02. Viscosity and Fluid Flow" : "02. දුස්ස්රාවිතාව සහ තරල ප්‍රවාහය (Viscosity and Fluid Flow)"}>
+          {/* 2. දුස්ස්‍රාවිතාව සහ තරල ප්‍රවාහය */}
+          <Accordion title={isEnglish ? "02. Viscosity and Fluid Flow" : "02. දුස්ස්‍රාවිතාව සහ තරල ප්‍රවාහය (Viscosity and Fluid Flow)"}>
             <div className="space-y-4 text-slate-700">
               <div>
                 <h4 className="font-bold text-slate-900">{isEnglish ? 'Key Definitions:' : 'ප්‍රධාන අර්ථ දැක්වීම් (Definitions):'}</h4>
                 <ul className="list-disc pl-5 space-y-1">
                   <li>
-                    <strong>{isEnglish ? 'Viscosity:' : 'දුස්ස්රාවිතාව (Viscosity):'}</strong>{' '}
+                    <strong>{isEnglish ? 'Viscosity:' : 'දුස්ස්‍රාවිතාව (Viscosity):'}</strong>{' '}
                     {isEnglish
                       ? 'The internal frictional force arising between layers of a fluid opposing their relative motion.'
                       : 'ද්‍රවයක් ප්‍රවාහය වීමේදී ද්‍රව ස්තර අතර සාපේක්ෂ චලිතයට එරෙහිව ඇතිවන ඝර්ෂණ බලයයි.'}
@@ -265,7 +265,7 @@ export default function MechanicalPropertiesPage({ lang = 'si' }) {
               <div>
                 <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
-                  <li>{isEnglish ? 'Viscous force:' : 'දුස්ස්රාවී බලය:'} F = η * A * (dv / dx)</li>
+                  <li>{isEnglish ? 'Viscous force:' : 'දුස්ස්‍රාවී බලය:'} F = η * A * (dv / dx)</li>
                   <li>{isEnglish ? "Poiseuille's Equation:" : 'පොයිසෙල් සමීකරණය:'} V / t = (π * a⁴ * Δp) / (8 * η * l)</li>
                 </ul>
               </div>
@@ -275,7 +275,7 @@ export default function MechanicalPropertiesPage({ lang = 'si' }) {
                   <li>
                     {isEnglish
                       ? 'The coefficient of viscosity (η) of liquids decreases as temperature increases.'
-                      : 'උෂ්ණත්වය වැඩි වන විට ද්‍රවවල දුස්ස්රාවිතා සංගුණකය (η) අඩුවේ.'}
+                      : 'උෂ්ණත්වය වැඩි වන විට ද්‍රවවල දුස්ස්‍රාවිතා සංගුණකය (η) අඩුවේ.'}
                   </li>
                   <li>
                     {isEnglish
@@ -305,13 +305,13 @@ export default function MechanicalPropertiesPage({ lang = 'si' }) {
                     <strong>{isEnglish ? "Stokes' Law:" : 'ස්ටෝක්ස් නියමය (Stokes\' Law):'}</strong>{' '}
                     {isEnglish
                       ? 'The formula for finding the viscous frictional force acting on a small spherical object moving through a viscous fluid.'
-                      : 'දුස්ස්රාවී තරලයක් තුළින් චලනය වන කුඩා ගෝලාකාර වස්තුවක් මත ක්‍රියා කරන දුස්ස්රාවී ඝර්ෂණ බලය සෙවීමේ නියමයයි.'}
+                      : 'දුස්ස්‍රාවී තරලයක් තුළින් චලනය වන කුඩා ගෝලාකාර වස්තුවක් මත ක්‍රියා කරන දුස්ස්‍රාවී ඝර්ෂණ බලය සෙවීමේ නියමයයි.'}
                   </li>
                   <li>
                     <strong>{isEnglish ? 'Terminal Velocity (v):' : 'ආන්ත ප්‍රවේගය (Terminal Velocity - v):'}</strong>{' '}
                     {isEnglish
                       ? 'The constant maximum velocity attained by an object falling through a fluid when the downward gravitational weight is balanced by the upward forces (upthrust + viscous force).'
-                      : 'තරලයක් තුළින් වස්තුවක් පහළට වැටෙන විට, පහළට ක්‍රියා කරන බරට ඉහළට ක්‍රියා කරන (උත්ප්ලාවක බලය + දුස්ස්රාවී බලය) සමාන වීමෙන් වස්තුව ලබාගන්නා නියත උපරිම ප්‍රවේගයයි.'}
+                      : 'තරලයක් තුළින් වස්තුවක් පහළට වැටෙන විට, පහළට ක්‍රියා කරන බරට ඉහළට ක්‍රියා කරන (උත්ප්‍ලාවක බලය + දුස්ස්‍රාවී බලය) සමාන වීමෙන් වස්තුව ලබාගන්නා නියත උපරිම ප්‍රවේගයයි.'}
                   </li>
                 </ul>
               </div>
@@ -431,7 +431,7 @@ export default function MechanicalPropertiesPage({ lang = 'si' }) {
                       <td className="p-3 font-mono text-slate-600">ML⁻¹ T⁻²</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
-                      <td className="p-3 font-semibold text-slate-700">{isEnglish ? 'Coefficient of Viscosity' : 'දුස්ස්රාවිතා සංගුණකය (Coefficient of Viscosity)'}</td>
+                      <td className="p-3 font-semibold text-slate-700">{isEnglish ? 'Coefficient of Viscosity' : 'දුස්ස්‍රාවිතා සංගුණකය (Coefficient of Viscosity)'}</td>
                       <td className="p-3 text-slate-600">η</td>
                       <td className="p-3 text-slate-600">N s m⁻² (or Pa s)</td>
                       <td className="p-3 font-mono text-slate-600">ML⁻¹ T⁻¹</td>
@@ -460,7 +460,7 @@ export default function MechanicalPropertiesPage({ lang = 'si' }) {
         <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden text-left bg-white">
           <div className="bg-slate-900 text-white p-5">
             <h3 className="text-lg font-bold flex items-center gap-2 text-white">
-              💧 {isEnglish ? 'Viscosity Drop Test' : 'Viscosity Drop Test (දුස්ස්රාවිතා පරීක්ෂණය)'}
+              💧 {isEnglish ? 'Viscosity Drop Test' : 'Viscosity Drop Test (දුස්ස්‍රාවිතා පරීක්ෂණය)'}
             </h3>
           </div>
           <div className="p-6">
@@ -474,7 +474,7 @@ export default function MechanicalPropertiesPage({ lang = 'si' }) {
                     {isEnglish ? '💧 Water' : '💧 ජලය (Water)'}
                   </button>
                   <button onClick={() => setLiquid('glycerin')} className={`p-2 rounded-lg text-xs font-bold cursor-pointer transition ${liquid === 'glycerin' ? 'bg-emerald-600 text-white shadow' : 'bg-white border text-slate-700'}`}>
-                    {isEnglish ? '🍯 Glycerin' : '🍯 ග්ලිසරින් (Glycerin)'}
+                    {isEnglish ? '🍯 Glycerin' : '🍯 ග්‍ලිසරින් (Glycerin)'}
                   </button>
                 </div>
                 <button onClick={startDrop} className="w-full bg-slate-900 text-white p-3 rounded-lg text-xs font-bold flex items-center justify-center gap-2 shadow cursor-pointer hover:bg-slate-800 transition border-0">

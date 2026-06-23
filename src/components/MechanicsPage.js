@@ -193,11 +193,11 @@ export default function MechanicsPage({ lang = 'si' }) {
         {/* Resources Book Summary Section */}
         <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-150 mb-8">
           <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-            <span>📘</span> {isEnglish ? 'Resource Book Summary: Mechanics' : 'සම්පත් පොත් සාරාංශය: යාන්ත්ර විද්යාව'}
+            <span>📘</span> {isEnglish ? 'Resource Book Summary: Mechanics' : 'සම්පත් පොත් සාරාංශය: යාන්ත්‍ර විද්යාව'}
           </h2>
 
           {/* 01. Kinematics */}
-          <Accordion title={isEnglish ? "01. Kinematics" : "01. ප්රගති විද්යාව (Kinematics)"}>
+          <Accordion title={isEnglish ? "01. Kinematics" : "01. ප්‍රගති විද්යාව (Kinematics)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -234,11 +234,11 @@ export default function MechanicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම්:</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>ප්රවේගය (Velocity):</strong> යම් නිශ්චිත දිශාවක් ඔස්සේ වස්තුවක විස්ථාපනය වෙනස් වීමේ සීඝ්රතාවයි.</li>
-                      <li><strong>සාපේක්ෂ ප්රවේගය (Relative Velocity):</strong> යම් සමුද්දේශ රාමුවකට (Frame of reference) සාපේක්ෂව වස්තුවක් ගමන් කරන ප්රවේගයයි.</li>
-                      <li><strong>ත්වරණය (Acceleration):</strong> කාලය සමග ප්රවේගය වෙනස් වීමේ සීඝ්රතාවයි.</li>
+                      <li><strong>ප්‍රවේගය (Velocity):</strong> යම් නිශ්චිත දිශාවක් ඔස්සේ වස්තුවක විස්ථාපනය වෙනස් වීමේ සීඝ්‍රතාවයි.</li>
+                      <li><strong>සාපේක්ෂ ප්‍රවේගය (Relative Velocity):</strong> යම් සමුද්දේශ රාමුවකට (Frame of reference) සාපේක්ෂව වස්තුවක් ගමන් කරන ප්‍රවේගයයි.</li>
+                      <li><strong>ත්වරණය (Acceleration):</strong> කාලය සමග ප්‍රවේගය වෙනස් වීමේ සීඝ්‍රතාවයි.</li>
                     </ul>
                   </div>
                   <div>
@@ -247,20 +247,20 @@ export default function MechanicsPage({ lang = 'si' }) {
                       <li>v = u + at</li>
                       <li>s = ((u + v) / 2)t</li>
                       <li>s = ut + ½at²</li>
-                      <li>v² = u² + 2as (u: ආරම්භක ප්රවේගය, v: අවසාන ප්රවේගය, a: ත්වරණය, s: විස්ථාපනය, t: කාලය)</li>
-                      <li>සාපේක්ෂ ප්රවේගය: v_A,B = v_A,E + v_E,B (E යනු පොළොව වේ)</li>
+                      <li>v² = u² + 2as (u: ආරම්භක ප්‍රවේගය, v: අවසාන ප්‍රවේගය, a: ත්වරණය, s: විස්ථාපනය, t: කාලය)</li>
+                      <li>සාපේක්ෂ ප්‍රවේගය: v_A,B = v_A,E + v_E,B (E යනු පොළොව වේ)</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු:</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>විස්ථාපන - කාල ප්රස්ථාරය:</strong> අනුක්රමණය මගින් ප්රවේගය ලබා දේ.</li>
-                      <li><strong>ප්රවේග - කාල ප්රස්ථාරය:</strong> අනුක්රමණය මගින් ත්වරණය ලබා දෙන අතර, ප්රස්ථාරය සහ කාල අක්ෂය අතර වර්ගඵලය මගින් විස්ථාපනය ලබා දේ.</li>
+                      <li><strong>විස්ථාපන - කාල ප්‍රස්ථාරය:</strong> අනුක්‍රමණය මගින් ප්‍රවේගය ලබා දේ.</li>
+                      <li><strong>ප්‍රවේග - කාල ප්‍රස්ථාරය:</strong> අනුක්‍රමණය මගින් ත්වරණය ලබා දෙන අතර, ප්‍රස්ථාරය සහ කාල අක්ෂය අතර වර්ගඵලය මගින් විස්ථාපනය ලබා දේ.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">v = u + at ඇතුළු චලිත සමීකරණ යෙදිය හැක්කේ නියත ත්වරණයකින් (Constant Acceleration) චලිත වන වස්තු සඳහා පමණි. ත්වරණය විචල්ය නම් ප්රස්ථාර භාවිත කළ යුතුය.</p>
+                    <p className="text-sm mt-1 text-amber-900">v = u + at ඇතුළු චලිත සමීකරණ යෙදිය හැක්කේ නියත ත්වරණයකින් (Constant Acceleration) චලිත වන වස්තු සඳහා පමණි. ත්වරණය විචල්ය නම් ප්‍රස්ථාර භාවිත කළ යුතුය.</p>
                   </div>
                 </>
               )}
@@ -303,10 +303,10 @@ export default function MechanicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම්:</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>ගම්යතාව (Momentum):</strong> වස්තුවක ස්කන්ධයෙහිත් ප්රවේගයෙහිත් ගුණිතයයි (p = mv).</li>
-                      <li><strong>ආවේගය (Impulse):</strong> බලය සහ බලය ක්රියා කළ කාලයෙහි ගුණිතයයි. මෙය ගම්යතා වෙනසට සමාන වේ.</li>
+                      <li><strong>ගම්යතාව (Momentum):</strong> වස්තුවක ස්කන්ධයෙහිත් ප්‍රවේගයෙහිත් ගුණිතයයි (p = mv).</li>
+                      <li><strong>ආවේගය (Impulse):</strong> බලය සහ බලය ක්‍රියා කළ කාලයෙහි ගුණිතයයි. මෙය ගම්යතා වෙනසට සමාන වේ.</li>
                       <li><strong>ඝර්ෂණය (Friction):</strong> එකිනෙක ස්පර්ශව පවතින පෘෂ්ඨ දෙකක් අතර ලිස්සා යාම හෝ ලිස්සා යාමට දරන උත්සාහය වළක්වන බලයයි.</li>
                     </ul>
                   </div>
@@ -315,19 +315,19 @@ export default function MechanicsPage({ lang = 'si' }) {
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>නිව්ටන්ගේ දෙවන නියමය: F = ma</li>
                       <li>ආවේගය: I = F × t = mv - mu</li>
-                      <li>ඝර්ෂණ නියමය: F = μR (F: සීමාකාරී/ගතික ඝර්ෂණය, μ: ඝර්ෂණ සංගුණකය, R: අභිලම්බ ප්රතික්රියාව)</li>
+                      <li>ඝර්ෂණ නියමය: F = μR (F: සීමාකාරී/ගතික ඝර්ෂණය, μ: ඝර්ෂණ සංගුණකය, R: අභිලම්බ ප්‍රතික්‍රියාව)</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු:</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>රේඛීය ගම්යතාව සංස්ථිති මූලධර්මය:</strong> බාහිර අසමතුලිත බලයක් ක්රියා නොකරයි නම්, පද්ධතියක මුළු ගම්යතාව නියතව පවතී.</li>
+                      <li><strong>රේඛීය ගම්යතාව සංස්ථිති මූලධර්මය:</strong> බාහිර අසමතුලිත බලයක් ක්‍රියා නොකරයි නම්, පද්ධතියක මුළු ගම්යතාව නියතව පවතී.</li>
                       <li><strong>සීමාකාරී ඝර්ෂණය:</strong> වස්තුවක් චලිත වීම ඇරඹෙන මොහොතේ පවතින උපරිම ස්ථිතික ඝර්ෂණ බලයයි.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">F = ma යෙදීමේ දී, F යනු වස්තුව මත ක්රියාකරන සම්ප්රයුක්ත බලය (Resultant Force) විය යුතුමය. හුදෙක් එක් බලයක් පමණක් යෙදීමෙන් පිළිතුරු වැරදේ.</p>
+                    <p className="text-sm mt-1 text-amber-900">F = ma යෙදීමේ දී, F යනු වස්තුව මත ක්‍රියාකරන සම්ප්‍රයුක්ත බලය (Resultant Force) විය යුතුමය. හුදෙක් එක් බලයක් පමණක් යෙදීමෙන් පිළිතුරු වැරදේ.</p>
                   </div>
                 </>
               )}
@@ -364,10 +364,10 @@ export default function MechanicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම්:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li><strong>කාර්යය (Work):</strong> වස්තුවක් මත බලයක් යෙදූ විට බලයේ දිශාවට සිදුවන විස්ථාපනය හා බලයේ ගුණිතයයි.</li>
-                      <li><strong>ජවය (Power):</strong> කාර්යය කිරීමේ සීඝ්රතාව හෙවත් ශක්තිය මාරු වීමේ සීඝ්රතාවයි.</li>
+                      <li><strong>ජවය (Power):</strong> කාර්යය කිරීමේ සීඝ්‍රතාව හෙවත් ශක්තිය මාරු වීමේ සීඝ්‍රතාවයි.</li>
                     </ul>
                   </div>
                   <div>
@@ -376,13 +376,13 @@ export default function MechanicsPage({ lang = 'si' }) {
                       <li>කාර්යය: W = Fs cos(θ)</li>
                       <li>චාලක ශක්තිය: K.E = ½mv²</li>
                       <li>විභව ශක්තිය: P.E = mgh</li>
-                      <li>ප්රත්යාස්ථ විභව ශක්තිය: W = ½kx²</li>
+                      <li>ප්‍රත්යාස්ථ විභව ශක්තිය: W = ½kx²</li>
                       <li>ජවය: P = W/t හෝ P = Fv</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">W = Fs සමීකරණය භාවිත කළ හැක්කේ නියත බලයක් ඇති විට පමණි. දුන්නක් ඇදීම වැනි විචල්ය බලයක් ඇති අවස්ථාවල ප්රස්ථාරයේ වර්ගඵලය මගින් (උදා: ½Fx) කාර්යය සෙවිය යුතුය.</p>
+                    <p className="text-sm mt-1 text-amber-900">W = Fs සමීකරණය භාවිත කළ හැක්කේ නියත බලයක් ඇති විට පමණි. දුන්නක් ඇදීම වැනි විචල්ය බලයක් ඇති අවස්ථාවල ප්‍රස්ථාරයේ වර්ගඵලය මගින් (උදා: ½Fx) කාර්යය සෙවිය යුතුය.</p>
                   </div>
                 </>
               )}
@@ -390,7 +390,7 @@ export default function MechanicsPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 04. Rotational Motion */}
-          <Accordion title={isEnglish ? "04. Rotational and Circular Motion" : "04. භ්රමණ හා වෘත්තාකාර චලිතය (Rotational Motion)"}>
+          <Accordion title={isEnglish ? "04. Rotational and Circular Motion" : "04. භ්‍රමණ හා වෘත්තාකාර චලිතය (Rotational Motion)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -417,23 +417,23 @@ export default function MechanicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම්:</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>කෝණික ප්රවේගය (ω):</strong> කෝණික විස්ථාපනය වෙනස් වීමේ සීඝ්රතාවයි (ω = Δθ / Δt).</li>
-                      <li><strong>අවස්ථිති ඝූර්ණය (I):</strong> භ්රමණ චලිතයේ දී වස්තුවක් සිය අවස්ථිති තත්ත්වය වෙනස් කිරීමට දක්වන විරෝධයයි (I = Σmr²).</li>
+                      <li><strong>කෝණික ප්‍රවේගය (ω):</strong> කෝණික විස්ථාපනය වෙනස් වීමේ සීඝ්‍රතාවයි (ω = Δθ / Δt).</li>
+                      <li><strong>අවස්ථිති ඝූර්ණය (I):</strong> භ්‍රමණ චලිතයේ දී වස්තුවක් සිය අවස්ථිති තත්ත්වය වෙනස් කිරීමට දක්වන විරෝධයයි (I = Σmr²).</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>රේඛීය හා කෝණික සම්බන්ධතා: v = rω, a = rα</li>
-                      <li>කේන්ද්රාභිසාරී ත්වරණය: a = v²/r = rω²</li>
+                      <li>කේන්ද්‍රාභිසාරී ත්වරණය: a = v²/r = rω²</li>
                       <li>කෝණික ගම්යතාව (L): L = Iω</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">බාහිර ව්යාවර්තයක් (External Torque) නොමැති නම් Iω = නියතයකි. දෑත් දිගු කර භ්රමණය වන අයෙකු දෑත් හැකිලූ විට I අඩුවන බැවින් කෝණික ප්රවේගය (ω) වැඩි වේ.</p>
+                    <p className="text-sm mt-1 text-amber-900">බාහිර ව්යාවර්තයක් (External Torque) නොමැති නම් Iω = නියතයකි. දෑත් දිගු කර භ්‍රමණය වන අයෙකු දෑත් හැකිලූ විට I අඩුවන බැවින් කෝණික ප්‍රවේගය (ω) වැඩි වේ.</p>
                   </div>
                 </>
               )}
@@ -441,7 +441,7 @@ export default function MechanicsPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 05. Hydrostatics and Fluid Dynamics */}
-          <Accordion title={isEnglish ? "05. Hydrostatics and Fluid Dynamics" : "05. ද්රවස්ථිති හා තරල ගති විද්යාව (Hydrostatics and Fluid Dynamics)"}>
+          <Accordion title={isEnglish ? "05. Hydrostatics and Fluid Dynamics" : "05. ද්‍රවස්ථිති හා තරල ගති විද්යාව (Hydrostatics and Fluid Dynamics)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -485,30 +485,30 @@ export default function MechanicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම්:</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම්:</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li><strong>ඝනත්වය (Density):</strong> ඒකක පරිමාවක ස්කන්ධයයි (ρ = m/V).</li>
-                      <li><strong>උත්ප්ලාවකතාව (Upthrust):</strong> තරලයක ගිලී ඇති වස්තුවක් මත තරලය මගින් ඉහළට ඇති කරන සම්ප්රයුක්ත බලයයි.</li>
+                      <li><strong>උත්ප්‍ලාවකතාව (Upthrust):</strong> තරලයක ගිලී ඇති වස්තුවක් මත තරලය මගින් ඉහළට ඇති කරන සම්ප්‍රයුක්ත බලයයි.</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">සමීකරණ:</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
-                      <li>ද්රවස්ථිති පීඩනය: P = hρg</li>
+                      <li>ද්‍රවස්ථිති පීඩනය: P = hρg</li>
                       <li>සාන්තත්ය සමීකරණය: A₁v₁ = A₂v₂</li>
                       <li>බර්නූලි සමීකරණය: P + ½ρv² + hρg = නියතයකි</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">බර්නූලි මූලධර්මය යෙදිය හැක්කේ දුස්ස්රාවී නොවන, අසම්පීඩ්ය, අනාකූල තරල ප්රවාහ සඳහා පමණි.</p>
+                    <p className="text-sm mt-1 text-amber-900">බර්නූලි මූලධර්මය යෙදිය හැක්කේ දුස්ස්‍රාවී නොවන, අසම්පීඩ්ය, අනාකූල තරල ප්‍රවාහ සඳහා පමණි.</p>
                   </div>
                   {/* Density Table */}
                   <div className="overflow-x-auto mt-4">
                     <table className="w-full text-left border-collapse text-sm">
                       <thead>
                         <tr className="bg-blue-50 border-b-2 border-blue-100">
-                          <th className="p-2 font-semibold text-blue-900">ද්රව්යය</th>
+                          <th className="p-2 font-semibold text-blue-900">ද්‍රව්යය</th>
                           <th className="p-2 font-semibold text-blue-900">ඝනත්වය (kg m⁻³)</th>
                           <th className="p-2 font-semibold text-blue-900">සාපේක්ෂ ඝනත්වය</th>
                         </tr>

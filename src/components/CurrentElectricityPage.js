@@ -160,10 +160,10 @@ export default function CurrentElectricityPage({ lang = 'si' }) {
                       : 'සන්නායකයක හරස්කඩක් හරහා ආරෝපණ ගලා යාමේ සීඝ්‍රතාවයි.'}
                   </li>
                   <li>
-                    <strong>{isEnglish ? 'Drift Velocity (v):' : 'ප්ලාවිත ප්‍රවේගය (Drift Velocity - v):'}</strong>{' '}
+                    <strong>{isEnglish ? 'Drift Velocity (v):' : 'ප්‍ලාවිත ප්‍රවේගය (Drift Velocity - v):'}</strong>{' '}
                     {isEnglish
                       ? 'The average velocity with which free electrons drift inside a conductor due to the flow of current.'
-                      : 'ප්ලාවිත ප්‍රවේගය (Drift Velocity - v) යනු සන්නායකයක් තුළින් ධාරාව ගමන් කිරීමේදී නිදහස් ඉලෙක්ට්‍රෝන චලනය වන මධ්‍යන්‍ය වේගයයි.'}
+                      : 'ප්‍ලාවිත ප්‍රවේගය (Drift Velocity - v) යනු සන්නායකයක් තුළින් ධාරාව ගමන් කිරීමේදී නිදහස් ඉලෙක්ට්‍රෝන චලනය වන මධ්‍යන්‍ය වේගයයි.'}
                   </li>
                 </ul>
               </div>
@@ -171,7 +171,7 @@ export default function CurrentElectricityPage({ lang = 'si' }) {
                 <h4 className="font-bold text-slate-900">{isEnglish ? 'Formulas and Equations:' : 'සූත්‍ර සහ සමීකරණ (Equations):'}</h4>
                 <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                   <li>I = Q / t</li>
-                  <li>I = nAev ({isEnglish ? 'n = number of free electrons per unit volume, A = area, e = electron charge, v = drift velocity' : 'n = ඒකක පරිමාවක නිදහස් ඉලෙක්ට්‍රෝන ගණන, A = හරස්කඩ වර්ගඵලය, e = ඉලෙක්ට්‍රෝනයක ආරෝපණය, v = ප්ලාවිත ප්‍රවේගය'})</li>
+                  <li>I = nAev ({isEnglish ? 'n = number of free electrons per unit volume, A = area, e = electron charge, v = drift velocity' : 'n = ඒකක පරිමාවක නිදහස් ඉලෙක්ට්‍රෝන ගණන, A = හරස්කඩ වර්ගඵලය, e = ඉලෙක්ට්‍රෝනයක ආරෝපණය, v = ප්‍ලාවිත ප්‍රවේගය'})</li>
                   <li>{isEnglish ? "Ohm's Law:" : 'ඕම්ගේ නියමය:'} V = IR</li>
                 </ul>
               </div>
@@ -190,7 +190,7 @@ export default function CurrentElectricityPage({ lang = 'si' }) {
                 <p className="text-sm mt-1 text-amber-900">
                   {isEnglish
                     ? 'According to the equation I = nAev, when the cross-sectional area (A) of a wire decreases, the drift velocity (v) increases.'
-                    : 'I = nAev සමීකරණයට අනුව, වයරයක හරස්කඩ වර්ගඵලය (A) අඩු වන විට ප්ලාවිත ප්‍රවේගය (v) වැඩි වේ.'}
+                    : 'I = nAev සමීකරණයට අනුව, වයරයක හරස්කඩ වර්ගඵලය (A) අඩු වන විට ප්‍ලාවිත ප්‍රවේගය (v) වැඩි වේ.'}
                 </p>
               </div>
             </div>

@@ -248,24 +248,24 @@ export default function GravitationalFieldsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
-                    <p><strong>නිව්ටන්ගේ ගුරුත්වාකර්ෂණ නියමය (Newton&apos;s Law of Gravitation):</strong> විශ්වයේ ඕනෑම ලක්ෂීය ස්කන්ධ දෙකක් අතර අන්යෝන්ය ආකර්ෂණ බලය, ස්කන්ධවල ගුණිතයට අනුලෝමව ද, දුරෙහි වර්ගයට ප්රතිලෝමව ද සමානුපාතික වේ.</p>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <p><strong>නිව්ටන්ගේ ගුරුත්වාකර්ෂණ නියමය (Newton&apos;s Law of Gravitation):</strong> විශ්වයේ ඕනෑම ලක්ෂීය ස්කන්ධ දෙකක් අතර අන්යෝන්ය ආකර්ෂණ බලය, ස්කන්ධවල ගුණිතයට අනුලෝමව ද, දුරෙහි වර්ගයට ප්‍රතිලෝමව ද සමානුපාතික වේ.</p>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <p className="bg-slate-50 p-2.5 rounded font-mono text-sm border text-slate-800">
-                      F = G * M * m / r² (G = සර්වත්ර ගුරුත්වාකර්ෂණ නියතය, M, m = ස්කන්ධ, r = දුර)
+                      F = G * M * m / r² (G = සර්වත්‍ර ගුරුත්වාකර්ෂණ නියතය, M, m = ස්කන්ධ, r = දුර)
                     </p>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>ගුරුත්වාකර්ෂණ බලය සැමවිටම ආකර්ෂණ බලයකි. එය ස්කන්ධ කේන්ද්ර යා කරන සරල රේඛාව ඔස්සේ ක්රියා කරයි.</li>
+                      <li>ගුරුත්වාකර්ෂණ බලය සැමවිටම ආකර්ෂණ බලයකි. එය ස්කන්ධ කේන්ද්‍ර යා කරන සරල රේඛාව ඔස්සේ ක්‍රියා කරයි.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-850 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">මෙම සමීකරණයේ r යනු වස්තුවල පෘෂ්ඨ අතර දුර නොව, <strong>ස්කන්ධ කේන්ද්ර දෙක අතර දුරයි</strong>. පෘථිවිය වැනි විශාල ග්රහලෝක සඳහා ගණනය කිරීම්වලදී ග්රහලෝකයේ අරය ද (R) r සඳහා එකතු කළ යුතුමය (r = R + h).</p>
+                    <p className="text-sm mt-1 text-amber-900">මෙම සමීකරණයේ r යනු වස්තුවල පෘෂ්ඨ අතර දුර නොව, <strong>ස්කන්ධ කේන්ද්‍ර දෙක අතර දුරයි</strong>. පෘථිවිය වැනි විශාල ග්‍රහලෝක සඳහා ගණනය කිරීම්වලදී ග්‍රහලෝකයේ අරය ද (R) r සඳහා එකතු කළ යුතුමය (r = R + h).</p>
                   </div>
                 </>
               )}
@@ -273,7 +273,7 @@ export default function GravitationalFieldsPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 2. Gravitational Field Intensity */}
-          <Accordion title={isEnglish ? "02. Gravitational Field Intensity" : "02. ගුරුත්වාකර්ෂණ ක්ෂේත්ර තීව්රතාව (Gravitational Field Intensity)"}>
+          <Accordion title={isEnglish ? "02. Gravitational Field Intensity" : "02. ගුරුත්වාකර්ෂණ ක්ෂේත්‍ර තීව්‍රතාව (Gravitational Field Intensity)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -302,11 +302,11 @@ export default function GravitationalFieldsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
-                    <p><strong>ක්ෂේත්ර තීව්රතාව (g):</strong> ගුරුත්වාකර්ෂණ ක්ෂේත්රයක යම් ලක්ෂ්යයක තැබූ ඒකක ස්කන්ධයක් මත ක්රියා කරන ගුරුත්වාකර්ෂණ බලයයි.</p>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <p><strong>ක්ෂේත්‍ර තීව්‍රතාව (g):</strong> ගුරුත්වාකර්ෂණ ක්ෂේත්‍රයක යම් ලක්ෂ්යයක තැබූ ඒකක ස්කන්ධයක් මත ක්‍රියා කරන ගුරුත්වාකර්ෂණ බලයයි.</p>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>g = F / m</li>
                       <li>ලක්ෂීය ස්කන්ධයකට දුර r හිදී: g = GM / r²</li>
@@ -315,12 +315,12 @@ export default function GravitationalFieldsPage({ lang = 'si' }) {
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>මෙය දෛශික රාශියකි. දිශාව ස්කන්ධ කේන්ද්රය දෙසට වේ.</li>
+                      <li>මෙය දෛශික රාශියකි. දිශාව ස්කන්ධ කේන්ද්‍රය දෙසට වේ.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-850 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">ඝන ගෝලයක (පෘථිවිය වැනි) အභ්යන්තරයේදී තීව්රතාව දුරට අනුලෝමව සමානුපාතික වේ (g ∝ r). එහෙත් පෘෂ්ඨයෙන් පිටතදී එය දුරෙහි වර්ගයට ප්රතිලෝමව සමානුපාතික වේ (g ∝ 1/r²). ප්රස්ථාර ඇඳීමේදී මේ වෙනස අනිවාර්යයෙන් පෙන්විය යුතුය.</p>
+                    <p className="text-sm mt-1 text-amber-900">ඝන ගෝලයක (පෘථිවිය වැනි) အභ්යන්තරයේදී තීව්‍රතාව දුරට අනුලෝමව සමානුපාතික වේ (g ∝ r). එහෙත් පෘෂ්ඨයෙන් පිටතදී එය දුරෙහි වර්ගයට ප්‍රතිලෝමව සමානුපාතික වේ (g ∝ 1/r²). ප්‍රස්ථාර ඇඳීමේදී මේ වෙනස අනිවාර්යයෙන් පෙන්විය යුතුය.</p>
                   </div>
                 </>
               )}
@@ -357,11 +357,11 @@ export default function GravitationalFieldsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
-                    <p><strong>ගුරුත්වාකර්ෂණ විභවය (V):</strong> අනන්තයේ සිට ඒකක ස්කන්ධයක් ගුරුත්වාකර්ෂණ ක්ෂේත්රයේ යම් ලක්ෂ්යයකට ගෙන ඒමේදී ගුරුත්වාකර්ෂණ බලය මගින් කරන ලද කාර්යයයි.</p>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <p><strong>ගුරුත්වාකර්ෂණ විභවය (V):</strong> අනන්තයේ සිට ඒකක ස්කන්ධයක් ගුරුත්වාකර්ෂණ ක්ෂේත්‍රයේ යම් ලක්ෂ්යයකට ගෙන ඒමේදී ගුරුත්වාකර්ෂණ බලය මගින් කරන ලද කාර්යයයි.</p>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>V = -GM / r</li>
                       <li>E = -GMm / r</li>
@@ -383,7 +383,7 @@ export default function GravitationalFieldsPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 4. Satellite Motion */}
-          <Accordion title={isEnglish ? "04. Satellite Motion" : "04. චන්ද්රිකා චලිතය (Satellite Motion)"}>
+          <Accordion title={isEnglish ? "04. Satellite Motion" : "04. චන්ද්‍රිකා චලිතය (Satellite Motion)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -413,11 +413,11 @@ export default function GravitationalFieldsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
-                    <p><strong>භූ ස්ථාවර චන්ද්රිකා (Geostationary Satellites):</strong> පෘථිවිය මත සිටින නිරීක්ෂකයෙකුට නිශ්චලව පවතින සේ පෙනෙන චන්ද්රිකා වේ.</p>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <p><strong>භූ ස්ථාවර චන්ද්‍රිකා (Geostationary Satellites):</strong> පෘථිවිය මත සිටින නිරීක්ෂකයෙකුට නිශ්චලව පවතින සේ පෙනෙන චන්ද්‍රිකා වේ.</p>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>v = √(GM / r)</li>
                       <li>T = 2π√(r³ / GM)</li>
@@ -427,12 +427,12 @@ export default function GravitationalFieldsPage({ lang = 'si' }) {
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>භූ ස්ථාවර චන්ද්රිකාවක ආවර්ත කාලය පැය 24 කි. එය ගමන් කළ යුත්තේ සමකය තලයේමය.</li>
+                      <li>භූ ස්ථාවර චන්ද්‍රිකාවක ආවර්ත කාලය පැය 24 කි. එය ගමන් කළ යුත්තේ සමකය තලයේමය.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-855 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">කක්ෂයක ගමන් කරන චන්ද්රිකාවක මුළු ශක්තිය සෘණ වේ (E = -GMm / 2r). මුළු ශක්තිය ශුන්ය (0) හෝ ධන (+) වූ විට චන්ද්රිකාව කක්ෂයෙන් ඉවතට පලා යයි.</p>
+                    <p className="text-sm mt-1 text-amber-900">කක්ෂයක ගමන් කරන චන්ද්‍රිකාවක මුළු ශක්තිය සෘණ වේ (E = -GMm / 2r). මුළු ශක්තිය ශුන්ය (0) හෝ ධන (+) වූ විට චන්ද්‍රිකාව කක්ෂයෙන් ඉවතට පලා යයි.</p>
                   </div>
                 </>
               )}

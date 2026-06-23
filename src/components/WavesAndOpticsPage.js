@@ -210,18 +210,18 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li><strong>සරල අනුවර්තී චලිතය (Simple Harmonic Motion - SHM):</strong> වස්තුවක ත්වරණය නිරතුරුවම සමතුලිත පිහිටීමේ සිට ඇති විස්ථාපනයට අනුලෝමව සමානුපාතික වන අතර, සෑම විටම සමතුලිත පිහිටීම දෙසට යොමුව ඇති චලිතයයි.</li>
-                      <li><strong>පරිමන්දිත කම්පන (Damped Oscillations):</strong> වාත ප්රතිරෝධය හෝ ඝර්ෂණ බල හේතුවෙන් දෝලනයක විස්තාරය ක්රමයෙන් අඩුවී යාමයි.</li>
+                      <li><strong>පරිමන්දිත කම්පන (Damped Oscillations):</strong> වාත ප්‍රතිරෝධය හෝ ඝර්ෂණ බල හේතුවෙන් දෝලනයක විස්තාරය ක්‍රමයෙන් අඩුවී යාමයි.</li>
                       <li><strong>අනුනාදය (Resonance):</strong> බාහිරින් යදන ආවර්ත බලයක සංඛ්යාතය, පද්ධතියේ ස්වාභාවික සංඛ්යාතයට සමාන වූ විට පද්ධතිය උපරිම විස්තාරයකින් කම්පනය වීමේ සංසිද්ධියයි.</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
-                      <li>SHM ත්වරණය: a = -ω² x (a = ත්වරණය, ω = කෝණික ප්රවේගය, x = විස්ථාපනය)</li>
-                      <li>SHM ප්රවේගය: v = ±ω√(A² - x²) (A = විස්තාරය)</li>
+                      <li>SHM ත්වරණය: a = -ω² x (a = ත්වරණය, ω = කෝණික ප්‍රවේගය, x = විස්ථාපනය)</li>
+                      <li>SHM ප්‍රවේගය: v = ±ω√(A² - x²) (A = විස්තාරය)</li>
                       <li>සරල අවලම්බයේ ආවර්ත කාලය (Simple Pendulum): T = 2π√(l/g)</li>
                       <li>දුන්නක ආවර්ත කාලය (Spring-mass system): T = 2π√(m/k)</li>
                     </ul>
@@ -229,8 +229,8 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>SHM හි සමතුලිත පිහිටීමේදී (x = 0), වස්තුවේ ප්රවේගය උපරිම වන අතර ත්වරණය ශුන්ය වේ.</li>
-                      <li>චලිතයේ අන්තවලදී (x = A), ප්රවේගය ශුන්ය වන අතර ත්වරණය උපරිම වේ.</li>
+                      <li>SHM හි සමතුලිත පිහිටීමේදී (x = 0), වස්තුවේ ප්‍රවේගය උපරිම වන අතර ත්වරණය ශුන්ය වේ.</li>
+                      <li>චලිතයේ අන්තවලදී (x = A), ප්‍රවේගය ශුන්ය වන අතර ත්වරණය උපරිම වේ.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
@@ -276,9 +276,9 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>තීර්යක් තරංග (Transverse Waves):</strong> මාධ්යයේ අංශු කම්පනය වන දිශාව, තරංගය ප්රගමනය වන දිශාවට ලම්බක වන තරංග වේ (උදා: ජල තරංග, ආලෝකය).</li>
+                      <li><strong>තීර්යක් තරංග (Transverse Waves):</strong> මාධ්යයේ අංශු කම්පනය වන දිශාව, තරංගය ප්‍රගමනය වන දිශාවට ලම්බක වන තරංග වේ (උදා: ජල තරංග, ආලෝකය).</li>
                       <li><strong>අන්වායාම තරංග (Longitudinal Waves):</strong> මාධ්යයේ අංශු කම්පනය වන දිශාව, තරංගය ගමන් ගන්නා දිශාවට සමාන්තර වන තරංග වේ (උදා: ධ්වනි තරංග).</li>
                       <li><strong>තරංග ආයාමය (Wavelength - λ):</strong> එකම කලාවේ පවතින ආසන්නතම අංශු දෙකක් අතර දුරයි.</li>
                     </ul>
@@ -293,7 +293,7 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>තරංගයක ගුණ 4 කි: පරාවර්තනය, වර්තනය, විවර්තනය, හා නිරෝධනය.</li>
-                      <li>නිරෝධනයේදී සම්ප්රයුක්ත විස්ථාපනය යනු තනි තනි තරංගවල විස්ථාපනවල දෛශික ඓක්යයට සමාන වේ (අධිස්ථාපන මූලධර්මය).</li>
+                      <li>නිරෝධනයේදී සම්ප්‍රයුක්ත විස්ථාපනය යනු තනි තනි තරංගවල විස්ථාපනවල දෛශික ඓක්යයට සමාන වේ (අධිස්ථාපන මූලධර්මය).</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
@@ -342,15 +342,15 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li><strong>නිෂ්පන්ද (Nodes):</strong> ස්ථාවර තරංගයක විස්ථාපනය සෑම විටම ශුන්ය වන ලක්ෂ්ය.</li>
-                      <li><strong>ප්රස්පන්ද (Antinodes):</strong> ස්ථාවර තරංගයක විස්ථාපනය උපරිම වන ලක්ෂ්ය.</li>
+                      <li><strong>ප්‍රස්පන්ද (Antinodes):</strong> ස්ථාවර තරංගයක විස්ථාපනය උපරිම වන ලක්ෂ්ය.</li>
                       <li><strong>මූලික ස්වරය (Fundamental Note):</strong> පද්ධතියක් කම්පනය විය හැකි අවම සංඛ්යාතයයි (f₀).</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>තන්තුවක තරංග වේගය: v = √(T/m)</li>
                       <li>තන්තුවක මූලික සංඛ්යාතය: f₀ = 1/(2l) * √(T/m)</li>
@@ -361,13 +361,13 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>සංවෘත නළ තුළ නිපදවෙන්නේ ඔත්තේ ගුණාකාර ප්රසංවාද පමණි (1, 3, 5).</li>
-                      <li>විවෘත නළ තුළ සියලුම ප්රසංවාද නිපදවේ (1, 2, 3, 4).</li>
+                      <li>සංවෘත නළ තුළ නිපදවෙන්නේ ඔත්තේ ගුණාකාර ප්‍රසංවාද පමණි (1, 3, 5).</li>
+                      <li>විවෘත නළ තුළ සියලුම ප්‍රසංවාද නිපදවේ (1, 2, 3, 4).</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-800 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">ප්රායෝගිකව ධ්වනි නළ ගැටළු විසඳීමේදී අන්ත ශෝධනය (e) අනිවාර්යයෙන් සැලකිය යුතුය. සංවෘත නළයක එක් කෙළවරක පමණක් අන්ත ශෝධනයක් ඇති අතර, විවෘත නළයක දෙකෙළවරම අන්ත ශෝධන පවතී (l → l + 2e).</p>
+                    <p className="text-sm mt-1 text-amber-900">ප්‍රායෝගිකව ධ්වනි නළ ගැටළු විසඳීමේදී අන්ත ශෝධනය (e) අනිවාර්යයෙන් සැලකිය යුතුය. සංවෘත නළයක එක් කෙළවරක පමණක් අන්ත ශෝධනයක් ඇති අතර, විවෘත නළයක දෙකෙළවරම අන්ත ශෝධන පවතී (l → l + 2e).</p>
                   </div>
                 </>
               )}
@@ -375,7 +375,7 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 04. Doppler Effect & Nature of Sound */}
-          <Accordion title={isEnglish ? "04. Doppler Effect & Nature of Sound" : "04. ඩොප්ලර් ආචරණය සහ ධ්වනියේ ස්වභාවය (Doppler Effect & Nature of Sound)"}>
+          <Accordion title={isEnglish ? "04. Doppler Effect & Nature of Sound" : "04. ඩොප්‍ලර් ආචරණය සහ ධ්වනියේ ස්වභාවය (Doppler Effect & Nature of Sound)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -409,30 +409,30 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>ඩොප්ලර් ආචරණය (Doppler Effect):</strong> ධ්වනි ප්රභවය සහ නිරීක්ෂකයා අතර සාපේක්ෂ චලිතයක් පවතින විට, නිරීක්ෂකයාට ඇසෙන සංඛ්යාතය ප්රභවයේ නියම සංඛ්යාතයට වඩා වෙනස් වී ඇසීමේ සංසිද්ධියයි.</li>
-                      <li><strong>හඬේ සැර (Loudness):</strong> ධ්වනි තීව්රතාවය (Intensity) මත රඳා පවතින ශ්රවණ සංවේදනයයි.</li>
-                      <li><strong>තාරතාව (Pitch):</strong> ධ්වනියේ සංඛ්යාතය (Frequency) මත රඳා පවතින ශ්රවණ සංවේදනයයි.</li>
+                      <li><strong>ඩොප්‍ලර් ආචරණය (Doppler Effect):</strong> ධ්වනි ප්‍රභවය සහ නිරීක්ෂකයා අතර සාපේක්ෂ චලිතයක් පවතින විට, නිරීක්ෂකයාට ඇසෙන සංඛ්යාතය ප්‍රභවයේ නියම සංඛ්යාතයට වඩා වෙනස් වී ඇසීමේ සංසිද්ධියයි.</li>
+                      <li><strong>හඬේ සැර (Loudness):</strong> ධ්වනි තීව්‍රතාවය (Intensity) මත රඳා පවතින ශ්‍රවණ සංවේදනයයි.</li>
+                      <li><strong>තාරතාව (Pitch):</strong> ධ්වනියේ සංඛ්යාතය (Frequency) මත රඳා පවතින ශ්‍රවණ සංවේදනයයි.</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
-                      <li>ඩොප්ලර් සමීකරණය: f = ((v ± u₀) / (v ∓ u_s)) * f₀</li>
-                      <li>තීව්රතා මට්ටම (Intensity Level): β = 10 log₁₀(I / I₀) dB</li>
+                      <li>ඩොප්‍ලර් සමීකරණය: f = ((v ± u₀) / (v ∓ u_s)) * f₀</li>
+                      <li>තීව්‍රතා මට්ටම (Intensity Level): β = 10 log₁₀(I / I₀) dB</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>නිරීක්ෂකයා ප්රභවය දෙසට චලිත වන විට ඇසෙන සංඛ්යාතය වැඩි වේ. ප්රභවයෙන් ඉවතට යන විට අඩුවේ.</li>
-                      <li>මිනිස් කනෙහි ශ්රවණ පරාසය 20 Hz සිට 20,000 Hz දක්වා වේ.</li>
+                      <li>නිරීක්ෂකයා ප්‍රභවය දෙසට චලිත වන විට ඇසෙන සංඛ්යාතය වැඩි වේ. ප්‍රභවයෙන් ඉවතට යන විට අඩුවේ.</li>
+                      <li>මිනිස් කනෙහි ශ්‍රවණ පරාසය 20 Hz සිට 20,000 Hz දක්වා වේ.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-850 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">ඩොප්ලර් සමීකරණය යෙදීමේදී වේගයන්ගේ දිශාවන් අනිවාර්යයෙන්ම නිවැරදිව ආදේශ කළ යුතුය. ප්රභවය නිරීක්ෂකයා වෙතට එයි නම් හරය (v - u_s) වේ. සුළඟක් හමා යයි නම් එහි වේගය ධ්වනි වේගයට එකතු කිරීම හෝ අඩු කිරීම කළ යුතුය.</p>
+                    <p className="text-sm mt-1 text-amber-900">ඩොප්‍ලර් සමීකරණය යෙදීමේදී වේගයන්ගේ දිශාවන් අනිවාර්යයෙන්ම නිවැරදිව ආදේශ කළ යුතුය. ප්‍රභවය නිරීක්ෂකයා වෙතට එයි නම් හරය (v - u_s) වේ. සුළඟක් හමා යයි නම් එහි වේගය ධ්වනි වේගයට එකතු කිරීම හෝ අඩු කිරීම කළ යුතුය.</p>
                   </div>
                 </>
               )}
@@ -440,7 +440,7 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 05. Geometrical Optics */}
-          <Accordion title={isEnglish ? "05. Geometrical Optics" : "05. ජ්යාමිතික ප්රකාශ විද්යාව (Geometrical Optics)"}>
+          <Accordion title={isEnglish ? "05. Geometrical Optics" : "05. ජ්යාමිතික ප්‍රකාශ විද්යාව (Geometrical Optics)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -474,25 +474,25 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li><strong>අවධි කෝණය (Critical Angle - c):</strong> ඝනතර මාධ්යයක සිට විරල මාධ්යයකට ආලෝකය ගමන් කරන විට, වර්තන කෝණය 90° වීමට අනුරූප පතන කෝණයයි.</li>
                       <li><strong>පූර්ණ අභ්යන්තර පරාවර්තනය (Total Internal Reflection):</strong> පතන කෝණය අවධි කෝණයට වඩා විශාල වූ විට ආලෝකය වර්තනය නොවී සම්පූර්ණයෙන්ම එම මාධ්යය තුළටම පරාවර්තනය වීමයි.</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>ස්නෙල් නියමය: n₁ sin i₁ = n₂ sin i₂</li>
                       <li>අවධි කෝණය: sin c = 1 / n</li>
-                      <li>කාච සූත්රය: 1/v - 1/u = 1/f</li>
+                      <li>කාච සූත්‍රය: 1/v - 1/u = 1/f</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>උත්තල කාච අභිසාරී කාච ලෙසද, අවතල කාච අපසාරී කාච ලෙසද ක්රියා කරයි.</li>
-                      <li>ප්රිස්මයක අවම අපගමනය සිදුවන්නේ පතන කෝණය සහ නිර්ගත කෝණය සමාන වන විටය.</li>
+                      <li>උත්තල කාච අභිසාරී කාච ලෙසද, අවතල කාච අපසාරී කාච ලෙසද ක්‍රියා කරයි.</li>
+                      <li>ප්‍රිස්මයක අවම අපගමනය සිදුවන්නේ පතන කෝණය සහ නිර්ගත කෝණය සමාන වන විටය.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
@@ -505,7 +505,7 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 06. Human Eye & Optical Instruments */}
-          <Accordion title={isEnglish ? "06. Human Eye & Optical Instruments" : "06. මිනිස් ඇස සහ ප්රකාශ උපකරණ (Human Eye & Optical Instruments)"}>
+          <Accordion title={isEnglish ? "06. Human Eye & Optical Instruments" : "06. මිනිස් ඇස සහ ප්‍රකාශ උපකරණ (Human Eye & Optical Instruments)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -538,15 +538,15 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>අවිදුර දෘෂ්ටිකත්වය (Myopia):</strong> දුර ඇති වස්තු පැහැදිලිව නොපෙනී යාම (ප්රතිබිම්බය දෘෂ්ටි විතානයට ඉදිරියෙන් සෑදේ).</li>
-                      <li><strong>දුර දෘෂ්ටිකත්වය (Hypermetropia):</strong> ළඟ ඇති වස්තු පැහැදිලිව නොපෙනී යාම (ප්රතිබිම්බය දෘෂ්ටි විතානයට පිටුපසින් සෑදේ).</li>
-                      <li><strong>කෝණික විශාලනය (m):</strong> උපකරණයෙන් සාදන ප්රතිබිම්බය මගින් ඇසෙහි ආපාතිත කෝණයත්, උපකරණය නොමැතිව වස්තුව මගින් ඇසෙහි ආපාතිත කෝණයත් අතර අනුපාතයයි.</li>
+                      <li><strong>අවිදුර දෘෂ්ටිකත්වය (Myopia):</strong> දුර ඇති වස්තු පැහැදිලිව නොපෙනී යාම (ප්‍රතිබිම්බය දෘෂ්ටි විතානයට ඉදිරියෙන් සෑදේ).</li>
+                      <li><strong>දුර දෘෂ්ටිකත්වය (Hypermetropia):</strong> ළඟ ඇති වස්තු පැහැදිලිව නොපෙනී යාම (ප්‍රතිබිම්බය දෘෂ්ටි විතානයට පිටුපසින් සෑදේ).</li>
+                      <li><strong>කෝණික විශාලනය (m):</strong> උපකරණයෙන් සාදන ප්‍රතිබිම්බය මගින් ඇසෙහි ආපාතිත කෝණයත්, උපකරණය නොමැතිව වස්තුව මගින් ඇසෙහි ආපාතිත කෝණයත් අතර අනුපාතයයි.</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>සරල අන්වීක්ෂයේ විශාලනය: m = D / u</li>
                       <li>දුරේක්ෂයේ විශාලනය (සාමාන්ය සීරුවාරුව): m = f_o / f_e</li>
@@ -560,7 +560,7 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-850 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">ඕනෑම ප්රකාශ උපකරණයකින් උපරිම විශාලනයක් ලබා ගැනීමට නම්, අවසාන ප්රතිබිම්බය ඇසේ අවිදුර ලක්ෂ්යයේ (D = 25 cm) සෑදිය යුතුය. නමුත් ඇසට විඩාවක් නොමැතිව බැලීම සඳහා සාමාන්ය සීරුවාරුව භාවිත කරන අතර එහිදී අවසාන ප්රතිබිම්බය අනන්තයේ සෑදෙන සේ සකස් කරයි.</p>
+                    <p className="text-sm mt-1 text-amber-900">ඕනෑම ප්‍රකාශ උපකරණයකින් උපරිම විශාලනයක් ලබා ගැනීමට නම්, අවසාන ප්‍රතිබිම්බය ඇසේ අවිදුර ලක්ෂ්යයේ (D = 25 cm) සෑදිය යුතුය. නමුත් ඇසට විඩාවක් නොමැතිව බැලීම සඳහා සාමාන්ය සීරුවාරුව භාවිත කරන අතර එහිදී අවසාන ප්‍රතිබිම්බය අනන්තයේ සෑදෙන සේ සකස් කරයි.</p>
                   </div>
                 </>
               )}
@@ -576,15 +576,15 @@ export default function WavesAndOpticsPage({ lang = 'si' }) {
               <table className="w-full text-left border-collapse text-sm">
                 <thead>
                   <tr className="bg-blue-50 border-b-2 border-blue-100">
-                    <th className="p-3 font-semibold text-blue-900">{isEnglish ? 'Hearing Limit' : 'ශ්රවණ සීමාව (Hearing Limit)'}</th>
-                    <th className="p-3 font-semibold text-blue-900">{isEnglish ? 'Intensity' : 'ධ්වනි තීව්රතාවය / Intensity'}</th>
-                    <th className="p-3 font-semibold text-blue-900">{isEnglish ? 'Intensity Level' : 'තීව්රතා මට්ටම / Intensity Level'}</th>
+                    <th className="p-3 font-semibold text-blue-900">{isEnglish ? 'Hearing Limit' : 'ශ්‍රවණ සීමාව (Hearing Limit)'}</th>
+                    <th className="p-3 font-semibold text-blue-900">{isEnglish ? 'Intensity' : 'ධ්වනි තීව්‍රතාවය / Intensity'}</th>
+                    <th className="p-3 font-semibold text-blue-900">{isEnglish ? 'Intensity Level' : 'තීව්‍රතා මට්ටම / Intensity Level'}</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
                     <td className="p-3 font-medium">
-                      {isEnglish ? 'Threshold of Hearing - Minimum audible level' : 'ශ්රව්යතා දේහලිය (Threshold of Hearing) - අවම ඇසෙන සීමාව'}
+                      {isEnglish ? 'Threshold of Hearing - Minimum audible level' : 'ශ්‍රව්යතා දේහලිය (Threshold of Hearing) - අවම ඇසෙන සීමාව'}
                     </td>
                     <td className="p-3 font-mono">10⁻¹² W m⁻²</td>
                     <td className="p-3 font-mono">0 dB</td>

@@ -227,7 +227,7 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
           </h2>
 
           {/* 01. Temperature and Thermal Expansion */}
-          <Accordion title={isEnglish ? "01. Temperature and Thermal Expansion" : "01. උෂ්ණත්වය සහ තාප ප්රසාරණය (Temperature and Thermal Expansion)"}>
+          <Accordion title={isEnglish ? "01. Temperature and Thermal Expansion" : "01. උෂ්ණත්වය සහ තාප ප්‍රසාරණය (Temperature and Thermal Expansion)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -264,33 +264,33 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li><strong>තාප සමතුලිතතාව (Thermal Equilibrium):</strong> වස්තු දෙකක් අතර ශුද්ධ තාප ගලා යාමක් සිදු නොවන තත්ත්වයයි.</li>
                       <li><strong>තාපගති විද්යාවේ ශුන්යාදි නියමය (Zeroth Law of Thermodynamics):</strong> වස්තු දෙකක් තෙවන වස්තුවක් සමඟ වෙන වෙනම...</li>
-                      <li><strong>රේඛීය ප්රසාරණතාව (α):</strong> ඒකක උෂ්ණත්ව නැඟීමක දී වස්තුවක දිගෙහි ඇති වන භාගික ප්රසාරණයයි.</li>
+                      <li><strong>රේඛීය ප්‍රසාරණතාව (α):</strong> ඒකක උෂ්ණත්ව නැඟීමක දී වස්තුවක දිගෙහි ඇති වන භාගික ප්‍රසාරණයයි.</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>කෙල්වින උෂ්ණත්වය: T = θ + 273.15</li>
-                      <li>රේඛීය ප්රසාරණය: Δl = l₀ αΔθ</li>
-                      <li>වර්ගඵල ප්රසාරණය: ΔA = A₀ βΔθ (β = 2α)</li>
-                      <li>පරිමා ප්රසාරණය: ΔV = V₀ γΔθ (γ = 3α)</li>
-                      <li>ද්රවයක දෘශ්ය ප්රසාරණය: γ_real = γ_app + γ_vessel</li>
+                      <li>රේඛීය ප්‍රසාරණය: Δl = l₀ αΔθ</li>
+                      <li>වර්ගඵල ප්‍රසාරණය: ΔA = A₀ βΔθ (β = 2α)</li>
+                      <li>පරිමා ප්‍රසාරණය: ΔV = V₀ γΔθ (γ = 3α)</li>
+                      <li>ද්‍රවයක දෘශ්ය ප්‍රසාරණය: γ_real = γ_app + γ_vessel</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>නියත පරිමා වායු උෂ්ණත්වමානය ඉතා නිවැරදි, සම්මත උෂ්ණත්වමානයක් ලෙස සැලකේ.</li>
-                      <li>ජලයේ අසාමාන්ය ප්රසාරණය සිදුවන්නේ 0°C සිට 4°C දක්වා පරාසයේ ය. 4°C දී ජලයේ පරිමාව අවම වන අතර ඝනත්වය උපරිම වේ.</li>
+                      <li>ජලයේ අසාමාන්ය ප්‍රසාරණය සිදුවන්නේ 0°C සිට 4°C දක්වා පරාසයේ ය. 4°C දී ජලයේ පරිමාව අවම වන අතර ඝනත්වය උපරිම වේ.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-850 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">ද්රවයක ප්රසාරණය ගණනය කිරීමේදී, ද්රවය පවතින බඳුනේ ප්රසාරණය ද අනිවාර්යයෙන් සැලකිය යුතු ය.</p>
+                    <p className="text-sm mt-1 text-amber-900">ද්‍රවයක ප්‍රසාරණය ගණනය කිරීමේදී, ද්‍රවය පවතින බඳුනේ ප්‍රසාරණය ද අනිවාර්යයෙන් සැලකිය යුතු ය.</p>
                   </div>
                 </>
               )}
@@ -334,15 +334,15 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>බොයිල් නියමය:</strong> නියත උෂ්ණත්වයේ දී නියත වායු ස්කන්ධයක පීඩනය එහි පරිමාවට ප්රතිලෝමව සමානුපාතික වේ (p ∝ 1/V).</li>
+                      <li><strong>බොයිල් නියමය:</strong> නියත උෂ්ණත්වයේ දී නියත වායු ස්කන්ධයක පීඩනය එහි පරිමාවට ප්‍රතිලෝමව සමානුපාතික වේ (p ∝ 1/V).</li>
                       <li><strong>චාල්ස් නියමය:</strong> නියත පීඩනයේ දී නියත වායු ස්කන්ධයක පරිමාව එහි නිරපේක්ෂ උෂ්ණත්වයට අනුලෝමව සමානුපාතික වේ (V ∝ T).</li>
                       <li><strong>වර්ග මධ්යන්ය මූල වේගය (c_rms):</strong> වායු අණු වල වේගවල වර්ගයන්ගේ මධ්යන්යයේ වර්ගමූලයයි.</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>pV = nRT</li>
                       <li>pV = 1/3 * Nm * c_rms²</li>
@@ -401,15 +401,15 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>තාප ධාරිතාව (C):</strong> වස්තුවක උෂ්ණත්වය 1 K කින් ඉහළ නැංවීමට අවශ්ය තාප ප්රමාණයයි.</li>
-                      <li><strong>විශිෂ්ට තාප ධාරිතාව (c):</strong> ද්රව්යයක 1 kg ස්කන්ධයක උෂ්ණත්වය 1 K කින් ඉහළ නැංවීමට අවශ්ය තාප ප්රමාණයයි.</li>
-                      <li><strong>විශිෂ්ට ගුප්ත තාපය (l):</strong> නියත උෂ්ණත්වයක දී ද්රව්යයක 1 kg ස්කන්ධයක් එක් අවස්ථාවක සිට තවත් අවස්ථාවකට පත් කිරීමට ලබා දිය යුතු/පිට කළ යුතු තාපයයි.</li>
+                      <li><strong>තාප ධාරිතාව (C):</strong> වස්තුවක උෂ්ණත්වය 1 K කින් ඉහළ නැංවීමට අවශ්ය තාප ප්‍රමාණයයි.</li>
+                      <li><strong>විශිෂ්ට තාප ධාරිතාව (c):</strong> ද්‍රව්යයක 1 kg ස්කන්ධයක උෂ්ණත්වය 1 K කින් ඉහළ නැංවීමට අවශ්ය තාප ප්‍රමාණයයි.</li>
+                      <li><strong>විශිෂ්ට ගුප්ත තාපය (l):</strong> නියත උෂ්ණත්වයක දී ද්‍රව්යයක 1 kg ස්කන්ධයක් එක් අවස්ථාවක සිට තවත් අවස්ථාවකට පත් කිරීමට ලබා දිය යුතු/පිට කළ යුතු තාපයයි.</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>Q = mcΔθ</li>
                       <li>Q = ml</li>
@@ -424,7 +424,7 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
                     <h4 className="font-bold text-amber-850 flex items-center gap-2"><span>⚠️</span> විශේෂ සටහන් (Exam Notes/Traps):</h4>
-                    <p className="text-sm mt-1 text-amber-900">මිශ්රණ මූලධර්මය යෙදිය හැක්කේ පද්ධතියෙන් පිටතට හෝ පරිසරයෙන් පද්ධතියට තාප සංක්රමණයක් සිදු නොවන අවස්ථාවල දී පමණි.</p>
+                    <p className="text-sm mt-1 text-amber-900">මිශ්‍රණ මූලධර්මය යෙදිය හැක්කේ පද්ධතියෙන් පිටතට හෝ පරිසරයෙන් පද්ධතියට තාප සංක්‍රමණයක් සිදු නොවන අවස්ථාවල දී පමණි.</p>
                   </div>
                 </>
               )}
@@ -432,7 +432,7 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 04. Vapours, Humidity and Thermodynamics */}
-          <Accordion title={isEnglish ? "04. Vapours, Humidity and Thermodynamics" : "04. වාෂ්ප, ආර්ද්රතාව සහ තාපගති විද්යාව (Vapours, Humidity & Thermodynamics)"}>
+          <Accordion title={isEnglish ? "04. Vapours, Humidity and Thermodynamics" : "04. වාෂ්ප, ආර්ද්‍රතාව සහ තාපගති විද්යාව (Vapours, Humidity & Thermodynamics)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -467,15 +467,15 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>සන්තෘප්ත වාෂ්පය (Saturated Vapour):</strong> යම් අවකාශයක පැවතිය හැකි උපරිම වාෂ්ප ප්රමාණය අඩංගු වන අවස්ථාවයි.</li>
-                      <li><strong>තුෂාර අංකය (Dew Point):</strong> ලබා දී ඇති වාෂ්ප ප්රමාණයකින් පමණක් අදාළ පරිමාව සන්තෘප්ත වන උෂ්ණත්වයයි.</li>
-                      <li><strong>සාපේක්ෂ ආර්ද්රතාව (RH):</strong> RH = ( පවතින වාෂ්ප ස්කන්ධය / අවශ්‍ය වාෂ්ප ස්කන්ධය ) × 100%</li>
+                      <li><strong>සන්තෘප්ත වාෂ්පය (Saturated Vapour):</strong> යම් අවකාශයක පැවතිය හැකි උපරිම වාෂ්ප ප්‍රමාණය අඩංගු වන අවස්ථාවයි.</li>
+                      <li><strong>තුෂාර අංකය (Dew Point):</strong> ලබා දී ඇති වාෂ්ප ප්‍රමාණයකින් පමණක් අදාළ පරිමාව සන්තෘප්ත වන උෂ්ණත්වයයි.</li>
+                      <li><strong>සාපේක්ෂ ආර්ද්‍රතාව (RH):</strong> RH = ( පවතින වාෂ්ප ස්කන්ධය / අවශ්‍ය වාෂ්ප ස්කන්ධය ) × 100%</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>RH = ( p / P₀ ) × 100%</li>
                       <li>ΔQ = ΔU + ΔW</li>
@@ -499,7 +499,7 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
           </Accordion>
 
           {/* 05. Transmission of Heat */}
-          <Accordion title={isEnglish ? "05. Transmission of Heat" : "05. තාප සංක්රමණය (Transmission of Heat)"}>
+          <Accordion title={isEnglish ? "05. Transmission of Heat" : "05. තාප සංක්‍රමණය (Transmission of Heat)"}>
             <div className="space-y-4 text-slate-700">
               {isEnglish ? (
                 <>
@@ -531,7 +531,7 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
               ) : (
                 <>
                   <div>
-                    <h4 className="font-bold text-slate-900">ප්රධාන අර්ථ දැක්වීම් (Definitions):</h4>
+                    <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li><strong>සන්නයනය:</strong> අංශුවෙන් අංශුවට තාපය මාරු වීම (මාධ්යය අවශ්යයි).</li>
                       <li><strong>සංවහනය:</strong> තරලයක අංශු චලනය වීමෙන් තාපය රැගෙන යාම (මාධ්යය අවශ්යයි).</li>
@@ -539,7 +539,7 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900">සූත්ර සහ සමීකරණ (Equations):</h4>
+                    <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <p className="bg-slate-50 p-2.5 rounded font-mono text-sm border text-slate-800">
                       dQ / dt = kA(θ₁ - θ₂) / l
                     </p>
@@ -547,7 +547,7 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li>ලෝහ දණ්ඩක් දිගේ තාපය සන්නයනය වීමේදී, දණ්ඩ පරිවාරක කර ඇත්නම් තාප සන්නයන සීඝ්රතාව දණ්ඩේ සෑම ලක්ෂ්යයකදීම නියත වේ.</li>
+                      <li>ලෝහ දණ්ඩක් දිගේ තාපය සන්නයනය වීමේදී, දණ්ඩ පරිවාරක කර ඇත්නම් තාප සන්නයන සීඝ්‍රතාව දණ්ඩේ සෑම ලක්ෂ්යයකදීම නියත වේ.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
@@ -586,7 +586,7 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
                     <td className="p-3 font-mono">8.31 J mol⁻¹ K⁻¹</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="p-3 font-medium">{isEnglish ? 'Avogadro Constant (N_A)' : 'ඇවගාඩ්රෝ අංකය (Avogadro Constant - N_A)'}</td>
+                    <td className="p-3 font-medium">{isEnglish ? 'Avogadro Constant (N_A)' : 'ඇවගාඩ්‍රෝ අංකය (Avogadro Constant - N_A)'}</td>
                     <td className="p-3 font-mono">6.02 × 10²³ mol⁻¹</td>
                   </tr>
                   <tr className="border-b">
@@ -749,7 +749,7 @@ export default function ThermalPhysicsPage({ lang = 'si' }) {
                 <div className="p-4 bg-slate-50 border border-dashed rounded-xl text-center text-xs text-slate-400">
                   {isEnglish 
                     ? 'Select apparatus options correctly and click "Execute Test". You can learn the exam marks scheme criteria from this.' 
-                    : 'උපාංග නිවැරදිව තෝරා "පරීක්ෂණය ක්‍රියාත්මක කරන්න" බටනය ක්ලික් කරන්න. විභාගයේදී ලකුණු ලැබෙන ක්‍රමවේදය මෙයින් උගත හැක.'}
+                    : 'උපාංග නිවැරදිව තෝරා "පරීක්ෂණය ක්‍රියාත්මක කරන්න" බටනය ක්‍ලික් කරන්න. විභාගයේදී ලකුණු ලැබෙන ක්‍රමවේදය මෙයින් උගත හැක.'}
                 </div>
               )}
             </div>

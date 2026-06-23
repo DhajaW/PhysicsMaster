@@ -170,14 +170,14 @@ export default function QuantumPhysicsPage({ lang = 'si' }) {
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
                       <li>වීන් විස්ථාපන නියමය (Wien&apos;s Displacement Law): λ_m * T = C (C = 2.898 × 10⁻³ m K, λ_m = උපරිම තීව්‍රතාවට අනුරූප තරංග ආයාමය, T = නිරපේක්ෂ උෂ්ණත්වය)</li>
                       <li>ස්ටෙෆාන් නියමය (Stefan&apos;s Law): E = σT⁴ සහ P = AσT⁴ (E = ඒකක වර්ගඵලයකින් පිටවන ක්ෂමතාව, P = මුළු ක්ෂමතාව, σ = ස්ටෙෆාන් නියතය, T = නිරපේක්ෂ උෂ්ණත්වය, A = වර්ගඵලය)</li>
-                      <li>ප්ලාන්ක් සමීකරණය (Planck&apos;s Equation): E = nhf (E = ශක්තිය, h = ප්ලාන්ක් නියතය, f = සංඛ්‍යාතය, n = පූර්ණ සංඛ්‍යාවකි)</li>
+                      <li>ප්‍ලාන්ක් සමීකරණය (Planck&apos;s Equation): E = nhf (E = ශක්තිය, h = ප්‍ලාන්ක් නියතය, f = සංඛ්‍යාතය, n = පූර්ණ සංඛ්‍යාවකි)</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">වැදගත් කරුණු (Key Points):</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>වස්තුවක උෂ්ණත්වය වැඩි වන විට, උපරිම තීව්‍රතාවට අනුරූප තරංග ආයාමය (λ_m) කෙටි තරංග ආයාම දෙසට විස්ථාපනය වේ (වීන් නියමය).</li>
-                      <li>ප්ලාන්ක් කල්පිතයට අනුව විකිරණ ශක්තිය ගලා යන්නේ අඛණ්ඩව නොව &quot;ක්වොන්ටා (Quanta)&quot; හෙවත් &quot;ෆෝටෝන (Photons)&quot; නම් ශක්ති පැකට් වශයෙනි.</li>
+                      <li>ප්‍ලාන්ක් කල්පිතයට අනුව විකිරණ ශක්තිය ගලා යන්නේ අඛණ්ඩව නොව &quot;ක්වොන්ටා (Quanta)&quot; හෙවත් &quot;ෆෝටෝන (Photons)&quot; නම් ශක්ති පැකට් වශයෙනි.</li>
                     </ul>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg border border-amber-200">
@@ -295,14 +295,14 @@ export default function QuantumPhysicsPage({ lang = 'si' }) {
                   <div>
                     <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>පදාර්ථ තරංග (Matter Waves):</strong> චලනය වන සෑම අංශුවක් සමඟම තරංගයක් ආශ්‍රිත වී ඇති බව දැක්වෙන ඩි බ්‍රොග්ලි (De Broglie) සංකල්පයයි.</li>
+                      <li><strong>පදාර්ථ තරංග (Matter Waves):</strong> චලනය වන සෑම අංශුවක් සමඟම තරංගයක් ආශ්‍රිත වී ඇති බව දැක්වෙන ඩි බ්‍රොග්‍ලි (De Broglie) සංකල්පයයි.</li>
                       <li><strong>X-කිරණ (X-Rays):</strong> ඉතා ඉහළ වේගයකින් ගමන් කරන ඉලෙක්ට්‍රෝන, ලෝහ ඉලක්කයක හැපී වේගය අඩුවීමේදී නිපදවෙන කෙටි තරංග ආයාම සහිත විද්‍යුත් චුම්භක තරංග වේ.</li>
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">සූත්‍ර සහ සමීකරණ (Equations):</h4>
                     <ul className="list-disc pl-5 font-mono text-sm space-y-1 bg-slate-50 p-3 rounded border text-slate-800">
-                      <li>ඩි බ්‍රොග්ලි තරංග ආයාමය: λ = h / p = h / mv</li>
+                      <li>ඩි බ්‍රොග්‍ලි තරංග ආයාමය: λ = h / p = h / mv</li>
                       <li>චාලක ශක්තිය (K) හෝ ත්වරක විභවය (V) ඇසුරෙන්: λ = h / √(2mK) = h / √(2mVe)</li>
                       <li>X-කිරණ අවම තරංග ආයාමය: λ_min = hc / eV (V = X-කිරණ නළයට යොදන වෝල්ටීයතාව, e = ඉලෙක්ට්‍රෝන ආරෝපණය)</li>
                     </ul>
@@ -362,8 +362,8 @@ export default function QuantumPhysicsPage({ lang = 'si' }) {
                   <div>
                     <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
-                      <li><strong>ස්කන්ධ දෝෂය (Mass Defect - Δm):</strong> න්‍යෂ්ටියක් සෑදීමේදී නිදහස් නියුක්ලියෝනවල මුළු ස්කන්ධයත්, සෑදුණු න්‍යෂ්ටියේ ස්කන්ධයත් අතර ඇති වෙනසයි.</li>
-                      <li><strong>බන්ධන ශක්තිය (Binding Energy - BE):</strong> න්‍යෂ්ටියක ඇති නියුක්ලියෝන (ප්‍රෝටෝන හා නියුට්‍රෝන) එකිනෙකින් වෙන් කර අනන්තයට ගෙන යාමට අවශ්‍ය අවම ශක්තියයි.</li>
+                      <li><strong>ස්කන්ධ දෝෂය (Mass Defect - Δm):</strong> න්‍යෂ්ටියක් සෑදීමේදී නිදහස් නියුක්‍ලියෝනවල මුළු ස්කන්ධයත්, සෑදුණු න්‍යෂ්ටියේ ස්කන්ධයත් අතර ඇති වෙනසයි.</li>
+                      <li><strong>බන්ධන ශක්තිය (Binding Energy - BE):</strong> න්‍යෂ්ටියක ඇති නියුක්‍ලියෝන (ප්‍රෝටෝන හා නියුට්‍රෝන) එකිනෙකින් වෙන් කර අනන්තයට ගෙන යාමට අවශ්‍ය අවම ශක්තියයි.</li>
                       <li><strong>අර්ධ ආයු කාලය (Half-life - T_1/2):</strong> විකිරණශීලී සාම්පලයක ආරම්භක න්‍යෂ්ටි සංඛ්‍යාවෙන් හරි අඩක් ක්ෂය වී යාමට ගතවන කාලයයි.</li>
                       <li><strong>න්‍යෂ්ටික විඛණ්ඩනය (Nuclear Fission):</strong> විශාල න්‍යෂ්ටියක් කුඩා න්‍යෂ්ටි දෙකකට කැඩී යාමයි. විලයනය (Fusion) යනු කුඩා න්‍යෂ්ටි එකතු වී විශාල න්‍යෂ්ටියක් සෑදීමයි.</li>
                     </ul>
@@ -422,7 +422,7 @@ export default function QuantumPhysicsPage({ lang = 'si' }) {
                     <h4 className="font-bold text-slate-900">ප්‍රධාන අර්ථ දැක්වීම් (Definitions):</h4>
                     <ul className="list-disc pl-5 space-y-1">
                       <li><strong>ෆර්මියෝන (Fermions):</strong> පදාර්ථ සෑදී ඇති මූලික අංශු වන ක්වාක් (Quarks) සහ ලෙප්ටෝන (Leptons) මීට අයත් වේ.</li>
-                      <li><strong>බෝසෝන (Bosons):</strong> මූලික බල හුවමාරු කර ගන්නා අතරමැදි අංශු වේ (උදා: ග්ලූවෝන, ෆෝටෝන).</li>
+                      <li><strong>බෝසෝන (Bosons):</strong> මූලික බල හුවමාරු කර ගන්නා අතරමැදි අංශු වේ (උදා: ග්‍ලූවෝන, ෆෝටෝන).</li>
                     </ul>
                   </div>
                   <div>

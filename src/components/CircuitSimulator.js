@@ -16,7 +16,7 @@ export default function CircuitSimulator() {
       const calculatedCurrent = voltage / resistance;
       setCurrent(parseFloat(calculatedCurrent.toFixed(2)));
       
-      // ළමයා ප්රතිරෝධය ඕනෑවට වඩා අඩු කර ධාරාව 4A පැනලා ගියොත් Trap Alert එකක් දානවා
+      // ළමයා ප්‍රතිරෝධය ඕනෑවට වඩා අඩු කර ධාරාව 4A පැනලා ගියොත් Trap Alert එකක් දානවා
       if (calculatedCurrent > 4) {
         setShowErrorAlert(true);
       } else {
@@ -35,7 +35,7 @@ export default function CircuitSimulator() {
           <h2 className="text-2xl font-bold mt-2 flex items-center gap-2 text-white">
             <Zap className="w-6 h-6 text-yellow-400 fill-yellow-400" /> ධාරා විද්‍යුත් ඕම්ගේ නියම Simulator එක
           </h2>
-          <p className="text-slate-400 text-sm mt-1">පරිපථයේ වෝල්ටීයතාව සහ ප්රතිරෝධය වෙනස් කරමින් සජීවීව වෙනස්කම් නිරීක්ෂණය කරන්න.</p>
+          <p className="text-slate-400 text-sm mt-1">පරිපථයේ වෝල්ටීයතාව සහ ප්‍රතිරෝධය වෙනස් කරමින් සජීවීව වෙනස්කම් නිරීක්ෂණය කරන්න.</p>
         </div>
         <button 
           onClick={() => { setVoltage(12); setResistance(6); }}
@@ -79,7 +79,7 @@ export default function CircuitSimulator() {
             {/* Resistance Control Slider */}
             <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
               <div className="flex justify-between items-center mb-2">
-                <label className="font-bold text-slate-700">🎛️ ප්රතිරෝධය (Resistance - R)</label>
+                <label className="font-bold text-slate-700">🎛️ ප්‍රතිරෝධය (Resistance - R)</label>
                 <span className="text-lg font-mono font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-100">{resistance} Ω</span>
               </div>
               <input 
@@ -101,7 +101,7 @@ export default function CircuitSimulator() {
 
           {/* Real-time Math Output */}
           <div className="mt-8 bg-indigo-950 text-white p-4 rounded-xl shadow-inner border border-indigo-800">
-            <span className="text-xs text-indigo-300 font-bold uppercase tracking-wider block mb-1">සූත්රය සහ ආදේශය (Ohm's Law)</span>
+            <span className="text-xs text-indigo-300 font-bold uppercase tracking-wider block mb-1">සූත්‍රය සහ ආදේශය (Ohm's Law)</span>
             <div className="font-mono text-base flex items-center justify-center py-2 bg-slate-900/50 rounded-lg border border-indigo-900">
               <span className="text-yellow-400 font-bold">I</span> &nbsp;=&nbsp; 
               <span className="text-blue-400">V</span> / <span className="text-emerald-400">R</span> &nbsp;⇒&nbsp; 
@@ -144,7 +144,7 @@ export default function CircuitSimulator() {
                 <line x1="5" y1="30" x2="35" y2="30" stroke="#2563eb" strokeWidth="5" strokeLinecap="round" />
                 <line x1="12" y1="45" x2="28" y2="45" stroke="#475569" strokeWidth="5" strokeLinecap="round" />
                 
-                {/* Exam Point: ධ්රැවීයතාව සටහන් කිරීම */}
+                {/* Exam Point: ධ්‍රැවීයතාව සටහන් කිරීම */}
                 <text x="42" y="3" fill="#2563eb" fontSize="14" fontWeight="bold">+</text>
                 <text x="42" y="52" fill="#475569" fontSize="14" fontWeight="bold">-</text>
                 <text x="-15" y="30" fill="#1e293b" fontSize="12" fontWeight="bold">{voltage}V</text>
@@ -188,14 +188,14 @@ export default function CircuitSimulator() {
                 <AlertTriangle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-sm font-bold text-red-800">⚠️ අධික ධාරා අනතුරු ඇඟවීම් (Overload Alert)</h4>
-                  <p className="text-xs text-red-700 mt-1">ප්රතිරෝධය සීමාවට වඩා අඩු වීම නිසා පරිපථය හරහා විශාල ධාරාවක් ({current}A) ගලා යයි. විභාගයේදී මෙවැනි ප්රශ්න වලදී කෝෂයේ අභ්යන්තර ප්රතිරෝධය (r) නොසලකා හැරීමෙන් ළමයින්ගේ ලකුණු කැපී යයි!</p>
+                  <p className="text-xs text-red-700 mt-1">ප්‍රතිරෝධය සීමාවට වඩා අඩු වීම නිසා පරිපථය හරහා විශාල ධාරාවක් ({current}A) ගලා යයි. විභාගයේදී මෙවැනි ප්‍රශ්න වලදී කෝෂයේ අභ්යන්තර ප්‍රතිරෝධය (r) නොසලකා හැරීමෙන් ළමයින්ගේ ලකුණු කැපී යයි!</p>
                 </div>
               </div>
             ) : (
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
                 <HelpCircle className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
                 <div>
-                  <h4 className="text-sm font-bold text-amber-800">💡 Paper Marking රහස: ධ්රැවීයතාව (+ / -)</h4>
+                  <h4 className="text-sm font-bold text-amber-800">💡 Paper Marking රහස: ධ්‍රැවීයතාව (+ / -)</h4>
                   <p className="text-xs text-amber-700 mt-1">ළමයි විභාගයේදී පරිපථ අඳින කොට වැඩිපුරම වරද්දන්නේ කෝෂයේ දිග ඉර ධන (+) සහ කෙටි ඉර සෘණ (-) ලෙස ලකුණු නොකිරීමයි. අපේ ඇප් එකෙන් ඒක නිතරම මතක් කරනවා.</p>
                 </div>
               </div>

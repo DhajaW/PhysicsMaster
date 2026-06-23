@@ -36,7 +36,7 @@ export default function FormulasClient({ lang = 'si' }) {
 
   // Define formula categories
   const categoriesSi = [
-    { id: "all", name: "සියල්ල (All)", icon: "🌐", count: physicsFormulas.length },
+    { id: "all", name: "සියල්‍ල (All)", icon: "🌐", count: physicsFormulas.length },
     { id: "mechanics", name: "යාන්ත්‍ර විද්‍යාව", icon: "⚙️" },
     { id: "matter", name: "පදාර්ථයේ ගුණ", icon: "🧪" },
     { id: "thermal", name: "තාපය", icon: "🔥" },
@@ -137,7 +137,7 @@ export default function FormulasClient({ lang = 'si' }) {
         <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
           {isEnglish 
             ? 'All complex formulas, units, and descriptions in one place. Use search below to recall equations before exams.'
-            : 'සංකීර්ණ සූත්‍ර, ඒකක සහ කෙටි විස්තර සියල්ල එකම තැනකින්. විභාගයට යන්න කලින් සූත්‍ර ටික මතක් කර ගන්න පහළින් සෙවුමක් කරන්න.'}
+            : 'සංකීර්ණ සූත්‍ර, ඒකක සහ කෙටි විස්තර සියල්‍ල එකම තැනකින්. විභාගයට යන්න කලින් සූත්‍ර ටික මතක් කර ගන්න පහළින් සෙවුමක් කරන්න.'}
         </p>
       </div>
 
@@ -154,7 +154,7 @@ export default function FormulasClient({ lang = 'si' }) {
               type="text"
               placeholder={isEnglish 
                 ? "Search by formula name, unit or tag... (e.g. Velocity, Force, PV=nRT)" 
-                : "සමීකරණය, ඒකකය, පාඩම හෝ වචනයක් Search කරන්න... (උදා: ප්රවේගය, Force, PV=nRT)"}
+                : "සමීකරණය, ඒකකය, පාඩම හෝ වචනයක් Search කරන්න... (උදා: ප්‍රවේගය, Force, PV=nRT)"}
               className="w-full pl-11 pr-5 py-4 rounded-2xl border border-slate-250 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all outline-none text-base md:text-lg shadow-inner bg-slate-50/50"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}

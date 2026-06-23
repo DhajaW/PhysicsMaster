@@ -385,13 +385,13 @@ export default function ElectronicsPage({ lang = 'si' }) {
                       : 'තාර්කික ද්වාර යනු බූලියානු වීජ ගණිතය මත පදනම්ව සංඛ්‍යාංක සංඥා (1 සහ 0) හසුරුවන මූලික ඉලෙක්ට්‍රොනික පරිපථ වේ.'}
                   </li>
                   <li>
-                    <strong>{isEnglish ? 'Universal Gates:' : 'සර්වත්ර ද්වාර (Universal Gates):'}</strong>{' '}
+                    <strong>{isEnglish ? 'Universal Gates:' : 'සර්වත්‍ර ද්වාර (Universal Gates):'}</strong>{' '}
                     {isEnglish
                       ? 'Gates that can be used alone to build any other basic gate (e.g., NAND and NOR).'
                       : 'වෙනත් ඕනෑම මූලික ද්වාරයක් (AND, OR, NOT) නිර්මාණය කරගැනීම සඳහා තනිවම භාවිත කළ හැකි ද්වාර වේ (උදා: NAND සහ NOR).'}
                   </li>
                   <li>
-                    <strong>{isEnglish ? 'Flip-Flop:' : 'ෆ්ලිප්-ෆ්ලොපය (Flip-Flop):'}</strong>{' '}
+                    <strong>{isEnglish ? 'Flip-Flop:' : 'ෆ්‍ලිප්-ෆ්‍ලොපය (Flip-Flop):'}</strong>{' '}
                     {isEnglish
                       ? 'A basic memory element with two stable states that can store one bit of data (1 bit).'
                       : 'දත්ත බිටුවක් (1 bit) ගබඩා කර තබා ගත හැකි, ස්ථායී අවස්ථා දෙකක් ඇති මූලික මතක උපාංගයකි (Memory element).'}
@@ -414,12 +414,12 @@ export default function ElectronicsPage({ lang = 'si' }) {
                   <li>
                     {isEnglish
                       ? 'An S-R flip-flop can be constructed by cross-coupling two NOR gates.'
-                      : 'NOR ද්වාර දෙකක් කතිර හැඩයට සම්බන්ධ කිරීමෙන් (Cross-coupled) S-R ෆ්ලිප්-ෆ්ලොපයක් සාදා ගත හැක.'}
+                      : 'NOR ද්වාර දෙකක් කතිර හැඩයට සම්බන්ධ කිරීමෙන් (Cross-coupled) S-R ෆ්‍ලිප්-ෆ්‍ලොපයක් සාදා ගත හැක.'}
                   </li>
                   <li>
                     {isEnglish
                       ? 'Flip-flops are widely used in registers and RAM computer memory designs.'
-                      : 'මතක රෙජිස්ටර (Registers) සහ පරිගණක මතක (RAM) නිර්මාණය සඳහා ෆ්ලිප්-ෆ්ලොප් බහුලව භාවිත වේ.'}
+                      : 'මතක රෙජිස්ටර (Registers) සහ පරිගණක මතක (RAM) නිර්මාණය සඳහා ෆ්‍ලිප්-ෆ්‍ලොප් බහුලව භාවිත වේ.'}
                   </li>
                 </ul>
               </div>
@@ -428,7 +428,7 @@ export default function ElectronicsPage({ lang = 'si' }) {
                 <p className="text-sm mt-1 text-rose-200">
                   {isEnglish
                     ? 'In an S-R flip-flop constructed with NOR gates, applying 1 to both inputs (S=1, R=1) is an "invalid state" because it yields Q=0 and Q̄=0, which contradicts the complementary output principle.'
-                    : 'NOR ද්වාර භාවිතයෙන් සෑදූ S-R ෆ්ලිප්-ෆ්ලොපයකදී, ප්‍රදානයන් දෙකටම එකවර 1 ලබා දීම (S=1, R=1) "වලංගු නොවන අවස්ථාවක්" (Invalid state) ලෙස සැලකේ. විභාගයේදී මෙහි ප්‍රතිදානයන් Q=0 සහ Q̄=0 ලෙස ලැබේ, එය ෆ්ලිප්-ෆ්ලොපයේ මූලධර්මයට පටහැනි බැවින් භාවිත නොකෙරේ.'}
+                    : 'NOR ද්වාර භාවිතයෙන් සෑදූ S-R ෆ්‍ලිප්-ෆ්‍ලොපයකදී, ප්‍රදානයන් දෙකටම එකවර 1 ලබා දීම (S=1, R=1) "වලංගු නොවන අවස්ථාවක්" (Invalid state) ලෙස සැලකේ. විභාගයේදී මෙහි ප්‍රතිදානයන් Q=0 සහ Q̄=0 ලෙස ලැබේ, එය ෆ්‍ලිප්-ෆ්‍ලොපයේ මූලධර්මයට පටහැනි බැවින් භාවිත නොකෙරේ.'}
                 </p>
               </div>
             </div>
