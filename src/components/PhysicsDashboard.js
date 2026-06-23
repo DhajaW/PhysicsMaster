@@ -211,7 +211,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
           </div>
 
           <div className="flex-1 text-left relative z-10 space-y-4">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight flex flex-wrap items-center justify-start gap-x-2 gap-y-1">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight flex flex-wrap items-center justify-start gap-x-2 gap-y-1">
               {isEnglish ? (
                 <>
                   <span>Master Physics with your mind</span>
@@ -219,7 +219,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                     className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
                     style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
                   >
-                    <Brain className="w-8 h-8 md:w-9 md:h-9 text-pink-500 fill-pink-500" />
+                    <Brain className="w-7 h-7 md:w-8 md:h-8 text-pink-500 fill-pink-500" />
                   </span>
                   <span>, love it with your heart</span>
                   <span 
@@ -229,7 +229,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                       animation: 'pulse 1s ease-in-out infinite'
                     }}
                   >
-                    <Heart className="w-8 h-8 md:w-9 md:h-9 text-rose-500 fill-rose-500" />
+                    <Heart className="w-7 h-7 md:w-8 md:h-8 text-rose-500 fill-rose-500" />
                   </span>
                   <span>. Let's truly understand it!</span>
                 </>
@@ -240,7 +240,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                     className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
                     style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
                   >
-                    <Brain className="w-8 h-8 md:w-9 md:h-9 text-pink-500 fill-pink-500" />
+                    <Brain className="w-7 h-7 md:w-8 md:h-8 text-pink-500 fill-pink-500" />
                   </span>
                   <span>වගේම හදවතටත්</span>
                   <span 
@@ -250,7 +250,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                       animation: 'pulse 1s ease-in-out infinite'
                     }}
                   >
-                    <Heart className="w-8 h-8 md:w-9 md:h-9 text-rose-500 fill-rose-500" />
+                    <Heart className="w-7 h-7 md:w-8 md:h-8 text-rose-500 fill-rose-500" />
                   </span>
                   <span>දැනෙන්න ඉගෙන ගමු!</span>
                 </>
