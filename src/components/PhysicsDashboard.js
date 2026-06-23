@@ -8,7 +8,6 @@ import AdPlaceholder from '@/components/AdPlaceholder';
 import { supabase } from '../../lib/supabase';
 import { translations } from '@/lib/translations';
 import ParticleBackground from '@/components/ParticleBackground';
-import ThreeDAtom from '@/components/ThreeDAtom';
 
 // 11 Physics Units in Sinhala and English
 const physicsUnitsSi = [
@@ -191,26 +190,26 @@ export default function PhysicsDashboard({ lang = 'si' }) {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 relative z-10">
         {/* Welcome Section / Hero Carousel */}
-        <div className="mb-10 text-center md:text-left bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-8 text-white shadow-2xl flex flex-col lg:flex-row justify-between items-center gap-8 relative overflow-hidden min-h-[380px] group/hero">
+        <div className="mb-10 bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden min-h-[340px] group/hero text-left">
           {/* Background Image Carousel */}
           <div className="absolute inset-0 z-0 select-none">
             {heroSlides.map((slide, idx) => (
               <div
                 key={idx}
-                className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out transform ${
+                className={`absolute inset-0 bg-cover bg-[position:70%_center] md:bg-center transition-all duration-1000 ease-in-out transform ${
                   activeSlide === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
                 }`}
                 style={{ backgroundImage: `url('${slide.image}')` }}
               />
             ))}
             
-            {/* Premium Dark Overlay & Multi-layered Gradients */}
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/45 z-10 pointer-events-none"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-950/50 z-10 pointer-events-none"></div>
-            <div className="absolute inset-0 bg-black/45 mix-blend-multiply z-10 pointer-events-none"></div>
+            {/* Premium Dark Overlay & Multi-layered Gradients (Adjusted for better scientist visibility) */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-slate-950/20 z-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/20 z-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-black/25 mix-blend-multiply z-10 pointer-events-none"></div>
           </div>
 
-          <div className="flex-1 text-left relative z-10 space-y-4">
+          <div className="max-w-2xl relative z-10 space-y-4">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight flex flex-wrap items-center justify-start gap-x-2 gap-y-1">
               {isEnglish ? (
                 <>
@@ -264,9 +263,6 @@ export default function PhysicsDashboard({ lang = 'si' }) {
               </a>
             </div>
           </div>
-          <div className="flex-shrink-0 relative z-10 flex justify-center items-center">
-            <ThreeDAtom />
-          </div>
 
           {/* Arrow Buttons (Visible on hover of Welcome container on desktop) */}
           <button
@@ -289,7 +285,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
           </button>
 
           {/* Navigation Controls & Pagination Indicators */}
-          <div className="absolute bottom-6 right-8 z-20 flex items-center space-x-3">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 md:bottom-6 md:right-8 md:left-auto md:translate-x-0 z-20 flex items-center space-x-3">
             {heroSlides.map((slide, idx) => (
               <button
                 key={idx}
