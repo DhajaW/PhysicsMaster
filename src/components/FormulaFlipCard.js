@@ -18,7 +18,7 @@ function Latex({ math, block = false }) {
   }
 }
 
-// Variable Token Badge Hover Component
+// Variable Token Hover component
 function VariableToken({ token, meaning, isFirst, isLast }) {
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -36,15 +36,16 @@ function VariableToken({ token, meaning, isFirst, isLast }) {
 
   return (
     <span
-      className="relative inline-block"
+      className="relative inline-block cursor-help mx-0.5"
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
-      <span className="px-2 py-0.5 rounded bg-slate-950/80 border border-slate-800/80 text-cyan-400 hover:text-cyan-300 hover:border-cyan-500/50 hover:bg-slate-900 font-bold transition-all duration-200 text-xs font-mono select-none cursor-help shadow-sm">
+      <span className="italic text-cyan-400 hover:text-cyan-300 hover:underline transition-colors duration-200 decoration-dashed underline-offset-4 font-bold select-none">
         {token.char}
+        {token.sub && <sub className="text-[11px] ml-0.5 font-sans select-none">{token.sub}</sub>}
       </span>
       
-      {/* Sleek Tooltip with fade-in and scale animation */}
+      {/* Sleek accessible Tooltip with fade-in and scale animation */}
       <span 
         className={`absolute bottom-full mb-2.5 px-3 py-1.5 rounded-xl bg-slate-900/95 border border-slate-700/80 text-[11px] font-bold text-slate-200 shadow-2xl whitespace-nowrap backdrop-blur-sm z-30 transition-all duration-200 pointer-events-none ${tooltipPositionClass} ${
           showTooltip 
@@ -66,7 +67,7 @@ export default function FormulaFlipCard({
   lang = "si", 
   copyToClipboard, 
   copiedId,
-  // Custom props
+  // Custom props to support flexible overrides
   formula: customFormula,
   variables: customVariables,
   exampleData: customExampleData
@@ -108,7 +109,7 @@ export default function FormulaFlipCard({
     R: isEnglish ? "Universal Gas Constant (8.314 J mol⁻¹ K⁻¹)" : "පොදු වායු නියතය (8.314 J mol⁻¹ K⁻¹)",
     T: isEnglish ? "Absolute Temperature (K)" : "නිරපේක්ෂ උෂ්ණත්වය (K)",
     f: isEnglish ? "Frequency (Hz)" : "සංඛ්‍යාතය (Hz)",
-    lambda: isEnglish ? "Wavelength (m)" : "තරංග ආයාමය (m)",
+    lambda: isEnglish ? "Wavelength (m)" : "तरංග ආයාමය (m)",
     I: isEnglish ? "Current (A)" : "ධාරාව (A)",
     R_res: isEnglish ? "Resistance (Ω)" : "ප්‍රතිරෝධය (Ω)",
     sigma: isEnglish ? "Stefan-Boltzmann Constant" : "ස්ටෙෆාන්-බෝල්ට්ස්මාන් නියතය",
@@ -118,82 +119,80 @@ export default function FormulaFlipCard({
     B: isEnglish ? "Magnetic Field (T)" : "චුම්භක ක්ෂේත්‍රය (T)"
   };
 
-  // Fixed mapping of formula ID to its variables
-  const formulaVariablesMap = {
-    1: ["v", "u", "a", "t"],
-    2: ["s", "u", "t", "a"],
-    3: ["v", "u", "a", "s"],
-    4: ["F", "m", "a"],
-    5: ["p", "m", "v"],
-    6: ["W", "F", "s", "theta"],
-    7: ["Ek", "m", "v"],
-    8: ["Ep", "m", "g", "h"],
-    9: ["P", "W", "t", "F", "v"],
-    10: ["rho", "m", "V"],
-    11: ["P", "F", "A"],
-    12: ["P", "h", "rho", "g"],
-    13: ["U", "V", "rho", "g"],
-    14: ["F", "k", "x"],
-    15: ["y", "F", "l", "A", "e"],
-    16: ["Q", "m", "c"],
-    17: ["Q", "m", "l"],
-    18: ["P", "V", "n", "R", "T"],
-    19: ["v", "f", "lambda"],
-    20: ["T", "l", "g"],
-    21: ["V", "I", "R"],
-    22: ["P", "V", "I", "R"],
-    23: ["R_res"],
-    24: ["R_res"],
-    25: ["lambda", "T"],
-    26: ["E", "sigma", "T"],
-    27: ["P", "A", "sigma", "T"],
-    28: ["P", "e", "A", "sigma", "T"],
-    29: ["E", "f", "lambda"],
-    30: ["E", "n", "f"],
-    31: ["phi", "f"],
-    32: ["Kmax", "V"],
-    33: ["f", "phi", "Kmax"],
-    34: ["lambda", "p", "m", "v"],
-    35: ["lambda", "m", "Ek"],
-    36: ["lambda", "m", "V"],
-    37: ["lambda", "V"],
-    38: ["E", "m", "c"],
-    39: ["rho", "m", "V"],
-    40: ["E", "m"],
-    41: ["N", "t", "lambda"],
-    42: ["P", "lambda", "N"],
-    43: ["N", "lambda", "t"],
-    44: ["P", "lambda", "t"],
-    45: ["T", "lambda"],
-    46: ["t", "lambda"],
-    47: ["r", "m", "v", "q", "B"]
-  };
-
   const getVariableMeaning = (key) => {
     if (variablesToUse && variablesToUse[key]) return variablesToUse[key];
+    
+    // Normalize keys
     const lowerKey = key.toLowerCase();
     return defaultVariablesMap[key] || defaultVariablesMap[lowerKey] || null;
   };
 
-  const getDisplayChar = (key) => {
-    switch (key) {
-      case "Ek": return "Eₖ";
-      case "Ep": return "Eₚ";
-      case "R_res": return "R";
-      case "lambda": return "λ";
-      case "theta": return "θ";
-      case "phi": return "ϕ";
-      case "sigma": return "σ";
-      case "rho": return "ρ";
-      case "m_defect": return "Δm";
-      default: return key;
+  // Helper to parse LaTeX math formula string into renderable tokens
+  const parseFormulaToTokens = (formulaStr) => {
+    let cleaned = formulaStr
+      .replace(/\\frac\{1\}\{2\}/g, "½")
+      .replace(/\\lambda/g, "λ")
+      .replace(/\\theta/g, "θ")
+      .replace(/\\phi/g, "ϕ")
+      .replace(/\\sigma/g, "σ")
+      .replace(/\\rho/g, "ρ")
+      .replace(/\\cos/g, "cos")
+      .replace(/\^2/g, "²")
+      .replace(/_k/g, "ₖ")
+      .replace(/_p/g, "ₚ")
+      .replace(/_s/g, "ₛ")
+      .replace(/_0/g, "₀");
+
+    const tokens = [];
+    let currentToken = "";
+
+    for (let i = 0; i < cleaned.length; i++) {
+      const char = cleaned[i];
+      const isVarChar = /[a-zA-Zλθϕσρ]/.test(char);
+      
+      if (isVarChar) {
+        if (currentToken) {
+          tokens.push({ type: "symbol", char: currentToken });
+          currentToken = "";
+        }
+        let sub = "";
+        if (cleaned[i+1] === "ₖ" || cleaned[i+1] === "ₚ" || cleaned[i+1] === "ₛ" || cleaned[i+1] === "₀") {
+          sub = cleaned[i+1];
+          i++;
+        }
+        let key = char;
+        if (char === "λ") key = "lambda";
+        else if (char === "θ") key = "theta";
+        else if (char === "ϕ") key = "phi";
+        else if (char === "σ") key = "sigma";
+        else if (char === "ρ") key = "rho";
+        
+        if (sub) {
+          if (char === "E" && sub === "ₖ") key = "Ek";
+          if (char === "E" && sub === "ₚ") key = "Ep";
+        }
+
+        tokens.push({ type: "variable", char: char, sub: sub, key: key });
+      } else {
+        currentToken += char;
+      }
     }
+    if (currentToken) {
+      tokens.push({ type: "symbol", char: currentToken });
+    }
+    return tokens;
   };
 
-  // Determine active variables to display as badges
-  const activeVariables = variablesToUse 
-    ? Object.keys(variablesToUse)
-    : (formulaVariablesMap[item.id] || []);
+  const formulaTokens = parseFormulaToTokens(formulaToUse);
+
+  const firstVariableIndex = formulaTokens.findIndex(t => t.type === "variable");
+  let lastVariableIndex = -1;
+  for (let i = formulaTokens.length - 1; i >= 0; i--) {
+    if (formulaTokens[i].type === "variable") {
+      lastVariableIndex = i;
+      break;
+    }
+  }
 
   // Simulation States
   const [isSimulating, setIsSimulating] = useState(false);
@@ -217,13 +216,14 @@ export default function FormulaFlipCard({
     setSimTime(0);
     previousTimeRef.current = undefined;
 
+    // Reset initial formula-specific values
     if (item.id === 1) {
-      setSimV(0);
+      setSimV(0); // u = 0
       setSimS(0);
     } else if (item.id === 2) {
       setSimS(0);
     } else if (item.id === 4) {
-      setSimS(0);
+      setSimS(0); // position for box
     } else if (item.id === 19) {
       setSimTime(0);
     }
@@ -238,15 +238,17 @@ export default function FormulaFlipCard({
         const nextTime = prevTime + (deltaTime / 1000) * 1.2;
         
         if (item.id === 1) {
+          // v = u + at (u=0, a=2, t_max=5)
           const limitTime = Math.min(nextTime, 5);
           setSimV(0 + 2 * limitTime);
-          setSimS(0.5 * 2 * limitTime * limitTime);
+          setSimS(0.5 * 2 * limitTime * limitTime); // s = 1/2 a t^2
           if (limitTime >= 5) {
             setIsSimulating(false);
             return 5;
           }
           return limitTime;
         } else if (item.id === 2) {
+          // s = ut + 1/2at^2 (u=5, a=2, t_max=4)
           const limitTime = Math.min(nextTime, 4);
           setSimS(5 * limitTime + 0.5 * 2 * limitTime * limitTime);
           if (limitTime >= 4) {
@@ -255,14 +257,16 @@ export default function FormulaFlipCard({
           }
           return limitTime;
         } else if (item.id === 4) {
+          // F = ma (m=5, a=4, animate force push for 3 seconds)
           const limitTime = Math.min(nextTime, 3);
-          setSimS(0.5 * 4 * limitTime * limitTime);
+          setSimS(0.5 * 4 * limitTime * limitTime); // visual distance
           if (limitTime >= 3) {
             setIsSimulating(false);
             return 3;
           }
           return limitTime;
         } else if (item.id === 19) {
+          // v = fλ (f=10Hz, λ=0.5m, continuous animation)
           return nextTime;
         }
         
@@ -358,7 +362,7 @@ export default function FormulaFlipCard({
             </p>
           </div>
 
-          {/* Chalkboard Formula Box (Overflow visible for tooltips) */}
+          {/* Interactive Chalkboard Formula Box with variable tooltips */}
           <div className="relative bg-slate-900/90 border border-slate-800/80 rounded-2xl p-5 flex flex-col items-center justify-center min-h-[90px] md:min-h-[110px] overflow-visible shadow-inner group-hover:border-blue-500/30 transition-colors duration-300 my-4">
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] rounded-2xl" />
             <div className="absolute -top-12 -right-12 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
@@ -376,31 +380,28 @@ export default function FormulaFlipCard({
               {isCopied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
             </button>
 
-            {/* Beautiful math notation formula rendering */}
-            <div className="text-xl md:text-2xl text-sky-400 font-bold select-all text-center leading-relaxed max-w-full overflow-x-auto scrollbar-none mb-3">
-              <Latex math={formulaToUse} block={true} />
-            </div>
-
-            {/* Sleek Variable Badges row with Tooltips */}
-            {activeVariables.length > 0 && (
-              <div className="flex flex-wrap gap-1.5 justify-center items-center mt-2.5 pt-2.5 border-t border-slate-800/60 w-full z-20">
-                <span className="text-[9px] text-slate-500 uppercase tracking-widest font-extrabold select-none mr-1">
-                  {isEnglish ? "Variables:" : "විචල්‍යයන්:"}
-                </span>
-                {activeVariables.map((varKey, idx) => {
-                  const meaning = getVariableMeaning(varKey);
+            {/* Render interactive formula with variables or fallback to Katex */}
+            <div className="text-xl md:text-2xl font-bold text-center leading-relaxed max-w-full flex items-center justify-center flex-wrap select-none text-sky-400">
+              {formulaTokens.map((token, index) => {
+                if (token.type === "variable") {
+                  const meaning = getVariableMeaning(token.key);
                   return (
                     <VariableToken 
-                      key={idx} 
-                      token={{ char: getDisplayChar(varKey), key: varKey }} 
+                      key={index} 
+                      token={token} 
                       meaning={meaning} 
-                      isFirst={idx === 0}
-                      isLast={idx === activeVariables.length - 1}
+                      isFirst={index === firstVariableIndex}
+                      isLast={index === lastVariableIndex}
                     />
                   );
-                })}
-              </div>
-            )}
+                }
+                return (
+                  <span key={index} className="text-slate-350 select-none">
+                    {token.char}
+                  </span>
+                );
+              })}
+            </div>
           </div>
 
           {/* Footer Panel */}
