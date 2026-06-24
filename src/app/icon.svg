@@ -1,25 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a" /> <!-- Slate 900 -->
-      <stop offset="100%" stop-color="#1e3a8a" /> <!-- Blue 900 -->
+      <stop offset="0%" stop-color="#070a13" />
+      <stop offset="100%" stop-color="#0f172a" />
     </linearGradient>
     <linearGradient id="atom" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#60a5fa" /> <!-- Blue 400 -->
-      <stop offset="100%" stop-color="#818cf8" /> <!-- Indigo 400 -->
+      <stop offset="0%" stop-color="#22d3ee" /> <!-- Cyan 400 -->
+      <stop offset="50%" stop-color="#3b82f6" /> <!-- Blue 500 -->
+      <stop offset="100%" stop-color="#a855f7" /> <!-- Purple 500 -->
     </linearGradient>
   </defs>
   
   <!-- Background with slightly rounded corners -->
   <rect width="512" height="512" rx="120" fill="url(#bg)" />
   
-  <!-- Atom Symbol -->
-  <g transform="translate(256 256) scale(1.6)">
+  <!-- Atom + 'P' Brand Symbol centered -->
+  <g transform="translate(64 64) scale(3.84)">
+    <!-- Atom Orbits -->
+    <ellipse cx="35" cy="50" rx="11" ry="32" transform="rotate(35 35 50)" fill="none" stroke="url(#atom)" stroke-width="4.5" stroke-linecap="round" />
+    <ellipse cx="35" cy="50" rx="11" ry="32" transform="rotate(-35 35 50)" fill="none" stroke="url(#atom)" stroke-width="4.5" stroke-linecap="round" />
+    <ellipse cx="35" cy="50" rx="11" ry="32" transform="rotate(90 35 50)" fill="none" stroke="url(#atom)" stroke-width="4.5" stroke-linecap="round" />
+
+    <!-- Electrons -->
+    <circle cx="35" cy="18" r="3.5" fill="#22d3ee" />
+    <circle cx="17" cy="62" r="3.5" fill="#a855f7" />
+    
     <!-- Nucleus -->
-    <circle cx="0" cy="0" r="14" fill="url(#atom)" />
-    <!-- Electron Orbits -->
-    <ellipse cx="0" cy="0" rx="70" ry="22" fill="none" stroke="url(#atom)" stroke-width="6" transform="rotate(0)" />
-    <ellipse cx="0" cy="0" rx="70" ry="22" fill="none" stroke="url(#atom)" stroke-width="6" transform="rotate(60)" />
-    <ellipse cx="0" cy="0" rx="70" ry="22" fill="none" stroke="url(#atom)" stroke-width="6" transform="rotate(120)" />
+    <circle cx="35" cy="50" r="5.5" fill="url(#atom)" />
+
+    <!-- The Letter P -->
+    <path
+      d="M 68 25 L 68 75 M 68 25 C 83 25, 93 35, 93 47.5 C 93 60, 83 60, 68 60"
+      fill="none"
+      stroke="url(#atom)"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
   </g>
 </svg>

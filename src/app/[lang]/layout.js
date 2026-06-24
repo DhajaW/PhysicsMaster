@@ -51,7 +51,7 @@ export const metadata = {
     siteName: 'Physics Master A/L',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Physics Master A/L Banner',
@@ -64,7 +64,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව',
     description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. සම්පත් පොත් සාරාංශ, විෂය නිර්දේශයන් සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   }
 };
 
