@@ -231,14 +231,14 @@ export default function PhysicsDashboard({ lang = 'si' }) {
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight flex flex-wrap items-center justify-start gap-x-2 gap-y-1">
               {isEnglish ? (
                 <>
-                  <span>Engage your mind</span>
+                  <span>Engage your mind.</span>
                   <span 
                     className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle animate-pulse"
                     style={{ filter: 'drop-shadow(0 0 8px rgba(236, 72, 153, 0.75))' }}
                   >
                     <Brain className="w-7 h-7 md:w-8 md:h-8 text-pink-500 fill-pink-500" />
                   </span>
-                  <span>. Inspire your heart</span>
+                  <span>Inspire your heart.</span>
                   <span 
                     className="inline-flex items-center justify-center hover:scale-125 transition-transform duration-300 cursor-default align-middle"
                     style={{ 
@@ -248,7 +248,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
                   >
                     <Heart className="w-7 h-7 md:w-8 md:h-8 text-rose-500 fill-rose-500" />
                   </span>
-                  <span>. Master Physics.</span>
+                  <span>Master Physics.</span>
                   <span className="inline-block hover:rotate-12 hover:-translate-y-1 transition-all duration-300 cursor-default origin-bottom-right ml-1">
                     👋
                   </span>
@@ -267,16 +267,16 @@ export default function PhysicsDashboard({ lang = 'si' }) {
             <div className="pt-2 flex flex-col sm:flex-row gap-3">
               <Link 
                 href={`/${lang}/formulas`} 
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all duration-300 shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm sm:text-base font-bold transition-all duration-300 shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5"
               >
-                <Calculator className="w-5 h-5 mr-2" />
+                <Calculator className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
                 Formula Cheat Sheet 🧮
               </Link>
               <a 
                 href="#model-papers" 
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold transition-all duration-300 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-sm sm:text-base font-bold transition-all duration-300 shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-0.5"
               >
-                <Brain className="w-5 h-5 mr-2" />
+                <Brain className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
                 Model Papers 📝
               </a>
             </div>
