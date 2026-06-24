@@ -222,9 +222,9 @@ export default function PhysicsDashboard({ lang = 'si' }) {
             ))}
             
             {/* Premium Dark Overlay & Multi-layered Gradients (Adjusted for better scientist visibility) */}
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/45 to-slate-950/10 md:from-slate-950/90 md:via-slate-950/70 md:to-slate-950/20 z-10 pointer-events-none"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/10 md:from-slate-950/80 md:to-slate-950/20 z-10 pointer-events-none"></div>
-            <div className="absolute inset-0 bg-black/10 md:bg-black/20 mix-blend-multiply z-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/45 to-slate-950/10 z-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-slate-950/10 z-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-black/10 mix-blend-multiply z-10 pointer-events-none"></div>
           </div>
 
           <div className="max-w-2xl relative z-10 space-y-4">
