@@ -18,9 +18,160 @@ function Latex({ math, block = false }) {
   }
 }
 
-export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, copiedId }) {
+// Variable Token Hover component
+function VariableToken({ token, meaning }) {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  return (
+    <span
+      className="relative inline-block cursor-help mx-0.5"
+      onMouseEnter={() => setShowTooltip(true)}
+      onMouseLeave={() => setShowTooltip(false)}
+    >
+      <span className="italic text-cyan-400 hover:text-cyan-300 hover:underline transition-colors duration-200 decoration-dashed underline-offset-4 font-bold select-none">
+        {token.char}
+        {token.sub && <sub className="text-[11px] ml-0.5 font-sans select-none">{token.sub}</sub>}
+      </span>
+      
+      {/* Sleek accessible Tooltip with fade-in and scale animation */}
+      <span 
+        className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 px-3 py-1.5 rounded-xl bg-slate-900/95 border border-slate-700/80 text-[11px] font-bold text-slate-200 shadow-2xl whitespace-nowrap backdrop-blur-sm z-30 transition-all duration-200 pointer-events-none ${
+          showTooltip 
+            ? 'opacity-100 translate-y-0 scale-100' 
+            : 'opacity-0 translate-y-1 scale-95'
+        }`}
+        role="tooltip"
+      >
+        {meaning || "Variable"}
+        {/* Tooltip arrow */}
+        <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900" />
+      </span>
+    </span>
+  );
+}
+
+export default function FormulaFlipCard({ 
+  item, 
+  lang = "si", 
+  copyToClipboard, 
+  copiedId,
+  // Custom props to support flexible overrides
+  formula: customFormula,
+  variables: customVariables,
+  exampleData: customExampleData
+}) {
   const [isFlipped, setIsFlipped] = useState(false);
   const isEnglish = lang === "en";
+
+  const formulaToUse = customFormula || item.formula;
+  const variablesToUse = customVariables || item.variables;
+
+  // Default variable descriptions mapping (both Sinhala and English fallback)
+  const defaultVariablesMap = {
+    v: isEnglish ? "Final Velocity (ms⁻¹)" : "අවසාන ප්‍රවේගය (ms⁻¹)",
+    u: isEnglish ? "Initial Velocity (ms⁻¹)" : "ආරම්භක ප්‍රවේගය (ms⁻¹)",
+    a: isEnglish ? "Acceleration (ms⁻²)" : "ත්වරණය (ms⁻²)",
+    t: isEnglish ? "Time (s)" : "කාලය (s)",
+    s: isEnglish ? "Displacement / Distance (m)" : "විස්ථාපනය / දුර (m)",
+    F: isEnglish ? "Force (N)" : "බලය (N)",
+    m: isEnglish ? "Mass (kg)" : "ස්කන්ධය (kg)",
+    p: isEnglish ? "Momentum (kg m s⁻¹)" : "ගම්‍යතාව (kg m s⁻¹)",
+    W: isEnglish ? "Work Done (J)" : "කළ කාර්යය (J)",
+    theta: isEnglish ? "Angle θ (degrees/radians)" : "කෝණය θ (අංශක/රේඩියන්)",
+    Ek: isEnglish ? "Kinetic Energy (J)" : "චාලක ශක්තිය (J)",
+    Ep: isEnglish ? "Potential Energy (J)" : "විභව ශක්තිය (J)",
+    g: isEnglish ? "Gravitational Acceleration (~9.81 ms⁻²)" : "ගුරුත්වාකර්ෂණ ත්වරණය (~9.81 ms⁻²)",
+    h: isEnglish ? "Height / Depth (m)" : "උස / ගැඹුර (m)",
+    P: isEnglish ? "Power (W) or Pressure (Pa)" : "ක්ෂමතාව (W) හෝ පීඩනය (Pa)",
+    rho: isEnglish ? "Density (kg m⁻³)" : "ඝනත්වය (kg m⁻³)",
+    V: isEnglish ? "Volume (m³) or Voltage (V)" : "පරිමාව (m³) හෝ විභවය (V)",
+    A: isEnglish ? "Area (m²)" : "වර්ගඵලය (m²)",
+    k: isEnglish ? "Spring Constant (N m⁻¹)" : "දුනු නියතය (N m⁻¹)",
+    x: isEnglish ? "Extension (m)" : "විතතිය (m)",
+    y: isEnglish ? "Young's Modulus (N m⁻²)" : "යං මාපාංකය (N m⁻²)",
+    l: isEnglish ? "Length (m)" : "දිග (m)",
+    e: isEnglish ? "Extension (m) or Emissivity" : "විතතිය (m) හෝ විමෝචකතාව",
+    Q: isEnglish ? "Heat Energy (J) or Charge (C)" : "තාප ශක්තිය (J) හෝ ආරෝපණය (C)",
+    c: isEnglish ? "Specific Heat Capacity (J kg⁻¹ K⁻¹)" : "විශිෂ්ට තාප ධාරිතාව (J kg⁻¹ K⁻¹)",
+    n: isEnglish ? "Moles of Gas" : "වායු මවුල ප්‍රමාණය",
+    R: isEnglish ? "Universal Gas Constant (8.314 J mol⁻¹ K⁻¹)" : "පොදු වායු නියතය (8.314 J mol⁻¹ K⁻¹)",
+    T: isEnglish ? "Absolute Temperature (K)" : "නිරපේක්ෂ උෂ්ණත්වය (K)",
+    f: isEnglish ? "Frequency (Hz)" : "සංඛ්‍යාතය (Hz)",
+    lambda: isEnglish ? "Wavelength (m)" : "तरංග ආයාමය (m)",
+    I: isEnglish ? "Current (A)" : "ධාරාව (A)",
+    R_res: isEnglish ? "Resistance (Ω)" : "ප්‍රතිරෝධය (Ω)",
+    sigma: isEnglish ? "Stefan-Boltzmann Constant" : "ස්ටෙෆාන්-බෝල්ට්ස්මාන් නියතය",
+    phi: isEnglish ? "Work Function (J)" : "කාර්ය ශ්‍රිතය (J)",
+    Kmax: isEnglish ? "Max Kinetic Energy (J)" : "උපරිම චාලක ශක්තිය (J)",
+    q: isEnglish ? "Charge (C)" : "ආරෝපණය (C)",
+    B: isEnglish ? "Magnetic Field (T)" : "චුම්භක ක්ෂේත්‍රය (T)"
+  };
+
+  const getVariableMeaning = (key) => {
+    if (variablesToUse && variablesToUse[key]) return variablesToUse[key];
+    
+    // Normalize keys
+    const lowerKey = key.toLowerCase();
+    return defaultVariablesMap[key] || defaultVariablesMap[lowerKey] || null;
+  };
+
+  // Helper to parse LaTeX math formula string into renderable tokens
+  const parseFormulaToTokens = (formulaStr) => {
+    let cleaned = formulaStr
+      .replace(/\\frac\{1\}\{2\}/g, "½")
+      .replace(/\\lambda/g, "λ")
+      .replace(/\\theta/g, "θ")
+      .replace(/\\phi/g, "ϕ")
+      .replace(/\\sigma/g, "σ")
+      .replace(/\\rho/g, "ρ")
+      .replace(/\\cos/g, "cos")
+      .replace(/\^2/g, "²")
+      .replace(/_k/g, "ₖ")
+      .replace(/_p/g, "ₚ")
+      .replace(/_s/g, "ₛ")
+      .replace(/_0/g, "₀");
+
+    const tokens = [];
+    let currentToken = "";
+
+    for (let i = 0; i < cleaned.length; i++) {
+      const char = cleaned[i];
+      const isVarChar = /[a-zA-Zλθϕσρ]/.test(char);
+      
+      if (isVarChar) {
+        if (currentToken) {
+          tokens.push({ type: "symbol", char: currentToken });
+          currentToken = "";
+        }
+        let sub = "";
+        if (cleaned[i+1] === "ₖ" || cleaned[i+1] === "ₚ" || cleaned[i+1] === "ₛ" || cleaned[i+1] === "₀") {
+          sub = cleaned[i+1];
+          i++;
+        }
+        let key = char;
+        if (char === "λ") key = "lambda";
+        else if (char === "θ") key = "theta";
+        else if (char === "ϕ") key = "phi";
+        else if (char === "σ") key = "sigma";
+        else if (char === "ρ") key = "rho";
+        
+        if (sub) {
+          if (char === "E" && sub === "ₖ") key = "Ek";
+          if (char === "E" && sub === "ₚ") key = "Ep";
+        }
+
+        tokens.push({ type: "variable", char: char, sub: sub, key: key });
+      } else {
+        currentToken += char;
+      }
+    }
+    if (currentToken) {
+      tokens.push({ type: "symbol", char: currentToken });
+    }
+    return tokens;
+  };
+
+  const formulaTokens = parseFormulaToTokens(formulaToUse);
 
   // Simulation States
   const [isSimulating, setIsSimulating] = useState(false);
@@ -63,7 +214,6 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
       const deltaTime = time - previousTimeRef.current;
       
       setSimTime((prevTime) => {
-        // Accelerate simulation time slightly faster than wall time for compact UI feel
         const nextTime = prevTime + (deltaTime / 1000) * 1.2;
         
         if (item.id === 1) {
@@ -128,7 +278,6 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
         (item.id === 2 && simTime >= 4) ||
         (item.id === 4 && simTime >= 3)
       ) {
-        // Reset if reached limit
         setSimTime(0);
         setSimV(0);
         setSimS(0);
@@ -185,14 +334,14 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
             </h3>
 
             {/* Formula Description */}
-            <p className="text-xs md:text-sm text-slate-400 mt-2 leading-relaxed line-clamp-3">
+            <p className="text-xs md:text-sm text-slate-400 mt-2 leading-relaxed line-clamp-2">
               {localizedDesc}
             </p>
           </div>
 
-          {/* Glowing Chalkboard Formula Box */}
-          <div className="relative bg-slate-900/90 border border-slate-800/80 rounded-2xl p-5 flex flex-col items-center justify-center min-h-[90px] md:min-h-[110px] overflow-hidden shadow-inner group-hover:border-blue-500/30 transition-colors duration-300 my-4">
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px]" />
+          {/* Interactive Chalkboard Formula Box with variable tooltips */}
+          <div className="relative bg-slate-900/90 border border-slate-800/80 rounded-2xl p-5 flex flex-col items-center justify-center min-h-[90px] md:min-h-[110px] overflow-visible shadow-inner group-hover:border-blue-500/30 transition-colors duration-300 my-4">
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px] rounded-2xl" />
             <div className="absolute -top-12 -right-12 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
             <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
@@ -200,16 +349,33 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                copyToClipboard(item.formula, item.id);
+                copyToClipboard(formulaToUse, item.id);
               }}
-              className="absolute top-2.5 right-2.5 p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-all opacity-0 group-hover:opacity-100 z-10 cursor-pointer"
+              className="absolute top-2 right-2 p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-all opacity-0 group-hover:opacity-100 z-10 cursor-pointer"
               title={isEnglish ? "Copy LaTeX Formula" : "සූත්‍රය Copy කරන්න"}
             >
               {isCopied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
             </button>
 
-            <div className="text-xl md:text-2xl text-cyan-400 font-bold select-all text-center leading-relaxed max-w-full overflow-x-auto scrollbar-none">
-              <Latex math={item.formula} block={true} />
+            {/* Render interactive formula with variables or fallback to Katex */}
+            <div className="text-xl md:text-2xl font-bold text-center leading-relaxed max-w-full flex items-center justify-center flex-wrap select-none text-sky-400">
+              {formulaTokens.map((token, index) => {
+                if (token.type === "variable") {
+                  const meaning = getVariableMeaning(token.key);
+                  return (
+                    <VariableToken 
+                      key={index} 
+                      token={token} 
+                      meaning={meaning} 
+                    />
+                  );
+                }
+                return (
+                  <span key={index} className="text-slate-350 select-none">
+                    {token.char}
+                  </span>
+                );
+              })}
             </div>
           </div>
 
@@ -255,17 +421,15 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
             {/* Interactive Simulation Area */}
             {item.id === 1 && (
               <div className="bg-slate-900/60 border border-slate-850 rounded-2xl p-3.5 space-y-3.5">
-                {/* Scenario text */}
                 <p className="text-xs text-slate-350 leading-relaxed font-medium bg-slate-950/40 p-2.5 rounded-lg border border-slate-900">
                   🚗 <span className="font-bold text-blue-400">{isEnglish ? "Scenario: " : "සිද්ධිය: "}</span>
-                  {isEnglish
+                  {customExampleData?.scenario || (isEnglish
                     ? "A car starts from rest (u = 0) and accelerates at 2 ms⁻² for 5 seconds."
-                    : "මෝටර් රථයක් නිශ්චලතාවයේ සිට 2 ms⁻² ක නියත ත්වරණයකින් තත්පර 5ක් ගමන් කරයි."}
+                    : "මෝටර් රථයක් නිශ්චලතාවයේ සිට 2 ms⁻² ක නියත ත්වරණයකින් තත්පර 5ක් ගමන් කරයි.")}
                 </p>
 
                 {/* Physics Track Visualization */}
                 <div className="relative h-12 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden flex items-end pb-1.5 px-3">
-                  {/* Distance Markers */}
                   <div className="absolute inset-x-0 bottom-0.5 flex justify-between px-2 text-[8px] text-slate-650 select-none">
                     <span>0m</span>
                     <span>5m</span>
@@ -274,11 +438,7 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
                     <span>20m</span>
                     <span>25m</span>
                   </div>
-                  
-                  {/* Road centerline dash pattern */}
                   <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t border-dashed border-slate-800/40 h-0 w-full" />
-                  
-                  {/* Animating Car */}
                   <div
                     className="absolute bottom-3 text-xl transition-all duration-75 ease-out"
                     style={{ left: `${(simS / 25) * 82 + 2}%` }}
@@ -317,9 +477,9 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
               <div className="bg-slate-900/60 border border-slate-850 rounded-2xl p-3.5 space-y-3.5">
                 <p className="text-xs text-slate-350 leading-relaxed font-medium bg-slate-950/40 p-2.5 rounded-lg border border-slate-900">
                   🚗 <span className="font-bold text-blue-400">{isEnglish ? "Scenario: " : "සිද්ධිය: "}</span>
-                  {isEnglish
+                  {customExampleData?.scenario || (isEnglish
                     ? "A car starts with 5 ms⁻¹ (u = 5) and accelerates at 2 ms⁻² for 4 seconds."
-                    : "මෝටර් රථයක් 5 ms⁻¹ ක ආරම්භක ප්‍රවේගයෙන් සහ 2 ms⁻² ක නියත ත්වරණයකින් තත්පර 4ක් ගමන් කරයි."}
+                    : "මෝටර් රථයක් 5 ms⁻¹ ක ආරම්භක ප්‍රවේගයෙන් සහ 2 ms⁻² ක නියත ත්වරණයකින් තත්පර 4ක් ගමන් කරයි.")}
                 </p>
 
                 {/* Physics Track */}
@@ -366,9 +526,9 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
               <div className="bg-slate-900/60 border border-slate-850 rounded-2xl p-3.5 space-y-3.5">
                 <p className="text-xs text-slate-350 leading-relaxed font-medium bg-slate-950/40 p-2.5 rounded-lg border border-slate-900">
                   📦 <span className="font-bold text-blue-400">{isEnglish ? "Scenario: " : "සිද්ධිය: "}</span>
-                  {isEnglish
+                  {customExampleData?.scenario || (isEnglish
                     ? "A 5 kg block (m = 5) is pushed with an acceleration of 4 ms⁻² (a = 4)."
-                    : "5 kg ස්කන්ධයක් ඇති වස්තුවකට 4 ms⁻² ක ත්වරණයක් ලබා දීමට අවශ්‍ය බලය."}
+                    : "5 kg ස්කන්ධයක් ඇති වස්තුවකට 4 ms⁻² ක ත්වරණයක් ලබා දීමට අවශ්‍ය බලය.")}
                 </p>
 
                 {/* Block Physics Track */}
@@ -377,7 +537,6 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
                     <span>Start</span>
                     <span>End</span>
                   </div>
-                  {/* Push Arrow & Box */}
                   <div 
                     className="absolute flex items-center gap-1 transition-all duration-75 ease-out"
                     style={{ left: `${(simS / 18) * 60 + 5}%` }}
@@ -417,9 +576,9 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
               <div className="bg-slate-900/60 border border-slate-850 rounded-2xl p-3.5 space-y-3.5">
                 <p className="text-xs text-slate-350 leading-relaxed font-medium bg-slate-950/40 p-2.5 rounded-lg border border-slate-900">
                   🌊 <span className="font-bold text-blue-400">{isEnglish ? "Scenario: " : "සිද්ධිය: "}</span>
-                  {isEnglish
+                  {customExampleData?.scenario || (isEnglish
                     ? "A wave oscillates at a frequency of 10 Hz with a wavelength of 0.5 m."
-                    : "10 Hz ක සංඛ්‍යාතයකින් යුත් තරංගයක තරංග ආයාමය 0.5 m වේ."}
+                    : "10 Hz ක සංඛ්‍යාතයකින් යුත් තරංගයක තරංග ආයාමය 0.5 m වේ.")}
                 </p>
 
                 {/* Wave simulation */}
@@ -461,18 +620,16 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
                   {isEnglish ? "Variable Breakdown" : "භෞතික රාශි විග්‍රහය"}
                 </h5>
                 <div className="space-y-2 text-xs text-slate-350">
-                  {/* Generic description */}
                   <p className="italic text-[11px] text-slate-450 leading-relaxed">
                     {localizedDesc}
                   </p>
                   
-                  {/* Parameter explanation wrapper */}
                   <div className="pt-2">
                     <p className="font-bold text-blue-400 text-[10px] mb-1 uppercase tracking-wider">
                       {isEnglish ? "Formula variables:" : "සමීකරණයේ සංකේත:"}
                     </p>
                     <div className="bg-slate-950/60 border border-slate-900 rounded-xl p-3 flex flex-col justify-center items-center font-mono text-cyan-400 font-bold min-h-[50px]">
-                      <Latex math={item.formula} />
+                      <Latex math={formulaToUse} />
                     </div>
                   </div>
                 </div>
