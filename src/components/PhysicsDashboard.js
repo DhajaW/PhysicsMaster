@@ -197,7 +197,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
       </nav>
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 relative z-10">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-0 relative z-10">
         {/* Welcome Section / Hero Carousel */}
         <div className="mb-8 bg-slate-900/40 backdrop-blur-md border border-slate-800/80 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden min-h-[360px] md:min-h-[460px] group/hero text-left">
           {/* Background Image Carousel */}
@@ -500,7 +500,9 @@ export default function PhysicsDashboard({ lang = 'si' }) {
         </div>
 
         {/* Bottom AdSense Banner */}
-        <AdPlaceholder type="banner" slotId="YOUR_SLOT_2" />
+        <div className="mt-8 mb-0">
+          <AdPlaceholder type="banner" slotId="YOUR_SLOT_2" />
+        </div>
       </main>
     </div>
   );
