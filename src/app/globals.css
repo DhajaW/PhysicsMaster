@@ -79,6 +79,78 @@ ul.font-mono * {
   color: #fbbf24 !important;
 }
 
+/* Emerald Warning / Exam Traps Boxes */
+.bg-emerald-50.border-emerald-200 {
+  background-color: rgba(16, 185, 129, 0.08) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  color: #34d399 !important; /* bright emerald font */
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.05) !important;
+  border-radius: 0.75rem !important;
+}
+.bg-emerald-50.border-emerald-200 * {
+  color: #34d399 !important;
+}
+
+/* Purple Warning / Exam Traps Boxes */
+.bg-purple-50.border-purple-200 {
+  background-color: rgba(139, 92, 246, 0.08) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  color: #a78bfa !important; /* bright purple font */
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.05) !important;
+  border-radius: 0.75rem !important;
+}
+.bg-purple-50.border-purple-200 * {
+  color: #a78bfa !important;
+}
+
+/* Amber Warning / Exam Traps Boxes */
+.bg-amber-50.border-amber-200 {
+  background-color: rgba(245, 158, 11, 0.08) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  color: #fbbf24 !important; /* gold/amber font */
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.05) !important;
+  border-radius: 0.75rem !important;
+}
+.bg-amber-50.border-amber-200 * {
+  color: #fbbf24 !important;
+}
+
+/* Red/Error Warning Boxes */
+.bg-red-50.border-red-200 {
+  background-color: rgba(239, 68, 68, 0.08) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #f87171 !important; /* bright red font */
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.05) !important;
+  border-radius: 0.75rem !important;
+}
+.bg-red-50.border-red-200 * {
+  color: #f87171 !important;
+}
+
+/* Green/Success Warning Boxes */
+.bg-green-50.border-green-200 {
+  background-color: rgba(34, 197, 94, 0.08) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  color: #4ade80 !important; /* bright green font */
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.05) !important;
+  border-radius: 0.75rem !important;
+}
+.bg-green-50.border-green-200 * {
+  color: #4ade80 !important;
+}
+
+/* Blue Warning Boxes */
+.bg-blue-50.border-blue-200, .bg-blue-50.border-blue-100 {
+  background-color: rgba(59, 130, 246, 0.08) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  color: #60a5fa !important; /* bright blue font */
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.05) !important;
+  border-radius: 0.75rem !important;
+}
+.bg-blue-50.border-blue-200 *, .bg-blue-50.border-blue-100 * {
+  color: #60a5fa !important;
+}
+
 /* Header Gradient Contrast Improvement Overlay */
 div.bg-gradient-to-r.text-white {
   position: relative !important;
