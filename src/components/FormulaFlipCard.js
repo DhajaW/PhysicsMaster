@@ -467,7 +467,7 @@ export default function FormulaFlipCard({
                   <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t border-dashed border-slate-800/40 h-0 w-full" />
                   <div
                     className="absolute bottom-3 text-xl transition-all duration-75 ease-out"
-                    style={{ left: `${(simS / 25) * 82 + 2}%` }}
+                    style={{ left: `${(simS / 25) * 82 + 2}%`, transform: "scaleX(-1)" }}
                   >
                     🚗
                   </div>
@@ -520,7 +520,7 @@ export default function FormulaFlipCard({
                   <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t border-dashed border-slate-800/40 h-0 w-full" />
                   <div
                     className="absolute bottom-3 text-xl transition-all duration-75 ease-out"
-                    style={{ left: `${(simS / 36) * 82 + 2}%` }}
+                    style={{ left: `${(simS / 36) * 82 + 2}%`, transform: "scaleX(-1)" }}
                   >
                     🚗
                   </div>
