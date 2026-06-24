@@ -6,6 +6,7 @@ import { ArrowLeft, Search, Copy, Check, HelpCircle, Layers } from "lucide-react
 import { physicsFormulas } from "@/data/formulas";
 import katex from "katex";
 import "katex/dist/katex.min.css";
+import FormulaFlipCard from "@/components/FormulaFlipCard";
 
 // LaTeX Rendering Component
 function Latex({ math, block = false }) {
@@ -218,75 +219,15 @@ export default function FormulasClient({ lang = 'si' }) {
 
         {filteredFormulas.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredFormulas.map((item) => {
-              const category = getCategoryForFormula(item);
-              const catDetails = getCategoryStyle(category);
-              const isCopied = copiedId === item.id;
-              
-              // In English mode, if there is an English name/description provided in tags, we use it, otherwise fall back to Sinhala
-              const localizedName = isEnglish && item.name_en ? item.name_en : item.name;
-              const localizedDesc = isEnglish && item.description_en ? item.description_en : item.description;
-
-              return (
-                <div
-                  key={item.id}
-                  className="bg-white rounded-3xl p-6 shadow-[0_2px_18px_-3px_rgba(0,0,0,0.06),0_10px_24px_-2px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_1px_3px_rgba(0,0,0,0.05)] hover:border-slate-300 hover:-translate-y-1.5 transition-all duration-300 border border-slate-200 flex flex-col group/card relative"
-                >
-                  {/* Card Header Info */}
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-xs font-extrabold text-slate-400 uppercase tracking-widest">
-                      Formula #{item.id.toString().padStart(2, '0')}
-                    </span>
-                    <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full border uppercase tracking-wider ${catDetails.color}`}>
-                      {catDetails.name}
-                    </span>
-                  </div>
-
-                  {/* Formula Name */}
-                  <h3 className="text-lg font-extrabold text-slate-900 group-hover/card:text-blue-600 transition-colors mb-2 leading-snug">
-                    {localizedName}
-                  </h3>
-
-                  {/* Formula Description */}
-                  <p className="text-sm text-slate-500 mb-6 leading-relaxed flex-grow">
-                    {localizedDesc}
-                  </p>
-
-                  {/* Formula Blackboard Box */}
-                  <div className="bg-slate-900 rounded-2xl p-6 flex flex-col items-center justify-center border border-slate-800 mt-auto min-h-[110px] relative overflow-hidden shadow-inner group-hover/card:border-blue-500/30 transition-colors duration-300">
-                    {/* Chalkboard Grid Pattern */}
-                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:14px_24px]"></div>
-                    
-                    {/* Glowing effect inside blackboard */}
-                    <div className="absolute -top-12 -right-12 w-24 h-24 bg-blue-500/10 rounded-full blur-xl pointer-events-none"></div>
-                    <div className="absolute -bottom-12 -left-12 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl pointer-events-none"></div>
-
-                    {/* Copy LaTeX Formula Button */}
-                    <button
-                      onClick={() => copyToClipboard(item.formula, item.id)}
-                      className="absolute top-2 right-2 p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-all opacity-0 group-hover/card:opacity-100 z-20 cursor-pointer"
-                      title={isEnglish ? "Copy LaTeX Formula" : "සූත්‍රය Copy කරන්න"}
-                    >
-                      {isCopied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
-                    </button>
-
-                    <div className="text-xl md:text-2xl text-sky-400 font-bold select-all text-center leading-relaxed max-w-full overflow-x-auto scrollbar-thin scrollbar-thumb-slate-800">
-                      <Latex math={item.formula} block={true} />
-                    </div>
-                  </div>
-
-                  {/* Formula Details Bottom Panel */}
-                  <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest">
-                      SI Unit:
-                    </span>
-                    <span className="text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-lg border border-slate-200/50">
-                      <Latex math={item.unit} />
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
+            {filteredFormulas.map((item) => (
+              <FormulaFlipCard
+                key={item.id}
+                item={item}
+                lang={lang}
+                copyToClipboard={copyToClipboard}
+                copiedId={copiedId}
+              />
+            ))}
           </div>
         ) : (
           <div className="bg-white rounded-3xl p-12 text-center border border-slate-200 shadow-sm max-w-md mx-auto">
