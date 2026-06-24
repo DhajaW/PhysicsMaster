@@ -5,7 +5,7 @@ export default function Footer({ lang = 'si' }) {
   const isEnglish = lang === 'en';
 
   return (
-    <footer className="bg-slate-900 text-slate-300 py-10 mt-16 border-t-4 border-blue-500 font-sans">
+    <footer className="bg-slate-900 text-slate-300 pt-6 pb-10 md:py-10 mt-4 md:mt-8 border-t-4 border-blue-500 font-sans">
       <div className="max-w-6xl mx-auto px-6 md:px-12 text-left">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
           

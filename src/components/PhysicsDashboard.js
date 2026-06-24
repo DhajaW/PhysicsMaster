@@ -500,9 +500,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
         </div>
 
         {/* Bottom AdSense Banner */}
-        <div className="mt-8 mb-0">
-          <AdPlaceholder type="banner" slotId="YOUR_SLOT_2" />
-        </div>
+        <AdPlaceholder type="banner" slotId="YOUR_SLOT_2" className="mt-4 md:mt-8 mb-0 mx-auto" />
       </main>
     </div>
   );
