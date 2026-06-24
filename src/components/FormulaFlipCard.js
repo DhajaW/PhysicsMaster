@@ -161,7 +161,7 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
         {/* ========================================================
             FRONT SIDE (The Formula Card)
             ======================================================== */}
-        <div className="absolute inset-0 w-full h-full backface-hidden rounded-3xl bg-slate-950 border border-slate-900 p-6 flex flex-col justify-between shadow-2xl overflow-hidden hover:border-blue-500/40 transition-colors duration-300 group">
+        <div className={`absolute inset-0 w-full h-full backface-hidden rounded-3xl bg-slate-950 border border-slate-900 p-6 flex flex-col justify-between shadow-2xl overflow-hidden hover:border-blue-500/40 transition-colors duration-300 group ${isFlipped ? "pointer-events-none z-0 opacity-0" : "pointer-events-auto z-10 opacity-100"}`}>
           
           {/* Subtle Cybernetic Background Details */}
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -234,7 +234,7 @@ export default function FormulaFlipCard({ item, lang = "si", copyToClipboard, co
         {/* ========================================================
             BACK SIDE (The Interactive Example)
             ======================================================== */}
-        <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl bg-slate-950 border border-slate-900 p-6 flex flex-col justify-between shadow-2xl text-left overflow-y-auto">
+        <div className={`absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl bg-slate-950 border border-slate-900 p-6 flex flex-col justify-between shadow-2xl text-left overflow-y-auto ${isFlipped ? "pointer-events-auto z-10 opacity-100" : "pointer-events-none z-0 opacity-0"}`}>
           
           <div className="space-y-4">
             {/* Header badges */}
