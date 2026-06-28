@@ -103,6 +103,26 @@ export default async function RootLayout({ children, params }) {
                     "contactType": "technical support",
                     "areaServed": "LK",
                     "availableLanguage": ["si", "en"]
+                  },
+                  "sameAs": [
+                    "https://www.facebook.com/",
+                    "https://www.youtube.com/",
+                    "https://twitter.com/",
+                    "https://www.instagram.com/",
+                    "https://www.linkedin.com/"
+                  ]
+                },
+                {
+                  "@type": "LocalBusiness",
+                  "@id": "https://physics-masters.vercel.app/#localbusiness",
+                  "name": "Physics Master A/L",
+                  "url": "https://physics-masters.vercel.app",
+                  "telephone": "+94713080010",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Colombo",
+                    "addressLocality": "Colombo",
+                    "addressCountry": "LK"
                   }
                 },
                 {

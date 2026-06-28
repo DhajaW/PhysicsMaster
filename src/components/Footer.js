@@ -1,4 +1,4 @@
-import { Heart, Phone, Sparkles } from 'lucide-react';
+import { Heart, Phone, Sparkles, MapPin, Facebook, Youtube, Twitter, Instagram, Linkedin } from 'lucide-react';
 
 export default function Footer({ lang = 'si' }) {
   const currentYear = new Date().getFullYear();
@@ -20,6 +20,22 @@ export default function Footer({ lang = 'si' }) {
                 ? 'Master A/L Physics simply and correctly. A unique digital experience designed specifically for Sri Lankan students to conquer their exams.'
                 : 'උසස් පෙළ භෞතික විද්යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. ශ්‍රී ලාංකේය සිසුන්ගේ විභාග ජයග්‍රහණය වෙනුවෙන්ම නිර්මාණය කළ අද්විතීය ඩිජිටල් අත්දැකීමකි.'}
             </p>
+          </div>
+
+          {/* Middle: Social Links & Address */}
+          <div className="text-center md:text-left">
+            <h4 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Connect With Us</h4>
+            <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
+              <a href="#" aria-label="Facebook Page" className="text-slate-400 hover:text-blue-500 transition-colors"><Facebook className="w-5 h-5" /></a>
+              <a href="#" aria-label="YouTube Channel" className="text-slate-400 hover:text-red-500 transition-colors"><Youtube className="w-5 h-5" /></a>
+              <a href="#" aria-label="X Profile (Twitter)" className="text-slate-400 hover:text-sky-400 transition-colors"><Twitter className="w-5 h-5" /></a>
+              <a href="#" aria-label="Instagram Profile" className="text-slate-400 hover:text-pink-500 transition-colors"><Instagram className="w-5 h-5" /></a>
+              <a href="#" aria-label="LinkedIn Profile" className="text-slate-400 hover:text-blue-400 transition-colors"><Linkedin className="w-5 h-5" /></a>
+            </div>
+            <div className="flex items-start justify-center md:justify-start gap-2 text-sm text-slate-400">
+              <MapPin className="w-4 h-4 mt-0.5 text-slate-500 flex-shrink-0" />
+              <span>Colombo, Sri Lanka</span>
+            </div>
           </div>
 
           {/* Right: Flagship Studios Branding */}

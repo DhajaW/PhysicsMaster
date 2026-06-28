@@ -1,0 +1,19 @@
+# Physics Master A/L
+
+> **උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න.**
+
+Physics Master A/L is a premium EdTech platform dedicated to Sri Lankan students studying Advanced Level (A/L) Physics. The platform provides comprehensive syllabus notes, practical experiment guides, model papers, and interactive virtual simulators.
+
+## Features
+- Complete G.C.E A/L Physics syllabus coverage.
+- Interactive virtual physics simulators and 3D models.
+- Timed MCQ model papers with a marking scheme breakdown.
+- Bilingual support: Sinhala and English.
+
+## Target Audience
+Sri Lankan high school students preparing for the G.C.E. Advanced Level (A/L) examination in the physical science or biological science streams.
+
+## Contact Information
+- Telephone: +94 713 080 010
+- Location: Colombo, Sri Lanka
+- Website: https://physics-masters.vercel.app
