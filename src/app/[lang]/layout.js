@@ -8,8 +8,8 @@ const siteUrl = 'https://physics-masters.vercel.app';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව - Premium',
-  description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. සම්පත් පොත් සාරාංශ, විෂය නිර්දේශයන් සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
+  title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව සහ MCQ ප්‍රශ්න පත්‍ර',
+  description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. A/L Physics සම්පත් පොත් සාරාංශ, විභාග MCQ ප්‍රශ්න පත්‍ර සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
   keywords: [
     'A/L Physics',
     'AL Physics',
@@ -47,8 +47,8 @@ export const metadata = {
     title: 'Physics Master',
   },
   openGraph: {
-    title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව - Premium',
-    description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. සම්පත් පොත් සාරාංශ, විෂය නිර්දේශයන් සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
+    title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව සහ MCQ ප්‍රශ්න පත්‍ර',
+    description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. A/L Physics සම්පත් පොත් සාරාංශ, විභාග MCQ ප්‍රශ්න පත්‍ර සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
     url: 'https://physics-masters.vercel.app',
     siteName: 'Physics Master A/L',
     images: [
@@ -64,8 +64,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව - Premium',
-    description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. සම්පත් පොත් සාරාංශ, විෂය නිර්දේශයන් සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
+    title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව සහ MCQ ප්‍රශ්න පත්‍ර',
+    description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. A/L Physics සම්පත් පොත් සාරාංශ, විභාග MCQ ප්‍රශ්න පත්‍ර සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
     images: ['/og-image.png'],
   }
 };
