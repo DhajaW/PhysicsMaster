@@ -383,6 +383,7 @@ export default function PhysicsDashboard({ lang = 'si' }) {
               <Link 
                 href={`/${lang}/units/${unit.id}`}
                 className="absolute inset-0 z-10"
+                aria-label={isEnglish ? `View ${unit.name}` : `${unit.name} බලන්න`}
               />
 
               {/* Checkbox button positioned in top right */}
@@ -497,6 +498,19 @@ export default function PhysicsDashboard({ lang = 'si' }) {
               })}
             </div>
           )}
+        </div>
+
+        {/* SEO Content Section */}
+        <div className="mb-10 bg-slate-900/40 backdrop-blur border border-slate-800/80 rounded-3xl p-6 md:p-10 shadow-xl text-left">
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-4">Physics Master A/L - උසස් පෙළ භෞතික විද්‍යාව</h2>
+          <div className="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
+            <p>
+              Welcome to <strong>Physics Master A/L</strong>, the most comprehensive digital learning platform dedicated to Sri Lankan students studying <strong>උසස් පෙළ භෞතික විද්‍යාව</strong> (A/L Physics). Our mission is to help you truly <strong>Master Physics</strong> through an interactive, easy-to-understand, and structured curriculum. We provide detailed syllabus notes, practical experiment guides, and exam-focused model papers designed to enhance your problem-solving skills and secure top grades in your G.C.E. Advanced Level examination.
+            </p>
+            <p>
+              Whether you are struggling with complex theories in Mechanics, Electromagnetism, or Quantum Physics, our platform breaks down every concept logically. By practicing our curated MCQ papers and exploring virtual simulators, you can bridge the gap between theoretical knowledge and practical application. Join thousands of students who have chosen to master <strong>උසස් පෙළ භෞතික විද්‍යාව</strong> with <strong>Physics Master A/L</strong> and take the next step toward academic excellence today.
+            </p>
+          </div>
         </div>
 
         {/* Bottom AdSense Banner */}

@@ -4,14 +4,11 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
-const siteUrl = 
-  process.env.NEXT_PUBLIC_SITE_URL || 
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) || 
-  'https://physics-masters.vercel.app';
+const siteUrl = 'https://physics-masters.vercel.app';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව',
+  title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව - Premium',
   description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. සම්පත් පොත් සාරාංශ, විෂය නිර්දේශයන් සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
   keywords: [
     'A/L Physics',
@@ -25,7 +22,12 @@ export const metadata = {
     'Physics MCQ'
   ],
   alternates: {
-    canonical: siteUrl,
+    canonical: 'https://physics-masters.vercel.app',
+    languages: {
+      'si': 'https://physics-masters.vercel.app/si',
+      'en': 'https://physics-masters.vercel.app/en',
+      'x-default': 'https://physics-masters.vercel.app/si',
+    },
   },
   robots: {
     index: true,
@@ -45,9 +47,9 @@ export const metadata = {
     title: 'Physics Master',
   },
   openGraph: {
-    title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව',
+    title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව - Premium',
     description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. සම්පත් පොත් සාරාංශ, විෂය නිර්දේශයන් සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
-    url: siteUrl,
+    url: 'https://physics-masters.vercel.app',
     siteName: 'Physics Master A/L',
     images: [
       {
@@ -62,7 +64,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව',
+    title: 'Physics Master A/L | උසස් පෙළ භෞතික විද්‍යාව - Premium',
     description: 'උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න. සම්පත් පොත් සාරාංශ, විෂය නිර්දේශයන් සහ අතථ්‍ය පරීක්ෂණ මෙතැනින්.',
     images: ['/og-image.png'],
   }
@@ -73,7 +75,52 @@ export default async function RootLayout({ children, params }) {
   
   return (
     <html lang={lang || "si"} className="h-full antialiased">
+      <head>
+        <link rel="canonical" href="https://physics-masters.vercel.app/" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
+      </head>
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-100">
+        {/* Schema.org Organization and WebSite JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://physics-masters.vercel.app/#organization",
+                  "name": "Physics Master",
+                  "url": "https://physics-masters.vercel.app",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "@id": "https://physics-masters.vercel.app/#logo",
+                    "url": "https://physics-masters.vercel.app/og-image.png",
+                    "caption": "Physics Master Logo"
+                  },
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+94713080010",
+                    "contactType": "technical support",
+                    "areaServed": "LK",
+                    "availableLanguage": ["si", "en"]
+                  }
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://physics-masters.vercel.app/#website",
+                  "url": "https://physics-masters.vercel.app",
+                  "name": "Physics Master A/L",
+                  "description": "උසස් පෙළ භෞතික විද්‍යාව ඉතාමත් සරලව සහ නිවැරදිව ඉගෙන ගන්න.",
+                  "publisher": {
+                    "@id": "https://physics-masters.vercel.app/#organization"
+                  },
+                  "inLanguage": ["si", "en"]
+                }
+              ]
+            })
+          }}
+        />
         <main className="flex-grow">
           {children}
         </main>
