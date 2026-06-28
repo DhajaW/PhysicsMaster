@@ -138,6 +138,16 @@ export default async function RootLayout({ children, params }) {
                     "@id": "https://physics-masters.vercel.app/#organization"
                   },
                   "inLanguage": ["si", "en"]
+                },
+                {
+                  "@type": "Person",
+                  "@id": "https://physics-masters.vercel.app/#author",
+                  "name": "Thusitha",
+                  "url": "https://physics-masters.vercel.app",
+                  "jobTitle": "Physics Educator",
+                  "worksFor": {
+                    "@id": "https://physics-masters.vercel.app/#organization"
+                  }
                 }
               ]
             })

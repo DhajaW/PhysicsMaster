@@ -503,13 +503,31 @@ export default function PhysicsDashboard({ lang = 'si' }) {
         {/* SEO Content Section */}
         <div className="mb-10 bg-slate-900/40 backdrop-blur border border-slate-800/80 rounded-3xl p-6 md:p-10 shadow-xl text-left">
           <h2 className="text-xl md:text-2xl font-bold text-white mb-4">Physics Master A/L - උසස් පෙළ භෞතික විද්‍යාව සහ බහුවරණ ප්‍රශ්න පත්‍ර</h2>
-          <div className="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
-            <p>
-              Welcome to <strong>Physics Master A/L</strong>, the most comprehensive digital learning platform dedicated to Sri Lankan students studying <strong>උසස් පෙළ භෞතික විද්‍යාව</strong> (A/L Physics). Our mission is to help you truly <strong>Master Physics</strong> through an interactive, easy-to-understand, and structured curriculum. We provide detailed syllabus notes, practical experiment guides, and exam-focused model papers designed to enhance your problem-solving skills and secure top grades in your G.C.E. Advanced Level examination.
-            </p>
-            <p>
-              Whether you are struggling with complex theories in Mechanics, Electromagnetism, or Quantum Physics, our platform breaks down every concept logically. By practicing our curated MCQ papers and exploring virtual simulators, you can bridge the gap between theoretical knowledge and practical application. Join thousands of students who have chosen to master <strong>උසස් පෙළ භෞතික විද්‍යාව</strong> with <strong>Physics Master A/L</strong> and take the next step toward academic excellence today.
-            </p>
+          <div className="flex flex-col md:flex-row gap-6 mb-6">
+            <div className="md:w-1/3 flex-shrink-0">
+              <img src="/og-image.png" alt="Physics Master A/L Banner" className="w-full h-auto rounded-xl shadow-lg border border-slate-800" />
+            </div>
+            <div className="md:w-2/3 space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
+              <p>
+                First, welcome to <strong>Physics Master A/L</strong>. This is a very helpful digital platform for Sri Lankan students. We focus on <strong>උසස් පෙළ භෞතික විද්‍යාව</strong> (A/L Physics). Our main goal is to help you truly <strong>Master Physics</strong>. Furthermore, we use a simple and clear curriculum to guide you. We provide short syllabus notes and practical guides. In addition, we offer model MCQ papers to test your skills. Therefore, you can easily secure top grades in your G.C.E. Advanced Level exams.
+              </p>
+              <p>
+                Sometimes, topics like Mechanics or Quantum Physics seem hard. However, our platform explains every concept clearly. By taking our practice MCQ papers, you will build confidence. Also, our virtual tools help connect theory with real life. Ultimately, join many other students who trust <strong>Physics Master A/L</strong>. Start your journey to success today!
+              </p>
+            </div>
+          </div>
+          
+          <div className="pt-4 border-t border-slate-800/60 mt-4 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+            <div className="flex items-center gap-2 mb-2 md:mb-0">
+              <span className="font-semibold text-slate-400">Author:</span>
+              <span itemProp="author" itemScope itemType="https://schema.org/Person">
+                <span itemProp="name">Thusitha (Physics Educator)</span>
+              </span>
+            </div>
+            <div className="flex items-center gap-4">
+              <span>Published: <time itemProp="datePublished" dateTime="2024-01-01">Jan 1, 2024</time></span>
+              <span>Last Updated: <time itemProp="dateModified" dateTime="2026-06-29">June 29, 2026</time></span>
+            </div>
           </div>
         </div>
 
