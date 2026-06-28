@@ -22,11 +22,11 @@ export const metadata = {
     'Physics MCQ'
   ],
   alternates: {
-    canonical: 'https://physics-masters.vercel.app',
+    canonical: '/',
     languages: {
-      'si': 'https://physics-masters.vercel.app/si',
-      'en': 'https://physics-masters.vercel.app/en',
-      'x-default': 'https://physics-masters.vercel.app/si',
+      'si': '/si',
+      'en': '/en',
+      'x-default': '/si',
     },
   },
   robots: {
@@ -76,7 +76,6 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={lang || "si"} className="h-full antialiased">
       <head>
-        <link rel="canonical" href="https://physics-masters.vercel.app/" />
         <link rel="apple-touch-icon" href="/icon.svg" />
       </head>
       <body className="min-h-full flex flex-col bg-slate-950 text-slate-100">
